@@ -82,8 +82,8 @@
         }
 
         .menu-options {
-            display: flex;
-            flex-direction: column;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 1.5rem;
         }
 
@@ -169,6 +169,7 @@
 
         @media (max-width: 768px) {
             .menu-options {
+                grid-template-columns: 1fr;
                 gap: 1rem;
             }
 
@@ -178,6 +179,12 @@
 
             .menu-title {
                 font-size: 1.75rem;
+            }
+        }
+
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .menu-options {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
     </style>
@@ -218,6 +225,13 @@
                 <h2>4. Istikhara</h2>
                 <p>The Prayer of Seeking Guidance</p>
                 <a href="istikhara.html" class="btn">View</a>
+            </div>
+            
+            <div class="menu-card" onclick="window.location.href='self-ruqyah.html'">
+                <div class="icon"><i class="fas fa-heart"></i></div>
+                <h2>5. Self Ruqyah Guide</h2>
+                <p>Complete guide to performing ruqyah on yourself</p>
+                <a href="self-ruqyah.html" class="btn">View</a>
             </div>
         </div>
 
