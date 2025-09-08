@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Istikhara - Prayer of Seeking Guidance</title>
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#4a8c4c">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Adhkar App">
+    <link rel="apple-touch-icon" href="img/logo.png">
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Istikhara - The Prayer of Seeking Guidance in Islam">
+    <meta name="keywords" content="Islamic, Istikhara, Prayer, Guidance, Dua, Muslim">
+    <meta name="author" content="Islamic Adhkar App">
+    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Scheherazade+New:wght@400;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #4a8c4c;
+            --secondary-color: #1a1a1a;
+            --text-color: #f0f0f0;
+            --bg-color: #2d2d2d;
+            --card-bg: #3a3a3a;
+            --border-radius: 10px;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            --transition: all 0.3s ease;
+        }
+
+        .light-mode {
+            --primary-color: #2c5e2e;
+            --secondary-color: #f8f5e6;
+            --text-color: #333;
+            --bg-color: #fff;
+            --card-bg: #f9f9f9;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            transition: var(--transition);
+            padding-bottom: 2rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 2rem 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            flex: 1;
+        }
+
+        .content-card {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+        }
+
+        .arabic-text {
+            font-family: 'Scheherazade New', serif;
+            font-size: 1.8rem;
+            text-align: right;
+            direction: rtl;
+            line-height: 2.2;
+            margin: 1.5rem 0;
+            padding: 1.5rem;
+            background-color: rgba(74, 140, 76, 0.1);
+            border-radius: var(--border-radius);
+            border-right: 4px solid var(--primary-color);
+        }
+
+        .highlight-text {
+            color: #dc3545;
+            font-weight: bold;
+        }
+
+        .transliteration {
+            font-style: italic;
+            font-size: 1.1rem;
+            margin: 1.5rem 0;
+            padding: 1rem;
+            background-color: rgba(74, 140, 76, 0.05);
+            border-radius: var(--border-radius);
+            border-left: 3px solid var(--primary-color);
+        }
+
+        .translation {
+            font-size: 1.1rem;
+            margin: 1.5rem 0;
+            padding: 1rem;
+            background-color: rgba(74, 140, 76, 0.05);
+            border-radius: var(--border-radius);
+            border-left: 3px solid var(--primary-color);
+        }
+
+        h1, h2, h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            margin-top: 2rem;
+        }
+
+        h3 {
+            font-size: 1.4rem;
+            margin-top: 1.5rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+
+        .back-btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            transition: var(--transition);
+            margin-bottom: 2rem;
+        }
+
+        .back-btn:hover {
+            background-color: #3a7a3c;
+            transform: translateY(-2px);
+        }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            margin: 2rem 0;
+            gap: 1rem;
+        }
+
+        .icon-btn {
+            background-color: transparent;
+            border: none;
+            color: var(--text-color);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+            padding: 0.5rem;
+            border-radius: 50%;
+        }
+
+        .icon-btn:hover {
+            color: var(--primary-color);
+            transform: scale(1.1);
+        }
+
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 2rem;
+            background-color: var(--card-bg);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 0.5rem;
+            }
+
+            .content-card {
+                padding: 1.5rem;
+            }
+
+            .arabic-text {
+                font-size: 1.5rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Istikhara</h1>
+        <p>The Prayer of Seeking Guidance</p>
+    </header>
+
+    <div class="container">
+        <a href="index.html" class="back-btn">
+            <i class="fas fa-arrow-left"></i> Back to Menu
+        </a>
+
+        <div class="content-card">
+            <h2>How to Pray Istikhāra (Seeking Allah's Guidance)</h2>
+            
+            <h3>1. When to Pray</h3>
+            <p>Pray two rak'ahs at any time outside the disliked times:</p>
+            <ul style="margin-left: 20px; padding-left: 20px;">
+                <li>After Fajr until the sun rises.</li>
+                <li>When the sun is at its zenith (just before Ẓuhr).</li>
+                <li>After 'Aṣr until the sun sets.</li>
+            </ul>
+            
+            <p>So, avoid these three periods. At all other times, it is allowed.</p>
+            
+            <h3>2. Pray Two Rak'ahs</h3>
+            <p>Perform two voluntary rak'ahs with the intention of istikhāra.</p>
+            
+            <h3>3. Begin with Praise of Allah</h3>
+            <p>Before making your duʿā, start with words of praise, for example:</p>
+            <div class="arabic-text">ٱلْحَمْدُ لِلَّهِ رَبِّ ٱلْعَـٰلَمِينَ</div>
+            <div class="translation">"All praise is due to Allah, Lord of the worlds." (1:2)</div>
+            
+            <p>Or say:</p>
+            <div class="arabic-text">سُبْحَانَكَ اللَّهُمَّ وَبِحَمْدِكَ، وَتَبَارَكَ اسْمُكَ، وَتَعَالَى جَدُّكَ، وَلَا إِلٰهَ غَيْرُكَ</div>
+            <div class="translation">"Glory and praise be to You, O Allah. Blessed is Your Name, exalted is Your Majesty, and none is worthy of worship but You."</div>
+            
+            <h3>4. Send Blessings on the Prophet ﷺ</h3>
+            <div class="arabic-text">اللَّهُمَّ صَلِّ عَلَىٰ مُحَمَّدٍ وَعَلَىٰ آلِ مُحَمَّدٍ كَمَا صَلَّيْتَ عَلَىٰ إِبْرَاهِيمَ وَعَلَىٰ آلِ إِبْرَاهِيمَ، إِنَّكَ حَمِيدٌ مَجِيدٌ</div>
+            <div class="translation">"O Allah, send prayers upon Muhammad and upon the family of Muhammad, as You sent prayers upon Ibrahim and the family of Ibrahim. Truly, You are Praiseworthy, Glorious."</div>
+            
+            <h3>5. Make the Duʿā of Istikhāra</h3>
+            <p>Here you recite the duʿā itself.</p>
+            
+            <h3>6. End with Praise & Salāh on the Prophet ﷺ</h3>
+            <p>Close your duʿā as you began: praising Allah and sending blessings upon the Prophet ﷺ.</p>
+        </div>
+
+        <div class="content-card">
+            <h2>The Prayer in Arabic</h2>
+            <div class="arabic-text">
+                اللَّهُمَّ إِنِّي أَسْتَخِيرُكَ بِعِلْمِكَ وَأَسْتَقْدِرُكَ بِقُدْرَتِكَ وَأَسْأَلُكَ مِنْ فَضْلِكَ الْعَظِيمِ فَإِنَّكَ تَقْدِرُ وَلَا أَقْدِرُ وَتَعْلَمُ وَلَا أَعْلَمُ وَأَنْتَ عَلَّامُ الْغُيُوبِ اللَّهُمَّ إِنْ كُنْتَ تَعْلَمُ أَنَّ <span class="highlight-text">هَذَا الْأَمْرَ</span> خَيْرٌ لِي فِي دِينِي وَمَعَاشِي وَعَاقِبَةِ أَمْرِي فَاقْدُرْهُ لِي وَيَسِّرْهُ لِي ثُمَّ بَارِكْ لِي فِيهِ وَإِنْ كُنْتَ تَعْلَمُ أَنَّ <span class="highlight-text">هَذَا الْأَمْرَ</span> شَرٌّ لِي فِي دِينِي وَمَعَاشِي وَعَاقِبَةِ أَمْرِي فَاصْرِفْهُ عَنِّي وَاصْرِفْنِي عَنْهُ وَاقْدُرْ لِي الْخَيْرَ حَيْثُ كَانَ ثُمَّ أَرْضِنِي
+            </div>
+        </div>
+
+        <div class="content-card">
+            <h2>Transliteration</h2>
+            <div class="transliteration">
+                Allâhumma inni astakhiruka bi ilmika wa astaqdiruka biqudratika wa as'aluka min fadlikal-azimi, fa innaka taqdiru walâ aqdiru wa ta'lamu walâ a'lamu wa anta allamul ghuyubi. Allâhumma in kunta ta'lamu anna <span class="highlight-text">hâdhal amra</span> khayrun li fi dini wa ma-ashi wa aqibati amri faqdir-hu li wa yassir-hu li thumma barik li fihi wa in kunta ta'lamu anna <span class="highlight-text">hâdhal amra</span> sharrun li fi dini wa maâshi wa aqibati amri fasrifhu anni wasrifni anhu waqdir liyal-khayra haythu kâna thumma ardini.
+            </div>
+        </div>
+
+        <div class="content-card">
+            <h2>Translation</h2>
+            <div class="translation">
+                "O Allah, verily I seek the better (of either choice) from You, by Your knowledge, and I seek ability from You, by Your power, and I ask You from Your immense bounty. For indeed You have power, and I am powerless; You have knowledge, and I know not; You are the Knower of the unseen realms. O Allah, if You know that <span class="highlight-text">this matter</span> is good for me with regard to my religion, my livelihood, and the end of my affair, then decree it for me, facilitate it for me, and grant me blessing in it. And if You know that <span class="highlight-text">this matter</span> is not good for me with regard to my religion, my livelihood, and the end of my affair, then turn it away from me and me from it; and decree for me better than it, wherever it may be, and make me content with it."
+            </div>
+        </div>
+
+        <div class="content-card">
+            <h2>Looking for Signs</h2>
+            <p>One should suspend one's own judgment or inclination about a particular matter and wait for Allah to show one a sign or to make things happen in a way that indicates what to do. When one is unclear about the result of the istikhara, the fuqaha mention that it is recommended to repeat it up to 7 times if necessary (usually done on separate occasions). [cf: Ibn 'Abidin, Radd al-Muhtar]</p>
+            
+            <p>Shaykh Nuh Keller mentions that the more one prays the istikhara prayer, the clearer its answers become to oneself. He prays it for all matters, even things one would not imagine doing istikhara for.</p>
+            
+            <p>It is not necessary that you get a dream or even a "feeling." Rather, the istikhara is a prayer that Allah guides you towards that which is best (khayr) for you. If you do the prayer of guidance (istikhara) with the proper manners, the most important of which is to truly consign the matter to Allah and suspend your own inclinations, then Allah will make events unfold in the direction that is best for your worldly and next-worldly affairs.</p>
+        </div>
+
+        <div class="content-card">
+            <h2>When Unable to Offer Salah</h2>
+            <p>In general, when it is not possible to perform the istikhara prayer itself (such as when one is out on the road or in one's menstrual period), it is recommended to simply read the dua itself. [Radd al-Muhtar]</p>
+        </div>
+
+        <div class="content-card">
+            <h2>For Even the Smallest Things</h2>
+            <p>The great Hanafi scholar and hadith expert from Aleppo, Shaykh Abdullah Siraj al-Din, mentions in his book on the virtues of prayer that it is the way of many Sufis, including Shaykh al-Akbar Muhyiddin Ibn 'Arabi (may Allah sanctify his secret), to pray the istikhara prayer at the beginning of their day, after sunrise, asking Allah to guide them in general to all good and to keep away all evil from them.</p>
+            
+            <p>Istikhara gives the best answer for one's worldly and religious life (not worldly life alone) when coupled with another essential sunna: istishara (seeking sound counsel) of those worthy of being consulted and taking the sound means of assessing the situation at hand.</p>
+            
+            <p>Imam al-Nawawi mentioned that before the istikhara prayer, one should seek advice from those whose knowledge, wisdom, and concern one is confident. Ibn Hajar al-Haytami and others mentioned that one of the benefits of this is to further distance oneself from the desires of one's own egotistic inclinations.</p>
+            
+            <p>The istikhara prayer may be made for a specific matter or be made for a general seeking of all that is best. Some scholars, including Imam 'Abd al-Wahhab al-Sha'rani and Ibn 'Arafa before him, saw this kind of istikhara prayer as being superior. Others, including Shaykh Ibn 'Arabi, recommended performing a general istikhara prayer for all that is good every day, ideally at the time of the Duha prayer (after sunrise).</p>
+            
+            <p>One should be pleased with what Allah chooses for one and not seek to follow one's whims after the answer to one's supplication becomes clear.</p>
+        </div>
+
+        <div class="controls">
+            <button id="modeToggle" class="icon-btn" title="Toggle Light/Dark Mode">
+                <i class="fas fa-sun"></i>
+            </button>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2023 | Compiled for spiritual guidance and protection</p>
+    </footer>
+
+    <script>
+        // Toggle dark/light mode
+        document.getElementById('modeToggle').addEventListener('click', function() {
+            document.body.classList.toggle('light-mode');
+            const icon = this.querySelector('i');
+            if (icon.classList.contains('fa-sun')) {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            } else {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            }
+        });
+    </script>
+</body>
+</html>
