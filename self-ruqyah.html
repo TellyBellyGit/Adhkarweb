@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Self Ruqyah Guide - Islamic Adhkar & Ruqyah</title>
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="A comprehensive guide to self ruqyah based on Tim Humble's teachings - Islamic spiritual healing through Quran and authentic duas">
+    <meta name="keywords" content="ruqyah, self ruqyah, islamic healing, quran, duas, spiritual healing, tim humble">
+    <meta name="author" content="Islamic Adhkar & Ruqyah App">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-color: #2d5016;
+            --secondary-color: #4a7c59;
+            --accent-color: #7fb069;
+            --background-color: #f8f9fa;
+            --card-background: #ffffff;
+            --text-primary: #2c3e50;
+            --text-secondary: #6c757d;
+            --border-color: #e9ecef;
+            --shadow: 0 2px 10px rgba(0,0,0,0.1);
+            --border-radius: 12px;
+            --transition: all 0.3s ease;
+        }
+
+        [data-theme="dark"] {
+            --primary-color: #7fb069;
+            --secondary-color: #4a7c59;
+            --accent-color: #2d5016;
+            --background-color: #1a1a1a;
+            --card-background: #2d2d2d;
+            --text-primary: #ffffff;
+            --text-secondary: #b0b0b0;
+            --border-color: #404040;
+            --shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-primary);
+            line-height: 1.6;
+            transition: var(--transition);
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 1rem 0;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .theme-toggle {
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            padding: 0.5rem;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .theme-toggle:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+        .main-content {
+            padding: 2rem 0;
+        }
+
+        .content-card {
+            background: var(--card-background);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+
+        .content-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+
+        h1 {
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        h2 {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 0.5rem;
+        }
+
+        h3 {
+            color: var(--secondary-color);
+            font-size: 1.4rem;
+            margin-bottom: 0.8rem;
+            margin-top: 1.5rem;
+        }
+
+        .arabic-text {
+            font-family: 'Amiri', serif;
+            font-size: 1.8rem;
+            line-height: 2.2;
+            text-align: right;
+            direction: rtl;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            border-right: 4px solid var(--primary-color);
+            margin: 1rem 0;
+            color: var(--text-primary);
+        }
+
+        [data-theme="dark"] .arabic-text {
+            background: linear-gradient(135deg, #2d2d2d, #404040);
+        }
+
+        .translation {
+            font-style: italic;
+            color: var(--text-secondary);
+            margin: 0.5rem 0;
+            padding: 1rem;
+            background: rgba(127, 176, 105, 0.1);
+            border-radius: var(--border-radius);
+            border-left: 4px solid var(--accent-color);
+        }
+
+        .section {
+            margin-bottom: 2rem;
+        }
+
+        .point-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .point-list li {
+            background: var(--card-background);
+            margin: 1rem 0;
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            border-left: 4px solid var(--primary-color);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .point-list li:hover {
+            transform: translateX(5px);
+        }
+
+        .point-number {
+            font-weight: 700;
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+            margin-bottom: 2rem;
+        }
+
+        .back-button:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        .footer {
+            background: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+
+        .reference {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            font-style: italic;
+            margin-top: 1rem;
+            padding: 1rem;
+            background: rgba(127, 176, 105, 0.05);
+            border-radius: var(--border-radius);
+        }
+
+        .important-note {
+            background: rgba(127, 176, 105, 0.1);
+            border: 1px solid var(--accent-color);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .important-note h4 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .important-note ul {
+            margin: 0;
+            padding-left: 1.5rem;
+        }
+
+        .important-note li {
+            margin-bottom: 0.8rem;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 0.5rem;
+            }
+            
+            .content-card {
+                padding: 1.5rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .arabic-text {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-book-open"></i>
+                    Self Ruqyah Guide
+                </div>
+                <button class="theme-toggle" onclick="toggleTheme()">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <a href="index.html" class="back-button">
+                <i class="fas fa-arrow-left"></i>
+                Back to Main Menu
+            </a>
+
+            <div class="content-card">
+                <h1>A Simple Guide to Self Ruqyah</h1>
+                <div class="reference">
+                    Based on the teachings of Tim Humble - For personal collection and study purposes
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h2>What is Ruqyah?</h2>
+                <p>Ruqyah is the treatment of sicknesses and afflictions through the recitation of the Quran, the Names of Allah and the authentic dua and adhkaar that are reported from the Prophet ﷺ.</p>
+                
+                <p>It can be used for any kind of sickness or affliction, anything for which you seek a cure. Whether it is psychological, physical, mental, medical, financial, jinn, sihr, evil eye, magic, jealously. Whatever has afflicted you, ruqyah can be a cure بإذن الله تبارك وتعالى.</p>
+                
+                <div class="arabic-text">
+                    وَلَيْسَ بِضَآرِّهِمْ شَيْـًٔا إِلَّا بِإِذْنِ ٱللَّهِۚ وَعَلَى ٱللَّهِ فَلْيَتَوَكَّلِ ٱلْمُؤْمِنُونَ
+                </div>
+                <div class="translation">
+                    "But he will not harm them at all except by permission of Allah. And upon Allah let the believers rely." [Al-Mujadila: Ayah 10]
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h2>7 Essential Points Before Ruqyah</h2>
+                <p>There are 7 essential points that form the bases of getting out of every museebah (calamity) and that comes before seeking to do Ruqyah:</p>
+                
+                <ol class="point-list">
+                    <li>
+                        <span class="point-number">1. Correct your Aqeedah</span>
+                        <p>Your Aqeedah refers to: what a Muslim believes in his heart about the matters which are known from the Quran and the Prophetic Sunnah, in acknowledgement of the truth of Allah and His Messenger.</p>
+                        
+                        <p>It is the belief in your heart that corrects the rest of your actions. The evidence for this has been reported in the hadith:</p>
+                        
+                        <div class="translation">
+                            Nu'man b. Bashir (Allah be pleased with him) reported: I heard Allah's Messenger ﷺ as having said: "What is lawful is evident and what is unlawful is evident, and in between them are the things doubtful which many people do not know. So he who guards against doubtful things keeps his religion and honour blameless... Beware, in the body there is a piece of flesh; if it is sound, the whole body is sound and if it is corrupt the whole body is corrupt, and hearken it is the heart." [Sahih Muslim 1599 a]
+                        </div>
+                        
+                        <h3>Examples from the Prophets</h3>
+                        
+                        <h4>Prophet Yunus (عليه السلام)</h4>
+                        <p>When he was trapped in the belly of the fish, the first thing he called out was the statement of Aqeedah, the statement of Tawheed:</p>
+                        
+                        <div class="arabic-text">
+                            لَّا إِلَٰهَ إِلَّا أَنتَ سُبْحَانَكَ إِنِّي كُنتُ مِنَ الظَّالِمِينَ
+                        </div>
+                        <div class="translation">
+                            "There is no deity except You; exalted are You (free from any imperfections). Indeed, I have been of the wrongdoers." So We responded to him and saved him from the distress. And thus do We save the believers. [Surat Al Anbiya: Ayahs 87 and 88]
+                        </div>
+                        
+                        <h4>Prophet Ayub (عليه السلام)</h4>
+                        <p>When he was inflicted with serious illness, the first thing he called out was the statement of Aqeedah, of believing in the divine attributes of Allah of His Great Mercy:</p>
+                        
+                        <div class="translation">
+                            "And (remember) Ayub (Job), when he cried to his Lord: 'Verily, distress has seized me, and You are the Most Merciful of all those who show mercy.' So We answered his call, and We removed the distress that was on him, and We restored his family to him (that he had lost), and the like thereof along with them, as a mercy from Ourselves and a Reminder for all who worship Us." [Surat Al Anbiya: Ayahs 83 and 84]
+                        </div>
+                        
+                        <h4>Prophet Zakariya (عليه السلام)</h4>
+                        <p>When he was in need of a child and righteous heir, the first thing he called out was the statement of Aqeedah, of believing in the divine attributes of Allah:</p>
+                        
+                        <div class="translation">
+                            "And [mention] Zechariah, when he called to his Lord, 'My Lord, do not leave me alone [with no heir], while you are the best of inheritors.' So We answered his call, and We bestowed upon him Yahya (John), and cured his wife (to bear a child) for him. Verily, they used to hasten on to do good deeds, and they used to call on Us with hope and fear, and used to humble themselves before Us." [Surat Al Anbiya: Ayahs 89-90]
+                        </div>
+                    </li>
+                    
+                    <li>
+                        <span class="point-number">2. Tawbah (Repentance)</span>
+                        <p>Turn to Allah in sincere repentance. Allah says:</p>
+                        
+                        <div class="arabic-text">
+                            وَتُوبُوا إِلَى اللَّهِ جَمِيعًا أَيُّهَا الْمُؤْمِنُونَ لَعَلَّكُمْ تُفْلِحُونَ
+                        </div>
+                        <div class="translation">
+                            "And turn to Allah in repentance, all of you, O believers, that you might succeed." [An-Nur: 31]
+                        </div>
+                        
+                        <p>The conditions of sincere repentance (Tawbah Nasooh) are:</p>
+                        <ul>
+                            <li>Regret for the sin committed</li>
+                            <li>Seeking forgiveness from Allah</li>
+                            <li>Resolving never to return to the sin</li>
+                            <li>If the sin involved wronging others, seeking their forgiveness and making amends</li>
+                        </ul>
+                    </li>
+                    
+                    <li>
+                        <span class="point-number">3. Remove the Means of Disobedience</span>
+                        <p>Remove from your life anything that leads to disobedience to Allah. This includes:</p>
+                        <ul>
+                            <li>Haram music and entertainment</li>
+                            <li>Inappropriate images and videos</li>
+                            <li>Bad company that leads you away from Allah</li>
+                            <li>Any objects or practices related to shirk or innovation</li>
+                        </ul>
+                        
+                        <p>The Prophet ﷺ said:</p>
+                        <div class="translation">
+                            "Whoever gives up something for the sake of Allah, Allah will compensate him with something better." [Ahmad]
+                        </div>
+                    </li>
+                    
+                    <li>
+                        <span class="point-number">4. Increase in Righteous Deeds</span>
+                        <p>Increase your good deeds and acts of worship:</p>
+                        <ul>
+                            <li>Establish the five daily prayers on time</li>
+                            <li>Read the Quran regularly with contemplation</li>
+                            <li>Make dhikr (remembrance of Allah) frequently</li>
+                            <li>Give charity and help others</li>
+                            <li>Fast voluntarily (Mondays, Thursdays, white days)</li>
+                            <li>Perform night prayers (Tahajjud)</li>
+                        </ul>
+                        
+                        <div class="arabic-text">
+                            إِنَّ الْحَسَنَاتِ يُذْهِبْنَ السَّيِّئَاتِ
+                        </div>
+                        <div class="translation">
+                            "Indeed, good deeds do away with misdeeds." [Hud: 114]
+                        </div>
+                    </li>
+                    
+                    <li>
+                        <span class="point-number">5. Make Dua</span>
+                        <p>Make sincere dua to Allah, especially during the blessed times:</p>
+                        <ul>
+                            <li>Between Maghrib and Isha</li>
+                            <li>The last third of the night</li>
+                            <li>Between Asr and Maghrib on Friday</li>
+                            <li>While fasting</li>
+                            <li>After the obligatory prayers</li>
+                        </ul>
+                        
+                        <p>Use the authentic duas from the Quran and Sunnah, and also make dua in your own words from your heart.</p>
+                    </li>
+                    
+                    <li>
+                        <span class="point-number">6. Have Good Expectations of Allah</span>
+                        <p>Always have husn al-dhann (good expectations) of Allah. The Prophet ﷺ said:</p>
+                        
+                        <div class="translation">
+                            "Allah says: 'I am as My servant thinks I am.'" [Bukhari and Muslim]
+                        </div>
+                        
+                        <p>Believe that Allah will cure you, help you, and relieve your distress. Have certainty that Allah's mercy encompasses all things.</p>
+                    </li>
+                    
+                    <li>
+                        <span class="point-number">7. Seek Forgiveness (Istighfar)</span>
+                        <p>Constantly seek Allah's forgiveness. The Prophet ﷺ said:</p>
+                        
+                        <div class="translation">
+                            "Whoever persists in seeking forgiveness, Allah will grant him relief from every distress and a way out from every hardship, and will provide for him from where he does not expect." [Abu Dawud]
+                        </div>
+                        
+                        <p>The best form of seeking forgiveness is Sayyid al-Istighfar:</p>
+                        
+                        <div class="arabic-text">
+                            اللَّهُمَّ أَنْتَ رَبِّي لاَ إِلَهَ إِلاَّ أَنْتَ، خَلَقْتَنِي وَأَنَا عَبْدُكَ، وَأَنَا عَلَى عَهْدِكَ وَوَعْدِكَ مَا اسْتَطَعْتُ، أَعُوذُ بِكَ مِنْ شَرِّ مَا صَنَعْتُ، أَبُوءُ لَكَ بِنِعْمَتِكَ عَلَىَّ، وَأَبُوءُ بِذَنْبِي فَاغْفِر لِي فَإِنَّهُ لاَ يَغْفِرُ الذُّنُوبَ إِلاَّ أَنْتَ
+                        </div>
+                        <div class="translation">
+                            "O Allah, You are my Lord, there is no god but You. You created me and I am Your servant. I abide by Your covenant and promise as much as I can. I seek refuge in You from the evil of what I have done. I acknowledge Your blessing upon me and I acknowledge my sin, so forgive me, for indeed none can forgive sins except You."
+                        </div>
+                    </li>
+                </ol>
+            </div>
+            
+            <div class="content-card">
+                <h2>How to Perform Self Ruqyah</h2>
+                
+                <h3>Step 1: Prepare Yourself</h3>
+                <ul>
+                    <li>Make wudu (ablution)</li>
+                    <li>Face the qiblah if possible</li>
+                    <li>Choose a quiet, clean place</li>
+                    <li>Have sincere intention (niyyah) to seek healing from Allah alone</li>
+                </ul>
+                
+                <h3>Step 2: Begin with Praise and Seeking Refuge</h3>
+                <p>Start by praising Allah and seeking refuge:</p>
+                
+                <div class="arabic-text">
+                    أَعُوذُ بِاللَّهِ مِنَ الشَّيْطَانِ الرَّجِيمِ
+                </div>
+                <div class="translation">
+                    "I seek refuge in Allah from Satan, the accursed."
+                </div>
+                
+                <div class="arabic-text">
+                    بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ
+                </div>
+                <div class="translation">
+                    "In the name of Allah, the Most Gracious, the Most Merciful."
+                </div>
+                
+                <h3>Step 3: Recite Quranic Verses</h3>
+                <p>Recite the following verses with contemplation and belief:</p>
+                
+                <h4>Al-Fatihah (The Opening)</h4>
+                <div class="arabic-text">
+                    بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ ﴿١﴾ الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ ﴿٢﴾ الرَّحْمَنِ الرَّحِيمِ ﴿٣﴾ مَالِكِ يَوْمِ الدِّينِ ﴿٤﴾ إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ ﴿٥﴾ اهْدِنَا الصِّرَاطَ الْمُسْتَقِيمَ ﴿٦﴾ صِرَاطَ الَّذِينَ أَنْعَمْتَ عَلَيْهِمْ غَيْرِ الْمَغْضُوبِ عَلَيْهِمْ وَلَا الضَّالِّينَ ﴿٧﴾
+                </div>
+                
+                <h4>Ayat al-Kursi (Verse of the Throne)</h4>
+                <div class="arabic-text">
+                    اللَّهُ لَا إِلَهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ لَا تَأْخُذُهُ سِنَةٌ وَلَا نَوْمٌ لَهُ مَا فِي السَّمَاوَاتِ وَمَا فِي الْأَرْضِ مَنْ ذَا الَّذِي يَشْفَعُ عِنْدَهُ إِلَّا بِإِذْنِهِ يَعْلَمُ مَا بَيْنَ أَيْدِيهِمْ وَمَا خَلْفَهُمْ وَلَا يُحِيطُونَ بِشَيْءٍ مِنْ عِلْمِهِ إِلَّا بِمَا شَاءَ وَسِعَ كُرْسِيُّهُ السَّمَاوَاتِ وَالْأَرْضَ وَلَا يَئُودُهُ حِفْظُهُمَا وَهُوَ الْعَلِيُّ الْعَظِيمُ
+                </div>
+                <div class="translation">
+                    "Allah - there is no deity except Him, the Ever-Living, the Sustainer of existence. Neither drowsiness overtakes Him nor sleep. To Him belongs whatever is in the heavens and whatever is on the earth. Who is it that can intercede with Him except by His permission? He knows what is before them and what will be after them, and they encompass not a thing of His knowledge except for what He wills. His Kursi extends over the heavens and the earth, and their preservation tires Him not. And He is the Most High, the Most Great." [Al-Baqarah: 255]
+                </div>
+                
+                <h4>The Last Two Verses of Al-Baqarah</h4>
+                <div class="arabic-text">
+                    آمَنَ الرَّسُولُ بِمَا أُنْزِلَ إِلَيْهِ مِنْ رَبِّهِ وَالْمُؤْمِنُونَ كُلٌّ آمَنَ بِاللَّهِ وَمَلَائِكَتِهِ وَكُتُبِهِ وَرُسُلِهِ لَا نُفَرِّقُ بَيْنَ أَحَدٍ مِنْ رُسُلِهِ وَقَالُوا سَمِعْنَا وَأَطَعْنَا غُفْرَانَكَ رَبَّنَا وَإِلَيْكَ الْمَصِيرُ ﴿٢٨٥﴾ لَا يُكَلِّفُ اللَّهُ نَفْسًا إِلَّا وُسْعَهَا لَهَا مَا كَسَبَتْ وَعَلَيْهَا مَا اكْتَسَبَتْ رَبَّنَا لَا تُؤَاخِذْنَا إِنْ نَسِينَا أَوْ أَخْطَأْنَا رَبَّنَا وَلَا تَحْمِلْ عَلَيْنَا إِصْرًا كَمَا حَمَلْتَهُ عَلَى الَّذِينَ مِنْ قَبْلِنَا رَبَّنَا وَلَا تُحَمِّلْنَا مَا لَا طَاقَةَ لَنَا بِهِ وَاعْفُ عَنَّا وَاغْفِرْ لَنَا وَارْحَمْنَا أَنْتَ مَوْلَانَا فَانْصُرْنَا عَلَى الْقَوْمِ الْكَافِرِينَ ﴿٢٨٦﴾
+                </div>
+                
+                <h4>Al-Ikhlas, Al-Falaq, and An-Nas (The Three Quls)</h4>
+                <p>Recite each three times:</p>
+                
+                <div class="arabic-text">
+                    قُلْ هُوَ اللَّهُ أَحَدٌ ﴿١﴾ اللَّهُ الصَّمَدُ ﴿٢﴾ لَمْ يَلِدْ وَلَمْ يُولَدْ ﴿٣﴾ وَلَمْ يَكُنْ لَهُ كُفُوًا أَحَدٌ ﴿٤﴾
+                </div>
+                
+                <div class="arabic-text">
+                    قُلْ أَعُوذُ بِرَبِّ الْفَلَقِ ﴿١﴾ مِنْ شَرِّ مَا خَلَقَ ﴿٢﴾ وَمِنْ شَرِّ غَاسِقٍ إِذَا وَقَبَ ﴿٣﴾ وَمِنْ شَرِّ النَّفَّاثَاتِ فِي الْعُقَدِ ﴿٤﴾ وَمِنْ شَرِّ حَاسِدٍ إِذَا حَسَدَ ﴿٥﴾
+                </div>
+                
+                <div class="arabic-text">
+                    قُلْ أَعُوذُ بِرَبِّ النَّاسِ ﴿١﴾ مَلِكِ النَّاسِ ﴿٢﴾ إِلَهِ النَّاسِ ﴿٣﴾ مِنْ شَرِّ الْوَسْوَاسِ الْخَنَّاسِ ﴿٤﴾ الَّذِي يُوَسْوِسُ فِي صُدُورِ النَّاسِ ﴿٥﴾ مِنَ الْجِنَّةِ وَالنَّاسِ ﴿٦﴾
+                </div>
+                
+                <h3>Step 4: Prophetic Duas for Healing</h3>
+                
+                <h4>General Healing Dua</h4>
+                <div class="arabic-text">
+                    اللَّهُمَّ رَبَّ النَّاسِ أَذْهِبِ الْبَاسَ اشْفِهِ وَأَنْتَ الشَّافِي لَا شِفَاءَ إِلَّا شِفَاؤُكَ شِفَاءً لَا يُغَادِرُ سَقَمًا
+                </div>
+                <div class="translation">
+                    "O Allah, Lord of mankind, remove the hardship and heal, for You are the Healer. There is no healing except Your healing, a healing that leaves no sickness."
+                </div>
+                
+                <h4>Dua for Protection</h4>
+                <div class="arabic-text">
+                    أَعُوذُ بِكَلِمَاتِ اللَّهِ التَّامَّاتِ مِنْ شَرِّ مَا خَلَقَ
+                </div>
+                <div class="translation">
+                    "I seek refuge in the perfect words of Allah from the evil of what He has created."
+                </div>
+                
+                <h4>Dua for Removing Distress</h4>
+                <div class="arabic-text">
+                    لَا إِلَهَ إِلَّا اللَّهُ الْعَظِيمُ الْحَلِيمُ لَا إِلَهَ إِلَّا اللَّهُ رَبُّ الْعَرْشِ الْعَظِيمِ لَا إِلَهَ إِلَّا اللَّهُ رَبُّ السَّمَاوَاتِ وَرَبُّ الْأَرْضِ وَرَبُّ الْعَرْشِ الْكَرِيمِ
+                </div>
+                <div class="translation">
+                    "There is no god but Allah, the Magnificent, the Forbearing. There is no god but Allah, Lord of the Magnificent Throne. There is no god but Allah, Lord of the heavens, Lord of the earth, and Lord of the Noble Throne."
+                </div>
+                
+                <h4>Complete Healing Dua (Sahih al-Bukhari)</h4>
+                <div class="arabic-text">
+                    اللَّهُمَّ رَبَّ النَّاسِ أَذْهِبِ الْبَاسَ، اشْفِهِ وَأَنْتَ الشَّافِي، لاَ شِفَاءَ إِلاَّ شِفَاؤُكَ، شِفَاءً لاَ يُغَادِرُ سَقَمًا
+                </div>
+                <div class="translation">
+                    <strong>Transliteration:</strong> Allahuma rabbi-nas adhhabal ba'sa, ashfi wa anta al-shafi, la shifa' illa shifa'uka shifa' la yughadiru saqama.<br><br>
+                    <strong>Translation:</strong> "O Allah, the Lord of the people! Remove the trouble and heal the patient, for You are the Healer. No healing is of any avail but Yours; healing that will leave behind no ailment."<br><br>
+                    <strong>Reference:</strong> Sahih al-Bukhari 5743, Book 76, Hadith 58
+                </div>
+                
+                <h4>Ruqyah for Protection from Evil (Sahih Muslim)</h4>
+                <div class="arabic-text">
+                    بِاسْمِ اللَّهِ أَرْقِيكَ مِنْ كُلِّ شَىْءٍ يُؤْذِيكَ مِنْ شَرِّ كُلِّ نَفْسٍ أَوْ عَيْنِ حَاسِدٍ اللَّهُ يَشْفِيكَ بِاسْمِ اللَّهِ أَرْقِيكَ
+                </div>
+                <div class="translation">
+                    <strong>Transliteration:</strong> Bismillahi arqika, min kulli shay'in yu'dhika, min sharri kulli nafsin aw 'ayni hasidi, Allahu yashfika, bismillahi arqika<br><br>
+                    <strong>Translation:</strong> "In the name of Allah I exorcise you from everything and safeguard you from every evil that may harm you and from the eye of a jealous one. Allah would cure you and I invoke the name of Allah for you."<br><br>
+                    <strong>Reference:</strong> Sahih Muslim 2186, Book 39, Hadith 54
+                </div>
+                
+                <h4>Protection from All Harm</h4>
+                <div class="arabic-text">
+                    بسم الله الذي لا يضر مع اسمه شيء في الأرض ولا في السماء وهو السميع العليم
+                </div>
+                <div class="translation">
+                    <strong>Transliteration:</strong> Bismillah illadhi la yadurru ma'a ismihi shay'un fi'l-ard wa la fi'l-sama' wa huwa al-samee' ul-'aleem<br><br>
+                    <strong>Translation:</strong> "In the name of Allah with Whose name nothing can harm on earth or in heaven, and He is the All-Hearing, All-Knowing."<br><br>
+                    <strong>Reference:</strong> At-Tirmidhi (hasan saheeh ghareeb), classed as saheeh by Ibn al-Qayyim and al-Albaani
+                </div>
+                
+                <h4>Seeking Refuge in Allah's Perfect Words</h4>
+                <div class="arabic-text">
+                    أعوذ بكلمات الله التامات من شر ما خلق
+                </div>
+                <div class="translation">
+                    <strong>Transliteration:</strong> 'A'oodhu bi kalimaat Allaah al-taammah min sharri ma khalaq<br><br>
+                    <strong>Translation:</strong> "I seek refuge in the perfect words of Allah from the evil of that which He has created."<br><br>
+                    <strong>Reference:</strong> Sahih Muslim 2709
+                </div>
+                
+                <h4>Protection for Children (As used by Prophet Ibrahim)</h4>
+                <div class="arabic-text">
+                    أَعُوذُ بِكَلِمَاتِ اللَّهِ التَّامَّةِ مِنْ كُلِّ شَيْطَانٍ وَهَامَّةٍ وَمِنْ كُلِّ عَيْنٍ لَامَّةٍ
+                </div>
+                <div class="translation">
+                    <strong>Transliteration:</strong> Aoodhu bi kalimaat-illaahit taammati min kulli shaytaanin wa haammatin wa min kulli 'aynin laammah<br><br>
+                    <strong>Translation:</strong> "I seek refuge with the perfect words of Allah from every Shaytan and poisonous insect and from every envious eye."<br><br>
+                    <strong>Note:</strong> The Prophet ﷺ used to seek refuge for al-Hasan and al-Husayn with this dua, saying: "Your forefather (Ibrahim) used to seek refuge with it for Isma'il and Ishaq."<br><br>
+                    <strong>Reference:</strong> Sahih al-Bukhari 3191
+                </div>
+                
+                <h4>Comprehensive Protection Dua</h4>
+                <div class="arabic-text">
+                    أَعُوذُ بِكَلِمَاتِ اللهِ التَّامَّةِ مِنْ غَضَبِهِ، وَعِقَابِهِ، وَشَرِّ عِبَادِهِ، وَمِنْ هَمَزَاتِ الشَّيَاطِينِ، وَأَنْ يَحْضُرُونِ
+                </div>
+                <div class="translation">
+                    <strong>Transliteration:</strong> Audhu bi kalimati' llahi't-tammati min ghadabihi wa iqabihi wa sharri ibadihi wa min hamazati' sh-shayatin wa an yahdurun<br><br>
+                    <strong>Translation:</strong> "I seek refuge in the perfect words of Allah from His wrath and punishment, from the evil of His slaves and from the evil promptings of the devils and from their presence."<br><br>
+                    <strong>Reference:</strong> Muwatta Malik, Book 51, Hadith 9
+                </div>
+                
+                <h4>Healing from All Diseases</h4>
+                <div class="arabic-text">
+                    بِاسْمِ اللهِ يُبْرِيكَ وَمِنْ كُلِّ دَاءٍ يَشْفِيكَ وَمِنْ شَرِّ حَاسِدٍ إِذَا حَسَدَ وَمِنْ شَرِّ كُلِّ ذِي عَيْنٍ
+                </div>
+                <div class="translation">
+                    <strong>Transliteration:</strong> Bismillahi yubreeka wa min kulli daa'in yashfeeka wa min sharri haasidin iza hasad wa min sharri kulli zhi-'ayn<br><br>
+                    <strong>Translation:</strong> "In the name of Allah, may He cure you from all kinds of illnesses and safeguard you from the evil of a jealous one when he feels jealous and from everyone with the evil eye."<br><br>
+                    <strong>Reference:</strong> Sahih Muslim, Book 26, 5424
+                </div>
+                
+                <h4>Asking Allah for Healing (Recite 7 times)</h4>
+                <div class="arabic-text">
+                    أَسْـأَلُ اللهَ العَـظيـم، رَبَّ العَـرْشِ العَـظيـم أَنْ يَشْفِيَكَ
+                </div>
+                <div class="translation">
+                    <strong>Transliteration:</strong> 'As'alullaahal-'Adheema Rabbal-'Arshil-'Adheemi 'an yashfiyaka<br><br>
+                    <strong>Translation:</strong> "I ask Almighty Allah, Lord of the Magnificent Throne, to make you well."<br><br>
+                    <strong>Instructions:</strong> Recite 7 times<br><br>
+                    <strong>Reference:</strong> At-Tirmidhi, Abu Dawud. See also Al-Albani, Sahih At-Tirmidhi 2/210
+                </div>
+                
+                <h4>For Physical Pain and Discomfort</h4>
+                <div class="arabic-text">
+                    بِسْمِ اللهِ (ثلاث مرات)<br>
+                    أَعُوذُ بِاللهِ وَقُدْرَتِهِ مِنْ شَرِّ مَا أَجِدُ وَأُحَاذِرُ (سبع مرات)
+                </div>
+                <div class="translation">
+                    <strong>Transliteration:</strong><br>
+                    Bis-mil-laah (3 times)<br>
+                    'A‛oodhu bial-laahi wa qudratih min shar-ri maa ajidu wa uḥaadhir (7 times)<br><br>
+                    <strong>Translation:</strong><br>
+                    "In the name of Allah." (three times)<br>
+                    "I seek refuge with Allah and His omnipotence from the evil of what I feel and that which I am wary of." (seven times)<br><br>
+                    <strong>Instructions:</strong> Place your hand at the site of the pain while reciting
+                </div>
+                
+                <h3>Step 5: Blow and Wipe</h3>
+                <p>After reciting, you may:</p>
+                <ul>
+                    <li>Blow gently on your hands and wipe over your body</li>
+                    <li>Blow on water and drink it</li>
+                    <li>Blow on olive oil and apply it to the affected area</li>
+                </ul>
+                
+                <div class="important-note">
+                    <h4>Important Instructions for Ruqyah Performance:</h4>
+                    <ul>
+                        <li><strong>Adjusting Pronouns:</strong> When performing ruqyah on someone else, change "I seek refuge" to "I seek refuge for you" in the duas</li>
+                        <li><strong>Repetition:</strong> You may repeat any Quranic verse or dua as needed</li>
+                        <li><strong>Blowing Techniques:</strong> You may blow with or without spittle - both are permissible</li>
+                        <li><strong>Hand Placement:</strong> You may blow in your hands and place them on the person</li>
+                        <li><strong>Physical Contact:</strong> You may read while holding the person or read into their ear</li>
+                        <li><strong>Timing of Blowing:</strong> You may blow after every verse, after every surah, or after every page - whatever follows the Sunnah</li>
+                    </ul>
+                </div>
+                
+                <h3>Step 6: Make Personal Dua</h3>
+                <p>End with sincere personal dua in your own words, asking Allah for healing, protection, and guidance.</p>
+                
+                <div class="important-note">
+                    <h4>General Guidelines:</h4>
+                    <ul>
+                        <li>Perform ruqyah regularly, preferably after Fajr and before sleeping</li>
+                        <li>Have complete trust and reliance on Allah</li>
+                        <li>Continue with medical treatment alongside ruqyah</li>
+                        <li>Be patient - healing comes from Allah in His perfect timing</li>
+                        <li>If symptoms worsen during ruqyah, this may indicate the presence of jinn or magic - continue with more ruqyah</li>
+                        <li>Remember that all healing comes from Allah alone</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h2>Important Note</h2>
+                <p>This guide is based on the comprehensive teachings of Tim Humble, who studied at the Islamic University of Madinah and graduated from the Faculty of Hadeeth Studies in 2011. He is an accomplished Raaqee (exorcist) based in Newcastle, U.K.</p>
+                
+                <p>This content is collected for personal study and reference purposes only, following authentic Islamic teachings from the Quran and Sunnah.</p>
+                
+                <div class="reference">
+                    For the complete guide and detailed instructions, please refer to Tim Humble's original lecture "A Simple Guide to Self Ruqyah" available on YouTube.
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Islamic Adhkar & Ruqyah App - For Personal Use Only</p>
+            <p>May Allah grant us healing and protection</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleTheme() {
+            const body = document.body;
+            const themeIcon = document.querySelector('.theme-toggle i');
+            
+            if (body.getAttribute('data-theme') === 'dark') {
+                body.removeAttribute('data-theme');
+                themeIcon.className = 'fas fa-moon';
+                localStorage.setItem('theme', 'light');
+            } else {
+                body.setAttribute('data-theme', 'dark');
+                themeIcon.className = 'fas fa-sun';
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        // Load saved theme
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedTheme = localStorage.getItem('theme');
+            const themeIcon = document.querySelector('.theme-toggle i');
+            
+            if (savedTheme === 'dark') {
+                document.body.setAttribute('data-theme', 'dark');
+                themeIcon.className = 'fas fa-sun';
+            }
+        });
+    </script>
+</body>
+</html>
