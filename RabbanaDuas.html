@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rabbana Du'ās from the Qur'an - Islamic Supplications</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Scheherazade+New:wght@400;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #4a8c4c;
+            --secondary-color: #1a1a1a;
+            --text-color: #f0f0f0;
+            --bg-color: #2d2d2d;
+            --card-bg: #3a3a3a;
+            --border-radius: 10px;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            --transition: all 0.3s ease;
+        }
+
+        .light-mode {
+            --primary-color: #2c5e2e;
+            --secondary-color: #f8f5e6;
+            --text-color: #333;
+            --bg-color: #fff;
+            --card-bg: #f9f9f9;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            transition: var(--transition);
+            padding-bottom: 2rem;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 2rem 1rem;
+            margin-bottom: 2rem;
+            border-bottom: 5px solid #d4af37;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .main-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .toggle-controls {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .btn {
+            padding: 0.8rem 1.2rem;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: bold;
+        }
+
+        .btn:hover {
+            background-color: #3a6e3c;
+            transform: translateY(-2px);
+        }
+
+        .btn.active {
+            background-color: #d4af37;
+        }
+
+        .dhikr-card {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .dhikr-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-number {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            font-size: 0.6rem;
+            font-weight: bold;
+            opacity: 0.5;
+            color: var(--text-color);
+            z-index: 1;
+        }
+
+        .return-menu-button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.2rem;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .return-menu-button:hover {
+            background-color: #3a6e3c;
+            transform: translateY(-2px);
+        }
+
+
+
+        .arabic {
+            font-size: 1.8rem;
+            font-weight: bold;
+            text-align: right;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            font-family: 'Scheherazade New', 'Traditional Arabic', serif;
+        }
+
+        .transliteration {
+            font-style: italic;
+            margin-bottom: 1rem;
+            color: #b0b0b0;
+            font-size: 1.1rem;
+        }
+
+        .translation {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .source {
+            font-size: 0.9rem;
+            color: #888;
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+
+        .counter-container {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .counter-button {
+            background-color: rgba(74, 140, 76, 0.3);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.2rem;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: bold;
+        }
+
+        .counter-button:hover {
+            background-color: rgba(58, 110, 60, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .counter-display {
+            padding: 0.3rem 0.8rem;
+            font-weight: bold;
+            min-width: 30px;
+            text-align: center;
+        }
+
+        .reset-button {
+            background-color: rgba(40, 167, 69, 0.3);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.2rem;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+            height: 3.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .reset-button:hover {
+            background-color: rgba(33, 136, 56, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+            border-top: 1px solid #444;
+            color: #888;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .arabic {
+                font-size: 1.5rem;
+            }
+
+            .dhikr-card {
+                padding: 1.5rem;
+            }
+
+            .main-controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .toggle-controls {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body class="dark-mode">
+    <header>
+        <div class="container">
+            <h1>Rabbana Du'ās from the Qur'an</h1>
+            <p>Essential supplications beginning with "Our Lord" from the Holy Qur'an</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="main-controls">
+            <div class="toggle-controls">
+                <button class="btn" id="toggleTransliteration">
+                    <i class="fas fa-language"></i> Transliteration
+                </button>
+                <button class="btn" id="toggleTranslation">
+                    <i class="fas fa-book"></i> Translation
+                </button>
+                <button class="btn" id="modeToggle">
+                    <i class="fas fa-sun"></i>
+                </button>
+                <button onclick="window.location.href='index.html'" class="return-menu-button">
+                     <i class="fas fa-home"></i> Return to Menu
+                 </button>
+            </div>
+        </div>
+
+        <div class="dhikr-container">
+            <!-- Du'a 1 -->
+            <div class="dhikr-card">
+                <div class="card-number">1</div>
+                <div class="arabic">رَبَّنَا تَقَبَّلْ مِنَّا إِنَّكَ أَنتَ السَّمِيعُ الْعَلِيمُ <br>وَتُبْ عَلَيْنَا إِنَّكَ أَنتَ التَّوَّابُ الرَّحِيمُ </div>
+                <div class="transliteration">Rabbanā taqabbal minnā innaka antas-samī'ul-'alīm. Wa tub 'alaynā innaka antat-tawwābur-raḥīm.</div>
+                <div class="translation">"Our Lord, accept from us (our prayers, recitation of the Quran, fasting, zakāh, or any righteous action). Indeed, You are the Hearing, the Knowing. And turn to us in mercy. Indeed, You are the Accepting of repentance, the Merciful."</div>
+                <div class="source">al-Baqarah 2:127–128</div>
+                <div class="counter-container">
+                    <button class="counter-button" id="counter-1">
+                        <i class="fas fa-plus"></i> Count
+                        <span class="counter-display">0</span>
+                    </button>
+                    <button class="reset-button" id="reset-1" title="Reset Counter">
+                        <i class="fas fa-undo"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Du'a 2 -->
+            <div class="dhikr-card">
+                <div class="card-number">2</div>
+                <div class="arabic">رَبَّنَا أَفْرِغْ عَلَيْنَا صَبْرًا وَثَبِّتْ أَقْدَامَنَا وَانصُرْنَا عَلَى الْقَوْمِ الْكَافِرِينَ</div>
+                <div class="transliteration">Rabbanā afrigh 'alaynā ṣabran wa thabbit aqdāmanā wanṣurnā 'alal-qawmil-kāfirīn.</div>
+                <div class="translation">Our Lord, pour upon us patience and make our steps firm and help us against the disbelieving people.</div>
+                <div class="source"><strong>Source:</strong> Al-Baqarah 2:250</div>
+                <div class="counter-container">
+                    <button class="counter-button" id="counter-2">
+                        <i class="fas fa-plus"></i> Count
+                        <span class="counter-display">0</span>
+                    </button>
+                    <button class="reset-button" id="reset-2" title="Reset Counter">
+                        <i class="fas fa-undo"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Du'a 3 -->
+            <div class="dhikr-card">
+                <div class="card-number">3</div>
+                <div class="arabic">رَبَّنَا اغْفِرْ لَنَا ذُنُوبَنَا وَإِسْرَافَنَا فِي أَمْرِنَا وَثَبِّتْ أَقْدَامَنَا وَانصُرْنَا عَلَى الْقَوْمِ الْكَافِرِينَ</div>
+                <div class="transliteration">Rabbanāghfir lanā dhunūbanā wa isrāfanā fī amrinā wa thabbit aqdāmanā wanṣurnā 'alal-qawmil-kāfirīn.</div>
+                <div class="translation">Our Lord, forgive us our sins and our excesses in our affairs, and plant firmly our feet and give us victory over the disbelieving people.</div>
+                <div class="source"><strong>Source:</strong> Āl 'Imrān 3:147</div>
+                <div class="counter-container">
+                    <button class="counter-button" id="counter-3">
+                        <i class="fas fa-plus"></i> Count
+                        <span class="counter-display">0</span>
+                    </button>
+                    <button class="reset-button" id="reset-3" title="Reset Counter">
+                        <i class="fas fa-undo"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Du'a 4 -->
+            <div class="dhikr-card">
+                <div class="card-number">4</div>
+                <div class="arabic">رَبَّنَا اغْفِرْ لَنَا وَلِإِخْوَانِنَا الَّذِينَ سَبَقُونَا بِالْإِيمَانِ</div>
+                <div class="transliteration">Rabbanāghfir lanā wa li-ikhwāninā alladhīna sabaqūnā bil-īmān.</div>
+                <div class="translation">Our Lord, forgive us and our brothers who preceded us in faith...</div>
+                <div class="source"><strong>Source:</strong> Al-Ḥashr 59:10</div>
+                <div class="counter-container">
+                    <button class="counter-button" id="counter-4">
+                        <i class="fas fa-plus"></i> Count
+                        <span class="counter-display">0</span>
+                    </button>
+                    <button class="reset-button" id="reset-4" title="Reset Counter">
+                        <i class="fas fa-undo"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Du'a 5 -->
+            <div class="dhikr-card">
+                <div class="card-number">5</div>
+                <div class="arabic">رَبَّنَا ظَلَمْنَا أَنفُسَنَا وَإِن لَّمْ تَغْفِرْ لَنَا وَتَرْحَمْنَا لَنَكُونَنَّ مِنَ الْخَاسِرِينَ</div>
+                <div class="transliteration">Rabbanā ẓalamnā anfusanā wa in lam taghfir lanā wa tarḥamnā lanakūnanna minal-khāsirīn.</div>
+                <div class="translation">Our Lord, we have wronged ourselves, and if You do not forgive us and have mercy upon us, we will surely be among the losers.</div>
+                <div class="source"><strong>Source:</strong> Al-A'rāf 7:23</div>
+                <div class="counter-container">
+                    <button class="counter-button" id="counter-5">
+                        <i class="fas fa-plus"></i> Count
+                        <span class="counter-display">0</span>
+                    </button>
+                    <button class="reset-button" id="reset-5" title="Reset Counter">
+                        <i class="fas fa-undo"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Du'a 6 -->
+            <div class="dhikr-card">
+                <div class="card-number">6</div>
+                <div class="arabic">رَبَّنَا لَا تُزِغْ قُلُوبَنَا بَعْدَ إِذْ هَدَيْتَنَا وَهَبْ لَنَا مِن لَّدُنكَ رَحْمَةً ۚ إِنَّكَ أَنتَ الْوَهَّابُ</div>
+                <div class="transliteration">Rabbanā lā tuzigh qulūbanā ba'da idh hadaytanā wa hab lanā min ladunka raḥmah innaka antal-wahhāb.</div>
+                <div class="translation">Our Lord, do not let our hearts deviate after You have guided us, and grant us from Yourself mercy. Indeed, You are the Bestower.</div>
+                <div class="source"><strong>Source:</strong> Āl 'Imrān 3:8</div>
+                <div class="counter-container">
+                    <button class="counter-button" id="counter-6">
+                        <i class="fas fa-plus"></i> Count
+                        <span class="counter-display">0</span>
+                    </button>
+                    <button class="reset-button" id="reset-6" title="Reset Counter">
+                        <i class="fas fa-undo"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Du'a 7 -->
+            <div class="dhikr-card">
+                <div class="card-number">7</div>
+                <div class="arabic">رَبَّنَا اغْفِرْ لَنَا وَلِوَالِدَيْنَا وَلِلْمُؤْمِنِينَ يَوْمَ يَقُومُ الْحِسَابُ</div>
+                <div class="transliteration">Rabbanāghfir lanā wa li-wālidaynā wa lil-mu'minīna yawma yaqūmul-ḥisāb.</div>
+                <div class="translation">Our Lord, forgive me and my parents and the believers the Day the account is established.</div>
+                <div class="source"><strong>Source:</strong> Ibrāhīm 14:41</div>
+                <div class="counter-container">
+                    <button class="counter-button" id="counter-7">
+                        <i class="fas fa-plus"></i> Count
+                        <span class="counter-display">0</span>
+                    </button>
+                    <button class="reset-button" id="reset-7" title="Reset Counter">
+                        <i class="fas fa-undo"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Du'a 8 -->
+            <div class="dhikr-card">
+                <div class="card-number">8</div>
+                <div class="arabic">رَبَّنَا أَتْمِمْ لَنَا نُورَنَا وَاغْفِرْ لَنَا ۖ إِنَّكَ عَلَىٰ كُلِّ شَيْءٍ قَدِيرٌ</div>
+                <div class="transliteration">Rabbanā atmim lanā nūranā waghfir lanā innaka 'alā kulli shay'in qadīr.</div>
+                <div class="translation">Our Lord, complete for us our light and forgive us. Indeed, You are over all things competent.</div>
+                <div class="source"><strong>Source:</strong> Al-Taḥrīm 66:8</div>
+                <div class="counter-container">
+                    <button class="counter-button" id="counter-8">
+                        <i class="fas fa-plus"></i> Count
+                        <span class="counter-display">0</span>
+                    </button>
+                    <button class="reset-button" id="reset-8" title="Reset Counter">
+                        <i class="fas fa-undo"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Du'a 9 -->
+            <div class="dhikr-card">
+                <div class="card-number">9</div>
+                <div class="arabic">رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الْآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ</div>
+                <div class="transliteration">Rabbanā ātinā fid-dunyā ḥasanatan wa fil-ākhirati ḥasanatan wa qinā 'adhāban-nār.</div>
+                <div class="translation">Our Lord, give us in this world [that which is] good and in the Hereafter [that which is] good, and protect us from the punishment of the Fire.</div>
+                <div class="source"><strong>Source:</strong> Al-Baqarah 2:201</div>
+                <div class="counter-container">
+                    <button class="counter-button" id="counter-9">
+                        <i class="fas fa-plus"></i> Count
+                        <span class="counter-display">0</span>
+                    </button>
+                    <button class="reset-button" id="reset-9" title="Reset Counter">
+                        <i class="fas fa-undo"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Du'a 10 -->
+            <div class="dhikr-card">
+                <div class="card-number">10</div>
+                <div class="arabic">رَبَّنَا لَا تُؤَاخِذْنَا إِن نَّسِينَا أَوْ أَخْطَأْنَا</div>
+                <div class="transliteration">Rabbanā lā tu'ākhidhnā in nasīnā aw akhṭa'nā.</div>
+                <div class="translation">Our Lord, do not impose blame upon us if we have forgotten or erred...</div>
+                <div class="source"><strong>Source:</strong> Al-Baqarah 2:286</div>
+                <div class="counter-container">
+                    <button class="counter-button" id="counter-10">
+                        <i class="fas fa-plus"></i> Count
+                        <span class="counter-display">0</span>
+                    </button>
+                    <button class="reset-button" id="reset-10" title="Reset Counter">
+                        <i class="fas fa-undo"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Du'a 11 -->
+            <div class="dhikr-card">
+                <div class="card-number">11</div>
+                <div class="arabic">رَبَّنَا أَخْرِجْنَا مِنْ هَٰذِهِ الْقَرْيَةِ الظَّالِمِ أَهْلُهَا وَاجْعَل لَّنَا مِن لَّدُنكَ وَلِيًّا وَاجْعَل لَّنَا مِن لَّدُنكَ نَصِيرًا</div>
+                <div class="transliteration">Rabbanā akhrijnā min hādhihil-qaryatiz-zālimi ahluhā waj'al lanā min ladunka waliyyan waj'al lanā min ladunka naṣīrā.</div>
+                <div class="translation">Our Lord, bring us out of this city of oppressive people and appoint for us from Yourself a protector and appoint for us from Yourself a helper.</div>
+                <div class="source"><strong>Source:</strong> Al-Nisā' 4:75</div>
+                <div class="counter-container">
+                    <button class="counter-button" id="counter-11">
+                        <i class="fas fa-plus"></i> Count
+                        <span class="counter-display">0</span>
+                    </button>
+                    <button class="reset-button" id="reset-11" title="Reset Counter">
+                        <i class="fas fa-undo"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Du'a 12 -->
+            <div class="dhikr-card">
+                <div class="card-number">12</div>
+                <div class="arabic">رَبَّنَا آمَنَّا فَاغْفِرْ لَنَا وَارْحَمْنَا وَأَنتَ خَيْرُ الرَّاحِمِينَ</div>
+                <div class="transliteration">Rabbanā āmannā faghfir lanā warḥamnā wa anta khayru-rāḥimīn.</div>
+                <div class="translation">Our Lord, we have believed, so forgive us and have mercy upon us, and You are the best of the merciful.</div>
+                <div class="source"><strong>Source:</strong> Mu'minūn 23:109</div>
+                <div class="counter-container">
+                    <button class="counter-button" id="counter-12">
+                        <i class="fas fa-plus"></i> Count
+                        <span class="counter-display">0</span>
+                    </button>
+                    <button class="reset-button" id="reset-12" title="Reset Counter">
+                        <i class="fas fa-undo"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Du'a 13 -->
+            <div class="dhikr-card">
+                <div class="card-number">13</div>
+                <div class="arabic">رَبَّنَا هَبْ لَنَا مِنْ أَزْوَاجِنَا وَذُرِّيَّاتِنَا قُرَّةَ أَعْيُنٍ وَاجْعَلْنَا لِلْمُتَّقِينَ إِمَامًا</div>
+                <div class="transliteration">Rabbanā hab lanā min azwājinā wa dhurriyyātinā qurrata a'yunin waj'alnā lil-muttaqīna imāmā.</div>
+                <div class="translation">Our Lord, grant us from among our wives and offspring comfort to our eyes and make us an example for the righteous.</div>
+                <div class="source"><strong>Source:</strong> Furqān 25:74</div>
+                <div class="counter-container">
+                    <button class="counter-button" id="counter-13">
+                        <i class="fas fa-plus"></i> Count
+                        <span class="counter-display">0</span>
+                    </button>
+                    <button class="reset-button" id="reset-13" title="Reset Counter">
+                        <i class="fas fa-undo"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Du'a 14 -->
+            <div class="dhikr-card">
+                <div class="card-number">14</div>
+                <div class="arabic">رَبَّنَا أَفْرِغْ عَلَيْنَا صَبْرًا وَتَوَفَّنَا مُسْلِمِينَ</div>
+                <div class="transliteration">Rabbanā afrigh 'alaynā ṣabran wa tawaffanā muslimīn.</div>
+                <div class="translation">Our Lord, pour upon us patience and let us die as Muslims.</div>
+                <div class="source"><strong>Source:</strong> Al-A'rāf 7:126</div>
+                <div class="counter-container">
+                    <button class="counter-button" id="counter-14">
+                        <i class="fas fa-plus"></i> Count
+                        <span class="counter-display">0</span>
+                    </button>
+                    <button class="reset-button" id="reset-14" title="Reset Counter">
+                        <i class="fas fa-undo"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Du'a 15 -->
+            <div class="dhikr-card">
+                <div class="card-number">15</div>
+                <div class="arabic">رَبَّنَا وَأَدْخِلْهُمْ جَنَّاتِ عَدْنٍ الَّتِي وَعَدتَّهُمْ وَمَن صَلَحَ مِنْ آبَائِهِمْ وَأَزْوَاجِهِمْ وَذُرِّيَّاتِهِمْ ۚ إِنَّكَ أَنتَ الْعَزِيزُ الْحَكِيمُ</div>
+                <div class="transliteration">Rabbanā wa adkhilhum jannāti 'adnin allatī wa'adtahum wa man ṣalaḥa min ābā'ihim wa azwājihim wa dhurriyyātihim innaka antal-'azīzul-ḥakīm.</div>
+                <div class="translation">Our Lord, admit them to gardens of perpetual residence which You have promised them, and whoever was righteous among their fathers, their spouses and their descendants. Indeed, it is You who is the Exalted in Might, the Wise.</div>
+                <div class="source"><strong>Source:</strong> Ghāfir 40:8</div>
+                <div class="counter-container">
+                    <button class="counter-button" id="counter-15">
+                        <i class="fas fa-plus"></i> Count
+                        <span class="counter-display">0</span>
+                    </button>
+                    <button class="reset-button" id="reset-15" title="Reset Counter">
+                        <i class="fas fa-undo"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Du'a 16 -->
+            <div class="dhikr-card">
+                <div class="card-number">16</div>
+                <div class="arabic">رَبَّنَا فَاغْفِرْ لَنَا ذُنُوبَنَا وَكَفِّرْ عَنَّا سَيِّئَاتِنَا وَتَوَفَّنَا مَعَ الْأَبْرَارِ</div>
+                <div class="transliteration">Rabbanā faghfir lanā dhunūbanā wa kaffir 'annā sayyi'ātinā wa tawaffanā ma'al-abrār.</div>
+                <div class="translation">Our Lord, so forgive us our sins and remove from us our misdeeds and cause us to die with the righteous.</div>
+                <div class="source"><strong>Source:</strong> Āl 'Imrān 3:193</div>
+                <div class="counter-container">
+                    <button class="counter-button" id="counter-16">
+                        <i class="fas fa-plus"></i> Count
+                        <span class="counter-display">0</span>
+                    </button>
+                    <button class="reset-button" id="reset-16" title="Reset Counter">
+                        <i class="fas fa-undo"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Du'a 17 -->
+            <div class="dhikr-card">
+                <div class="card-number">17</div>
+                <div class="arabic">رَبِّ ٱجْعَلْنِى مُقِيمَ ٱلصَّلَوٰةِ وَمِن ذُرِّيَّتِى ۚ رَبَّنَا وَتَقَبَّلْ دُعَآءِ </div>
+                <div class="transliteration">Rabbi j'alnī muqīma ṣ-ṣalāti wa min dhurriyyatī. Rabbanā wa taqabbal du'ā'.</div>
+                <div class="translation">My Lord, make me an establisher of prayer, and [many] from my descendants. Our Lord, and accept my supplication.</div>
+                <div class="source"><strong>Source:</strong> Ibrāhīm 14:40</div>
+                <div class="counter-container">
+                    <button class="counter-button" id="counter-17">
+                        <i class="fas fa-plus"></i> Count
+                        <span class="counter-display">0</span>
+                    </button>
+                    <button class="reset-button" id="reset-17" title="Reset Counter">
+                        <i class="fas fa-undo"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Du'a 18 -->
+            <div class="dhikr-card">
+                <div class="card-number">18</div>
+                <div class="arabic">رَبَّنَا اغْفِرْ لِي وَلِوَالِدَيَّ وَلِلْمُؤْمِنِينَ يَوْمَ يَقُومُ الْحِسَابُ</div>
+                <div class="transliteration">Rabbanāghfir lī wa li-wālidayya wa lil-mu'minīna yawma yaqūmul-ḥisāb.</div>
+                <div class="translation">Our Lord, forgive me and my parents and the believers the Day the account is established.</div>
+                <div class="source"><strong>Source:</strong> Ibrāhīm 14:41</div>
+                <div class="counter-container">
+                    <button class="counter-button" id="counter-18">
+                        <i class="fas fa-plus"></i> Count
+                        <span class="counter-display">0</span>
+                    </button>
+                    <button class="reset-button" id="reset-18" title="Reset Counter">
+                        <i class="fas fa-undo"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Du'a 19 -->
+            <div class="dhikr-card">
+                <div class="card-number">19</div>
+                <div class="arabic">رَّبَّنَآ إِنَّنَا سَمِعْنَا مُنَادِيًۭا يُنَادِى لِلْإِيمَـٰنِ أَنْ ءَامِنُوا۟ بِرَبِّكُمْ فَـَٔامَنَّا ۚ رَبَّنَا فَٱغْفِرْ لَنَا ذُنُوبَنَا وَكَفِّرْ عَنَّا سَيِّـَٔاتِنَا وَتَوَفَّنَا مَعَ ٱلْأَبْرَارِ ‎﴿١٩٣﴾</div>
+                <div class="transliteration">Rabbanā innanā sami'nā munādiyan yunādī lil-īmāni an āminū bi-rabbikum fa-āmannā. Rabbanā faghfir lanā dhunūbanā wa kaffir 'annā sayyi'ātinā wa tawaffanā ma'al-abrār.</div>
+                <div class="translation">"Our Lord, indeed we have heard a caller calling to faith, [saying], 'Believe in your Lord,' and we have believed. Our Lord, so forgive us our sins and remove from us our misdeeds and cause us to die with the righteous."</div>
+                <div class="source">Āl 'Imrān 3:193</div>
+                <div class="counter-container">
+                    <button class="counter-button" id="counter-19">
+                        <span>Count</span>
+                        <span class="counter-display" id="count-19">0</span>
+                    </button>
+                    <button class="reset-button" onclick="resetCounter(19)">Reset</button>
+                </div>
+            </div>
+
+            <!-- Du'a 20 -->
+            <div class="dhikr-card">
+                <div class="card-number">20</div>
+                <div class="arabic">رَبَّنَا وَءَاتِنَا مَا وَعَدتَّنَا عَلَىٰ رُسُلِكَ وَلَا تُخْزِنَا يَوْمَ ٱلْقِيَـٰمَةِ ۗ إِنَّكَ لَا تُخْلِفُ ٱلْمِيعَادَ ‎﴿١٩٤﴾</div>
+                <div class="transliteration">Rabbanā wa ātinā mā wa'adtanā 'alā rusulik wa lā tukhzinā yawmal-qiyāmah innaka lā tukhliful-mī'ād.</div>
+                <div class="translation">"Our Lord, and grant us what You promised us through Your messengers and do not disgrace us on the Day of Resurrection. Indeed, You do not fail in [Your] promise."</div>
+                <div class="source">Āl 'Imrān 3:194</div>
+                <div class="counter-container">
+                    <button class="counter-button" id="counter-20">
+                        <span>Count</span>
+                        <span class="counter-display" id="count-20">0</span>
+                    </button>
+                    <button class="reset-button" onclick="resetCounter(20)">Reset</button>
+                </div>
+            </div>
+
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>May Allah (swt) accept our supplications and grant us His Mercy</p>
+        </div>
+    </footer>
+
+    <script>
+        // Set initial state to dark mode
+        document.body.classList.add('dark-mode');
+        
+        // Toggle transliteration
+        const toggleTransliteration = document.getElementById('toggleTransliteration');
+        let transliterationVisible = false;
+        
+        // Initially hide transliteration only
+        document.querySelectorAll('.transliteration').forEach(item => {
+            item.classList.add('hidden');
+        });
+
+        toggleTransliteration.addEventListener('click', function() {
+            const transliterations = document.querySelectorAll('.transliteration');
+            transliterations.forEach(item => {
+                item.classList.toggle('hidden');
+            });
+            transliterationVisible = !transliterationVisible;
+            this.classList.toggle('active');
+        });
+        
+        // Toggle translation
+        const toggleTranslation = document.getElementById('toggleTranslation');
+        let translationVisible = true;
+        
+        // Show translations by default and set button as active
+        document.querySelectorAll('.translation').forEach(item => {
+            item.classList.remove('hidden');
+        });
+        toggleTranslation.classList.add('active');
+        
+        toggleTranslation.addEventListener('click', function() {
+            const translations = document.querySelectorAll('.translation');
+            translations.forEach(item => {
+                item.classList.toggle('hidden');
+            });
+            translationVisible = !translationVisible;
+            this.classList.toggle('active');
+        });
+
+        // Dark/Light mode toggle
+        const modeToggle = document.getElementById('modeToggle');
+        let isDarkMode = true;
+        
+        modeToggle.addEventListener('click', function() {
+            document.body.classList.toggle('dark-mode');
+            document.body.classList.toggle('light-mode');
+            isDarkMode = !isDarkMode;
+            this.innerHTML = isDarkMode ? 
+                '<i class="fas fa-sun"></i>' : 
+                '<i class="fas fa-moon"></i>';
+        });
+
+        // Counter functionality for all 20 du'as
+        const counters = {};
+        
+        for (let i = 1; i <= 20; i++) {
+            const counterButton = document.getElementById(`counter-${i}`);
+            counters[i] = 0;
+            
+            counterButton.addEventListener('click', function() {
+                counters[i]++;
+                this.querySelector('.counter-display').textContent = counters[i];
+            });
+        }
+        
+        // Reset counter function
+        function resetCounter(id) {
+            counters[id] = 0;
+            document.getElementById(`count-${id}`).textContent = 0;
+        }
+    </script>
+</body>
+</html>
