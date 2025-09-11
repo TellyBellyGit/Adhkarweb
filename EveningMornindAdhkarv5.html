@@ -575,7 +575,7 @@
                 <div class="transliteration">La ilaha illallahu wahdahu la sharika lahu lahul mulku wa lahul hamdu wa huwa ala kulli shay in qadeer</div>
                 <div class="translation">None has the right to be worshipped but Allah, the Alone Who has no partners, to Him belongs Dominion and to Him belong all the Praises, and He has power over all things</div>
                 <div class="details">
-                    <div class="times"><strong>Times:</strong> As needed.</div>
+                    <div class="times"><strong>Times:</strong> 10x in the morning and evening (100x in a day)</div>
                     <div class="source"><strong>Source:</strong> Sahih Bukhari hadith 3293 and Sahih Muslim 2691</div>
                     <div class="counter-container">
                         <button class="counter-button" id="counter-13">
@@ -694,21 +694,37 @@
             });
         });
 
-        // Counter for 100 times dhikr
-        const counterButton = document.getElementById('counter-12');
-        const resetButton = document.getElementById('reset-12');
-        let count = 0;
+        // Counter for 100 times dhikr (Dhikr 12)
+        const counterButton12 = document.getElementById('counter-12');
+        const resetButton12 = document.getElementById('reset-12');
+        let count12 = 0;
         
-        counterButton.addEventListener('click', function() {
-            count++;
-            if (count > 100) count = 100;
-            this.querySelector('.counter-display').textContent = count;
+        counterButton12.addEventListener('click', function() {
+            count12++;
+            if (count12 > 100) count12 = 100;
+            this.querySelector('.counter-display').textContent = count12;
         });
         
-        resetButton.addEventListener('click', function(e) {
+        resetButton12.addEventListener('click', function(e) {
             e.stopPropagation();
-            count = 0;
-            counterButton.querySelector('.counter-display').textContent = count;
+            count12 = 0;
+            counterButton12.querySelector('.counter-display').textContent = count12;
+        });
+
+        // Counter for Dhikr 13
+        const counterButton13 = document.getElementById('counter-13');
+        const resetButton13 = document.getElementById('reset-13');
+        let count13 = 0;
+        
+        counterButton13.addEventListener('click', function() {
+            count13++;
+            this.querySelector('.counter-display').textContent = count13;
+        });
+        
+        resetButton13.addEventListener('click', function(e) {
+            e.stopPropagation();
+            count13 = 0;
+            counterButton13.querySelector('.counter-display').textContent = count13;
         });
     </script>
 </body>
