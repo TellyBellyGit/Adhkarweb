@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protection Verses - Islamic Supplications</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Scheherazade+New:wght@400;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #4a8c4c;
+            --secondary-color: #1a1a1a;
+            --text-color: #f0f0f0;
+            --bg-color: #2d2d2d;
+            --card-bg: #3a3a3a;
+            --border-radius: 10px;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            --transition: all 0.3s ease;
+        }
+
+        .light-mode {
+            --primary-color: #2c5e2e;
+            --secondary-color: #f8f5e6;
+            --text-color: #333;
+            --bg-color: #fff;
+            --card-bg: #f9f9f9;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            transition: var(--transition);
+            padding-bottom: 2rem;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 2rem 1rem;
+            margin-bottom: 2rem;
+            border-bottom: 5px solid #d4af37;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .main-controls {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .toggle-controls {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .icon-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: var(--border-radius);
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            font-size: 1.2rem;
+        }
+
+        .icon-btn:hover {
+            background-color: #3a6e3c;
+            transform: translateY(-2px);
+        }
+
+        .icon-btn.active {
+            background-color: #d4af37;
+        }
+
+        .protection-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .protection-card {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .protection-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .protection-number {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background-color: var(--primary-color);
+            color: white;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .protection-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            padding-left: 3rem;
+            color: var(--primary-color);
+        }
+
+        .arabic {
+            font-size: 1.8rem;
+            font-weight: bold;
+            text-align: right;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            font-family: 'Scheherazade New', 'Traditional Arabic', serif;
+        }
+
+        .transliteration {
+            font-style: italic;
+            margin-bottom: 0.8rem;
+            color: var(--text-color);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .translation {
+            margin-bottom: 0.8rem;
+            color: var(--text-color);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding: 1rem;
+            color: var(--text-color);
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .protection-section {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .arabic {
+                font-size: 1.5rem;
+            }
+
+            .main-controls {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1><i class="fas fa-shield-alt"></i> Protection Verses</h1>
+            <p>Islamic Supplications for Protection and Refuge</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="main-controls">
+            <div class="toggle-controls">
+                <button class="icon-btn" id="backButton" title="Back to Manzil Verses">
+                    <i class="fas fa-arrow-left"></i>
+                </button>
+                <button class="icon-btn" id="toggleTranslation" title="Toggle Translation">
+                    <i class="fas fa-language"></i>
+                </button>
+                <button class="icon-btn" id="modeToggle" title="Toggle Dark/Light Mode">
+                    <i class="fas fa-sun"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="protection-section">
+            <!-- Protection Verse 1: Seeking Refuge from Satan -->
+            <div class="protection-card">
+                <div class="protection-number">1</div>
+                <div class="protection-title">Seeking Refuge from Satan</div>
+                <div class="arabic">
+                    <p class="text-center mb-2">أَعُوذُ بِاللَّهِ مِنَ الشَّيْطَانِ الرَّجِيمِ</p>
+                    <div class="transliteration text-center">Aʿūdhu billāhi min ash-shayṭān ir-rajīm</div>
+                    <div class="translation text-center">(I seek refuge with Allah from the accursed Shayṭān)</div>
+                </div>
+            </div>
+
+            <!-- Protection Verse 2: Command to Leave -->
+            <div class="protection-card">
+                <div class="protection-number">2</div>
+                <div class="protection-title">Command to Leave</div>
+                <div class="arabic">
+                    <p class="text-center mb-2">اخْرُجْ بِسْمِ اللَّهِ</p>
+                    <div class="transliteration text-center">Ukhruj bismillāh</div>
+                    <div class="translation text-center">(Leave, in the Name of Allah)</div>
+                </div>
+            </div>
+
+            <!-- Protection Verse 3: Disgracing the Enemy -->
+            <div class="protection-card">
+                <div class="protection-number">3</div>
+                <div class="protection-title">Disgracing the Enemy</div>
+                <div class="arabic">
+                    <p class="text-center mb-2">اخْسَأْ يَا عَدُوَّ اللَّهِ</p>
+                    <div class="transliteration text-center">Ikhsa' yā ʿaduww Allāh</div>
+                    <div class="translation text-center">(Be disgraced, O enemy of Allah)</div>
+                </div>
+            </div>
+
+            <!-- Protection Verse 4: Truth vs Falsehood -->
+            <div class="protection-card">
+                <div class="protection-number">4</div>
+                <div class="protection-title">Truth vs Falsehood (17:81)</div>
+                <div class="arabic">
+                    <p class="text-center mb-2">قَدْ جَاءَ الْحَقُّ وَزَهَقَ الْبَاطِلُ ۚ إِنَّ الْبَاطِلَ كَانَ زَهُوقًا</p>
+                    <div class="transliteration text-center">Qad jāʾa l-ḥaqqu wa zahqa l-bāṭil, inna l-bāṭila kāna zahūqā</div>
+                    <div class="translation text-center">(Truth has come, and falsehood has perished; surely falsehood is bound to perish)</div>
+                </div>
+            </div>
+
+            <!-- Protection Verse 5: Seeking Refuge and Cursing -->
+            <div class="protection-card">
+                <div class="protection-number">5</div>
+                <div class="protection-title">Seeking Refuge and Cursing</div>
+                <div class="arabic">
+                    <p class="text-center mb-2">أَعُوذُ بِاللَّهِ مِنْكَ، أَلْعَنُكَ بِلَعْنَةِ اللَّهِ</p>
+                    <div class="transliteration text-center">Aʿūdhu billāhi minka, alʿanuka bilaʿnatillāh</div>
+                    <div class="translation text-center">(I seek refuge in Allah from you; I curse you with the curse of Allah)</div>
+                </div>
+            </div>
+
+            <!-- Protection Verse 6: No Power Except with Allah -->
+            <div class="protection-card">
+                <div class="protection-number">6</div>
+                <div class="protection-title">No Power Except with Allah</div>
+                <div class="arabic">
+                    <p class="text-center mb-2">لَا قُوَّةَ إِلَّا بِاللَّهِ الْعَلِيِّ الْعَظِيمِ</p>
+                    <div class="transliteration text-center">Lā quwwata illā billāh al-ʿAliyy al-ʿAẓīm</div>
+                    <div class="translation text-center">(There is no power except with Allah, the Most High, the Magnificent)</div>
+                </div>
+            </div>
+
+            <!-- Protection Verse 7: Allah's Party is Victorious -->
+            <div class="protection-card">
+                <div class="protection-number">7</div>
+                <div class="protection-title">Allah's Party is Victorious (5:56)</div>
+                <div class="arabic">
+                    <p class="text-center mb-2">فَإِنَّ حِزْبَ اللَّهِ هُمُ الْغَالِبُونَ</p>
+                    <div class="transliteration text-center">Fa-inna ḥizballāhi humu l-ghālibūn</div>
+                    <div class="translation text-center">(Indeed, the party of Allah — they are the victorious)</div>
+                </div>
+            </div>
+
+            <!-- Protection Verse 8: Allah is Sufficient -->
+            <div class="protection-card">
+                <div class="protection-number">8</div>
+                <div class="protection-title">Allah is Sufficient</div>
+                <div class="arabic">
+                    <p class="text-center mb-2">حَسْبِيَ اللَّهُ وَنِعْمَ الْوَكِيلُ</p>
+                    <div class="transliteration text-center">Ḥasbiyallāhu wa niʿma l-wakīl</div>
+                    <div class="translation text-center">(Allah is sufficient for me, and the best Disposer of affairs)</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Islamic Protection Verses. May Allah protect us all.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Back button functionality
+        document.getElementById('backButton').addEventListener('click', function() {
+            // Store current page info for potential future use
+            sessionStorage.setItem('returnedFromProtection', 'true');
+            window.location.href = 'manzilVerses.html';
+        });
+
+        // Toggle translation
+        const toggleTranslation = document.getElementById('toggleTranslation');
+        let translationVisible = true;
+
+        toggleTranslation.addEventListener('click', function() {
+            const translations = document.querySelectorAll('.translation');
+            translations.forEach(item => {
+                item.classList.toggle('hidden');
+            });
+            translationVisible = !translationVisible;
+            this.classList.toggle('active');
+        });
+
+        // Toggle dark/light mode
+        document.getElementById('modeToggle').addEventListener('click', function() {
+            document.body.classList.toggle('light-mode');
+            const icon = this.querySelector('i');
+            if (icon.classList.contains('fa-sun')) {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            } else {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            }
+        });
+    </script>
+</body>
+</html>

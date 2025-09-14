@@ -940,6 +940,15 @@
             item.classList.add('hidden');
         });
 
+        // Restore scroll position on page load
+        window.addEventListener('load', function() {
+            const savedScrollPosition = localStorage.getItem('manzilScrollPosition');
+            if (savedScrollPosition) {
+                window.scrollTo(0, parseInt(savedScrollPosition));
+                localStorage.removeItem('manzilScrollPosition'); // Clean up after use
+            }
+        });
+
         toggleTransliteration.addEventListener('click', function() {
             const transliterations = document.querySelectorAll('.transliteration');
             transliterations.forEach(item => {
@@ -972,6 +981,30 @@
             } else {
                 icon.classList.remove('fa-moon');
                 icon.classList.add('fa-sun');
+            }
+        });
+
+        // Triple tap detection
+        let tapCount = 0;
+        let tapTimer = null;
+        const tapDelay = 500; // Maximum time between taps in milliseconds
+
+        document.addEventListener('click', function(e) {
+            tapCount++;
+            
+            if (tapCount === 1) {
+                tapTimer = setTimeout(function() {
+                    tapCount = 0;
+                }, tapDelay);
+            } else if (tapCount === 3) {
+                clearTimeout(tapTimer);
+                tapCount = 0;
+                
+                // Save current scroll position before redirecting
+                localStorage.setItem('manzilScrollPosition', window.pageYOffset || document.documentElement.scrollTop);
+                
+                // Redirect to protection verses page
+                window.location.href = 'protectionVerses.html';
             }
         });
     </script>
