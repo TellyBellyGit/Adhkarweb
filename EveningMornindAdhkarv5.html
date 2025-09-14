@@ -621,12 +621,18 @@
         
         // Toggle translation
         const toggleTranslation = document.getElementById('toggleTranslation');
-        let translationVisible = false;
+        let translationVisible = true;
 
-        // Initially hide transliteration and translation
-        document.querySelectorAll('.transliteration, .translation').forEach(item => {
+        // Initially hide transliteration but show translation
+        document.querySelectorAll('.transliteration').forEach(item => {
             item.classList.add('hidden');
         });
+        
+        // Show translations by default and set button as active
+        document.querySelectorAll('.translation').forEach(item => {
+            item.classList.remove('hidden');
+        });
+        toggleTranslation.classList.add('active');
         
         toggleTranslation.addEventListener('click', function() {
             const translations = document.querySelectorAll('.translation');
@@ -694,12 +700,40 @@
             });
         });
 
+        // Function to play click sound
+        function playClickSound() {
+            // Create audio context
+            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            
+            // Create oscillator for the click sound
+            const oscillator = audioContext.createOscillator();
+            const gainNode = audioContext.createGain();
+            
+            // Connect nodes
+            oscillator.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+            
+            // Configure the sound
+            oscillator.frequency.setValueAtTime(800, audioContext.currentTime); // High frequency for click
+            oscillator.type = 'square';
+            
+            // Configure volume envelope for a quick click
+            gainNode.gain.setValueAtTime(0, audioContext.currentTime);
+            gainNode.gain.linearRampToValueAtTime(0.1, audioContext.currentTime + 0.01);
+            gainNode.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.1);
+            
+            // Play the sound
+            oscillator.start(audioContext.currentTime);
+            oscillator.stop(audioContext.currentTime + 0.1);
+        }
+
         // Counter for 100 times dhikr (Dhikr 12)
         const counterButton12 = document.getElementById('counter-12');
         const resetButton12 = document.getElementById('reset-12');
         let count12 = 0;
         
         counterButton12.addEventListener('click', function() {
+            playClickSound();
             count12++;
             if (count12 > 100) count12 = 100;
             this.querySelector('.counter-display').textContent = count12;
@@ -717,6 +751,7 @@
         let count13 = 0;
         
         counterButton13.addEventListener('click', function() {
+            playClickSound();
             count13++;
             this.querySelector('.counter-display').textContent = count13;
         });

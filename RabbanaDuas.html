@@ -96,6 +96,30 @@
             background-color: #d4af37;
         }
 
+        .icon-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: var(--border-radius);
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            font-size: 1.2rem;
+        }
+
+        .icon-btn:hover {
+            background-color: #3a6e3c;
+            transform: translateY(-2px);
+        }
+
+        .icon-btn.active {
+            background-color: #d4af37;
+        }
+
         .dhikr-card {
             background-color: var(--card-bg);
             border-radius: var(--border-radius);
@@ -265,24 +289,24 @@
         <div class="container">
             <h1>Rabbana Du'ās from the Qur'an</h1>
             <p>Essential supplications beginning with "Our Lord" from the Holy Qur'an</p>
+            <div style="margin-top: 1rem;">
+                <a href="index.html" class="btn" style="background-color: rgba(255,255,255,0.2); padding: 0.5rem 1rem; border-radius: 5px; text-decoration: none; color: white; display: inline-block;"><i class="fas fa-home"></i> Return to Menu</a>
+            </div>
         </div>
     </header>
 
     <div class="container">
         <div class="main-controls">
             <div class="toggle-controls">
-                <button class="btn" id="toggleTransliteration">
-                    <i class="fas fa-language"></i> Transliteration
+                <button class="icon-btn" id="toggleTransliteration" title="Toggle Transliteration">
+                    <i class="fas fa-language"></i>
                 </button>
-                <button class="btn" id="toggleTranslation">
-                    <i class="fas fa-book"></i> Translation
+                <button class="icon-btn" id="toggleTranslation" title="Toggle Translation">
+                    <i class="fas fa-book"></i>
                 </button>
-                <button class="btn" id="modeToggle">
+                <button class="icon-btn" id="modeToggle" title="Toggle Dark/Light Mode">
                     <i class="fas fa-sun"></i>
                 </button>
-                <button onclick="window.location.href='index.html'" class="return-menu-button">
-                     <i class="fas fa-home"></i> Return to Menu
-                 </button>
             </div>
         </div>
 
