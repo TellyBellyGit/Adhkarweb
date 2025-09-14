@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dua for Cure - Islamic Healing Supplications</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Scheherazade+New:wght@400;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #4a8c4c;
+            --secondary-color: #1a1a1a;
+            --text-color: #f0f0f0;
+            --bg-color: #2d2d2d;
+            --card-bg: #3a3a3a;
+            --border-radius: 10px;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            --transition: all 0.3s ease;
+        }
+
+        .light-mode {
+            --primary-color: #2c5e2e;
+            --secondary-color: #f8f5e6;
+            --text-color: #333;
+            --bg-color: #fff;
+            --card-bg: #f9f9f9;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            transition: var(--transition);
+            padding-bottom: 2rem;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 2rem 1rem;
+            margin-bottom: 2rem;
+            border-bottom: 5px solid #d4af37;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .main-controls {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .toggle-controls {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .icon-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: var(--border-radius);
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            font-size: 1.2rem;
+        }
+
+        .icon-btn:hover {
+            background-color: #3a6e3c;
+            transform: translateY(-2px);
+        }
+
+        .icon-btn.active {
+            background-color: #d4af37;
+        }
+
+        .dua-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .dua-card {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .dua-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .dua-number {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background-color: var(--primary-color);
+            color: white;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .dua-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            padding-left: 3rem;
+            color: var(--primary-color);
+        }
+
+        .arabic {
+            font-size: 1.8rem;
+            font-weight: bold;
+            text-align: right;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            font-family: 'Scheherazade New', 'Traditional Arabic', serif;
+        }
+
+        .transliteration {
+            font-style: italic;
+            margin-bottom: 0.8rem;
+            color: var(--text-color);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .translation {
+            margin-bottom: 0.8rem;
+            color: var(--text-color);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .reference {
+            font-size: 0.85rem;
+            color: var(--primary-color);
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .instruction {
+            font-size: 0.9rem;
+            color: var(--text-color);
+            font-style: italic;
+            opacity: 0.8;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding: 1rem;
+            color: var(--text-color);
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .dua-section {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .arabic {
+                font-size: 1.5rem;
+            }
+
+            .main-controls {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1><i class="fas fa-heart"></i> Dua for Cure</h1>
+            <p>Islamic Healing Supplications and Ruqyah</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="main-controls">
+            <div class="toggle-controls">
+                <button class="icon-btn" id="backBtn" title="Back to Evening/Morning Adhkar">
+                    <i class="fas fa-arrow-left"></i>
+                </button>
+                <button class="icon-btn" id="toggleTranslation" title="Toggle Translation">
+                    <i class="fas fa-language"></i>
+                </button>
+                <button class="icon-btn" id="modeToggle" title="Toggle Dark/Light Mode">
+                    <i class="fas fa-sun"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="dua-section">
+            <!-- Dua 1: Prayer for Healing -->
+            <div class="dua-card">
+                <div class="dua-number">1</div>
+                <div class="dua-title">Prayer for Healing</div>
+                <div class="arabic">
+                    <p class="text-center mb-2">اللَّهُمَّ رَبَّ النَّاسِ، أَذْهِبِ الْبَأْسَ، اشْفِ أَنْتَ الشَّافِي، لاَ شِفَاءَ إِلاَّ شِفَاؤُكَ، شِفَاءً لاَ يُغَادِرُ سَقَمًا</p>
+                    <div class="transliteration text-center">Allāhumma Rabban-nās, adhhib al-ba's, ishfi anta ash-Shāfī, lā shifā'a illā shifā'uka, shifā'an lā yughadiru saqaman</div>
+                    <div class="translation text-center">"O Allah, Lord of mankind, remove the harm and cure (him/her). You are the Curer. There is no cure except Your cure, a cure that leaves no illness behind."</div>
+                    <div class="reference text-center">Bukhārī 5743, Muslim 2191</div>
+                    <div class="instruction text-center">Said when visiting the sick.</div>
+                </div>
+            </div>
+
+            <!-- Dua 2: Seeking Refuge from Pain -->
+            <div class="dua-card">
+                <div class="dua-number">2</div>
+                <div class="dua-title">Seeking Refuge from Pain</div>
+                <div class="arabic">
+                    <p class="text-center mb-2">بِسْمِ اللَّهِ (ثَلاثًا). أَعُوذُ بِاللَّهِ وَقُدْرَتِهِ مِنْ شَرِّ مَا أَجِدُ وَأُحَاذِرُ (سَبْعَ مَرَّاتٍ)</p>
+                    <div class="transliteration text-center">Bismillāh (3x). A'ūdhu billāhi wa qudratihi min sharri mā ajidu wa uḥādhir (7x)</div>
+                    <div class="translation text-center">"In the Name of Allah (3x). I seek refuge in Allah and His Power from the evil of what I feel and what I fear (7x)."</div>
+                    <div class="reference text-center">Muslim 2202</div>
+                    <div class="instruction text-center">Place hand on area of pain, say 3x "Bismillah," then 7x the rest.</div>
+                </div>
+            </div>
+
+            <!-- Dua 3: Ruqyah by Jibrīl -->
+            <div class="dua-card">
+                <div class="dua-number">3</div>
+                <div class="dua-title">Ruqyah by Jibrīl</div>
+                <div class="arabic">
+                    <p class="text-center mb-2">بِاسْمِ اللَّهِ أَرْقِيكَ، مِنْ كُلِّ شَيْءٍ يُؤْذِيكَ، مِنْ شَرِّ كُلِّ نَفْسٍ أَوْ عَيْنٍ حَاسِدٍ، اللَّهُ يَشْفِيكَ، بِاسْمِ اللَّهِ أَرْقِيكَ</p>
+                    <div class="transliteration text-center">Bismillāhi arqīka, min kulli shay'in yu'dhīka, min sharri kulli nafsin aw ʿaynin ḥāsid, Allāhu yashfīka, bismillāhi arqīka</div>
+                    <div class="translation text-center">"In the Name of Allah, I perform ruqyah for you, from everything that is harming you, from the evil of every soul or envious eye. May Allah cure you. In the Name of Allah, I perform ruqyah for you."</div>
+                    <div class="reference text-center">Muslim 2186</div>
+                    <div class="instruction text-center">Recited by Jibrīl (ʿalayhi as-salām) over the Prophet ﷺ when ill.</div>
+                </div>
+            </div>
+
+            <!-- Dua 4: Asking Allah for Cure -->
+            <div class="dua-card">
+                <div class="dua-number">4</div>
+                <div class="dua-title">Asking Allah for Cure</div>
+                <div class="arabic">
+                    <p class="text-center mb-2">أَسْأَلُ اللَّهَ الْعَظِيمَ رَبَّ الْعَرْشِ الْعَظِيمِ أَنْ يَشْفِيَكَ</p>
+                    <div class="transliteration text-center">As'alu Allāh al-ʿAẓīm Rabb al-ʿArsh al-ʿAẓīm an yashfīka</div>
+                    <div class="translation text-center">"I ask Allah the Magnificent, Lord of the Magnificent Throne, to cure you."</div>
+                    <div class="reference text-center">Abū Dāwūd 3106, Tirmidhī 2083, Ibn Mājah 1441 (ḥasan)</div>
+                    <div class="instruction text-center">Say this 7 times when visiting the sick.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Islamic Healing Supplications. May Allah grant complete healing to all.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Toggle translation
+        const toggleTranslation = document.getElementById('toggleTranslation');
+        let translationVisible = true;
+
+        toggleTranslation.addEventListener('click', function() {
+            const translations = document.querySelectorAll('.translation');
+            translations.forEach(item => {
+                item.classList.toggle('hidden');
+            });
+            translationVisible = !translationVisible;
+            this.classList.toggle('active');
+        });
+
+        // Toggle dark/light mode
+        document.getElementById('modeToggle').addEventListener('click', function() {
+            document.body.classList.toggle('light-mode');
+            const icon = this.querySelector('i');
+            if (icon.classList.contains('fa-sun')) {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            } else {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            }
+        });
+
+        // Back button functionality
+        document.getElementById('backBtn').addEventListener('click', function() {
+            window.location.href = 'EveningMornindAdhkarv5.html';
+        });
+    </script>
+</body>
+</html>

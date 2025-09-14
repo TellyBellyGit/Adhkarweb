@@ -309,6 +309,9 @@
             </div>
             
             <div class="toggle-controls">
+                <button class="icon-btn" id="duaCureBtn" title="Dua for Cure">
+                    +
+                </button>
                 <button class="icon-btn" id="toggleTransliteration" title="Toggle Transliteration">
                     <i class="fas fa-language"></i>
                 </button>
@@ -690,6 +693,11 @@
             this.innerHTML = isDarkMode ? 
                 '<i class="fas fa-sun"></i>' : 
                 '<i class="fas fa-moon"></i>';
+        });
+
+        // Dua for Cure button functionality
+        document.getElementById('duaCureBtn').addEventListener('click', function() {
+            window.location.href = 'DuaforCure.html';
         });
 
         // Circle counting functionality
