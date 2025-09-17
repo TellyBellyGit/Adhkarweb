@@ -12,15 +12,15 @@
   "dir": "ltr",
   "icons": [
     {
-      "src": "img/logo.png",
+      "src": "img/islamic-geometric.svg",
       "sizes": "192x192",
-      "type": "image/png",
+      "type": "image/svg+xml",
       "purpose": "any maskable"
     },
     {
-      "src": "img/logo.png",
+      "src": "img/islamic-geometric.svg",
       "sizes": "512x512",
-      "type": "image/png",
+      "type": "image/svg+xml",
       "purpose": "any maskable"
     }
   ],
@@ -34,8 +34,9 @@
       "url": "/EveningMornindAdhkarv5.html",
       "icons": [
         {
-          "src": "img/logo.png",
-          "sizes": "96x96"
+          "src": "img/islamic-geometric.svg",
+          "sizes": "96x96",
+          "type": "image/svg+xml"
         }
       ]
     },
@@ -46,8 +47,9 @@
       "url": "/shortRuqyah.html",
       "icons": [
         {
-          "src": "img/logo.png",
-          "sizes": "96x96"
+          "src": "img/islamic-geometric.svg",
+          "sizes": "96x96",
+          "type": "image/svg+xml"
         }
       ]
     }
