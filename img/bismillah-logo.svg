@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 80" width="120" height="80">
+  <defs>
+    <style>
+      .arabic-text { fill: #2c5530; font-family: 'Times New Roman', serif; font-weight: bold; }
+      .border { fill: none; stroke: #4a7c59; stroke-width: 2; }
+      .accent { fill: #8fbc8f; }
+    </style>
+  </defs>
+  
+  <!-- Decorative border -->
+  <rect x="5" y="5" width="110" height="70" rx="10" class="border"/>
+  
+  <!-- Bismillah in Arabic (stylized) -->
+  <text x="60" y="30" text-anchor="middle" class="arabic-text" font-size="16">بِسْمِ اللَّهِ</text>
+  <text x="60" y="50" text-anchor="middle" class="arabic-text" font-size="14">الرَّحْمَٰنِ الرَّحِيمِ</text>
+  
+  <!-- Decorative elements -->
+  <g class="accent">
+    <!-- Top decoration -->
+    <circle cx="30" cy="15" r="2"/>
+    <circle cx="60" cy="10" r="2"/>
+    <circle cx="90" cy="15" r="2"/>
+    
+    <!-- Bottom decoration -->
+    <circle cx="30" cy="65" r="2"/>
+    <circle cx="60" cy="70" r="2"/>
+    <circle cx="90" cy="65" r="2"/>
+  </g>
+</svg>

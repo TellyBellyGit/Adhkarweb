@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <defs>
+    <style>
+      .building { fill: #2c5530; }
+      .dome { fill: #4a7c59; }
+      .minaret { fill: #1a3d1f; }
+      .crescent { fill: #8fbc8f; }
+      .sky { fill: #e8f5e8; }
+    </style>
+  </defs>
+  
+  <!-- Background circle -->
+  <circle cx="50" cy="50" r="48" class="sky" stroke="#2c5530" stroke-width="2"/>
+  
+  <!-- Main mosque structure -->
+  <g>
+    <!-- Central dome -->
+    <ellipse cx="50" cy="45" rx="20" ry="15" class="dome"/>
+    
+    <!-- Main building -->
+    <rect x="30" y="45" width="40" height="30" class="building"/>
+    
+    <!-- Left minaret -->
+    <rect x="20" y="35" width="6" height="40" class="minaret"/>
+    <ellipse cx="23" cy="35" rx="4" ry="3" class="dome"/>
+    
+    <!-- Right minaret -->
+    <rect x="74" y="35" width="6" height="40" class="minaret"/>
+    <ellipse cx="77" cy="35" rx="4" ry="3" class="dome"/>
+    
+    <!-- Entrance arch -->
+    <path d="M40 75 Q40 65 50 65 Q60 65 60 75 Z" class="sky"/>
+    
+    <!-- Crescent on main dome -->
+    <g transform="translate(50,30)">
+      <path d="M-2,0 Q0,-4 2,0 Q0,-2 -2,0" class="crescent"/>
+      <circle cx="0" cy="-1" r="0.5" class="crescent"/>
+    </g>
+    
+    <!-- Crescents on minarets -->
+    <g transform="translate(23,28)">
+      <path d="M-1,0 Q0,-2 1,0 Q0,-1 -1,0" class="crescent"/>
+    </g>
+    <g transform="translate(77,28)">
+      <path d="M-1,0 Q0,-2 1,0 Q0,-1 -1,0" class="crescent"/>
+    </g>
+  </g>
+</svg>

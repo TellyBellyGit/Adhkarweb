@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <defs>
+    <style>
+      .primary { fill: #2c5530; }
+      .accent { fill: #4a7c59; }
+      .light { fill: #8fbc8f; }
+      .gradient-bg { fill: url(#bgGradient); }
+    </style>
+    <radialGradient id="bgGradient" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#f0f8f0;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#e8f5e8;stop-opacity:1" />
+    </radialGradient>
+  </defs>
+  
+  <!-- Background -->
+  <circle cx="50" cy="50" r="48" class="gradient-bg" stroke="#2c5530" stroke-width="2"/>
+  
+  <!-- Crescent moon -->
+  <g transform="translate(50,50)">
+    <!-- Outer crescent -->
+    <path d="M-15,-20 Q-25,0 -15,20 Q-5,10 -5,0 Q-5,-10 -15,-20" class="primary"/>
+    
+    <!-- 5-pointed star -->
+    <g transform="translate(8,0)">
+      <path d="M0,-12 L3,-3 L12,-3 L6,2 L9,11 L0,6 L-9,11 L-6,2 L-12,-3 L-3,-3 Z" class="accent"/>
+    </g>
+    
+    <!-- Decorative dots around -->
+    <g class="light">
+      <circle cx="-25" cy="-10" r="1.5"/>
+      <circle cx="-25" cy="10" r="1.5"/>
+      <circle cx="20" cy="-8" r="1.5"/>
+      <circle cx="20" cy="8" r="1.5"/>
+    </g>
+  </g>
+</svg>
