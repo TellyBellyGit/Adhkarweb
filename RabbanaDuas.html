@@ -43,17 +43,43 @@
         }
 
         header {
-            background-color: var(--primary-color);
+            background: linear-gradient(135deg, var(--primary-color), #5da360);
             color: white;
+            padding: 1.5rem 1rem;
             text-align: center;
-            padding: 2rem 1rem;
+            position: relative;
+            overflow: hidden;
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
             margin-bottom: 2rem;
-            border-bottom: 5px solid #d4af37;
         }
 
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
+        .header-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            opacity: 0.1;
+            background-image: 
+                radial-gradient(circle at 20% 30%, #d4af37 2px, transparent 2px),
+                radial-gradient(circle at 80% 70%, #d4af37 2px, transparent 2px);
+            background-size: 30px 30px;
+            pointer-events: none;
+        }
+
+        header h1 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            position: relative;
+        }
+
+        header p {
+            opacity: 0.9;
+            font-size: 0.95rem;
+            max-width: 500px;
+            margin: 0 auto;
+            position: relative;
         }
 
         .container {
@@ -286,11 +312,12 @@
 </head>
 <body class="dark-mode">
     <header>
+        <div class="header-pattern"></div>
         <div class="container">
             <h1>Rabbana Du'ās from the Qur'an</h1>
             <p>Essential supplications beginning with "Our Lord" from the Holy Qur'an</p>
             <div style="margin-top: 1rem;">
-                <a href="index.html" class="btn" style="background-color: rgba(255,255,255,0.2); padding: 0.5rem 1rem; border-radius: 5px; text-decoration: none; color: white; display: inline-block;"><i class="fas fa-home"></i> Return to Menu</a>
+                <a href="index.html" class="btn" style="background-color: rgba(255,255,255,0.2); padding: 0.5rem 1rem; border-radius: 5px; text-decoration: none; color: white; display: inline-block;"><i class="fas fa-home"></i></a>
             </div>
         </div>
     </header>
