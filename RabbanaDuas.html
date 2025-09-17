@@ -390,6 +390,7 @@
                 <div class="transliteration">Rabbanā ẓalamnā anfusanā wa in lam taghfir lanā wa tarḥamnā lanakūnanna minal-khāsirīn.</div>
                 <div class="translation">Our Lord, we have wronged ourselves, and if You do not forgive us and have mercy upon us, we will surely be among the losers.</div>
                 <div class="source"><strong>Source:</strong> Al-A'rāf 7:23</div>
+                <div class="translation">"Ya Rabbi, forgive me, have mercy on me, and keep me from being among the losers."</div>
                 <div class="counter-container">
                     <button class="counter-button" id="counter-5">
                         <i class="fas fa-plus"></i> Count
@@ -486,24 +487,6 @@
                         <span class="counter-display">0</span>
                     </button>
                     <button class="reset-button" id="reset-10" title="Reset Counter">
-                        <i class="fas fa-undo"></i>
-                    </button>
-                </div>
-            </div>
-
-            <!-- Du'a 11 -->
-            <div class="dhikr-card">
-                <div class="card-number">11</div>
-                <div class="arabic">رَبَّنَا أَخْرِجْنَا مِنْ هَٰذِهِ الْقَرْيَةِ الظَّالِمِ أَهْلُهَا وَاجْعَل لَّنَا مِن لَّدُنكَ وَلِيًّا وَاجْعَل لَّنَا مِن لَّدُنكَ نَصِيرًا</div>
-                <div class="transliteration">Rabbanā akhrijnā min hādhihil-qaryatiz-zālimi ahluhā waj'al lanā min ladunka waliyyan waj'al lanā min ladunka naṣīrā.</div>
-                <div class="translation">Our Lord, bring us out of this city of oppressive people and appoint for us from Yourself a protector and appoint for us from Yourself a helper.</div>
-                <div class="source"><strong>Source:</strong> Al-Nisā' 4:75</div>
-                <div class="counter-container">
-                    <button class="counter-button" id="counter-11">
-                        <i class="fas fa-plus"></i> Count
-                        <span class="counter-display">0</span>
-                    </button>
-                    <button class="reset-button" id="reset-11" title="Reset Counter">
                         <i class="fas fa-undo"></i>
                     </button>
                 </div>
@@ -731,17 +714,20 @@
                 '<i class="fas fa-moon"></i>';
         });
 
-        // Counter functionality for all 20 du'as
+        // Counter functionality for all du'as (excluding removed du'a 11)
         const counters = {};
         
         for (let i = 1; i <= 20; i++) {
+            if (i === 11) continue; // Skip removed du'a 11
             const counterButton = document.getElementById(`counter-${i}`);
-            counters[i] = 0;
-            
-            counterButton.addEventListener('click', function() {
-                counters[i]++;
-                this.querySelector('.counter-display').textContent = counters[i];
-            });
+            if (counterButton) {
+                counters[i] = 0;
+                
+                counterButton.addEventListener('click', function() {
+                    counters[i]++;
+                    this.querySelector('.counter-display').textContent = counters[i];
+                });
+            }
         }
         
         // Reset counter function
