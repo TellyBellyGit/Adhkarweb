@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Ruqya Verses</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #1a472a;
+            --secondary-color: #2e8b57;
+            --accent-color: #d4edda;
+            --text-color: #333;
+            --light-text: #fff;
+            --shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            --bg-color: #f8f9f7;
+            --card-bg: white;
+            --arabic-color: #1c3c23;
+        }
+
+        [data-theme="dark"] {
+            --primary-color: #2d5a3d;
+            --secondary-color: #4a9d6a;
+            --accent-color: #2a3f2a;
+            --text-color: #e0e0e0;
+            --light-text: #fff;
+            --shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            --bg-color: #1a1a1a;
+            --card-bg: #2d2d2d;
+            --arabic-color: #b8e6c1;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--light-text);
+            text-align: center;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+
+        .header-controls {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .header-btn {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: var(--light-text);
+            border: none;
+            padding: 0.6rem;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+        }
+
+        .header-btn:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+            transition: background-color 0.3s;
+        }
+        
+        .card-title {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .verse {
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background-color: var(--accent-color);
+            border-radius: 8px;
+            border-right: 4px solid var(--secondary-color);
+        }
+        
+        .arabic {
+            font-family: 'Traditional Arabic', 'Scheherazade New', serif;
+            font-size: 1.8rem;
+            text-align: right;
+            line-height: 2.5;
+            margin-bottom: 1rem;
+            color: var(--arabic-color);
+            transition: color 0.3s;
+        }
+        
+        .translation {
+            font-style: italic;
+            padding: 0.5rem;
+            border-left: 2px solid var(--secondary-color);
+            background-color: rgba(46, 139, 87, 0.1);
+        }
+        
+        .reference {
+            font-weight: bold;
+            color: var(--secondary-color);
+            margin-top: 0.5rem;
+        }
+        
+        .btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+            display: inline-block;
+            margin: 0.5rem 0.5rem 0.5rem 0;
+        }
+        
+        .btn:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        .btn-small {
+            padding: 0.4rem 0.8rem;
+            font-size: 0.9rem;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 100;
+            overflow: auto;
+        }
+        
+        .modal-content {
+            background-color: var(--card-bg);
+            margin: 5% auto;
+            padding: 2rem;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 800px;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+            transition: background-color 0.3s;
+        }
+        
+        .close {
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--primary-color);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2rem;
+            margin-top: 2rem;
+            color: var(--primary-color);
+            font-size: 0.9rem;
+        }
+        
+        .counter {
+            background-color: var(--secondary-color);
+            color: white;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .theme-toggle {
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .theme-toggle:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        .home-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .home-btn:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+        
+        @media (max-width: 768px) {
+            .arabic {
+                font-size: 1.5rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .card {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-controls">
+                <a href="index.html" class="header-btn">
+                    <i class="fas fa-home"></i>
+                </a>
+                <button class="header-btn" onclick="toggleTheme()">
+                    <i class="fas fa-sun" id="theme-icon"></i>
+                </button>
+            </div>
+            <h1>Complete Ruqya Verses</h1>
+            <p class="subtitle">Based on the Qur'an and Authentic Sunnah for Spiritual Healing</p>
+        </header>
+        
+        <div class="card">
+            <h2 class="card-title">Opening Adhkar & Supplications</h2>
+            
+            <div class="verse">
+                <div class="arabic">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
+                <div class="translation">In the name of Allah, the Most Gracious, the Most Merciful</div>
+            </div>
+            
+            <div class="verse">
+                <div class="arabic">أَعُوذُ بِاللَّهِ مِنَ الشَّيْطَانِ الرَّجِيمِ</div>
+                <div class="translation">I seek refuge in Allah from the accursed Satan</div>
+            </div>
+            
+            <div class="verse">
+                <div class="arabic">أَعُوذُ بِكَلِمَاتِ اللَّهِ التَّامَّاتِ مِنْ شَرِّ مَا خَلَقَ</div>
+                <div class="translation">I seek refuge in the perfect words of Allah from the evil of what He has created</div>
+            </div>
+            
+            <div class="verse">
+                <div class="arabic">اللَّهُمَّ رَبَّ النَّاسِ أَذْهِبِ الْبَأْسَ، اشْفِ أَنْتَ الشَّافِي، لَا شِفَاءَ إِلَّا شِفَاؤُكَ، شِفَاءً لَا يُغَادِرُ سَقَمًا</div>
+                <div class="translation">O Allah, Lord of mankind, remove the harm and grant healing. You are the Healer. There is no healing except Your healing, a healing that leaves no illness</div>
+            </div>
+            
+            <div class="verse">
+                <div class="arabic">وَإِذَا مَرِضْتُ فَهُوَ يَشْفِينِ</div>
+                <div class="translation">And when I am ill, it is He who cures me (Statement of Prophet Ibrahim AS)</div>
+                <div class="reference">Surah Ash-Shu'ara (26:80)</div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h2 class="card-title">
+                Core Ruqya Verses
+                <button class="btn btn-small" onclick="toggleSection('core-content')">Show/Hide</button>
+            </h2>
+            
+            <div id="core-content">
+                <div class="verse">
+                    <div class="arabic">الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ ﴿١﴾ الرَّحْمَٰنِ الرَّحِيمِ ﴿٢﴾ مَالِكِ يَوْمِ الدِّينِ ﴿٣﴾ إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ ﴿四﴾ اهْدِنَا الصِّرَاطَ الْمُسْتَقِيمَ ﴿۵﴾ صِرَاطَ الَّذِينَ أَنْعَمْتَ عَلَيْهِمْ غَيْرِ الْمَغْضُوبِ عَلَيْهِمْ وَلَا الضَّالِّينَ ﴿٦﴾</div>
+                    <div class="translation">In the name of Allah, the Entirely Merciful, the Especially Merciful. [1] All praise is for Allah—Lord of all worlds, [2] the Most Compassionate, Most Merciful, [3] Master of the Day of Judgment. [4] You ˹alone˺ we worship and You ˹alone˺ we ask for help. [5] Guide us along the Straight Path, [6] the Path of those You have blessed—not those You are displeased with, or those who are astray. [7]</div>
+                    <div class="reference">Surah Al-Fatihah (1:1-7)</div>
+                </div>
+                
+                <div class="verse">
+                    <div class="arabic">الم ﴿١﴾ ذَٰلِكَ الْكِتَابُ لَا رَيْبَ ۛ فِيهِ ۛ هُدًى لِّلْمُتَّقِينَ ﴿٢﴾ الَّذِينَ يُؤْمِنُونَ بِالْغَيْبِ وَيُقِيمُونَ الصَّلَاةَ وَمِمَّا رَزَقْنَاهُمْ يُنفِقُونَ ﴿٣﴾ وَالَّذِينَ يُؤْمِنُونَ بِمَا أُنزِلَ إِلَيْكَ وَمَا أُنزِلَ مِن قَبْلِكَ وَبِالْآخِرَةِ هُمْ يُوقِنُونَ ﴿四﴾ أُولَٰئِكَ عَلَىٰ هُدًى مِّن رَّبِّهِمْ ۖ وَأُولَٰئِكَ هُمُ الْمُفْلِحُونَ ﴿۵﴾</div>
+                    <div class="translation">Alif, Lam, Meem. [1] This is the Book about which there is no doubt, a guidance for those conscious of Allah - [2] Who believe in the unseen, establish prayer, and spend out of what We have provided for them, [3] And who believe in what has been revealed to you, [O Muhammad], and what was revealed before you, and of the Hereafter they are certain [in faith]. [4] Those are upon [right] guidance from their Lord, and it is those who are the successful. [5]</div>
+                    <div class="reference">Surah Al-Baqarah (2:1-5)</div>
+                </div>
+                
+                <div class="verse">
+                    <div class="arabic">وَاتَّبَعُوا مَا تَتْلُو الشَّيَاطِينُ عَلَىٰ مُلْكِ سُلَيْمَانَ ۖ وَمَا كَفَرَ سُلَيْمَانُ وَلَٰكِنَّ الشَّيَاطِينَ كَفَرُوا يُعَلِّمُونَ النَّاسَ السِّحْرَ وَمَا أُنزِلَ عَلَى الْمَلَكَيْنِ بِبَابِلَ هَارُوتَ وَمَارُوتَ ۚ وَمَا يُعَلِّمَانِ مِنْ أَحَدٍ حَتَّىٰ يَقُولَا إِنَّمَا نَحْنُ فِتْنَةٌ فَلَا تَكْفُرْ ۖ فَيَتَعَلَّمُونَ مِنْهُمَا مَا يُفَرِّقُونَ بِهِ بَيْنَ الْمَرْءِ وَزَوْجِهِ ۚ وَمَا هُم بِضَارِّينَ بِهِ مِنْ أَحَدٍ إِلَّا بِإِذْنِ اللَّهِ ۚ وَيَتَعَلَّمُونَ مَا يَضُرُّهُمْ وَلَا يَنفَعُهُمْ ۚ وَلَقَدْ عَلِمُوا لَمَنِ اشْتَرَاهُ مَا لَهُ فِي الْآخِرَةِ مِنْ خَلَاقٍ ۚ وَلَبِئْسَ مَا شَرَوْا بِهِ أَنفُسَهُمْ ۚ لَوْ كَانُوا يَعْلَمُونَ</div>
+                    <div class="translation">And they followed [instead] what the devils had recited during the reign of Solomon. It was not Solomon who disbelieved, but the devils disbelieved, teaching people magic and that which was revealed to the two angels at Babylon, Harut and Marut. But the two angels do not teach anyone unless they say, "We are a trial, so do not disbelieve [by practicing magic]." And [yet] they learn from them that by which they cause separation between a man and his wife. But they do not harm anyone through it except by permission of Allah. And they learn what harms them and does not benefit them. But the Children of Israel certainly knew that whoever purchased the magic would not have in the Hereafter any share. And wretched is that for which they sold themselves, if they only knew.</div>
+                    <div class="reference">Surah Al-Baqarah (2:102)</div>
+                </div>
+                
+                <div class="verse">
+                    <div class="arabic">وَإِلَٰهُكُمْ إِلَٰهٌ وَاحِدٌ ۖ لَّا إِلَٰهَ إِلَّا هُوَ الرَّحْمَٰنُ الرَّحِيمُ ﴿١٦٣﴾ إِنَّ فِي خَلْقِ السَّمَاوَاتِ وَالْأَرْضِ وَاخْتِلَافِ اللَّيْلِ وَالنَّهَارِ وَالْفُلْكِ الَّتِي تَجْرِي فِي الْبَحْرِ بِمَا يَنفَعُ النَّاسَ وَمَا أَنزَلَ اللَّهُ مِنَ السَّمَاءِ مِن مَّاءٍ فَأَحْيَا بِهِ الْأَرْضَ بَعْدَ مَوْتِهَا وَبَثَّ فِيهَا مِن كُلِّ دَابَّةٍ وَتَصْرِيفِ الرِّيَاحِ وَالسَّحَابِ الْمُسَخَّرِ بَيْنَ السَّمَاءِ وَالْأَرْضِ لَآيَاتٍ لِّقَوْمٍ يَعْقِلُونَ ﴿١٦٤﴾</div>
+                    <div class="translation">And your god is one God. There is no deity except Him, the Entirely Merciful, the Especially Merciful. [163] Indeed, in the creation of the heavens and earth, and the alternation of the night and the day, and the [great] ships which sail through the sea with that which benefits people, and what Allah has sent down from the heavens of rain, giving life thereby to the earth after its lifelessness and dispersing therein every [kind of] moving creature, and [His] directing of the winds and the clouds controlled between the heaven and the earth are signs for a people who use reason. [164]</div>
+                    <div class="reference">Surah Al-Baqarah (2:163-164)</div>
+                </div>
+                
+                <div class="verse">
+                    <div class="arabic">اللَّهُ لَا إِلَٰهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ ۚ لَا تَأْخُذُهُ سِنَةٌ وَلَا نَوْمٌ ۚ لَّهُ مَا فِي السَّمَاوَاتِ وَمَا فِي الْأَرْضِ ۗ مَن ذَا الَّذِي يَشْفَعُ عِندَهُ إِلَّا بِإِذْنِهِ ۚ يَعْلَمُ مَا بَيْنَ أَيْدِيهِمْ وَمَا خَلْفَهُمْ ۖ وَلَا يُحِيطُونَ بِشَيْءٍ مِّنْ عِلْمِهِ إِلَّا بِمَا شَاءَ ۚ وَسِعَ كُرْسِيُّهُ السَّمَاوَاتِ وَالْأَرْضَ ۖ وَلَا يَئُودُهُ حِفْظُهُمَا ۚ وَهُوَ الْعَلِيُّ الْعَظِيمُ</div>
+                    <div class="translation">Allah! There is no god ˹worthy of worship˺ except Him, the Ever-Living, All-Sustaining. Neither drowsiness nor sleep overtakes Him. To Him belongs whatever is in the heavens and whatever is on the earth. Who could possibly intercede with Him without His permission? He ˹fully˺ knows what is ahead of them and what is behind them, but no one can grasp any of His knowledge—except what He wills ˹to reveal˺. His Seat encompasses the heavens and the earth, and the preservation of both does not tire Him. For He is the Most High, the Greatest.</div>
+                    <div class="reference">Surah Al-Baqarah (2:255) - Ayat al-Kursi</div>
+                </div>
+                
+                <div class="verse">
+                    <div class="arabic">آمَنَ الرَّسُولُ بِمَا أُنزِلَ إِلَيْهِ مِن رَّبِّهِ وَالْمُؤْمِنُونَ ۚ كُلٌّ آمَنَ بِاللَّهِ وَمَلَائِكَتِهِ وَكُتُبِهِ وَرُسُلِهِ لَا نُفَرِّقُ بَيْنَ أَحَدٍ مِّن رُسُلِهِ ۚ وَقَالُوا سَمِعْنَا وَأَطَعْنَا ۖ غُفْرَانَكَ رَبَّنَا وَإِلَيْكَ الْمَصِيرُ ﴿٢٨٥﴾ لَا يُكَلِّفُ اللَّهُ نَفْسًا إِلَّا وُسْعَهَا ۚ لَهَا مَا كَسَبَتْ وَعَلَيْهَا مَا اكْتَسَبَتْ ۗ رَبَّنَا لَا تُؤَاخِذْنَا إِن نَّسِينَا أَوْ أَخْطَأْنَا ۚ رَبَّنَا وَلَا تَحْمِلْ عَلَيْنَا إِصْرًا كَمَا حَمَلْتَهُ عَلَى الَّذِينَ مِن قَبْلِنَا ۚ رَبَّنَا وَلَا تُحَمِّلْنَا مَا لَا طَاقَةَ لَنَا بِهِ ۖ وَاعْفُ عَنَّا وَاغْفِرْ لَنَا وَارْحَمْنَا ۚ أَنتَ مَوْلَانَا فَانصُرْنَا عَلَى الْقَوْمِ الْكَافِرِينَ ﴿٢٨٦﴾</div>
+                    <div class="translation">The Messenger believes in what has been revealed to him from his Lord, and so do the believers. All believe in Allah, His angels, His Books, and His messengers. They say, "We make no distinction between any of His messengers." And they say, "We hear and we obey. We seek Your forgiveness, our Lord, and to You is the final destination." [285] Allah does not charge a soul except with that within its capacity. It will have what good it has gained, and it will bear what evil it has earned. "Our Lord, do not impose blame upon us if we have forgotten or erred. Our Lord, and lay not upon us a burden like that which You laid upon those before us. Our Lord, and burden us not with that which we have no ability to bear. And pardon us; and forgive us; and have mercy upon us. You are our protector, so give us victory over the disbelieving people." [286]</div>
+                    <div class="reference">Surah Al-Baqarah (2:285-286)</div>
+                </div>
+                
+                <div class="verse">
+                    <div class="arabic">شَهِدَ اللَّهُ أَنَّهُ لَا إِلَٰهَ إِلَّا هُوَ وَالْمَلَائِكَةُ وَأُولُو الْعِلْمِ قَائِمًا بِالْقِسْطِ ۚ لَا إِلَٰهَ إِلَّا هُوَ الْعَزِيزُ الْحَكِيمُ ﴿١٨﴾ إِنَّ الدِّينَ عِندَ اللَّهِ الْإِسْلَامُ ۗ وَمَا اخْتَلَفَ الَّذِينَ أُوتُوا الْكِتَابَ إِلَّا مِن بَعْدِ مَا جَاءَهُمُ الْعِلْمُ بَغْيًا بَيْنَهُمْ ۗ وَمَن يَكْفُرْ بِآيَاتِ اللَّهِ فَإِنَّ اللَّهَ سَرِيعُ الْحِسَابِ ﴿١٩﴾</div>
+                    <div class="translation">Allah witnesses that there is no deity except Him, and the angels and those of knowledge also witness that He is maintaining creation in justice. There is no deity except Him, the Exalted in Might, the Wise. [18] Indeed, the religion in the sight of Allah is Islam. And those who were given the Scripture did not differ except after knowledge had come to them - out of jealous animosity between themselves. And whoever disbelieves in the verses of Allah, then indeed, Allah is swift in reckoning. [19]</div>
+                    <div class="reference">Surah Al-Imran (3:18-19)</div>
+                </div>
+                
+                <div class="verse">
+                    <div class="arabic">إِنَّ رَبَّكُمُ اللَّهُ الَّذِي خَلَقَ السَّمَاوَاتِ وَالْأَرْضَ فِي سِتَّةِ أَيَّامٍ ثُمَّ اسْتَوَىٰ عَلَى الْعَرْشِ ۖ يُغْشِي اللَّيْلَ النَّهَارَ يَطْلُبُهُ حَثِيثًا وَالشَّمْسَ وَالْقَمَرَ وَالنُّجُومَ مُسَخَّرَاتٍ بِأَمْرِهِ ۗ أَلَا لَهُ الْخَلْقُ وَالْأَمْرُ ۗ تَبَارَكَ اللَّهُ رَبُّ الْعَالَمِينَ ﴿٥٤﴾ ادْعُوا رَبَّكُمْ تَضَرُّعًا وَخُفْيَةً ۚ إِنَّهُ لَا يُحِبُّ الْمُعْتَدِينَ ﴿٥٥﴾ وَلَا تُفْسِدُوا فِي الْأَرْضِ بَعْدَ إِصْلَاحِهَا وَادْعُوهُ خَوْفًا وَطَمَعًا ۚ إِنَّ رَحْمَتَ اللَّهِ قَرِيبٌ مِّنَ الْمُحْسِنِينَ ﴿٥٦﴾</div>
+                    <div class="translation">Indeed, your Lord is Allah, who created the heavens and earth in six days and then established Himself above the Throne. He covers the night with the day, seeking it rapidly, and the sun and moon and stars are subjected to His command. Unquestionably, His is the creation and the command; blessed is Allah, Lord of the worlds. [54] Call upon your Lord in humility and privately; indeed, He does not like transgressors. [55] And do not cause corruption upon the earth after its reformation. And invoke Him in fear and aspiration. Indeed, the mercy of Allah is near to the doers of good. [56]</div>
+                    <div class="reference">Surah Al-A'raf (7:54-56)</div>
+                </div>
+                
+                <div class="verse">
+                    <div class="arabic">۞ وَأَوْحَيْنَآ إِلَىٰ مُوسَىٰٓ أَنْ أَلْقِ عَصَاكَ ۖ فَإِذَا هِىَ تَلْقَفُ مَا يَأْفِكُونَ ﴿١١٧﴾ فَوَقَعَ الْحَقُّ وَبَطَلَ مَا كَانُوا يَعْمَلُونَ ﴿١١٨﴾ فَغُلِبُوا هُنَالِكَ وَانقَلَبُوا صَاغِرِينَ ﴿١١٩﴾ وَأُلْقِيَ السَّحَرَةُ سَاجِدِينَ ﴿١٢٠﴾ قَالُوا آمَنَّا بِرَبِّ الْعَالَمِينَ ﴿١٢١﴾ رَبِّ مُوسَىٰ وَهَارُونَ ﴿١٢٢﴾</div>
+                    <div class="translation">And We inspired to Moses, "Throw your staff," and at once it devoured what they were falsifying. [117] So the truth was established, and abolished was what they were doing. [118] And Pharaoh and his people were overcome right there and became debased. [119] And the magicians fell down in prostration [to Allah]. [120] They said, "We have believed in the Lord of the worlds, [121] The Lord of Moses and Aaron." [122]</div>
+                    <div class="reference">Surah Al-A'raf (7:117-122)</div>
+                </div>
+                
+                <div class="verse">
+                    <div class="arabic">فَلَمَّا أَلْقَوْا قَالَ مُوسَىٰ مَا جِئْتُم بِهِ السِّحْرُ ۖ إِنَّ اللَّهَ سَيُبْطِلُهُ ۖ إِنَّ اللَّهَ لَا يُصْلِحُ عَمَلَ الْمُفْسِدِينَ ﴿٨١﴾ وَيُحِقُّ اللَّهُ الْحَقَّ بِكَلِمَاتِهِ وَلَوْ كَرِهَ الْمُجْرِمُونَ ﴿٨٢﴾</div>
+                    <div class="translation">So when they had thrown, Moses said, "What you have brought is magic. Indeed, Allah will expose its worthlessness. Indeed, Allah does not amend the work of corrupters. [81] And Allah will establish the truth by His words, even if the criminals dislike it." [82]</div>
+                    <div class="reference">Surah Yunus (10:81-82)</div>
+                </div>
+                
+                <div class="verse">
+                    <div class="arabic">وَأَلْقِ مَا فِي يَمِينِكَ تَلْقَفْ مَا صَنَعُوا ۖ إِنَّمَا صَنَعُوا كَيْدُ سَاحِرٍ ۖ وَلَا يُفْلِحُ السَّاحِرُ حَيْثُ أَتَىٰ ﴿٦٩﴾</div>
+                    <div class="translation">And throw what is in your right hand; it will swallow up what they have crafted. What they have crafted is but the trick of a magician, and the magician will not succeed wherever he is. [69]</div>
+                    <div class="reference">Surah Taha (20:69)</div>
+                </div>
+                
+                <div class="verse">
+                    <div class="arabic">وَنُنَزِّلُ مِنَ الْقُرْآنِ مَا هُوَ شِفَاءٌ وَرَحْمَةٌ لِّلْمُؤْمِنِينَ ۙ وَلَا يَزِيدُ الظَّالِمِينَ إِلَّا خَسَارًا</div>
+                    <div class="translation">And We send down of the Qur'an that which is healing and mercy for the believers, but it does not increase the wrongdoers except in loss.</div>
+                    <div class="reference">Surah Al-Isra (17:82)</div>
+                </div>
+                
+                <div class="verse">
+                    <div class="arabic">أَفَحَسِبْتُمْ أَنَّمَا خَلَقْنَاكُمْ عَبَثًا وَأَنَّكُمْ إِلَيْنَا لَا تُرْجَعُونَ ﴿١١٥﴾ فَتَعَالَى اللَّهُ الْمَلِكُ الْحَقُّ ۖ لَا إِلَٰهَ إِلَّا هُوَ رَبُّ الْعَرْشِ الْكَرِيمِ ﴿١١٦﴾ وَمَن يَدْعُ مَعَ اللَّهِ إِلَٰهًا آخَرَ لَا بُرْهَانَ لَهُ بِهِ فَإِنَّمَا حِسَابُهُ عِندَ رَبِّهِ ۚ إِنَّهُ لَا يُفْلِحُ الْكَافِرُونَ ﴿١١٧﴾ وَقُل رَّبِّ اغْفِرْ وَارْحَمْ وَأَنتَ خَيْرُ الرَّاحِمِينَ ﴿١١٨﴾</div>
+                    <div class="translation">Then did you think that We created you uselessly and that to Us you would not be returned? [115] So exalted is Allah, the Sovereign, the Truth; there is no deity except Him, Lord of the Noble Throne. [116] And whoever invokes besides Allah another deity for which he has no proof - then his account is only with his Lord. Indeed, the disbelievers will not succeed. [117] And say, "My Lord, forgive and have mercy, and You are the best of the merciful." [118]</div>
+                    <div class="reference">Surah Al-Mu'minun (23:115-118)</div>
+                </div>
+                
+                <div class="verse">
+                    <div class="arabic">وَالصَّافَّاتِ صَفًّا ﴿١﴾ فَالزَّاجِرَاتِ زَجْرًا ﴿٢﴾ فَالتَّالِيَاتِ ذِكْرًا ﴿٣﴾ إِنَّ إِلَٰهَكُمْ لَوَاحِدٌ ﴿四﴾ رَبُّ السَّمَاوَاتِ وَالْأَرْضِ وَمَا بَيْنَهُمَا وَرَبُّ الْمَشَارِقِ ﴿۵﴾ إِنَّا زَيَّنَّا السَّمَاءَ الدُّنْيَا بِزِينَةٍ الْكَوَاكِبِ ﴿٦﴾ وَحِفْظًا مِّن كُلِّ شَيْطَانٍ مَّارِدٍ ﴿٧﴾ لَّا يَسَّمَّعُونَ إِلَى الْمَلَإِ الْأَعْلَىٰ وَيُقْذَفُونَ مِن كُلِّ جَانِبٍ ﴿٨﴾ دُحُورًا ۖ وَلَهُمْ عَذَابٌ وَاصِبٌ ﴿٩﴾ إِلَّا مَنْ خَطِفَ الْخَطْفَةَ فَأَتْبَعَهُ شِهَابٌ ثَاقِبٌ ﴿١٠﴾</div>
+                    <div class="translation">By those lined up in ranks [1] And those who drive away with reproof [2] And those who recite the message, [3] Indeed, your God is One, [4] Lord of the heavens and the earth and that between them and Lord of the sunrises. [5] Indeed, We have adorned the nearest heaven with an adornment of stars [6] And as protection against every rebellious devil [7] So they may not listen to the exalted assembly but are pelted from every side, [8] Repelled; and for them is a constant punishment, [9] Except one who snatches a fragment, but he is pursued by a piercing flame. [10]</div>
+                    <div class="reference">Surah As-Saffat (37:1-10)</div>
+                </div>
+                
+                <div class="verse">
+                    <div class="arabic">لَوْ أَنزَلْنَا هَٰذَا الْقُرْآنَ عَلَىٰ جَبَلٍ لَّرَأَيْتَهُ خَاشِعًا مُّتَصَدِّعًا مِّنْ خَشْيَةِ اللَّهِ ۚ وَتِلْكَ الْأَمْثَالُ نَضْرِبُهَا لِلنَّاسِ لَعَلَّهُمْ يَتَفَكَّرُونَ ﴿٢١﴾ هُوَ اللَّهُ الَّذِي لَا إِلَٰهَ إِلَّا هُوَ ۖ عَالِمُ الْغَيْبِ وَالشَّهَادَةِ ۖ هُوَ الرَّحْمَٰنُ الرَّحِيمُ ﴿٢٢﴾ هُوَ اللَّهُ الَّذِي لَا إِلَٰهَ إِلَّا هُوَ الْمَلِكُ الْقُدُّوسُ السَّلَامُ الْمُؤْمِنُ الْمُهَيْمِنُ الْعَزِيزُ الْجَبَّارُ الْمُتَكَبِّرُ ۚ سُبْحَانَ اللَّهِ عَمَّا يُشْرِكُونَ ﴿٢٣﴾ هُوَ اللَّهُ الْخَالِقُ الْبَارِئُ الْمُصَوِّرُ ۖ لَهُ الْأَسْمَاءُ الْحُسْنَىٰ ۚ يُسَبِّحُ لَهُ مَا فِي السَّمَاوَاتِ وَالْأَرْضِ ۖ وَهُوَ الْعَزِيزُ الْحَكِيمُ ﴿٢四﴾</div>
+                    <div class="translation">If We had sent down this Qur'an upon a mountain, you would have seen it humbled and coming apart from fear of Allah. And these examples We present to the people that perhaps they will give thought. [21] He is Allah, other than whom there is no deity, Knower of the unseen and the witnessed. He is the Entirely Merciful, the Especially Merciful. [22] He is Allah, other than whom there is no deity, the Sovereign, the Pure, the Perfection, the Bestower of Faith, the Overseer, the Exalted in Might, the Compeller, the Superior. Exalted is Allah above whatever they associate with Him. [23] He is Allah, the Creator, the Inventor, the Fashioner; to Him belong the best names. Whatever is in the heavens and earth is exalting Him. And He is the Exalted in Might, the Wise. [24]</div>
+                    <div class="reference">Surah Al-Hashr (59:21-24)</div>
+                </div>
+                
+                <div class="verse">
+                    <div class="arabic">قُلْ أُوحِيَ إِلَيَّ أَنَّهُ اسْتَمَعَ نَفَرٌ مِّنَ الْجِنِّ فَقَالُوا إِنَّا سَمِعْنَا قُرْآنًا عَجَبًا ﴿١﴾ يَهْدِي إِلَى الرُّشْدِ فَآمَنَّا بِهِ ۖ وَلَن نُّشْرِكَ بِرَبِّنَا أَحَدًا ﴿٢﴾ وَأَنَّهُ تَعَالَىٰ جَدُّ رَبِّنَا مَا اتَّخَذَ صَاحِبَةً وَلَا وَلَدًا ﴿٣﴾ وَأَنَّهُ كَانَ يَقُولُ سَفِيهُنَا عَلَى اللَّهِ شَطَطًا ﴿四﴾ وَأَنَّا ظَنَنَّا أَن لَّن تَقُولَ الْإِنْسُ وَالْجِنُّ عَلَى اللَّهِ كَذِبًا ﴿۵﴾ وَأَنَّهُ كَانَ رِجَالٌ مِّنَ الْإِنْسِ يَعُوذُونَ بِرِجَالٍ مِّنَ الْجِنِّ فَزَادُوهُمْ رَهَقًا ﴿٦﴾ وَأَنَّهُمْ ظَنُّوا كَمَا ظَنَنتُمْ أَن لَّن يَبْعَثَ اللَّهُ أَحَدًا ﴿٧﴾ وَأَنَّا لَمَسْنَا السَّمَاءَ فَوَجَدْنَاهَا مُلِئَتْ حَرَسًا شَدِيدًا وَشُهُبًا ﴿٨﴾ وَأَنَّا كُنَّا نَقْعُدُ مِنْهَا مَقَاعِدَ لِلسَّمْعِ ۖ فَمَن يَسْتَمِعِ الْآنَ يَجِدْ لَهُ شِهَابًا رَّصَدًا ﴿٩﴾</div>
+                    <div class="translation">Say, It has been revealed to me that a group of jinn listened and said, 'Indeed, we have heard an amazing Qur'an. [1] It guides to the right course, and we have believed in it. And we will never associate with our Lord anyone. [2] And that exalted is the nobleness of our Lord; He has not taken a wife or a son. [3] And that our foolish one has been saying about Allah an excessive transgression. [4] And we had thought that mankind and the jinn would never speak about Allah a lie. [5] And there were men from mankind who sought refuge in men from the jinn, so they increased them in burden. [6] And they had thought, as you thought, that Allah would never send anyone. [7] And we have sought to reach the heaven but found it filled with powerful guards and burning flames. [8] And we used to sit therein in positions for hearing, but whoever listens now will find a burning flame lying in wait for him. [9]</div>
+                    <div class="reference">Surah Al-Jinn (72:1-9)</div>
+                </div>
+                
+                <div class="verse">
+                    <div class="arabic">قُلْ هُوَ اللَّهُ أَحَدٌ ﴿١﴾ اللَّهُ الصَّمَدُ ﴿٢﴾ لَمْ يَلِدْ وَلَمْ يُولَدْ ﴿٣﴾ وَلَمْ يَكُن لَّهُ كُفُوًا أَحَدٌ ﴿四﴾</div>
+                    <div class="translation">Say, "He is Allah, [who is] One, [1] Allah, the Eternal Refuge. [2] He neither begets nor is born, [3] Nor is there to Him any equivalent." [4]</div>
+                    <div class="reference">Surah Al-Ikhlas (112) - (Recite 3 times)</div>
+                </div>
+                
+                <div class="verse">
+                    <div class="arabic">قُلْ أَعُوذُ بِرَبِّ الْفَلَقِ ﴿١﴾ مِن شَرِّ مَا خَلَقَ ﴿٢﴾ وَمِن شَرِّ غَاسِقٍ إِذَا وَقَبَ ﴿٣﴾ وَمِن شَرِّ النَّفَّاثَاتِ فِي الْعُقَدِ ﴿四﴾ وَمِن شَرِّ حَاسِدٍ إِذَا حَسَدَ ﴿۵﴾</div>
+                    <div class="translation">Say, "I seek refuge in the Lord of daybreak [1] From the evil of that which He created [2] And from the evil of darkness when it settles [3] And from the evil of the blowers in knots [4] And from the evil of an envier when he envies." [5]</div>
+                    <div class="reference">Surah Al-Falaq (113) - (Recite 3 times)</div>
+                </div>
+                
+                <div class="verse">
+                    <div class="arabic">قُلْ أَعُوذُ بِرَبِّ النَّاسِ ﴿١﴾ مَلِكِ النَّاسِ ﴿٢﴾ إِلَٰهِ النَّاسِ ﴿٣﴾ مِن شَرِّ الْوَسْوَاسِ الْخَنَّاسِ ﴿四﴾ الَّذِي يُوَسْوِسُ فِي صُدُورِ النَّاسِ ﴿۵﴾ مِنَ الْجِنَّةِ وَالنَّاسِ ﴿٦﴾</div>
+                    <div class="translation">Say, "I seek refuge in the Lord of mankind, [1] The Sovereign of mankind, [2] The God of mankind, [3] From the evil of the retreating whisperer - [4] Who whispers [evil] into the breasts of mankind - [5] From among the jinn and mankind." [6]</div>
+                    <div class="reference">Surah An-Nas (114) - (Recite 3 times)</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h2 class="card-title">Targeted Ruqya Verses</h2>
+            <p>Select a category to view specific verses for different purposes:</p>
+            
+            <button class="btn" onclick="openModal('sihr')">For Sihr (Magic)</button>
+            <button class="btn" onclick="openModal('healing')">For Healing</button>
+            <button class="btn" onclick="openModal('protection')">For Protection</button>
+        </div>
+        
+        <div class="card">
+            <h2 class="card-title">Closing Adhkar & Supplications</h2>
+            
+            <div class="verse">
+                <div class="arabic">سُبْحَانَ رَبِّكَ رَبِّ الْعِزَّةِ عَمَّا يَصِفُونَ ﴿١٨٠﴾ وَسَلَامٌ عَلَى الْمُرْسَلِينَ ﴿١٨١﴾ وَالْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ ﴿١٨٢﴾</div>
+                <div class="translation">Exalted is your Lord, the Lord of might, above what they describe. [180] And peace upon the messengers. [181] And praise to Allah, Lord of the worlds. [182]</div>
+                <div class="reference">Surah As-Saffat (37:180-182)</div>
+            </div>
+            
+            <div class="verse">
+                <div class="arabic">حَسْبُنَا اللَّهُ وَنِعْمَ الْوَكِيلُ</div>
+                <div class="translation">Sufficient for us is Allah, and [He is] the best Disposer of affairs</div>
+                <div class="reference">Surah Al-Imran (3:173)</div>
+            </div>
+            
+            <div class="verse">
+                <div style="font-size: 0.7em; margin-bottom: 5px;">
+                    (2nd person male): <br>
+                    (2nd person female): <br>
+                    (1st person):
+                </div>
+                <div class="arabic">
+                    أَسْأَلُ اللَّهَ الْعَظِيمَ رَبَّ الْعَرْشِ الْعَظِيمِ أَنْ يَشْفِيَكَ<br>
+                    أَسْأَلُ اللَّهَ الْعَظِيمَ رَبَّ الْعَرْشِ الْعَظِيمِ أَنْ يَشْفِيَكِ<br>
+                    أَسْأَلُ اللَّهَ الْعَظِيمَ رَبَّ الْعَرْشِ الْعَظِيمِ أَنْ يَشْفِيَنِي
+                </div>
+                <div class="translation">I ask Allah the Almighty, Lord of the Mighty Throne, to heal [you/me]</div>
+                <div class="reference">For healing (Seven times – from Sunan Abī Dāwūd, Tirmidhī)<br>
+                <em>Use the appropriate version based on who you are making du'ā for: masculine form for males, feminine form for females, or the first-person form when making du'ā for yourself.</em></div>
+            </div>
+            
+            <div class="verse">
+                <div class="arabic">اللَّهُمَّ رَبَّ النَّاسِ، أَذْهِبِ الْبَأْسَ، اشْفِ أَنْتَ الشَّافِي، لَا شِفَاءَ إِلَّا شِفَاؤُكَ، شِفَاءً لَا يُغَادِرُ سَقَمًا</div>
+                <div class="translation">O Allah, Lord of mankind, remove the hardship and heal, for You are the Healer. There is no healing except Your healing, a healing that leaves no illness</div>
+                <div class="reference">Comprehensive protection (Ṣaḥīḥ al-Bukhārī, Ṣaḥīḥ Muslim)</div>
+            </div>
+            
+            <div class="verse">
+                <div class="arabic">أَعُوذُ بِكَلِمَاتِ اللَّهِ التَّامَّاتِ مِنْ شَرِّ مَا خَلَقَ</div>
+                <div class="translation">I seek refuge in the perfect words of Allah from the evil of what He has created</div>
+                <div class="reference">Against siḥr and evil (Ṣaḥīḥ Muslim)</div>
+            </div>
+            
+            <div class="verse">
+                <div class="arabic">بِسْمِ اللَّهِ الَّذِي لَا يَضُرُّ مَعَ اسْمِهِ شَيْءٌ فِي الْأَرْضِ وَلَا فِي السَّمَاءِ وَهُوَ السَّمِيعُ الْعَلِيمُ</div>
+                <div class="translation">In the name of Allah with whose name nothing is harmed on earth nor in the heavens, and He is the Hearing, the Knowing</div>
+                <div class="reference">General du'ā (Three times – Sunan Abī Dāwūd, Tirmidhī, Ibn Mājah)</div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal for Targeted Verses -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div id="modal-content"></div>
+        </div>
+    </div>
+    
+    <footer>
+        <p>Note: This application is for educational purposes. Ruqya should be performed with pure intention, sincerity, and belief that healing comes only from Allah.</p>
+        <p>© 2023 Islamic Ruqya Verses</p>
+    </footer>
+
+    <script>
+        function toggleTheme() {
+            const body = document.body;
+            const themeIcon = document.getElementById('theme-icon');
+            
+            if (body.getAttribute('data-theme') === 'dark') {
+                body.removeAttribute('data-theme');
+                themeIcon.className = 'fas fa-sun';
+                localStorage.setItem('theme', 'light');
+            } else {
+                body.setAttribute('data-theme', 'dark');
+                themeIcon.className = 'fas fa-moon';
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        // Load saved theme on page load and default to dark mode
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedTheme = localStorage.getItem('theme');
+            const themeIcon = document.getElementById('theme-icon');
+            
+            // Default to dark mode if no saved preference
+            if (savedTheme === 'light') {
+                document.body.removeAttribute('data-theme');
+                themeIcon.className = 'fas fa-sun';
+            } else {
+                document.body.setAttribute('data-theme', 'dark');
+                themeIcon.className = 'fas fa-moon';
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+
+        // Modal functionality
+        const modal = document.getElementById('modal');
+        
+        function openModal(type) {
+            let content = '';
+            
+            if (type === 'sihr') {
+                content = `
+                    <h2 class="card-title">Verses for Sihr (Magic)</h2>
+                    <div class="verse">
+                        <div class="arabic">وَاتَّبَعُوا مَا تَتْلُو الشَّيَاطِينُ عَلَىٰ مُلْكِ سُلَيْمَانَ ۖ وَمَا كَفَرَ سُلَيْمَانُ وَلَٰكِنَّ الشَّيَاطِينَ كَفَرُوا يُعَلِّمُونَ النَّاسَ السِّحْرَ وَمَا أُنزِلَ عَلَى الْمَلَكَيْنِ بِبَابِلَ هَارُوتَ وَمَارُوتَ ۚ وَمَا يُعَلِّمَانِ مِنْ أَحَدٍ حَتَّىٰ يَقُولَا إِنَّمَا نَحْنُ فِتْنَةٌ فَلَا تَكْفُرْ ۖ فَيَتَعَلَّمُونَ مِنْهُمَا مَا يُفَرِّقُونَ بِهِ بَيْنَ الْمَرْءِ وَزَوْجِهِ ۚ وَمَا هُم بِضَارِّينَ بِهِ مِنْ أَحَدٍ إِلَّا بِإِذْنِ اللَّهِ ۚ وَيَتَعَلَّمُونَ مā يَضُرُّهُمْ وَلَا يَنفَعُهُمْ ۚ وَلَقَدْ عَلِمُوا لَمَنِ اشْتَرَاهُ مَا لَهُ فِي الْآخِرَةِ مِنْ خَلَاقٍ ۚ وَلَبِئْسَ مَا شَرَوْا بِهِ أَنفُسَهُمْ ۚ لَوْ كَانُوا يَعْلَمُونَ</div>
+                        <div class="translation">They ˹instead˺ followed the magic promoted by the devils during the reign of Solomon. Never did Solomon disbelieve, rather the devils disbelieved. They taught magic to the people, along with what had been revealed to the two angels, Hârût and Mârût, in Babylon. The two angels never taught anyone without saying, "We are only a test ˹for you˺, so do not abandon ˹your˺ faith." Yet people learned ˹magic˺ that caused a rift between husband and wife; although their magic could not harm anyone except by Allah's Will. They learned what harmed them and did not benefit them—although they already knew that whoever buys into magic would have no share in the Hereafter. Terrible indeed was the price for which they sold their souls, if only they knew!</div>
+                        <div class="reference">Surah Al-Baqarah (2:102)</div>
+                    </div>
+                    <div class="verse">
+                        <div class="arabic">وَأَوْحَيْنَا إِلَىٰ مُوسَىٰ أَنْ أَلْقِ عَصَاكَ ۖ فَإِذَا هِيَ تَلْقَفُ مَا يَأْفِكُونَ ﴿١١٧﴾ فَوَقَعَ الْحَقُّ وَبَطَلَ مَا كَانُوا يَعْمَلُونَ ﴿١١٨﴾ فَغُلِبُوا هُنَالِكَ وَانقَلَبُوا صَاغِرِينَ ﴿١١٩﴾ وَأُلْقِيَ السَّحَرَةُ سَاجِدِينَ ﴿١٢٠﴾ قَالُوا آمَنَّا بِرَبِّ الْعَالَمِينَ ﴿١٢١﴾ رَبِّ مُوسَىٰ وَهَارُونَ ﴿١٢٢﴾</div>
+                        <div class="translation">And We inspired to Moses, "Throw your staff," and at once it devoured what they were falsifying. [117] So the truth was established, and abolished was what they were doing. [118] And they were overcome there and became debased. [119] And the magicians fell down in prostration. [120] They said, "We have believed in the Lord of the worlds, [121] The Lord of Moses and Aaron." [122]</div>
+                        <div class="reference">Surah Al-A'raf (7:117-122)</div>
+                    </div>
+                `;
+            } else if (type === 'healing') {
+                content = `
+                    <h2 class="card-title">Verses for Healing</h2>
+                    <div class="verse">
+                        <div class="arabic">يَا أَيُّهَا النَّاسُ قَدْ جَاءَتْكُم مَّوْعِظَةٌ مِّن رَّبِّكُمْ وَشِفَاءٌ لِّمَا فِي الصُّدُورِ وَهُدًى وَرَحْمَةٌ لِّلْمُؤْمِنِينَ</div>
+                        <div class="translation">O humanity! Indeed, there has come to you a warning from your Lord, a cure for what is in the hearts, a guide, and a mercy for the believers.</div>
+                        <div class="reference">Surah Yunus (10:57)</div>
+                    </div>
+                    <div class="verse">
+                        <div class="arabic">وَنُنَزِّلُ مِنَ الْقُرْآنِ مَا هُوَ شِفَاءٌ وَرَحْمَةٌ لِّلْمُؤْمِنِينَ ۙ وَلَا يَزِيدُ الظَّالِمِينَ إِلَّا خَسَارًا</div>
+                        <div class="translation">We send down the Quran as a healing and mercy for the believers, but it only increases the wrongdoers in loss.</div>
+                        <div class="reference">Surah Al-Isra (17:82)</div>
+                    </div>
+                    <div class="verse">
+                        <div class="arabic">وَإِذَا مَرِضْتُ فَهُوَ يَشْفِينِ</div>
+                        <div class="translation">And when I am ill, it is He who cures me.</div>
+                        <div class="reference">Surah Ash-Shu'ara (26:80)</div>
+                    </div>
+                `;
+            } else if (type === 'protection') {
+                content = `
+                    <h2 class="card-title">Verses for Protection</h2>
+                    <div class="verse">
+                        <div class="arabic">إِنَّ الَّذِينَ قَالُوا رَبُّنَا اللَّهُ ثُمَّ اسْتَقَامُوا تَتَنَزَّلُ عَلَيْهِمُ الْمَلَائِكَةُ أَلَّا تَخَافُوا وَلَا تَحْزَنُوا وَأَبْشِرُوا بِالْجَنَّةِ الَّتِي كُنتُمْ تُوعَدُونَ ﴿٣٠﴾ نَحْنُ أَوْلِيَاؤُكُمْ فِي الْحَيَاةِ الدُّنْيَا وَفِي الْآخِرَةِ ۖ وَلَكُمْ فِيهَا مَا تَشْتَهِي أَنفُسُكُمْ وَلَكُمْ فِيهَا مَا تَدَّعُونَ ﴿٣١﴾ نُزُلًا مِّنْ غَفُورٍ رَّحِيمٍ ﴿٣٢﴾</div>
+                        <div class="translation">Indeed, those who have said, "Our Lord is Allah" and then remained on a right course - the angels will descend upon them, saying, "Do not fear and do not grieve, but receive good tidings of Paradise, which you were promised. [30] We are your allies in the life of this world and in the Hereafter. And you will have therein whatever your souls desire, and you will have therein whatever you request [31] As accommodation from a Lord who is Forgiving and Merciful." [32]</div>
+                        <div class="reference">Surah Fussilat (41:30-32)</div>
+                    </div>
+                    <div class="verse">
+                        <div class="arabic">يَا مَعْشَرَ الْجِنِّ وَالْإِنسِ إِنِ اسْتَطَعْتُمْ أَن تَنفُذُوا مِنْ أَقْطَارِ السَّمَاوَاتِ وَالْأَرْضِ فَانفُذُوا ۚ لَا تَنفُذُونَ إِلَّا بِسُلْطَانٍ ﴿٣٣﴾ فَبِأَيِّ آلَاءِ رَبِّكُمَا تُكَذِّبَانِ ﴿٣四﴾ يُرْسَلُ عَلَيْكُمَا شُوَاظٌ مِّن نَّارٍ وَنُحَاسٌ فَلَا تَنتَصِرَانِ ﴿٣۵﴾ فَبِأَيِّ آلَاءِ رَبِّكُمَا تُكَذِّبَانِ ﴿٣٦﴾</div>
+                        <div class="translation">O company of jinn and mankind, if you are able to pass beyond the regions of the heavens and the earth, then pass. You will not pass except by authority. [33] So which of the favors of your Lord would you deny? [34] There will be sent upon you a flame of fire and smoke, and you will not defend yourselves. [35] So which of the favors of your Lord would you deny? [36]</div>
+                        <div class="reference">Surah Ar-Rahman (55:33-36)</div>
+                    </div>
+                `;
+            }
+            
+            document.getElementById('modal-content').innerHTML = content;
+            modal.style.display = 'block';
+        }
+        
+        function closeModal() {
+            modal.style.display = 'none';
+        }
+        
+        function toggleSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section.style.display === 'none') {
+                section.style.display = 'block';
+            } else {
+                section.style.display = 'none';
+            }
+        }
+        
+        // Close modal when clicking outside the content
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+    </script>
+</body>
+</html>
