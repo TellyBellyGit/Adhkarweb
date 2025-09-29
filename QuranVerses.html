@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quran Verses - Islamic Supplications</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Scheherazade+New:wght@400;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #4a8c4c;
+            --secondary-color: #1a1a1a;
+            --text-color: #f0f0f0;
+            --bg-color: #2d2d2d;
+            --card-bg: #3a3a3a;
+            --border-radius: 10px;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            --transition: all 0.3s ease;
+        }
+
+        .light-mode {
+            --primary-color: #2c5e2e;
+            --secondary-color: #f8f5e6;
+            --text-color: #333;
+            --bg-color: #fff;
+            --card-bg: #f9f9f9;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            transition: var(--transition);
+            padding-bottom: 2rem;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), #5da360);
+            color: white;
+            padding: 1.5rem 1rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            margin-bottom: 2rem;
+        }
+
+        .header-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            opacity: 0.1;
+            background-image: 
+                radial-gradient(circle at 20% 30%, #d4af37 2px, transparent 2px),
+                radial-gradient(circle at 80% 70%, #d4af37 2px, transparent 2px);
+            background-size: 30px 30px;
+            pointer-events: none;
+        }
+
+        header h1 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            position: relative;
+        }
+
+        header p {
+            opacity: 0.9;
+            font-size: 0.95rem;
+            max-width: 500px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .main-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .toggle-controls {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .btn {
+            padding: 0.8rem 1.2rem;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: bold;
+        }
+
+        .btn:hover {
+            background-color: #3a6e3c;
+            transform: translateY(-2px);
+        }
+
+        .btn.active {
+            background-color: #d4af37;
+        }
+
+        .icon-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: var(--border-radius);
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            font-size: 1.2rem;
+        }
+
+        .icon-btn:hover {
+            background-color: #3a6e3c;
+            transform: translateY(-2px);
+        }
+
+        .icon-btn.active {
+            background-color: #d4af37;
+        }
+
+        .dhikr-card {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .dhikr-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-number {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            font-size: 0.6rem;
+            font-weight: bold;
+            opacity: 0.5;
+            color: var(--text-color);
+            z-index: 1;
+        }
+
+        .arabic {
+            font-family: 'Scheherazade New', serif;
+            font-size: 2rem;
+            text-align: right;
+            margin-bottom: 1rem;
+            line-height: 1.8;
+            color: var(--text-color);
+            direction: rtl;
+        }
+
+        .transliteration {
+            font-style: italic;
+            margin-bottom: 1rem;
+            color: #888;
+            font-size: 1.1rem;
+        }
+
+        .translation {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .source {
+            font-size: 0.9rem;
+            color: #888;
+            margin-bottom: 1.5rem;
+        }
+
+        .counter-container {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .counter-button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.2rem;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: bold;
+        }
+
+        .counter-button:hover {
+            background-color: #3a6e3c;
+            transform: translateY(-2px);
+        }
+
+        .counter-display {
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 0.2rem 0.5rem;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            min-width: 30px;
+            text-align: center;
+        }
+
+        .reset-button {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 0.8rem;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .reset-button:hover {
+            background-color: #c82333;
+            transform: translateY(-2px);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+            border-top: 1px solid #444;
+            color: #888;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .arabic {
+                font-size: 1.5rem;
+            }
+
+            .dhikr-card {
+                padding: 1.5rem;
+            }
+
+            .main-controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .toggle-controls {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body class="dark-mode">
+    <header>
+        <div class="header-pattern"></div>
+        <div class="container">
+            <h1>Quran Verses</h1>
+            <p>Selected verses from the Holy Quran</p>
+            <div style="margin-top: 1rem;">
+                <a href="index.html" class="btn" style="background-color: rgba(255,255,255,0.2); padding: 0.5rem 1rem; border-radius: 5px; text-decoration: none; color: white; display: inline-block;"><i class="fas fa-home"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="main-controls">
+            <div class="toggle-controls">
+                <button class="icon-btn" id="toggleTransliteration" title="Toggle Transliteration">
+                    <i class="fas fa-language"></i>
+                </button>
+                <button class="icon-btn" id="toggleTranslation" title="Toggle Translation">
+                    <i class="fas fa-book"></i>
+                </button>
+                <button class="icon-btn" id="modeToggle" title="Toggle Dark/Light Mode">
+                    <i class="fas fa-sun"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="dhikr-container">
+            <!-- Verse 1 -->
+            <div class="dhikr-card">
+                <div class="card-number">1</div>
+                <div class="arabic">لَا تَحْزَنْ إِنَّ ٱللَّهَ مَعَنَا ۖ فَأَنزَلَ ٱللَّهُ سَكِينَتَهُۥ عَلَيْهِ وَأَيَّدَهُۥ بِجُنُودٍۢ لَّمْ تَرَوْهَا وَجَعَلَ كَلِمَةَ ٱلَّذِينَ كَفَرُوا۟ ٱلسُّفْلَىٰ ۗ وَكَلِمَةُ ٱللَّهِ هِىَ ٱلْعُلْيَا ۗ وَٱللَّهُ عَزِيزٌ حَكِيمٌ ٤٠</div>
+                <div class="transliteration">Laa tahzan inna Allaaha ma'anaa fa-anzala Allaahu sakeenatahu 'alayhi wa ayyadahu bi-junoodin lam tarawhaa wa ja'ala kalimata alladheena kafaroo as-suflaa wa kalimatu Allaahi hiya al-'ulyaa wa Allaahu 'azeezun hakeem</div>
+                <div class="translation">"[He said] to his companion, 'Do not grieve; indeed Allah is with us.' And Allah sent down his tranquillity upon him and supported him with angels you did not see and made the word of those who disbelieved the lowest, while the word of Allah - that is the highest. And Allah is Exalted in Might and Wise."</div>
+                <div class="source"><strong>Source:</strong> Surah At-Tawbah (9:40)</div>
+            </div>
+
+            <!-- Verse 2 -->
+            <div class="dhikr-card">
+                <div class="card-number">2</div>
+                <div class="arabic">وَمَا تَكُونُ فِي شَأْنٍ وَمَا تَتْلُو مِنْهُ مِنْ قُرْآنٍ وَلَا تَعْمَلُونَ مِنْ عَمَلٍ إِلَّا كُنَّا عَلَيْكُمْ شُهُودًا إِذْ تُفِيضُونَ فِيهِ ۚ وَمَا يَعْزُبُ عَنْ رَبِّكَ مِنْ مِثْقَالِ ذَرَّةٍ فِي الْأَرْضِ وَلَا فِي السَّمَاءِ وَلَا أَصْغَرَ مِنْ ذَٰلِكَ وَلَا أَكْبَرَ إِلَّا فِي كِتَابٍ مُبِينٍ</div>
+                <div class="transliteration">Wa maa takoonu fee sha'ninw wa maa tatloo minhu min qur'aaninw wa laa ta'maloona min 'amalin illaa kunnaa 'alaikum shuhoodan iz tufeedoona feeh; wa maa ya'zubu 'ar Rabbika min misqaali zarratin fil ardi wa laa fis samaaa'i wa laaa asghara min zaalika wa laaa akbara illaa fee Kitaabin Mubeen</div>
+                <div class="translation">"There is no activity you may be engaged in ˹O Prophet˺ or portion of the Quran you may be reciting, nor any deed you ˹all˺ may be doing except that We are a Witness over you while doing it. Not ˹even˺ an atom's weight is hidden from your Lord on earth or in heaven; nor anything smaller or larger than that, but is ˹written˺ in a perfect Record."</div>
+                <div class="source"><strong>Source:</strong> Surah Yunus (10:61)</div>
+            </div>
+
+            <!-- Verse 3 -->
+            <div class="dhikr-card">
+                <div class="card-number">3</div>
+                <div class="arabic">وَالَّذِي أَطْمَعُ أَنْ يَغْفِرَ لِي خَطِيئَتِي يَوْمَ الدِّينِ</div>
+                <div class="transliteration">Wal-ladhi atma'u an yaghfira li khati'ati yawma ad-deen</div>
+                <div class="translation">"And He who I hope will forgive me my sin on the Day of Recompense."</div>
+                <div class="source"><strong>Source:</strong> Surah Ash-Shu'ara (26:82)</div>
+            </div>
+
+            <!-- Verse 4 -->
+            <div class="dhikr-card">
+                <div class="card-number">4</div>
+                <div class="arabic">رَبِّ هَبْ لِي حُكْمًا وَأَلْحِقْنِي بِالصَّالِحِينَ</div>
+                <div class="transliteration">Rabbi hab li hukman walhiqni bis-saliheen</div>
+                <div class="translation">"My Lord, grant me judgment and join me with the righteous."</div>
+                <div class="source"><strong>Source:</strong> Surah Ash-Shu'ara (26:83)</div>
+            </div>
+
+            <!-- Verse 5 -->
+            <div class="dhikr-card">
+                <div class="card-number">5</div>
+                <div class="arabic">وَجَعَلْ لِي لِسَانَ صِدْقٍ فِي الْآخِرِينَ</div>
+                <div class="transliteration">Wajil li lisanan sidqin fil-akhireen</div>
+                <div class="translation">"And grant me a reputation of honor among the later generations."</div>
+                <div class="source"><strong>Source:</strong> Surah Ash-Shu'ara (26:84)</div>
+            </div>
+
+            <!-- Verse 6 -->
+            <div class="dhikr-card">
+                <div class="card-number">6</div>
+                <div class="arabic">وَجَعَلْنِي مِنْ وَرَثَةِ جَنَّةِ النَّعِيمِ</div>
+                <div class="transliteration">Wajil ni min warathati jannati an-na'eem</div>
+                <div class="translation">"And place me among the inheritors of the Garden of Delight."</div>
+                <div class="source"><strong>Source:</strong> Surah Ash-Shu'ara (26:85)</div>
+            </div>
+
+            <!-- Verse 7 -->
+            <div class="dhikr-card">
+                <div class="card-number">7</div>
+                <div class="arabic">وَلَا تُخْزِنِي يَوْمَ يُبْعَثُونَ</div>
+                <div class="transliteration">Wala tukhzeenee yawma yub'athoon</div>
+                <div class="translation">"And do not disgrace me on the Day they are resurrected."</div>
+                <div class="source"><strong>Source:</strong> Surah Ash-Shu'ara (26:87)</div>
+            </div>
+
+            <!-- Verse 8 -->
+            <div class="dhikr-card">
+                <div class="card-number">8</div>
+                <div class="arabic">يَوْمَ لَا يَنفَعُ مَالٌ وَلَا بَنُونَ</div>
+                <div class="transliteration">Yawma la yanfa'u malun wala banoon</div>
+                <div class="translation">"The Day when there will be no benefit in wealth or children."</div>
+                <div class="source"><strong>Source:</strong> Surah Ash-Shu'ara (26:88)</div>
+            </div>
+
+            <!-- Verse 9 -->
+            <div class="dhikr-card">
+                <div class="card-number">9</div>
+                <div class="arabic">إِلَّا مَنْ أَتَى اللَّهَ بِقَلْبٍ سَلِيمٍ</div>
+                <div class="transliteration">Illa man atallaha biqalbin saleem</div>
+                <div class="translation">"Except one who comes to Allah with a sound heart."</div>
+                <div class="source"><strong>Source:</strong> Surah Ash-Shu'ara (26:89)</div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p> May Allah (swt) accept our du'as.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Dark/Light mode toggle
+        const modeToggle = document.getElementById('modeToggle');
+        const body = document.body;
+        const modeIcon = modeToggle.querySelector('i');
+
+        modeToggle.addEventListener('click', function() {
+            body.classList.toggle('light-mode');
+            body.classList.toggle('dark-mode');
+            
+            if (body.classList.contains('light-mode')) {
+                modeIcon.className = 'fas fa-moon';
+            } else {
+                modeIcon.className = 'fas fa-sun';
+            }
+        });
+
+        // Toggle transliteration
+        const toggleTransliteration = document.getElementById('toggleTransliteration');
+        const transliterations = document.querySelectorAll('.transliteration');
+
+        toggleTransliteration.addEventListener('click', function() {
+            this.classList.toggle('active');
+            transliterations.forEach(el => {
+                el.classList.toggle('hidden');
+            });
+        });
+
+        // Toggle translation
+        const toggleTranslation = document.getElementById('toggleTranslation');
+        const translations = document.querySelectorAll('.translation');
+
+        toggleTranslation.addEventListener('click', function() {
+            this.classList.toggle('active');
+            translations.forEach(el => {
+                el.classList.toggle('hidden');
+            });
+        });
+    </script>
+</body>
+</html>
