@@ -291,6 +291,52 @@
             background-color: #ff4c4c;
         }
 
+        /* Intro quote styles */
+        .intro-quote {
+            background-color: rgba(255, 255, 255, 0.06);
+            padding: 1rem 1.5rem;
+            border-left: 4px solid var(--primary-color);
+            border-radius: var(--border-radius);
+            margin: 1.5rem 0;
+            text-align: center;
+        }
+        .quote-arabic {
+            font-size: 1.4rem;
+            font-family: 'Scheherazade New', 'Traditional Arabic', serif;
+            text-align: center;
+            line-height: 1.8;
+            margin-bottom: 0.5rem;
+        }
+        .quote-translation {
+            font-style: italic;
+            color: var(--text-color);
+        }
+        .quote-source {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Etiquette box styles */
+        .etiquette-box {
+            background-color: rgba(255, 255, 255, 0.06);
+            padding: 1rem 1.5rem;
+            border-left: 4px solid var(--primary-color);
+            border-radius: var(--border-radius);
+            margin: 1.5rem 0;
+            text-align: center;
+        }
+        .etiquette-title {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        .etiquette-list {
+            list-style: disc;
+            list-style-position: inside;
+            padding: 0;
+            margin: 0.25rem 0 0 0;
+            text-align: center;
+        }
+
         @media (max-width: 768px) {
             .dhikr-section {
                 grid-template-columns: 1fr;
@@ -349,6 +395,22 @@
                     <i class="fas fa-sun"></i>
                 </button>
             </div>
+        </div>
+
+        <div class="etiquette-box">
+            <div class="etiquette-title">Etiquettes of du‘a</div>
+            <ul class="etiquette-list">
+                <li>Praise Allah</li>
+                <li>Send salawat upon the Prophet ﷺ</li>
+                <li>Ask with certainty and humility</li>
+                <li>Avoid haste; trust Allah’s timing</li>
+            </ul>
+        </div>
+
+        <div class="intro-quote">
+            <div class="quote-arabic">وَإِذَا سَأَلَكَ عِبَادِى عَنِّى فَإِنِّى قَرِيبٌ ۖ أُجِيبُ دَعْوَةَ ٱلدَّاعِ إِذَا دَعَانِ ۖ فَلْيَسْتَجِيبُوا۟ لِى وَلْيُؤْمِنُوا۟ بِى لَعَلَّهُمْ يَرْشُدُونَ</div>
+            <div class="quote-translation">When My servants ask thee concerning Me, I am indeed close (to them): I listen to the prayer of every supplicant when he calleth on Me: Let them also, with a will, Listen to My call, and believe in Me: That they may walk in the right way.</div>
+            <div class="quote-source">Qur'an 2:186</div>
         </div>
 
         <div class="dhikr-section">
@@ -618,6 +680,31 @@
                     </div>
                 </div>
             </div>
+        </div>
+
+        <!-- Closing reminder boxes -->
+        <div class="intro-quote">
+            <div class="quote-arabic">سُبْحَانَكَ اللَّهُمَّ وَبِحَمْدِكَ، أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا أَنْتَ، أَسْتَغْفِرُكَ وَأَتُوبُ إِلَيْكَ</div>
+            <div class="quote-translation">Glory is to You, O Allah, and praise. I bear witness that there is no deity except You; I seek Your forgiveness and turn to You in repentance.</div>
+            <div class="quote-source">Kafaratul‑Majlis</div>
+        </div>
+
+        <div class="intro-quote">
+            <div class="quote-arabic">اللَّهُمَّ صَلِّ عَلَى مُحَمَّدٍ وَعَلَى آلِ مُحَمَّدٍ كَمَا صَلَّيْتَ عَلَى إِبْرَاهِيمَ وَعَلَى آلِ إِبْرَاهِيمَ إِنَّكَ حَمِيدٌ مَجِيدٌ، اللَّهُمَّ بَارِكْ عَلَى مُحَمَّدٍ وَعَلَى آلِ مُحَمَّدٍ كَمَا بَارَكْتَ عَلَى إِبْرَاهِيمَ وَعَلَى آلِ إِبْرَاهِيمَ إِنَّكَ حَمِيدٌ مَجِيدٌ</div>
+            <div class="quote-translation">O Allah, send prayers upon Muhammad and the family of Muhammad, as You sent prayers upon Ibrahim and the family of Ibrahim; indeed You are Praiseworthy, Glorious. O Allah, bless Muhammad and the family of Muhammad as You blessed Ibrahim and the family of Ibrahim; indeed You are Praiseworthy, Glorious.</div>
+            <div class="quote-source">Ṣalāt Ibrāhīmiyyah</div>
+        </div>
+
+        <div class="intro-quote">
+            <div class="quote-arabic">رَبَّنَا لَا تُزِغْ قُلُوبَنَا بَعْدَ إِذْ هَدَيْتَنَا وَهَبْ لَنَا مِن لَّدُنكَ رَحْمَةً إِنَّكَ أَنتَ الْوَهَّابُ</div>
+            <div class="quote-translation">Our Lord, do not let our hearts deviate after You have guided us, and grant us mercy from Yourself. Indeed, You are the Bestower.</div>
+            <div class="quote-source">Qur'an 3:8</div>
+        </div>
+        
+        <div class="intro-quote">
+            <div class="quote-arabic">رَبَّنَا تَقَبَّلْ مِنَّا إِنَّكَ أَنتَ السَّمِيعُ الْعَلِيمُ<br>وَتُبْ عَلَيْنَا إِنَّكَ أَنتَ التَّوَّابُ الرَّحِيمُ</div>
+            <div class="quote-translation">"Our Lord, accept from us (our prayers, recitation of the Quran, fasting, zakāh, or any righteous action). Indeed, You are the Hearing, the Knowing. And turn to us in mercy. Indeed, You are the Accepting of repentance, the Merciful."</div>
+            <div class="quote-source">al-Baqarah 2:127–128</div>
         </div>
     </div>
 
