@@ -735,6 +735,61 @@
             });
         });
 
+        // Make counter containers clickable to fill next unclicked circle,
+        // or trigger button-style counters when present
+        document.querySelectorAll('.counter-container').forEach(container => {
+            container.addEventListener('click', function(e) {
+                // If the click originated on an interactive child, let its own handler run
+                if (e.target.closest('.circle, .counter-button, .reset-button')) {
+                    return;
+                }
+                // Prevent bubbling to outer handlers to avoid duplicate actions
+                e.stopPropagation();
+
+                const circleEls = Array.from(this.querySelectorAll('.circle'));
+                if (circleEls.length) {
+                    const nextUnfilled = circleEls.find(c => !c.classList.contains('filled'));
+                    if (nextUnfilled) {
+                        nextUnfilled.classList.add('filled');
+                    }
+                    return;
+                }
+
+                // Fallback for button-style counters: delegate to the existing button handler
+                const btnCounter = this.querySelector('.counter-button');
+                if (btnCounter) {
+                    btnCounter.click();
+                }
+            });
+        });
+
+        // Make surrounding details area clickable to perform the same action
+        document.querySelectorAll('.details').forEach(details => {
+            details.addEventListener('click', function(e) {
+                // Ignore direct clicks on interactive elements
+                if (e.target.closest('.circle, .counter-button, .reset-button, a, button')) {
+                    return;
+                }
+
+                const container = this.querySelector('.counter-container');
+                if (!container) return;
+
+                const circleEls = Array.from(container.querySelectorAll('.circle'));
+                if (circleEls.length) {
+                    const nextUnfilled = circleEls.find(c => !c.classList.contains('filled'));
+                    if (nextUnfilled) {
+                        nextUnfilled.classList.add('filled');
+                    }
+                    return;
+                }
+
+                const btnCounter = container.querySelector('.counter-button');
+                if (btnCounter) {
+                    btnCounter.click();
+                }
+            });
+        });
+
         // Function to play click sound
         function playClickSound() {
             // Create audio context
