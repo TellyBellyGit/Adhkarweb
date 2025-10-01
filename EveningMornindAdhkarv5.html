@@ -751,6 +751,8 @@
                     const nextUnfilled = circleEls.find(c => !c.classList.contains('filled'));
                     if (nextUnfilled) {
                         nextUnfilled.classList.add('filled');
+                        // Play sound from this trusted click
+                        playClickSound();
                     }
                     return;
                 }
@@ -758,6 +760,8 @@
                 // Fallback for button-style counters: delegate to the existing button handler
                 const btnCounter = this.querySelector('.counter-button');
                 if (btnCounter) {
+                    // Play sound before synthetic click to keep gesture chain
+                    playClickSound();
                     btnCounter.click();
                 }
             });
@@ -779,39 +783,54 @@
                     const nextUnfilled = circleEls.find(c => !c.classList.contains('filled'));
                     if (nextUnfilled) {
                         nextUnfilled.classList.add('filled');
+                        // Play sound from this trusted click
+                        playClickSound();
                     }
                     return;
                 }
 
                 const btnCounter = container.querySelector('.counter-button');
                 if (btnCounter) {
+                    // Play sound before synthetic click to keep gesture chain
+                    playClickSound();
                     btnCounter.click();
                 }
             });
         });
 
-        // Function to play click sound
+        // Audio context helper to reuse/resume a single context
+        let audioCtx;
+        function getAudioCtx() {
+            if (!audioCtx) {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            }
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+            return audioCtx;
+        }
+
+        // Function to play click sound (reuses global context)
         function playClickSound() {
-            // Create audio context
-            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-            
+            const audioContext = getAudioCtx();
+
             // Create oscillator for the click sound
             const oscillator = audioContext.createOscillator();
             const gainNode = audioContext.createGain();
-            
+
             // Connect nodes
             oscillator.connect(gainNode);
             gainNode.connect(audioContext.destination);
-            
+
             // Configure the sound
             oscillator.frequency.setValueAtTime(800, audioContext.currentTime); // High frequency for click
             oscillator.type = 'square';
-            
+
             // Configure volume envelope for a quick click
             gainNode.gain.setValueAtTime(0, audioContext.currentTime);
             gainNode.gain.linearRampToValueAtTime(0.1, audioContext.currentTime + 0.01);
             gainNode.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.1);
-            
+
             // Play the sound
             oscillator.start(audioContext.currentTime);
             oscillator.stop(audioContext.currentTime + 0.1);
