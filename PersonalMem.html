@@ -48,7 +48,7 @@
             font-family: 'Scheherazade New', serif;
             background-color: var(--background-color);
             color: var(--text-primary);
-            line-height: 1.6;
+            line-height: 1.45;
             transition: var(--transition);
         }
 
@@ -120,20 +120,20 @@
         }
 
         .main-content {
-            padding: 2rem 0;
+            padding: 1.2rem 0;
         }
 
         /* Hero header (matches RabbanaDuas style) */
         .hero-header {
             background: linear-gradient(135deg, var(--primary-color), #5da360);
             color: white;
-            padding: 1.5rem 1rem;
+            padding: 1.2rem 0.8rem;
             text-align: center;
             position: relative;
             overflow: hidden;
             border-radius: 0 0 20px 20px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-            margin-bottom: 2rem;
+            margin-bottom: 1.2rem;
         }
 
         .header-pattern {
@@ -152,7 +152,7 @@
 
         .hero-header h1 {
             font-size: 1.8rem;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.4rem;
             position: relative;
             color: white;
         }
@@ -166,7 +166,7 @@
         }
 
         .btn {
-            padding: 0.8rem 1.2rem;
+            padding: 0.7rem 1rem;
             background-color: var(--primary-color);
             color: white;
             border: none;
@@ -187,8 +187,8 @@
         .content-card {
             background: var(--card-background);
             border-radius: var(--border-radius);
-            padding: 2rem;
-            margin-bottom: 2rem;
+            padding: 0.35rem 1rem 1rem;
+            margin-bottom: 1rem;
             box-shadow: var(--shadow);
             border: 1px solid var(--border-color);
             transition: var(--transition);
@@ -217,28 +217,33 @@
         h3 {
             color: var(--secondary-color);
             font-size: 1.4rem;
-            margin-bottom: 0.8rem;
-            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+            margin-top: 1rem;
         }
 
         /* Underlined section heading indicator */
         .section-heading {
             border-bottom: 2px solid var(--border-color);
-            padding-bottom: 0.5rem;
-            margin-bottom: 1rem;
+            padding-bottom: 0.35rem;
+            margin-bottom: 0.8rem;
+        }
+
+        /* Reduce top margin when section heading is first in the card */
+        .content-card > h3.section-heading {
+            margin-top: 0.1rem;
         }
 
         .arabic-text {
             font-family: 'Scheherazade New', serif;
             font-size: 1.8rem;
-            line-height: 2.2;
+            line-height: 1.9;
             text-align: right;
             direction: rtl;
             background: linear-gradient(135deg, #f8f9fa, #e9ecef);
-            padding: 1.5rem;
+            padding: 1rem;
             border-radius: var(--border-radius);
             border-right: 4px solid var(--border-color);
-            margin: 1rem 0;
+            margin: 0.8rem 0;
             color: var(--text-primary);
         }
 
@@ -249,15 +254,15 @@
         .translation {
             font-style: italic;
             color: var(--text-secondary);
-            margin: 0.5rem 0;
-            padding: 1rem;
+            margin: 0.4rem 0;
+            padding: 0.75rem;
             background: rgba(0, 0, 0, 0.05);
             border-radius: var(--border-radius);
             border-left: 4px solid var(--border-color);
         }
 
         .section {
-            margin-bottom: 2rem;
+            margin-bottom: 1.2rem;
         }
 
         .back-button {
@@ -270,7 +275,7 @@
             padding: 0.8rem 1.5rem;
             border-radius: var(--border-radius);
             transition: var(--transition);
-            margin-bottom: 2rem;
+            margin-bottom: 1.2rem;
         }
 
         .back-button:hover {
@@ -282,16 +287,16 @@
             background: var(--primary-color);
             color: white;
             text-align: center;
-            padding: 2rem 0;
-            margin-top: 3rem;
+            padding: 1.2rem 0;
+            margin-top: 2rem;
         }
 
         .reference {
             font-size: 0.9rem;
             color: var(--text-secondary);
             font-style: italic;
-            margin-top: 1rem;
-            padding: 1rem;
+            margin-top: 0.6rem;
+            padding: 0.75rem;
             background: rgba(0, 0, 0, 0.03);
             border-radius: var(--border-radius);
             text-align: center;
@@ -301,13 +306,13 @@
             background: rgba(0, 0, 0, 0.05);
             border: 1px solid var(--border-color);
             border-radius: var(--border-radius);
-            padding: 1.5rem;
-            margin: 1.5rem 0;
+            padding: 1rem;
+            margin: 1rem 0;
         }
 
         .important-note h4 {
             color: var(--primary-color);
-            margin-bottom: 1rem;
+            margin-bottom: 0.8rem;
             font-size: 1.2rem;
         }
 
@@ -317,8 +322,8 @@
         }
 
         .important-note li {
-            margin-bottom: 0.8rem;
-            line-height: 1.6;
+            margin-bottom: 0.6rem;
+            line-height: 1.45;
         }
 
         @media (max-width: 768px) {
@@ -348,7 +353,7 @@
         <div class="header-pattern"></div>
         <div class="container">
             <h1>Personal Memorisation Duas</h1>
-            <p>Dua's that I memorising based on authentic Islamic teachings from the Quran and Sunnah</p>
+            <p>Dua's that I am memorising based on authentic Islamic teachings from the Quran and Sunnah</p>
             <div style="margin-top: 1rem; display: inline-flex; gap: 0.5rem;">
                 <a href="index.html" class="btn" style="background-color: rgba(255,255,255,0.2); padding: 0.5rem 1rem; border-radius: 5px; text-decoration: none; color: white; display: inline-flex; align-items: center; justify-content: center;"><i class="fas fa-home"></i></a>
                 <button id="modeToggleHero" class="btn" title="Toggle Dark/Light Mode" onclick="toggleTheme()" style="background-color: rgba(255,255,255,0.2); padding: 0.5rem 1rem; border-radius: 5px; color: white; display: inline-flex; align-items: center; justify-content: center;">
@@ -364,14 +369,6 @@
 
             <div class="content-card">
                 <h3 class="section-heading">Healing Duas from the Prophetic Tradition</h3>
-                
-                <h3>General Healing Dua</h3>
-                <div class="arabic-text">
-                    اللَّهُمَّ رَبَّ النَّاسِ أَذْهِبِ الْبَاسَ اشْفِهِ وَأَنْتَ الشَّافِي لَا شِفَاءَ إِلَّا شِفَاؤُكَ شِفَاءً لَا يُغَادِرُ سَقَمًا
-                </div>
-                <div class="translation">
-                    "O Allah, Lord of mankind, remove the hardship and heal, for You are the Healer. There is no healing except Your healing, a healing that leaves no sickness."
-                </div>
                 
                 <h3>Dua for Protection</h3>
                 <div class="arabic-text">
@@ -440,6 +437,17 @@
                     <strong>Reference:</strong> Muwatta Malik, Book 51, Hadith 9
                 </div>
                 
+                <h3>Protection: In the Name of Allah (No Harm)</h3>
+                <div class="arabic-text">
+                    بِسْمِ اللَّهِ الَّذِي لَا يَضُرُّ مَعَ اسْمِهِ شَيْءٌ فِي الْأَرْضِ وَلَا فِي السَّمَاءِ وَهُوَ السَّمِيعُ الْعَلِيمُ
+                </div>
+                <div class="translation">
+                    <strong>Transliteration:</strong> Bismillāhi alladhī lā yaḍurru maʿa ismihi shay'un fī al-arḍi walā fī as-samā', wa huwa as-Samīʿu al-ʿAlīm.<br><br>
+                    <strong>Translation:</strong> "In the Name of Allah with whose Name nothing is harmed on earth nor in the heavens, and He is the All-Hearing, the All-Knowing."<br><br>
+                    <strong>Instructions:</strong> Recite three times in the morning and evening.<br><br>
+                    <strong>Reference:</strong> Abu Dawud 5088; at-Tirmidhi 3388
+                </div>
+
                 <h3>Healing from All Diseases</h3>
                 <div class="arabic-text">
                     بِاسْمِ اللهِ يُبْرِيكَ وَمِنْ كُلِّ دَاءٍ يَشْفِيكَ وَمِنْ شَرِّ حَاسِدٍ إِذَا حَسَدَ وَمِنْ شَرِّ كُلِّ ذِي عَيْنٍ
@@ -493,7 +501,7 @@
 
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2024 Islamic Adhkar & Ruqyah App - For Personal Use Only</p>
+            <p>Islamic Adhkar & Ruqyah App - For Personal Use Only</p>
             <p>May Allah grant us healing and protection</p>
         </div>
     </footer>
