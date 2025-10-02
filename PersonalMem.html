@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prophetic Duas for Healing</title>
+    
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Scheherazade+New:wght@400;700&display=swap">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-color: #2d5016;
+            --secondary-color: #4a7c59;
+            --accent-color: #7fb069;
+            --background-color: #f8f9fa;
+            --card-background: #ffffff;
+            --text-primary: #2c3e50;
+            --text-secondary: #6c757d;
+            --border-color: #e9ecef;
+            --shadow: 0 2px 10px rgba(0,0,0,0.1);
+            --border-radius: 12px;
+            --transition: all 0.3s ease;
+        }
+
+        [data-theme="dark"] {
+            --primary-color: #7fb069;
+            --secondary-color: #4a7c59;
+            --accent-color: #2d5016;
+            --background-color: #1a1a1a;
+            --card-background: #2d2d2d;
+            --text-primary: #ffffff;
+            --text-secondary: #b0b0b0;
+            --border-color: #404040;
+            --shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Scheherazade New', serif;
+            background-color: var(--background-color);
+            color: var(--text-primary);
+            line-height: 1.6;
+            transition: var(--transition);
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 1rem 0;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .theme-toggle {
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            padding: 0.5rem;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .theme-toggle:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .home-link {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            padding: 0.5rem;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .home-link:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+        .main-content {
+            padding: 2rem 0;
+        }
+
+        /* Hero header (matches RabbanaDuas style) */
+        .hero-header {
+            background: linear-gradient(135deg, var(--primary-color), #5da360);
+            color: white;
+            padding: 1.5rem 1rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            margin-bottom: 2rem;
+        }
+
+        .header-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            opacity: 0.1;
+            background-image: 
+                radial-gradient(circle at 20% 30%, #d4af37 2px, transparent 2px),
+                radial-gradient(circle at 80% 70%, #d4af37 2px, transparent 2px);
+            background-size: 30px 30px;
+            pointer-events: none;
+        }
+
+        .hero-header h1 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            position: relative;
+            color: white;
+        }
+
+        .hero-header p {
+            opacity: 0.9;
+            font-size: 0.95rem;
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .btn {
+            padding: 0.8rem 1.2rem;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn:hover {
+            background-color: #3a6e3c;
+            transform: translateY(-2px);
+        }
+
+        .content-card {
+            background: var(--card-background);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+
+        .content-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+
+        h1 {
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        h2 {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 0.5rem;
+        }
+
+        h3 {
+            color: var(--secondary-color);
+            font-size: 1.4rem;
+            margin-bottom: 0.8rem;
+            margin-top: 1.5rem;
+        }
+
+        /* Underlined section heading indicator */
+        .section-heading {
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .arabic-text {
+            font-family: 'Scheherazade New', serif;
+            font-size: 1.8rem;
+            line-height: 2.2;
+            text-align: right;
+            direction: rtl;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            border-right: 4px solid var(--border-color);
+            margin: 1rem 0;
+            color: var(--text-primary);
+        }
+
+        [data-theme="dark"] .arabic-text {
+            background: linear-gradient(135deg, #2d2d2d, #404040);
+        }
+
+        .translation {
+            font-style: italic;
+            color: var(--text-secondary);
+            margin: 0.5rem 0;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.05);
+            border-radius: var(--border-radius);
+            border-left: 4px solid var(--border-color);
+        }
+
+        .section {
+            margin-bottom: 2rem;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+            margin-bottom: 2rem;
+        }
+
+        .back-button:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        .footer {
+            background: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+
+        .reference {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            font-style: italic;
+            margin-top: 1rem;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.03);
+            border-radius: var(--border-radius);
+            text-align: center;
+        }
+
+        .important-note {
+            background: rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .important-note h4 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .important-note ul {
+            margin: 0;
+            padding-left: 1.5rem;
+        }
+
+        .important-note li {
+            margin-bottom: 0.8rem;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 0.5rem;
+            }
+            
+            .content-card {
+                padding: 1.5rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .arabic-text {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body data-theme="dark">
+    
+
+    <!-- New hero header modeled after RabbanaDuas.html -->
+    <header class="hero-header">
+        <div class="header-pattern"></div>
+        <div class="container">
+            <h1>Personal Memorisation Duas</h1>
+            <p>Dua's that I memorising based on authentic Islamic teachings from the Quran and Sunnah</p>
+            <div style="margin-top: 1rem; display: inline-flex; gap: 0.5rem;">
+                <a href="index.html" class="btn" style="background-color: rgba(255,255,255,0.2); padding: 0.5rem 1rem; border-radius: 5px; text-decoration: none; color: white; display: inline-flex; align-items: center; justify-content: center;"><i class="fas fa-home"></i></a>
+                <button id="modeToggleHero" class="btn" title="Toggle Dark/Light Mode" onclick="toggleTheme()" style="background-color: rgba(255,255,255,0.2); padding: 0.5rem 1rem; border-radius: 5px; color: white; display: inline-flex; align-items: center; justify-content: center;">
+                    <i class="fas fa-sun"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            
+
+            <div class="content-card">
+                <h3 class="section-heading">Healing Duas from the Prophetic Tradition</h3>
+                
+                <h3>General Healing Dua</h3>
+                <div class="arabic-text">
+                    اللَّهُمَّ رَبَّ النَّاسِ أَذْهِبِ الْبَاسَ اشْفِهِ وَأَنْتَ الشَّافِي لَا شِفَاءَ إِلَّا شِفَاؤُكَ شِفَاءً لَا يُغَادِرُ سَقَمًا
+                </div>
+                <div class="translation">
+                    "O Allah, Lord of mankind, remove the hardship and heal, for You are the Healer. There is no healing except Your healing, a healing that leaves no sickness."
+                </div>
+                
+                <h3>Dua for Protection</h3>
+                <div class="arabic-text">
+                    أَعُوذُ بِكَلِمَاتِ اللَّهِ التَّامَّاتِ مِنْ شَرِّ مَا خَلَقَ
+                </div>
+                <div class="translation">
+                    "I seek refuge in the perfect words of Allah from the evil of what He has created."
+                </div>
+                
+                <h3>Dua for Removing Distress</h3>
+                <div class="arabic-text">
+                    لَا إِلَهَ إِلَّا اللَّهُ الْعَظِيمُ الْحَلِيمُ لَا إِلَهَ إِلَّا اللَّهُ رَبُّ الْعَرْشِ الْعَظِيمِ لَا إِلَهَ إِلَّا اللَّهُ رَبُّ السَّمَاوَاتِ وَرَبُّ الْأَرْضِ وَرَبُّ الْعَرْشِ الْكَرِيمِ
+                </div>
+                <div class="translation">
+                    "There is no god but Allah, the Magnificent, the Forbearing. There is no god but Allah, Lord of the Magnificent Throne. There is no god but Allah, Lord of the heavens, Lord of the earth, and Lord of the Noble Throne."
+                </div>
+                
+                <h3>Complete Healing Dua (Sahih al-Bukhari)</h3>
+                <div class="arabic-text">
+                    اللَّهُمَّ رَبَّ النَّاسِ أَذْهِبِ الْبَاسَ، اشْفِهِ وَأَنْتَ الشَّافِي، لاَ شِفَاءَ إِلاَّ شِفَاؤُكَ، شِفَاءً لاَ يُغَادِرُ سَقَمًا
+                </div>
+                <div class="translation">
+                    <strong>Transliteration:</strong> Allahuma rabbi-nas adhhabal ba'sa, ashfi wa anta al-shafi, la shifa' illa shifa'uka shifa' la yughadiru saqama.<br><br>
+                    <strong>Translation:</strong> "O Allah, the Lord of the people! Remove the trouble and heal the patient, for You are the Healer. No healing is of any avail but Yours; healing that will leave behind no ailment."<br><br>
+                    <strong>Reference:</strong> Sahih al-Bukhari 5743, Book 76, Hadith 58
+                </div>
+                
+                <h3>Protection from All Harm</h3>
+                <div class="arabic-text">
+                    بِسْمِ اللَّهِ الَّذِي لَا يَضُرُّ مَعَ اسْمِهِ شَيْءٌ فِي الْأَرْضِ وَلَا فِي السَّمَاءِ وَهُوَ السَّمِيعُ الْعَلِيمُ
+                </div>
+                <div class="translation">
+                    <strong>Transliteration:</strong> Bismillah illadhi la yadurru ma'a ismihi shay'un fi'l-ard wa la fi'l-sama' wa huwa al-samee' ul-'aleem<br><br>
+                    <strong>Translation:</strong> "In the name of Allah with Whose name nothing can harm on earth or in heaven, and He is the All-Hearing, All-Knowing."<br><br>
+                    <strong>Reference:</strong> At-Tirmidhi (hasan saheeh ghareeb), classed as saheeh by Ibn al-Qayyim and al-Albaani
+                </div>
+                
+                <h3>Seeking Refuge in Allah's Perfect Words</h3>
+                <div class="arabic-text">
+                    أَعُوذُ بِكَلِمَاتِ اللَّهِ التَّامَّاتِ مِنْ شَرِّ مَا خَلَقَ
+                </div>
+                <div class="translation">
+                    <strong>Transliteration:</strong> 'A'oodhu bi kalimaat Allaah al-taammah min sharri ma khalaq<br><br>
+                    <strong>Translation:</strong> "I seek refuge in the perfect words of Allah from the evil of that which He has created."<br><br>
+                    <strong>Reference:</strong> Sahih Muslim 2709
+                </div>
+                
+                <h3>Protection for Children (As used by Prophet Ibrahim)</h3>
+                <div class="arabic-text">
+                    أَعُوذُ بِكَلِمَاتِ اللَّهِ التَّامَّةِ مِنْ كُلِّ شَيْطَانٍ وَهَامَّةٍ وَمِنْ كُلِّ عَيْنٍ لَامَّةٍ
+                </div>
+                <div class="translation">
+                    <strong>Transliteration:</strong> Aoodhu bi kalimaat-illaahit taammati min kulli shaytaanin wa haammatin wa min kulli 'aynin laammah<br><br>
+                    <strong>Translation:</strong> "I seek refuge with the perfect words of Allah from every Shaytan and poisonous insect and from every envious eye."<br><br>
+                    <strong>Note:</strong> The Prophet ﷺ used to seek refuge for al-Hasan and al-Husayn with this dua, saying: "Your forefather (Ibrahim) used to seek refuge with it for Isma'il and Ishaq."<br><br>
+                    <strong>Reference:</strong> Sahih al-Bukhari 3191
+                </div>
+                
+                <h3>Comprehensive Protection Dua</h3>
+                <div class="arabic-text">
+                    أَعُوذُ بِكَلِمَاتِ اللهِ التَّامَّةِ مِنْ غَضَبِهِ، وَعِقَابِهِ، وَشَرِّ عِبَادِهِ، وَمِنْ هَمَزَاتِ الشَّيَاطِينِ، وَأَنْ يَحْضُرُونِ
+                </div>
+                <div class="translation">
+                    <strong>Transliteration:</strong> Audhu bi kalimati' llahi't-tammati min ghadabihi wa iqabihi wa sharri ibadihi wa min hamazati' sh-shayatin wa an yahdurun<br><br>
+                    <strong>Translation:</strong> "I seek refuge in the perfect words of Allah from His wrath and punishment, from the evil of His slaves and from the evil promptings of the devils and from their presence."<br><br>
+                    <strong>Reference:</strong> Muwatta Malik, Book 51, Hadith 9
+                </div>
+                
+                <h3>Healing from All Diseases</h3>
+                <div class="arabic-text">
+                    بِاسْمِ اللهِ يُبْرِيكَ وَمِنْ كُلِّ دَاءٍ يَشْفِيكَ وَمِنْ شَرِّ حَاسِدٍ إِذَا حَسَدَ وَمِنْ شَرِّ كُلِّ ذِي عَيْنٍ
+                </div>
+                <div class="translation">
+                    <strong>Transliteration:</strong> Bismillahi yubreeka wa min kulli daa'in yashfeeka wa min sharri haasidin iza hasad wa min sharri kulli zhi-'ayn<br><br>
+                    <strong>Translation:</strong> "In the name of Allah, may He cure you from all kinds of illnesses and safeguard you from the evil of a jealous one when he feels jealous and from everyone with the evil eye."<br><br>
+                    <strong>Reference:</strong> Sahih Muslim, Book 26, 5424
+                </div>
+                
+                <h3>Asking Allah for Healing (Recite 7 times)</h3>
+                <div class="arabic-text">
+                    أَسْـأَلُ اللهَ العَـظيـم، رَبَّ العَـرْشِ العَـظيـم أَنْ يَشْفِيَكَ
+                </div>
+                <div class="translation">
+                    <strong>Transliteration:</strong> 'As'alullaahal-'Adheema Rabbal-'Arshil-'Adheemi 'an yashfiyaka<br><br>
+                    <strong>Translation:</strong> "I ask Almighty Allah, Lord of the Magnificent Throne, to make you well."<br><br>
+                    <strong>Instructions:</strong> Recite 7 times<br><br>
+                    <strong>Reference:</strong> At-Tirmidhi, Abu Dawud. See also Al-Albani, Sahih At-Tirmidhi 2/210
+                </div>
+                
+                <h3>For Physical Pain and Discomfort</h3>
+                <div class="arabic-text">
+                    بِسْمِ اللهِ (3x)<br>
+                    أَعُوذُ بِاللهِ وَقُدْرَتِهِ مِنْ شَرِّ مَا أَجِدُ وَأُحَاذِرُ (7x)
+                </div>
+                <div class="translation">
+                    <strong>Transliteration:</strong><br>
+                    Bis-mil-laah (3 times)<br>
+                    'A‛oodhu bial-laahi wa qudratih min shar-ri maa ajidu wa uḥaadhir (7 times)<br><br>
+                    <strong>Translation:</strong><br>
+                    "In the name of Allah." (three times)<br>
+                    "I seek refuge with Allah and His omnipotence from the evil of what I feel and that which I am wary of." (seven times)<br><br>
+                    <strong>Instructions:</strong> Place your hand at the site of the pain while reciting
+                </div>
+
+                <div class="important-note">
+                    <h4>Important Notes on Using These Duas:</h4>
+                    <ul>
+                        <li>Have complete trust and reliance on Allah for healing</li>
+                        <li>Recite with sincerity and contemplation</li>
+                        <li>You may repeat any Quranic verse or dua as needed</li>
+                        <li>Combine spiritual healing with medical treatment</li>
+                        <li>Be patient - healing comes from Allah in His perfect timing</li>
+                        <li>Remember that all healing comes from Allah alone</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Islamic Adhkar & Ruqyah App - For Personal Use Only</p>
+            <p>May Allah grant us healing and protection</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleTheme() {
+            const body = document.body;
+            const themeIconHero = document.querySelector('#modeToggleHero i');
+            
+            if (body.getAttribute('data-theme') === 'dark') {
+                body.removeAttribute('data-theme');
+                if (themeIconHero) themeIconHero.className = 'fas fa-moon';
+                localStorage.setItem('theme', 'light');
+            } else {
+                body.setAttribute('data-theme', 'dark');
+                if (themeIconHero) themeIconHero.className = 'fas fa-sun';
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        // Load saved theme and ensure icon reflects current theme
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedTheme = localStorage.getItem('theme');
+            const themeIconHero = document.querySelector('#modeToggleHero i');
+            
+            if (savedTheme) {
+                if (savedTheme === 'dark') {
+                    document.body.setAttribute('data-theme', 'dark');
+                } else {
+                    document.body.removeAttribute('data-theme');
+                }
+            } else {
+                // Default to dark theme and persist choice
+                localStorage.setItem('theme', 'dark');
+            }
+            
+            const isDark = document.body.getAttribute('data-theme') === 'dark';
+            if (themeIconHero) themeIconHero.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+        });
+    </script>
+</body>
+</html>
