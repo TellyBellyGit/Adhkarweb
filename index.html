@@ -460,7 +460,7 @@
                     <div class="menu-title">Prophetic Ruqyah</div>
                 </div>
                 
-                <div class="menu-item" onclick="window.location.href='completeRuqyah.html'">
+                <div class="menu-item" onclick="window.location.href='https://oldgeezerdev.github.io/compRuqyah/'">
                     <div class="menu-icon">
                         <i class="fas fa-hands-praying"></i>
                     </div>
@@ -512,7 +512,7 @@
         </div>
     </div>
 
-    <footer>
+    <footer id="infoFooter">
         <p>Compiled for spiritual protection and healing</p>
         <p>Site: adhkarweb.netlify.app | Github: <a href="https://github.com/TellyBellyGit/Adhkarweb.git" target="_blank">Adhkarweb</a></p>
     </footer>
@@ -548,6 +548,31 @@
             menuItems.forEach((item, index) => {
                 item.style.animationDelay = `${0.4 + (index * 0.05)}s`;
             });
+
+            // Triple-tap on footer box to open PersonalMem.html
+            const infoFooter = document.getElementById('infoFooter');
+            if (infoFooter) {
+                let footerTapCount = 0;
+                let footerTapTimer = null;
+                const TAP_WINDOW_MS = 800; // time window for successive taps
+
+                const handleFooterTap = (e) => {
+                    footerTapCount += 1;
+                    if (footerTapCount === 1) {
+                        footerTapTimer = setTimeout(() => {
+                            footerTapCount = 0;
+                            footerTapTimer = null;
+                        }, TAP_WINDOW_MS);
+                    } else if (footerTapCount === 3) {
+                        clearTimeout(footerTapTimer);
+                        footerTapCount = 0;
+                        window.location.href = 'PersonalMem.html';
+                    }
+                };
+
+                infoFooter.addEventListener('click', handleFooterTap);
+                infoFooter.addEventListener('touchend', handleFooterTap);
+            }
         });
     </script>
 </body>
