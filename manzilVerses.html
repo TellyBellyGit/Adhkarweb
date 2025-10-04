@@ -252,6 +252,9 @@
                 <button class="icon-btn" id="modeToggle" title="Toggle Dark/Light Mode">
                     <i class="fas fa-sun"></i>
                 </button>
+                <button class="icon-btn" id="globalPlayPause" title="Play/Pause All">
+                    <i class="fas fa-play"></i>
+                </button>
             </div>
         </div>
 
@@ -577,7 +580,10 @@
             <!-- Manzil Verse 22: Al-Mu'minoon (115 - 118) -->
             <div class="manzil-card">
                 <div class="manzil-number">22</div>
-                <div class="manzil-title">Al-Mu'minoon (115 - 118)</div>
+                <div class="manzil-title">Al-Mu'minoon (115 - 118)
+                    <button class="play-icon-btn" id="playMuminoon115118Btn" aria-label="Play Al-Mu'minoon 115-118"><i class="fas fa-play"></i></button>
+                </div>
+                <audio id="alMuminoon115118Audio" src="audio/Al-Muminoon-115-118.mp3" preload="none"></audio>
                 <div class="arabic">
                     <div class="arabic-text text-xl sm:text-2xl md:text-3xl space-y-6 text-gray-900">
                         <div class="mb-6">
@@ -607,7 +613,10 @@
             <!-- Manzil Verse 24: As-Safaat (1 - 11) -->
             <div class="manzil-card">
                 <div class="manzil-number">24</div>
-                <div class="manzil-title">As-Safaat (1 - 11)</div>
+                <div class="manzil-title">As-Safaat (1 - 11)
+                    <button class="play-icon-btn" id="playSaffat011Btn" aria-label="Play As-Saffat 1-11"><i class="fas fa-play"></i></button>
+                </div>
+                <audio id="alSaffat011Audio" src="audio/As-Saffat-1-11.mp3" preload="none"></audio>
                 <div class="arabic">
                     <div class="arabic-text text-xl sm:text-2xl md:text-3xl space-y-6 text-gray-900">
                         <div class="mb-6">
@@ -711,12 +720,6 @@
                             <div class="transliteration text-center">Fa bi-ayyi ala'i rabbikuma tukadhiban</div>
                             <div class="translation text-center">Then which of the favors of your Lord will you deny?</div>
                         </div>
-
-                        <div class="mb-6">
-                            <p class="text-center mb-2">يُعْرَفُ الْمُجْرِمُونَ بِسِيمَاهُمْ فَيُؤْخَذُ بِالنَّوَاصِي وَالْأَقْدَامِ ﴿٤١﴾</p>
-                            <div class="transliteration text-center">Yu'rafu al-mujrimuna bi-simahum fa yu'khazu bin-nawasi wal-aqdam</div>
-                            <div class="translation text-center">The criminals will be known by their marks, and they will be seized by the forelocks and the feet</div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -760,7 +763,10 @@
             <!-- Manzil Verse 28: Al-Jinn (1 - 4, 5 - 9) -->
             <div class="manzil-card">
                 <div class="manzil-number">28</div>
-                <div class="manzil-title">Al-Jinn (1 - 4, 5 - 9)</div>
+                <div class="manzil-title">Al-Jinn (1 - 4, 5 - 9)
+                    <button class="play-icon-btn" id="playJinn19Btn" aria-label="Play Al-Jinn 1-9"><i class="fas fa-play"></i></button>
+                </div>
+                <audio id="alJinn19Audio" src="audio/Al-Jinn-1-9.mp3" preload="none"></audio>
                 <div class="arabic">
                     <div class="arabic-text text-xl sm:text-2xl md:text-3xl space-y-6 text-gray-900">
                         <div class="mb-6">
@@ -817,7 +823,10 @@
             <!-- Manzil Verse 29: Al-Fil (The Elephant) -->
             <div class="manzil-card">
                 <div class="manzil-number">29</div>
-                <div class="manzil-title">Al-Fil (The Elephant)</div>
+                <div class="manzil-title">Al-Fil (The Elephant)
+                    <button class="play-icon-btn" id="playFilBtn" aria-label="Play Al-Fil"><i class="fas fa-play"></i></button>
+                </div>
+                <audio id="alFilAudio" src="audio/Al-Fil.mp3" preload="none"></audio>
                 <div class="arabic">
                     <div class="arabic-text text-xl sm:text-2xl md:text-3xl space-y-6 text-gray-900">
                         <div class="mb-6">
@@ -852,7 +861,10 @@
             <!-- Manzil Verse 30: Al-Kafiroon (The Disbelievers) -->
             <div class="manzil-card">
                 <div class="manzil-number">30</div>
-                <div class="manzil-title">Al-Kafiroon (The Disbelievers)</div>
+                <div class="manzil-title">Al-Kafiroon (The Disbelievers)
+                    <button class="play-icon-btn" id="playKafiroonBtn" aria-label="Play Al-Kafiroon"><i class="fas fa-play"></i></button>
+                </div>
+                <audio id="alKafiroonAudio" src="audio/Al-Kafirun.mp3" preload="none"></audio>
                 <div class="arabic">
                     <div class="arabic-text text-xl sm:text-2xl md:text-3xl space-y-6 text-gray-900">
                         <div class="mb-6">
@@ -1407,6 +1419,214 @@
                 playNasBtn.innerHTML = '<i class="fas fa-play"></i>';
             });
         }
+
+        // Al-Fil audio play/pause
+        const playFilBtn = document.getElementById('playFilBtn');
+        const alFilAudio = document.getElementById('alFilAudio');
+        if (playFilBtn && alFilAudio) {
+            playFilBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                if (alFilAudio.paused) {
+                    alFilAudio.play();
+                    this.innerHTML = '<i class="fas fa-pause"></i>';
+                } else {
+                    alFilAudio.pause();
+                    this.innerHTML = '<i class="fas fa-play"></i>';
+                }
+            });
+            alFilAudio.addEventListener('ended', function() {
+                playFilBtn.innerHTML = '<i class="fas fa-play"></i>';
+            });
+        }
+
+        // Al-Kafiroon audio play/pause
+        const playKafiroonBtn = document.getElementById('playKafiroonBtn');
+        const alKafiroonAudio = document.getElementById('alKafiroonAudio');
+        if (playKafiroonBtn && alKafiroonAudio) {
+            playKafiroonBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                if (alKafiroonAudio.paused) {
+                    alKafiroonAudio.play();
+                    this.innerHTML = '<i class="fas fa-pause"></i>';
+                } else {
+                    alKafiroonAudio.pause();
+                    this.innerHTML = '<i class="fas fa-play"></i>';
+                }
+            });
+            alKafiroonAudio.addEventListener('ended', function() {
+                playKafiroonBtn.innerHTML = '<i class="fas fa-play"></i>';
+            });
+        }
+
+        // Al-Mu'minoon (115-118) audio play/pause
+        const playMuminoon115118Btn = document.getElementById('playMuminoon115118Btn');
+        const alMuminoon115118Audio = document.getElementById('alMuminoon115118Audio');
+        if (playMuminoon115118Btn && alMuminoon115118Audio) {
+            playMuminoon115118Btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                if (alMuminoon115118Audio.paused) {
+                    alMuminoon115118Audio.play();
+                    this.innerHTML = '<i class="fas fa-pause"></i>';
+                } else {
+                    alMuminoon115118Audio.pause();
+                    this.innerHTML = '<i class="fas fa-play"></i>';
+                }
+            });
+            alMuminoon115118Audio.addEventListener('ended', function() {
+                playMuminoon115118Btn.innerHTML = '<i class="fas fa-play"></i>';
+            });
+        }
+
+        // As-Saffat (1-11) audio play/pause
+        const playSaffat011Btn = document.getElementById('playSaffat011Btn');
+        const alSaffat011Audio = document.getElementById('alSaffat011Audio');
+        if (playSaffat011Btn && alSaffat011Audio) {
+            playSaffat011Btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                if (alSaffat011Audio.paused) {
+                    alSaffat011Audio.play();
+                    this.innerHTML = '<i class="fas fa-pause"></i>';
+                } else {
+                    alSaffat011Audio.pause();
+                    this.innerHTML = '<i class="fas fa-play"></i>';
+                }
+            });
+            alSaffat011Audio.addEventListener('ended', function() {
+                playSaffat011Btn.innerHTML = '<i class="fas fa-play"></i>';
+            });
+        }
+
+        // Al-Jinn (1-9) audio play/pause
+        const playJinn19Btn = document.getElementById('playJinn19Btn');
+        const alJinn19Audio = document.getElementById('alJinn19Audio');
+        if (playJinn19Btn && alJinn19Audio) {
+            playJinn19Btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                if (alJinn19Audio.paused) {
+                    alJinn19Audio.play();
+                    this.innerHTML = '<i class="fas fa-pause"></i>';
+                } else {
+                    alJinn19Audio.pause();
+                    this.innerHTML = '<i class="fas fa-play"></i>';
+                }
+            });
+            alJinn19Audio.addEventListener('ended', function() {
+                playJinn19Btn.innerHTML = '<i class="fas fa-play"></i>';
+            });
+        }
+
+        // --- Continuous Playback Playlist ---
+        (function setupContinuousPlayback() {
+          const globalPlayPauseBtn = document.getElementById('globalPlayPause');
+          const cards = Array.from(document.querySelectorAll('.manzil-card'));
+          const playlist = cards.map(card => ({
+            card,
+            audio: card.querySelector('audio'),
+            button: card.querySelector('.manzil-title .play-icon-btn')
+          })).filter(item => item.audio && item.button);
+
+          if (!playlist.length) return;
+
+          let autoContinueActive = false;
+          let currentIndex = -1;
+
+          function pauseAllExcept(activeAudio) {
+            playlist.forEach(item => {
+              if (item.audio && item.audio !== activeAudio) {
+                if (!item.audio.paused) item.audio.pause();
+                if (item.button) item.button.innerHTML = '<i class="fas fa-play"></i>';
+              }
+            });
+          }
+
+          function playNext(fromIndex) {
+            const nextIndex = (fromIndex + 1) % playlist.length;
+            const next = playlist[nextIndex];
+            if (!next || !next.audio) return;
+            pauseAllExcept(next.audio);
+            next.audio.play();
+            if (next.button) next.button.innerHTML = '<i class="fas fa-pause"></i>';
+            currentIndex = nextIndex;
+          }
+
+          function playAt(index) {
+            if (index < 0 || index >= playlist.length) return;
+            const item = playlist[index];
+            pauseAllExcept(item.audio);
+            item.audio.play();
+            if (item.button) item.button.innerHTML = '<i class="fas fa-pause"></i>';
+            currentIndex = index;
+          }
+
+          function updateGlobalIcon() {
+            const anyPlaying = playlist.some(p => !p.audio.paused);
+            if (globalPlayPauseBtn) {
+              globalPlayPauseBtn.innerHTML = anyPlaying ? '<i class="fas fa-pause"></i>' : '<i class="fas fa-play"></i>';
+            }
+          }
+
+          // Capture phase to run before existing button handlers
+          document.addEventListener('click', function (e) {
+            const btn = e.target.closest('.play-icon-btn');
+            if (!btn) return;
+            const card = btn.closest('.manzil-card');
+            const audio = card ? card.querySelector('audio') : null;
+            if (!audio) return;
+            const idx = playlist.findIndex(p => p.audio === audio);
+            if (audio.paused) {
+              autoContinueActive = true;
+              currentIndex = idx >= 0 ? idx : -1;
+              pauseAllExcept(audio);
+              updateGlobalIcon();
+            } else {
+              autoContinueActive = false;
+              updateGlobalIcon();
+            }
+          }, true);
+
+          // Auto-advance on end when active
+          playlist.forEach((item, idx) => {
+            item.audio.addEventListener('ended', () => {
+              if (item.button) item.button.innerHTML = '<i class="fas fa-play"></i>';
+              if (autoContinueActive) {
+                playNext(idx);
+              }
+              updateGlobalIcon();
+            });
+
+            // Scroll to active card on play and keep global icon in sync
+            item.audio.addEventListener('play', () => {
+              item.card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+              updateGlobalIcon();
+            });
+            item.audio.addEventListener('pause', () => {
+              updateGlobalIcon();
+            });
+          });
+
+          // Global Play/Pause control
+          if (globalPlayPauseBtn) {
+            globalPlayPauseBtn.addEventListener('click', () => {
+              const currentlyPlayingIndex = playlist.findIndex(p => !p.audio.paused);
+              if (currentlyPlayingIndex !== -1) {
+                // Pause current and disable continuous mode
+                const item = playlist[currentlyPlayingIndex];
+                item.audio.pause();
+                if (item.button) item.button.innerHTML = '<i class="fas fa-play"></i>';
+                autoContinueActive = false;
+                updateGlobalIcon();
+                return;
+              }
+
+              // Start continuous mode from currentIndex or first
+              autoContinueActive = true;
+              const startIndex = currentIndex >= 0 ? currentIndex : 0;
+              playAt(startIndex);
+              updateGlobalIcon();
+            });
+          }
+        })();
+        // --- End Continuous Playback Playlist ---
 
         // Triple tap detection
         let tapCount = 0;
