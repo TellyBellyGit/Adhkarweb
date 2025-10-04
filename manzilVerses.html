@@ -144,6 +144,23 @@
             padding-left: 3rem; 
             color: var(--primary-color);
         }
+        .play-icon-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            margin-left: 0.5rem;
+            border: none;
+            border-radius: 6px;
+            background: transparent;
+            color: var(--primary-color);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .play-icon-btn:hover {
+            background-color: rgba(0,0,0,0.06);
+        }
         
         .error {
             color: #e74c3c;
@@ -242,7 +259,10 @@
             <!-- Manzil Verse 1: Al-Fatiha -->
             <div class="manzil-card">
                 <div class="manzil-number">1</div>
-                <div class="manzil-title">Al-Fatiha (The Opening)</div>
+                <div class="manzil-title">Al-Fatiha (The Opening)
+                    <button class="play-icon-btn" id="playFatihaBtn" aria-label="Play Al-Fatiha"><i class="fas fa-play"></i></button>
+                </div>
+                <audio id="alFatihaAudio" src="audio/Al-Fatiha.mp3" preload="none"></audio>
                 <div class="arabic">
                     <div class="arabic-text text-xl sm:text-2xl md:text-3xl space-y-6 text-gray-900">
                         <div class="mb-6">
@@ -293,7 +313,10 @@
             <!-- Manzil Verse 2: Al-Baqarah (1 to 5) -->
             <div class="manzil-card">
                 <div class="manzil-number">2</div>
-                <div class="manzil-title">Al-Baqarah (1 to 5)</div>
+                <div class="manzil-title">Al-Baqarah (1 to 5)
+                    <button class="play-icon-btn" id="playBaqarah15Btn" aria-label="Play Al-Baqarah 1-5"><i class="fas fa-play"></i></button>
+                </div>
+                <audio id="alBaqarah15Audio" src="audio/Al-Baqarah-1-5.mp3" preload="none"></audio>
                 <div class="arabic">
                     <div class="arabic-text text-xl sm:text-2xl md:text-3xl space-y-6 text-gray-900">
                         <div class="mb-6">
@@ -338,7 +361,10 @@
             <!-- Manzil Verse 3: Al-Baqarah (163) -->
             <div class="manzil-card">
                 <div class="manzil-number">3</div>
-                <div class="manzil-title">Al-Baqarah (163)</div>
+                <div class="manzil-title">Al-Baqarah (163)
+                    <button class="play-icon-btn" id="playBaqarah163Btn" aria-label="Play Al-Baqarah 163"><i class="fas fa-play"></i></button>
+                </div>
+                <audio id="alBaqarah163Audio" src="audio/Al-Baqarah-163.mp3" preload="none"></audio>
                 <div class="arabic">
                     <div class="arabic-text text-xl sm:text-2xl md:text-3xl space-y-6 text-gray-900">
                         <div class="mb-6">
@@ -353,7 +379,10 @@
             <!-- Manzil Verse 4: Ayat Al-Kursi -->
             <div class="manzil-card">
                 <div class="manzil-number">4</div>
-                <div class="manzil-title">Ayat Al-Kursi (255)</div>
+                <div class="manzil-title">Ayat Al-Kursi (255)
+                    <button class="play-icon-btn" id="playKursi255Btn" aria-label="Play Ayat Al-Kursi 255"><i class="fas fa-play"></i></button>
+                </div>
+                <audio id="ayatKursiAudio" src="audio/Al-Baqarah-255.mp3" preload="none"></audio>
                 <div class="arabic">
                     <div class="arabic-text text-xl sm:text-2xl md:text-3xl space-y-6 text-gray-900">
                         <div class="mb-6">
@@ -368,7 +397,10 @@
             <!-- Manzil Verse 5: Al-Baqarah (256 & 257) -->
             <div class="manzil-card">
                 <div class="manzil-number">5</div>
-                <div class="manzil-title">Al-Baqarah (256 & 257)</div>
+                <div class="manzil-title">Al-Baqarah (256 & 257)
+                    <button class="play-icon-btn" id="playBaqarah256257Btn" aria-label="Play Al-Baqarah 256-257"><i class="fas fa-play"></i></button>
+                </div>
+                <audio id="alBaqarah256257Audio" src="audio/Al-Baqarah-256-257.mp3" preload="none"></audio>
                 <div class="arabic">
                     <div class="arabic-text text-xl sm:text-2xl md:text-3xl space-y-6 text-gray-900">
                         <div class="mb-6">
@@ -389,7 +421,10 @@
             <!-- Manzil Verse 6: Al-Baqarah (284) -->
             <div class="manzil-card">
                 <div class="manzil-number">6</div>
-                <div class="manzil-title">Al-Baqarah (284)</div>
+                <div class="manzil-title">Al-Baqarah (284)
+                    <button class="play-icon-btn" id="playBaqarah284Btn" aria-label="Play Al-Baqarah 284"><i class="fas fa-play"></i></button>
+                </div>
+                <audio id="alBaqarah284Audio" src="audio/Al-Baqarah-284.mp3" preload="none"></audio>
                 <div class="arabic">
                     <div class="arabic-text text-xl sm:text-2xl md:text-3xl space-y-6 text-gray-900">
                         <div class="mb-6">
@@ -404,7 +439,10 @@
             <!-- Manzil Verse 7: Al-Baqarah (285) -->
             <div class="manzil-card">
                 <div class="manzil-number">7</div>
-                <div class="manzil-title">Al-Baqarah (285)</div>
+                <div class="manzil-title">Al-Baqarah (285)
+                    <button class="play-icon-btn" id="playBaqarah285Btn" aria-label="Play Al-Baqarah 285"><i class="fas fa-play"></i></button>
+                </div>
+                <audio id="alBaqarah285Audio" src="audio/Al-Baqarah-285.mp3" preload="none"></audio>
                 <div class="arabic">
                     <div class="arabic-text text-xl sm:text-2xl md:text-3xl space-y-6 text-gray-900">
                         <div class="mb-6">
@@ -419,7 +457,10 @@
             <!-- Manzil Verse 10: Al-Baqarah (286) -->
             <div class="manzil-card">
                 <div class="manzil-number">10</div>
-                <div class="manzil-title">Al-Baqarah (286)</div>
+                <div class="manzil-title">Al-Baqarah (286)
+                    <button class="play-icon-btn" id="playBaqarah286Btn" aria-label="Play Al-Baqarah 286"><i class="fas fa-play"></i></button>
+                </div>
+                <audio id="alBaqarah286Audio" src="audio/Al-Baqarah-286.mp3" preload="none"></audio>
                 <div class="arabic">
                     <div class="arabic-text text-xl sm:text-2xl md:text-3xl space-y-6 text-gray-900">
                         <div class="mb-6">
@@ -434,7 +475,10 @@
             <!-- Manzil Verse 11: Ali Imran (18 - 19) -->
             <div class="manzil-card">
                 <div class="manzil-number">11</div>
-                <div class="manzil-title">Ali Imran (18 - 19)</div>
+                <div class="manzil-title">Ali Imran (18 - 19)
+                    <button class="play-icon-btn" id="playAliImran1819Btn" aria-label="Play Ali Imran 18-19"><i class="fas fa-play"></i></button>
+                </div>
+                <audio id="aliImran1819Audio" src="audio/Ali-Imran-18.mp3" preload="none"></audio>
                 <div class="arabic">
                     <div class="arabic-text text-xl sm:text-2xl md:text-3xl space-y-6 text-gray-900">
                         <div class="mb-6">
@@ -455,7 +499,10 @@
             <!-- Manzil Verse 12: Ali Imran (26 - 27) -->
             <div class="manzil-card">
                 <div class="manzil-number">12</div>
-                <div class="manzil-title">Ali Imran (26 - 27)</div>
+                <div class="manzil-title">Ali Imran (26 - 27)
+                    <button class="play-icon-btn" id="playAliImran2627Btn" aria-label="Play Ali Imran 26-27"><i class="fas fa-play"></i></button>
+                </div>
+                <audio id="aliImran2627Audio" src="audio/Ali-Imran-26-27.mp3" preload="none"></audio>
                 <div class="arabic">
                     <div class="arabic-text text-xl sm:text-2xl md:text-3xl space-y-6 text-gray-900">
                         <div class="mb-6">
@@ -476,7 +523,10 @@
             <!-- Manzil Verse 14: Al-A'raf (54 - 56) -->
             <div class="manzil-card">
                 <div class="manzil-number">14</div>
-                <div class="manzil-title">Al-A'raf (54 - 56)</div>
+                <div class="manzil-title">Al-A'raf (54 - 56)
+                    <button class="play-icon-btn" id="playAraf5456Btn" aria-label="Play Al-A'raf 54-56"><i class="fas fa-play"></i></button>
+                </div>
+                <audio id="alAraf5456Audio" src="audio/Al-Araf-54-56.mp3" preload="none"></audio>
                 <div class="arabic">
                     <div class="arabic-text text-xl sm:text-2xl md:text-3xl space-y-6 text-gray-900">
                         <div class="mb-6">
@@ -503,7 +553,10 @@
             <!-- Manzil Verse 21: Al-Isra (110 - 111) -->
             <div class="manzil-card">
                 <div class="manzil-number">21</div>
-                <div class="manzil-title">Al-Isra (110 - 111)</div>
+                <div class="manzil-title">Al-Isra (110 - 111)
+                    <button class="play-icon-btn" id="playIsra110111Btn" aria-label="Play Al-Isra 110-111"><i class="fas fa-play"></i></button>
+                </div>
+                <audio id="alIsra110111Audio" src="audio/Al-Isra-110-111.mp3" preload="none"></audio>
                 <div class="arabic">
                     <div class="arabic-text text-xl sm:text-2xl md:text-3xl space-y-6 text-gray-900">
                         <div class="mb-6">
@@ -605,7 +658,10 @@
             <!-- Manzil Verse 26: Ar-Rahman (33 - 40) -->
             <div class="manzil-card">
                 <div class="manzil-number">26</div>
-                <div class="manzil-title">Ar-Rahman (33 - 40)</div>
+                <div class="manzil-title">Ar-Rahman (33 - 40)
+                    <button class="play-icon-btn" id="playRahman3340Btn" aria-label="Play Ar-Rahman 33-40"><i class="fas fa-play"></i></button>
+                </div>
+                <audio id="arRahman3340Audio" src="audio/Ar-Rahman-33-40.mp3" preload="none"></audio>
                 <div class="arabic">
                     <div class="arabic-text text-xl sm:text-2xl md:text-3xl space-y-6 text-gray-900">
                         <div class="mb-6">
@@ -668,7 +724,10 @@
             <!-- Manzil Verse 27: Al-Hashr (21 - 24) -->
             <div class="manzil-card">
                 <div class="manzil-number">27</div>
-                <div class="manzil-title">Al-Hashr (21 - 24)</div>
+                <div class="manzil-title">Al-Hashr (21 - 24)
+                    <button class="play-icon-btn" id="playHashr2124Btn" aria-label="Play Al-Hashr 21-24"><i class="fas fa-play"></i></button>
+                </div>
+                <audio id="alHashr2124Audio" src="audio/Al-Hashr-21-24.mp3" preload="none"></audio>
                 <div class="arabic">
                     <div class="arabic-text text-xl sm:text-2xl md:text-3xl space-y-6 text-gray-900">
                         <div class="mb-6">
@@ -838,7 +897,10 @@
             <!-- Manzil Verse 31: Al-Ikhlas (The Sincerity) -->
             <div class="manzil-card">
                 <div class="manzil-number">31</div>
-                <div class="manzil-title">Al-Ikhlas (The Sincerity)</div>
+                <div class="manzil-title">Al-Ikhlas (The Sincerity)
+                    <button class="play-icon-btn" id="playIkhlasBtn" aria-label="Play Al-Ikhlas"><i class="fas fa-play"></i></button>
+                </div>
+                <audio id="alIkhlasAudio" src="audio/Al-Ikhlas.mp3" preload="none"></audio>
                 <div class="arabic">
                     <div class="arabic-text text-xl sm:text-2xl md:text-3xl space-y-6 text-gray-900">
                         <div class="mb-6">
@@ -873,7 +935,10 @@
             <!-- Manzil Verse 32: Al-Falaq (The Daybreak) -->
             <div class="manzil-card">
                 <div class="manzil-number">32</div>
-                <div class="manzil-title">Al-Falaq (The Daybreak)</div>
+                <div class="manzil-title">Al-Falaq (The Daybreak)
+                    <button class="play-icon-btn" id="playFalaqBtn" aria-label="Play Al-Falaq"><i class="fas fa-play"></i></button>
+                </div>
+                <audio id="alFalaqAudio" src="audio/Al-Falaq.mp3" preload="none"></audio>
                 <div class="arabic">
                     <div class="arabic-text text-xl sm:text-2xl md:text-3xl space-y-6 text-gray-900">
                         <div class="mb-6">
@@ -913,7 +978,10 @@
             <!-- Manzil Verse 33: An-Nas (Mankind) -->
             <div class="manzil-card">
                 <div class="manzil-number">33</div>
-                <div class="manzil-title">An-Nas (Mankind)</div>
+                <div class="manzil-title">An-Nas (Mankind)
+                    <button class="play-icon-btn" id="playNasBtn" aria-label="Play An-Nas"><i class="fas fa-play"></i></button>
+                </div>
+                <audio id="anNasAudio" src="audio/An-Nas.mp3" preload="none"></audio>
                 <div class="arabic">
                     <div class="arabic-text text-xl sm:text-2xl md:text-3xl space-y-6 text-gray-900">
                         <div class="mb-6">
@@ -1016,6 +1084,329 @@
                 icon.classList.add('fa-sun');
             }
         });
+
+        // Al-Fatiha audio play/pause
+        const playFatihaBtn = document.getElementById('playFatihaBtn');
+        const alFatihaAudio = document.getElementById('alFatihaAudio');
+        if (playFatihaBtn && alFatihaAudio) {
+            playFatihaBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                if (alFatihaAudio.paused) {
+                    alFatihaAudio.play();
+                    this.innerHTML = '<i class="fas fa-pause"></i>';
+                } else {
+                    alFatihaAudio.pause();
+                    this.innerHTML = '<i class="fas fa-play"></i>';
+                }
+            });
+            alFatihaAudio.addEventListener('ended', function() {
+                playFatihaBtn.innerHTML = '<i class="fas fa-play"></i>';
+            });
+        }
+
+        // Al-Baqarah (1-5) audio play/pause
+        const playBaqarah15Btn = document.getElementById('playBaqarah15Btn');
+        const alBaqarah15Audio = document.getElementById('alBaqarah15Audio');
+        if (playBaqarah15Btn && alBaqarah15Audio) {
+            playBaqarah15Btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                if (alBaqarah15Audio.paused) {
+                    alBaqarah15Audio.play();
+                    this.innerHTML = '<i class="fas fa-pause"></i>';
+                } else {
+                    alBaqarah15Audio.pause();
+                    this.innerHTML = '<i class="fas fa-play"></i>';
+                }
+            });
+            alBaqarah15Audio.addEventListener('ended', function() {
+                playBaqarah15Btn.innerHTML = '<i class="fas fa-play"></i>';
+            });
+        }
+
+        // Al-Baqarah (163) audio play/pause
+        const playBaqarah163Btn = document.getElementById('playBaqarah163Btn');
+        const alBaqarah163Audio = document.getElementById('alBaqarah163Audio');
+        if (playBaqarah163Btn && alBaqarah163Audio) {
+            playBaqarah163Btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                if (alBaqarah163Audio.paused) {
+                    alBaqarah163Audio.play();
+                    this.innerHTML = '<i class="fas fa-pause"></i>';
+                } else {
+                    alBaqarah163Audio.pause();
+                    this.innerHTML = '<i class="fas fa-play"></i>';
+                }
+            });
+            alBaqarah163Audio.addEventListener('ended', function() {
+                playBaqarah163Btn.innerHTML = '<i class="fas fa-play"></i>';
+            });
+        }
+
+        // Ayat Al-Kursi (255) audio play/pause
+        const playKursi255Btn = document.getElementById('playKursi255Btn');
+        const ayatKursiAudio = document.getElementById('ayatKursiAudio');
+        if (playKursi255Btn && ayatKursiAudio) {
+            playKursi255Btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                if (ayatKursiAudio.paused) {
+                    ayatKursiAudio.play();
+                    this.innerHTML = '<i class="fas fa-pause"></i>';
+                } else {
+                    ayatKursiAudio.pause();
+                    this.innerHTML = '<i class="fas fa-play"></i>';
+                }
+            });
+            ayatKursiAudio.addEventListener('ended', function() {
+                playKursi255Btn.innerHTML = '<i class="fas fa-play"></i>';
+            });
+        }
+
+        // Al-Baqarah (256 & 257) audio play/pause
+        const playBaqarah256257Btn = document.getElementById('playBaqarah256257Btn');
+        const alBaqarah256257Audio = document.getElementById('alBaqarah256257Audio');
+        if (playBaqarah256257Btn && alBaqarah256257Audio) {
+            playBaqarah256257Btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                if (alBaqarah256257Audio.paused) {
+                    alBaqarah256257Audio.play();
+                    this.innerHTML = '<i class="fas fa-pause"></i>';
+                } else {
+                    alBaqarah256257Audio.pause();
+                    this.innerHTML = '<i class="fas fa-play"></i>';
+                }
+            });
+            alBaqarah256257Audio.addEventListener('ended', function() {
+                playBaqarah256257Btn.innerHTML = '<i class="fas fa-play"></i>';
+            });
+        }
+
+        // Al-Baqarah (284) audio play/pause
+        const playBaqarah284Btn = document.getElementById('playBaqarah284Btn');
+        const alBaqarah284Audio = document.getElementById('alBaqarah284Audio');
+        if (playBaqarah284Btn && alBaqarah284Audio) {
+            playBaqarah284Btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                if (alBaqarah284Audio.paused) {
+                    alBaqarah284Audio.play();
+                    this.innerHTML = '<i class="fas fa-pause"></i>';
+                } else {
+                    alBaqarah284Audio.pause();
+                    this.innerHTML = '<i class="fas fa-play"></i>';
+                }
+            });
+            alBaqarah284Audio.addEventListener('ended', function() {
+                playBaqarah284Btn.innerHTML = '<i class="fas fa-play"></i>';
+            });
+        }
+
+        // Al-Baqarah (285) audio play/pause
+        const playBaqarah285Btn = document.getElementById('playBaqarah285Btn');
+        const alBaqarah285Audio = document.getElementById('alBaqarah285Audio');
+        if (playBaqarah285Btn && alBaqarah285Audio) {
+            playBaqarah285Btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                if (alBaqarah285Audio.paused) {
+                    alBaqarah285Audio.play();
+                    this.innerHTML = '<i class="fas fa-pause"></i>';
+                } else {
+                    alBaqarah285Audio.pause();
+                    this.innerHTML = '<i class="fas fa-play"></i>';
+                }
+            });
+            alBaqarah285Audio.addEventListener('ended', function() {
+                playBaqarah285Btn.innerHTML = '<i class="fas fa-play"></i>';
+            });
+        }
+
+        // Al-Baqarah (286) audio play/pause
+        const playBaqarah286Btn = document.getElementById('playBaqarah286Btn');
+        const alBaqarah286Audio = document.getElementById('alBaqarah286Audio');
+        if (playBaqarah286Btn && alBaqarah286Audio) {
+            playBaqarah286Btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                if (alBaqarah286Audio.paused) {
+                    alBaqarah286Audio.play();
+                    this.innerHTML = '<i class="fas fa-pause"></i>';
+                } else {
+                    alBaqarah286Audio.pause();
+                    this.innerHTML = '<i class="fas fa-play"></i>';
+                }
+            });
+            alBaqarah286Audio.addEventListener('ended', function() {
+                playBaqarah286Btn.innerHTML = '<i class="fas fa-play"></i>';
+            });
+        }
+
+        // Ali Imran (18-19) audio play/pause
+        const playAliImran1819Btn = document.getElementById('playAliImran1819Btn');
+        const aliImran1819Audio = document.getElementById('aliImran1819Audio');
+        if (playAliImran1819Btn && aliImran1819Audio) {
+            playAliImran1819Btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                if (aliImran1819Audio.paused) {
+                    aliImran1819Audio.play();
+                    this.innerHTML = '<i class="fas fa-pause"></i>';
+                } else {
+                    aliImran1819Audio.pause();
+                    this.innerHTML = '<i class="fas fa-play"></i>';
+                }
+            });
+            aliImran1819Audio.addEventListener('ended', function() {
+                playAliImran1819Btn.innerHTML = '<i class="fas fa-play"></i>';
+            });
+        }
+
+        // Ali Imran (26-27) audio play/pause
+        const playAliImran2627Btn = document.getElementById('playAliImran2627Btn');
+        const aliImran2627Audio = document.getElementById('aliImran2627Audio');
+        if (playAliImran2627Btn && aliImran2627Audio) {
+            playAliImran2627Btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                if (aliImran2627Audio.paused) {
+                    aliImran2627Audio.play();
+                    this.innerHTML = '<i class="fas fa-pause"></i>';
+                } else {
+                    aliImran2627Audio.pause();
+                    this.innerHTML = '<i class="fas fa-play"></i>';
+                }
+            });
+            aliImran2627Audio.addEventListener('ended', function() {
+                playAliImran2627Btn.innerHTML = '<i class="fas fa-play"></i>';
+            });
+        }
+
+        // Al-A'raf (54-56) audio play/pause
+        const playAraf5456Btn = document.getElementById("playAraf5456Btn");
+        const alAraf5456Audio = document.getElementById("alAraf5456Audio");
+        if (playAraf5456Btn && alAraf5456Audio) {
+            playAraf5456Btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                if (alAraf5456Audio.paused) {
+                    alAraf5456Audio.play();
+                    this.innerHTML = '<i class="fas fa-pause"></i>';
+                } else {
+                    alAraf5456Audio.pause();
+                    this.innerHTML = '<i class="fas fa-play"></i>';
+                }
+            });
+            alAraf5456Audio.addEventListener('ended', function() {
+                playAraf5456Btn.innerHTML = '<i class="fas fa-play"></i>';
+            });
+        }
+
+        // Al-Isra (110-111) audio play/pause
+        const playIsra110111Btn = document.getElementById('playIsra110111Btn');
+        const alIsra110111Audio = document.getElementById('alIsra110111Audio');
+        if (playIsra110111Btn && alIsra110111Audio) {
+            playIsra110111Btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                if (alIsra110111Audio.paused) {
+                    alIsra110111Audio.play();
+                    this.innerHTML = '<i class="fas fa-pause"></i>';
+                } else {
+                    alIsra110111Audio.pause();
+                    this.innerHTML = '<i class="fas fa-play"></i>';
+                }
+            });
+            alIsra110111Audio.addEventListener('ended', function() {
+                playIsra110111Btn.innerHTML = '<i class="fas fa-play"></i>';
+            });
+        }
+
+        // Ar-Rahman (33-40) audio play/pause
+        const playRahman3340Btn = document.getElementById('playRahman3340Btn');
+        const arRahman3340Audio = document.getElementById('arRahman3340Audio');
+        if (playRahman3340Btn && arRahman3340Audio) {
+            playRahman3340Btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                if (arRahman3340Audio.paused) {
+                    arRahman3340Audio.play();
+                    this.innerHTML = '<i class="fas fa-pause"></i>';
+                } else {
+                    arRahman3340Audio.pause();
+                    this.innerHTML = '<i class="fas fa-play"></i>';
+                }
+            });
+            arRahman3340Audio.addEventListener('ended', function() {
+                playRahman3340Btn.innerHTML = '<i class="fas fa-play"></i>';
+            });
+        }
+
+        // Al-Hashr (21-24) audio play/pause
+        const playHashr2124Btn = document.getElementById('playHashr2124Btn');
+        const alHashr2124Audio = document.getElementById('alHashr2124Audio');
+        if (playHashr2124Btn && alHashr2124Audio) {
+            playHashr2124Btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                if (alHashr2124Audio.paused) {
+                    alHashr2124Audio.play();
+                    this.innerHTML = '<i class="fas fa-pause"></i>';
+                } else {
+                    alHashr2124Audio.pause();
+                    this.innerHTML = '<i class="fas fa-play"></i>';
+                }
+            });
+            alHashr2124Audio.addEventListener('ended', function() {
+                playHashr2124Btn.innerHTML = '<i class="fas fa-play"></i>';
+            });
+        }
+
+        // Al-Ikhlas audio play/pause
+        const playIkhlasBtn = document.getElementById('playIkhlasBtn');
+        const alIkhlasAudio = document.getElementById('alIkhlasAudio');
+        if (playIkhlasBtn && alIkhlasAudio) {
+            playIkhlasBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                if (alIkhlasAudio.paused) {
+                    alIkhlasAudio.play();
+                    this.innerHTML = '<i class="fas fa-pause"></i>';
+                } else {
+                    alIkhlasAudio.pause();
+                    this.innerHTML = '<i class="fas fa-play"></i>';
+                }
+            });
+            alIkhlasAudio.addEventListener('ended', function() {
+                playIkhlasBtn.innerHTML = '<i class="fas fa-play"></i>';
+            });
+        }
+
+        // Al-Falaq audio play/pause
+        const playFalaqBtn = document.getElementById('playFalaqBtn');
+        const alFalaqAudio = document.getElementById('alFalaqAudio');
+        if (playFalaqBtn && alFalaqAudio) {
+            playFalaqBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                if (alFalaqAudio.paused) {
+                    alFalaqAudio.play();
+                    this.innerHTML = '<i class="fas fa-pause"></i>';
+                } else {
+                    alFalaqAudio.pause();
+                    this.innerHTML = '<i class="fas fa-play"></i>';
+                }
+            });
+            alFalaqAudio.addEventListener('ended', function() {
+                playFalaqBtn.innerHTML = '<i class="fas fa-play"></i>';
+            });
+        }
+
+        // An-Nas audio play/pause
+        const playNasBtn = document.getElementById('playNasBtn');
+        const anNasAudio = document.getElementById('anNasAudio');
+        if (playNasBtn && anNasAudio) {
+            playNasBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                if (anNasAudio.paused) {
+                    anNasAudio.play();
+                    this.innerHTML = '<i class="fas fa-pause"></i>';
+                } else {
+                    anNasAudio.pause();
+                    this.innerHTML = '<i class="fas fa-play"></i>';
+                }
+            });
+            anNasAudio.addEventListener('ended', function() {
+                playNasBtn.innerHTML = '<i class="fas fa-play"></i>';
+            });
+        }
 
         // Triple tap detection
         let tapCount = 0;
