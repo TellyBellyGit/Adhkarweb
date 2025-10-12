@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Du'a for Light and Memorization</title>
+    
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Scheherazade+New:wght@400;700&display=swap">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-color: #2d5016;
+            --secondary-color: #4a7c59;
+            --accent-color: #7fb069;
+            --background-color: #f8f9fa;
+            --card-background: #ffffff;
+            --text-primary: #2c3e50;
+            --text-secondary: #6c757d;
+            --border-color: #e9ecef;
+            --shadow: 0 2px 10px rgba(0,0,0,0.1);
+            --border-radius: 12px;
+            --transition: all 0.3s ease;
+        }
+
+        [data-theme="dark"] {
+            --primary-color: #7fb069;
+            --secondary-color: #4a7c59;
+            --accent-color: #2d5016;
+            --background-color: #1a1a1a;
+            --card-background: #2d2d2d;
+            --text-primary: #ffffff;
+            --text-secondary: #b0b0b0;
+            --border-color: #404040;
+            --shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Scheherazade New', serif;
+            background-color: var(--background-color);
+            color: var(--text-primary);
+            line-height: 1.45;
+            transition: var(--transition);
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 1rem 0;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .theme-toggle {
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            padding: 0.5rem;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .theme-toggle:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .home-link {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            padding: 0.5rem;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .home-link:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+        .main-content {
+            padding: 1.2rem 0;
+        }
+
+        /* Hero header (matches RabbanaDuas style) */
+        .hero-header {
+            background: linear-gradient(135deg, var(--primary-color), #5da360);
+            color: white;
+            padding: 1.2rem 0.8rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            margin-bottom: 1.2rem;
+        }
+
+        .header-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            opacity: 0.1;
+            background-image: 
+                radial-gradient(circle at 20% 30%, #d4af37 2px, transparent 2px),
+                radial-gradient(circle at 80% 70%, #d4af37 2px, transparent 2px);
+            background-size: 30px 30px;
+            pointer-events: none;
+        }
+
+        .hero-header h1 {
+            font-size: 1.8rem;
+            margin-bottom: 0.4rem;
+            position: relative;
+            color: white;
+        }
+
+        .hero-header p {
+            opacity: 0.9;
+            font-size: 0.95rem;
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .btn {
+            padding: 0.7rem 1rem;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn:hover {
+            background-color: #3a6e3c;
+            transform: translateY(-2px);
+        }
+
+        .content-card {
+            background: var(--card-background);
+            border-radius: var(--border-radius);
+            padding: 0.35rem 1rem 1rem;
+            margin-bottom: 1rem;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+
+        .content-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+
+        h1 {
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        h2 {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 0.5rem;
+        }
+
+        h3 {
+            color: var(--secondary-color);
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        /* Underlined section heading indicator */
+        .section-heading {
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 0.35rem;
+            margin-bottom: 0.8rem;
+        }
+
+        /* Reduce top margin when section heading is first in the card */
+        .content-card > h3.section-heading {
+            margin-top: 0.1rem;
+        }
+
+        .arabic-text {
+            font-family: 'Scheherazade New', serif;
+            font-size: 1.8rem;
+            line-height: 1.9;
+            text-align: right;
+            direction: rtl;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            border-right: 4px solid var(--border-color);
+            margin: 0.8rem 0;
+            color: var(--text-primary);
+        }
+
+        [data-theme="dark"] .arabic-text {
+            background: linear-gradient(135deg, #2d2d2d, #404040);
+        }
+
+        .translation {
+            font-style: italic;
+            color: var(--text-secondary);
+            margin: 0.4rem 0;
+            padding: 0.75rem;
+            background: rgba(0, 0, 0, 0.05);
+            border-radius: var(--border-radius);
+            border-left: 4px solid var(--border-color);
+        }
+
+        /* Subtle labels for variant lines */
+        .line-hints {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.4rem;
+            text-align: left;
+        }
+
+        /* Labels above each Arabic line */
+        .line-label {
+            font-size: 0.95rem;
+            color: var(--text-primary);
+            margin-top: 0.4rem;
+            margin-bottom: 0.2rem;
+            text-align: right;
+            font-weight: 600;
+            letter-spacing: 0.2px;
+        }
+
+        .line-label .pronoun {
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        .arabic-text .arabic-pronoun {
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+        .arabic-text .arabic-pronoun-suffix {
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        .section {
+            margin-bottom: 1.2rem;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+            margin-bottom: 1.2rem;
+        }
+
+        .back-button:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        .footer {
+            background: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 1.2rem 0;
+            margin-top: 2rem;
+        }
+
+        .reference {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            font-style: italic;
+            margin-top: 0.6rem;
+            padding: 0.75rem;
+            background: rgba(0, 0, 0, 0.03);
+            border-radius: var(--border-radius);
+            text-align: center;
+        }
+
+        .important-note {
+            background: rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+
+        .important-note h4 {
+            color: var(--primary-color);
+            margin-bottom: 0.8rem;
+            font-size: 1.2rem;
+        }
+
+        .important-note ul {
+            margin: 0;
+            padding-left: 1.5rem;
+        }
+
+        .important-note li {
+            margin-bottom: 0.6rem;
+            line-height: 1.45;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 0.5rem;
+            }
+            
+            .content-card {
+                padding: 1.5rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .arabic-text {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body data-theme="dark">
+    
+
+    <!-- New hero header modeled after RabbanaDuas.html -->
+    <header class="hero-header">
+        <div class="header-pattern"></div>
+        <div class="container">
+            <h1>Du'a for Light and Memorization</h1>
+            <p>Seeking Divine Illumination for Memory, Guidance, and Salvation</p>
+            <div style="margin-top: 1rem; display: inline-flex; gap: 0.5rem;">
+                <a href="index.html" class="btn" style="background-color: rgba(255,255,255,0.2); padding: 0.5rem 1rem; border-radius: 5px; text-decoration: none; color: white; display: inline-flex; align-items: center; justify-content: center;"><i class="fas fa-home"></i></a>
+                <button id="modeToggleHero" class="btn" title="Toggle Dark/Light Mode" onclick="toggleTheme()" style="background-color: rgba(255,255,255,0.2); padding: 0.5rem 1rem; border-radius: 5px; color: white; display: inline-flex; align-items: center; justify-content: center;">
+                    <i class="fas fa-sun"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            
+            <!-- Introduction Section -->
+            <div class="content-card">
+                <h3 class="section-heading">The Spiritual Path for Light and Memorization</h3>
+                <p>This page presents a spiritual sequence for seeking Divine Light, particularly for strengthening memory for Qur'an and Du'as, and for receiving illumination on the Day of Judgment. The practice follows the method we discussed: beginning with the Verse of Light as a reminder and inspiration, followed by the comprehensive Du'a for Light, and concluding with specific supplications for knowledge and memory.</p>
+            </div>
+
+            <!-- Verse of Light Section -->
+            <div class="content-card">
+                <h3 class="section-heading">1. The Verse of Light (Ayat an-Nur)</h3>
+                <p>Begin by reciting and reflecting upon this magnificent verse that establishes Allah as The Source of All Light. This serves as a spiritual preparation and reminder of the ultimate source of the illumination we seek.</p>
+                
+                <div class="arabic-text">
+                    اللهُ نُورُ السَّمَاوَاتِ وَالْأَرْضِ ۚ مَثَلُ نُورِهِ كَمِشْكَاةٍ فِيهَا مِصْبَاحٌ ۖ الْمِصْبَاحُ فِي زُجَاجَةٍ ۖ الزُّجَاجَةُ كَأَنَّهَا كَوْكَبٌ دُرِّيٌّ يُوقَدُ مِن شَجَرَةٍ مُّبَارَكَةٍ زَيْتُونَةٍ لَّا شَرْقِيَّةٍ وَلَا غَرْبِيَّةٍ يَكَادُ زَيْتُهَا يُضِيءُ وَلَوْ لَمْ تَمْسَسْهُ نَارٌ ۚ نُّورٌ عَلَىٰ نُورٍ ۗ يَهْدِي اللهُ لِنُورِهِ مَن يَشَاءُ ۚ وَيَضْرِبُ اللهُ الْأَمْثَالَ لِلنَّاسِ ۗ وَاللهُ بِكُلِّ شَيْءٍ عَلِيمٌ
+                </div>
+                <div class="translation">
+                    <strong>Translation:</strong> "Allah is the Light of the heavens and the earth. The example of His light is like a niche within which is a lamp, the lamp is within glass, the glass as if it were a pearly [white] star lit from [the oil of] a blessed olive tree, neither of the east nor of the west, whose oil would almost glow even if untouched by fire. Light upon light. Allah guides to His light whom He wills. And Allah presents examples for the people, and Allah is Knowing of all things."<br><br>
+                    <strong>Reference:</strong> Qur'an 24:35
+                </div>
+            </div>
+
+            <!-- Comprehensive Du'a for Light -->
+            <div class="content-card">
+                <h3 class="section-heading">2. Comprehensive Du'a for Light</h3>
+                <p>After reflecting on the Verse of Light, recite this comprehensive supplication taught by the Prophet Muhammad (ﷺ) to Abdullah ibn 'Abbas (may Allah be pleased with him).</p>
+                
+                <h3>Primary Version</h3>
+                <div class="arabic-text">
+                    اللَّهُمَّ اجْعَلْ فِي قَلْبِي نُورًا، وَفِي لِسَانِي نُورًا، وَاجْعَلْ فِي سَمْعِي نُورًا، وَاجْعَلْ فِي بَصَرِي نُورًا، وَاجْعَلْ مِنْ خَلْفِي نُورًا، وَمِنْ أَمَامِي نُورًا، وَاجْعَلْ مِنْ فَوْقِي نُورًا، وَمِنْ تَحْتِي نُورًا، اللَّهُمَّ أَعْطِنِي نُورًا
+                </div>
+                <div class="translation">
+                    <strong>Transliteration:</strong> Allāhumma-j`al fī qalbī nūran, wa fī lisānī nūran, waj`al fī sam`ī nūran, waj`al fī baṣarī nūran, waj`al min khalfī nūran, wa min amāmī nūran, waj`al min fawqī nūran, wa min taḥtī nūran. Allāhumma a`ṭinī nūran.<br><br>
+                    <strong>Translation:</strong> "O Allah, place light in my heart, light in my tongue, light in my hearing, light in my sight, place light behind me, light in front of me, light above me, and light below me. O Allah, grant me light."<br><br>
+                    <strong>Reference:</strong> Sahih Muslim
+                </div>
+                
+                <h3>Extended Version</h3>
+                <div class="arabic-text">
+                    اللَّهُمَّ اجْعَلْ فِي قَلْبِي نُورًا، وَفِي بَصَرِي نُورًا، وَفِي سَمْعِي نُورًا، وَعَنْ يَمِينِي نُورًا، وَعَنْ شِمَالِي نُورًا، وَأَمَامِي نُورًا، وَخَلْفِي نُورًا، وَفَوْقِي نُورًا، وَتَحْتِي نُورًا، اللَّهُمَّ أَعْظِمْ لِي نُورًا
+                </div>
+                <div class="translation">
+                    <strong>Transliteration:</strong> Allāhumma-j`al fī qalbī nūran, wa fī baṣarī nūran, wa fī sam`ī nūran, wa `an yamīnī nūran, wa `an shimālī nūran, wa amāmī nūran, wa khalfī nūran, wa fawqī nūran, wa taḥtī nūran. Allāhumma a`ẓim lī nūran.<br><br>
+                    <strong>Translation:</strong> "O Allah, place light in my heart, light in my sight, light in my hearing, light on my right, light on my left, light in front of me, light behind me, light above me, and light below me. O Allah, make great for me my light."<br><br>
+                    <strong>Reference:</strong> Sahih Muslim
+                </div>
+            </div>
+
+            <!-- Du'a for Knowledge and Memory -->
+            <div class="content-card">
+                <h3 class="section-heading">3. Du'a for Knowledge and Memory</h3>
+                <p>After seeking comprehensive light, specifically ask Allah to benefit you from knowledge and strengthen your memory for Qur'an and beneficial supplications.</p>
+                
+                <h3>Du'a for Beneficial Knowledge</h3>
+                <div class="arabic-text">
+                    اللَّهُمَّ انْفَعْنِي بِمَا عَلَّمْتَنِي، وَعَلِّمْنِي مَا يَنْفَعُنِي، وَزِدْنِي عِلْمًا
+                </div>
+                <div class="translation">
+                    <strong>Transliteration:</strong> Allāhumma-nfa'nī bimā 'allamtanī, wa 'allimnī mā yanfa'unī, wa zidnī 'ilmā.<br><br>
+                    <strong>Translation:</strong> "O Allah, benefit me by what You have taught me, teach me what is beneficial for me, and increase me in knowledge."<br><br>
+                    <strong>Reference:</strong> Sunan al-Tirmidhi
+                </div>
+                
+                <h3>Du'a for Understanding and Retention</h3>
+                <div class="arabic-text">
+                    اللَّهُمَّ إِنِّي أَسْأَلُكَ عِلْمًا نَافِعًا، وَرِزْقًا طَيِّبًا، وَعَمَلًا مُتَقَبَّلًا
+                </div>
+                <div class="translation">
+                    <strong>Transliteration:</strong> Allāhumma innī as'aluka 'ilman nāfi'an, wa rizqan tayyiban, wa 'amalan mutaqabbalan.<br><br>
+                    <strong>Translation:</strong> "O Allah, I ask You for beneficial knowledge, wholesome provision, and accepted deeds."<br><br>
+                    <strong>Reference:</strong> Sunan Ibn Majah
+                </div>
+            </div>
+
+            <!-- Practice Guidance -->
+            <div class="content-card">
+                <h3 class="section-heading">Recommended Practice</h3>
+                
+                <div class="important-note">
+                    <h4>Spiritual Sequence for Optimal Benefit:</h4>
+                    <ul>
+                        <li><strong>Begin with the Verse of Light (Qur'an 24:35)</strong> - Recite slowly and reflect on its meaning as a reminder of Allah as The Source of All Light.</li>
+                        <li><strong>Recite the Comprehensive Du'a for Light</strong> - Ask for illumination in all aspects of your being and life.</li>
+                        <li><strong>Follow with the Du'a for Knowledge and Memory</strong> - Specifically request beneficial knowledge and strong retention.</li>
+                        <li><strong>Set Your Intention (Niyyah)</strong> - Consciously intend that this light will strengthen your memory for Qur'an and Du'as, and be your illumination on the Day of Judgment, especially on the Sirat.</li>
+                        <li><strong>Be Consistent</strong> - Make this practice part of your daily routine, ideally after prayers or during Tahajjud (pre-dawn) time.</li>
+                        <li><strong>Combine with Action</strong> - Continue your practical efforts to memorize while seeking Allah's blessing through this spiritual practice.</li>
+                    </ul>
+                </div>
+                
+                <div class="reference">
+                    <p><strong>Note:</strong> The "Light" (Nur) mentioned in these supplications refers to divine guidance, faith, wisdom, clarity, and the spiritual illumination that leads to truth and protects from error. It encompasses both worldly guidance and otherworldly salvation.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>Seeking the Light of Guidance - For Personal Spiritual Practice</p>
+            <p>May Allah grant us illumination in this world and the Hereafter</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleTheme() {
+            const body = document.body;
+            const themeIconHero = document.querySelector('#modeToggleHero i');
+            
+            if (body.getAttribute('data-theme') === 'dark') {
+                body.removeAttribute('data-theme');
+                if (themeIconHero) themeIconHero.className = 'fas fa-moon';
+                localStorage.setItem('theme', 'light');
+            } else {
+                body.setAttribute('data-theme', 'dark');
+                if (themeIconHero) themeIconHero.className = 'fas fa-sun';
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        // Load saved theme and ensure icon reflects current theme
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedTheme = localStorage.getItem('theme');
+            const themeIconHero = document.querySelector('#modeToggleHero i');
+            
+            if (savedTheme) {
+                if (savedTheme === 'dark') {
+                    document.body.setAttribute('data-theme', 'dark');
+                } else {
+                    document.body.removeAttribute('data-theme');
+                }
+            } else {
+                // Default to dark theme and persist choice
+                localStorage.setItem('theme', 'dark');
+            }
+            
+            const isDark = document.body.getAttribute('data-theme') === 'dark';
+            if (themeIconHero) themeIconHero.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+        });
+    </script>
+</body>
+</html>
