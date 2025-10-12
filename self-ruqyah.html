@@ -182,7 +182,7 @@
             padding: 0;
         }
 
-        .point-list li {
+        .point-list > li {
             background: var(--card-background);
             margin: 1rem 0;
             padding: 1.5rem;
@@ -192,7 +192,7 @@
             transition: var(--transition);
         }
 
-        .point-list li:hover {
+        .point-list > li:hover {
             transform: translateX(5px);
         }
 
@@ -241,27 +241,52 @@
         }
 
         .important-note {
-            background: rgba(0, 0, 0, 0.05);
-            border: 1px solid var(--border-color);
-            border-radius: var(--border-radius);
-            padding: 1.5rem;
-            margin: 1.5rem 0;
+            background: none;
+            border: none;
+            border-radius: 0;
+            padding: 0.25rem 0; /* Space above/below section; affects space above 'Correct Belief:' and the red label */
+            margin: 0.5rem 0;  /* External space between sections; also contributes above 'Correct Belief:' */
         }
 
         .important-note h4 {
             color: var(--primary-color);
-            margin-bottom: 1rem;
+            margin-bottom: 0.25rem; /* Space below heading; this is above 'Correct Belief:' */
             font-size: 1.2rem;
         }
 
         .important-note ul {
             margin: 0;
-            padding-left: 1.5rem;
+            padding-left: 30px;
         }
 
         .important-note li {
             margin-bottom: 0.8rem;
             line-height: 1.6;
+        }
+
+        /* Plain list style override for specific sections */
+        .important-note ul.plain-list {
+            list-style: disc;
+            padding-left: 30px;
+            margin: 0.5rem 0 0.5rem 0;
+        }
+        .important-note ul.plain-list li {
+            background: none !important;
+            border: none !important;
+            box-shadow: none !important;
+            padding: 0 !important;
+            margin: 0.4rem 0 !important;
+        }
+
+        /* Global bullet list indentation */
+        ul {
+            padding-left: 30px;
+        }
+
+        /* Spacing around the contradiction label (CSS-only control) */
+        .contra-label {
+            margin-top: 0.25rem; /* Space above red label */
+            margin-bottom: 0.25em; /* Space below red label */
         }
 
         @media (max-width: 768px) {
@@ -337,10 +362,9 @@
 
                         <div class="important-note">
                             <h4>1. Belief in Allah</h4>
-                            <p><strong style="color: green;">Correct Belief:</strong><br>To believe Allah is One, without partners. He is the Creator, the only One deserving of all worship. We affirm His Names & Attributes without distorting them.</p>
-                            <br>
-                            <p><strong style="color: red;">Some Beliefs & Actions That Contradict This Pillar:</strong></p>
-                            <ul>
+                            <p><strong style="color: var(--primary-color);">Correct Belief:</strong><br>To believe Allah is One, without partners. He is the Creator, the only One deserving of all worship. We affirm His Names & Attributes without distorting them.</p>
+                            <p class="contra-label"><strong style="color: red;">Some Beliefs & Actions That Contradict This Pillar:</strong></p>
+                            <ul class="plain-list">
                                 <li>Calling upon saints, graves, or spirits for help.</li>
                                 <li>Using charms/amulets for protection instead of trusting Allah.</li>
                                 <li>Living a life of disobedience as if Allah will not hold us accountable.</li>
@@ -349,9 +373,9 @@
 
                         <div class="important-note">
                             <h4>2. Belief in the Angels</h4>
-                            <p><strong style="color: green;">Correct Belief:</strong><br>To believe in the existence of the angels as noble servants of Allah created from light. They carry out His commands perfectly.</p>
-                            <br>
-                            <p><strong style="color: red;">Some Beliefs & Actions That Contradict This Pillar:</strong></p>
+                            <p><strong style="color: var(--primary-color);">Correct Belief:</strong><br>To believe in the existence of the angels as noble servants of Allah created from light. They carry out His commands perfectly.</p>
+                            
+                            <p class="contra-label"><strong style="color: red;">Some Beliefs & Actions That Contradict This Pillar:</strong></p>
                             <ul>
                                 <li>Denying their existence or attributing events to mere “luck” or “coincidence.”</li>
                                 <li>Consulting fortune-tellers (who claim to access the unseen, a realm belonging to Allah).</li>
@@ -360,9 +384,9 @@
 
                         <div class="important-note">
                             <h4>3. Belief in the Revealed Books</h4>
-                            <p><strong style="color: green;">Correct Belief:</strong><br>To believe that Allah sent down divine scriptures, including the Torah, Gospel, and the Qur'an—the final, preserved, and unaltered revelation.</p>
-                            <br>
-                            <p><strong style="color: red;">Some Beliefs & Actions That Contradict This Pillar:</strong></p>
+                            <p><strong style="color: var(--primary-color);">Correct Belief:</strong><br>To believe that Allah sent down divine scriptures, including the Torah, Gospel, and the Qur'an—the final, preserved, and unaltered revelation.</p>
+                            
+                            <p class="contra-label"><strong style="color: red;">Some Beliefs & Actions That Contradict This Pillar:</strong></p>
                             <ul>
                                 <li>Denying the Qur'an's divine origin.</li>
                                 <li>Following only the parts of the Qur'an that suit one's desires and ignoring the rest.</li>
@@ -372,9 +396,9 @@
 
                         <div class="important-note">
                             <h4>4. Belief in the Messengers</h4>
-                            <p><strong style="color: green;">Correct Belief:</strong><br>To believe that Allah sent prophets from Adam to Noah, Abraham, Moses, Jesus, and finally Muhammad (peace be upon them all). Muhammad (ﷺ) is the final prophet.</p>
-                            <br>
-                            <p><strong style="color: red;">Some Beliefs & Actions That Contradict This Pillar:</strong></p>
+                            <p><strong style="color: var(--primary-color);">Correct Belief:</strong><br>To believe that Allah sent prophets from Adam to Noah, Abraham, Moses, Jesus, and finally Muhammad (peace be upon them all). Muhammad (ﷺ) is the final prophet.</p>
+                            
+                            <p class="contra-label"><strong style="color: red;">Some Beliefs & Actions That Contradict This Pillar:</strong></p>
                             <ul>
                                 <li>Denying the finality of Prophet Muhammad's (ﷺ) message.</li>
                                 <li>Disrespecting any of the prophets.</li>
@@ -384,9 +408,9 @@
 
                         <div class="important-note">
                             <h4>5. Belief in the Last Day</h4>
-                            <p><strong style="color: green;">Correct Belief:</strong><br>To believe in the Resurrection, the Day of Judgment, the weighing of deeds, and Paradise and Hellfire as final and eternal destinations.</p>
-                            <br>
-                            <p><strong style="color: red;">Some Beliefs & Actions That Contradict This Pillar:</strong></p>
+                            <p><strong style="color: var(--primary-color);">Correct Belief:</strong><br>To believe in the Resurrection, the Day of Judgment, the weighing of deeds, and Paradise and Hellfire as final and eternal destinations.</p>
+                            
+                            <p class="contra-label"><strong style="color: red;">Some Beliefs & Actions That Contradict This Pillar:</strong></p>
                             <ul>
                                 <li>Living solely for this world, with no concern for accountability in the Hereafter.</li>
                                 <li>Believing death is the final end, with no resurrection or reckoning.</li>
@@ -395,9 +419,9 @@
 
                         <div class="important-note">
                             <h4>6. Belief in Divine Decree (Qadr)</h4>
-                            <p><strong style="color: green;">Correct Belief:</strong><br>To believe that everything—good and bad—occurs by Allah's will, knowledge, and pre-ordainment.</p>
-                            <br>
-                            <p><strong style="color: red;">Some Beliefs & Actions That Contradict This Pillar:</strong></p>
+                            <p><strong style="color: var(--primary-color);">Correct Belief:</strong><br>To believe that everything—good and bad—occurs by Allah's will, knowledge, and pre-ordainment.</p>
+                            
+                            <p class="contra-label"><strong style="color: red;">Some Beliefs & Actions That Contradict This Pillar:</strong></p>
                             <ul>
                                 <li>Blaming “fate” for one's own sins and poor choices, avoiding responsibility.</li>
                                 <li>Becoming arrogant about success, attributing it solely to one’s efforts and forgetting Allah's decree.</li>
