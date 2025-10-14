@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Islamic Spiritual Affliction Diagnostic Guide</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Scheherazade+New:wght@400;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #1a5e1a;
+            --secondary-color: #2d8b2d;
+            --light-color: #f5f9f5;
+            --accent-color: #b38a4c;
+            --warning-color: #8b4513;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            border-radius: 0 0 10px 10px;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+        
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .disclaimer {
+            background-color: #fff3cd;
+            border-left: 4px solid var(--accent-color);
+            padding: 15px;
+            margin-bottom: 2rem;
+            border-radius: 4px;
+        }
+        
+        .disclaimer h3 {
+            color: var(--warning-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .section {
+            background-color: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        h2 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        h3 {
+            color: var(--secondary-color);
+            margin: 1rem 0 0.5rem 0;
+        }
+        
+        ul, ol {
+            padding-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .step {
+            counter-increment: step-counter;
+            margin-bottom: 1.5rem;
+        }
+        
+        .step:before {
+            content: "Step " counter(step-counter) ": ";
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        
+        .test-box {
+            background-color: var(--light-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-left: 4px solid var(--accent-color);
+        }
+        
+        .symptom-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+        
+        .symptom-table th, .symptom-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        .symptom-table th {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .symptom-table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        .audio-placeholder {
+            background-color: #f3f4f6;
+            border: 1px solid #e5e7eb;
+            padding: 2rem;
+            text-align: center;
+            margin: 1rem 0;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+        }
+        
+        .reaction-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .reaction-item {
+            background-color: var(--light-color);
+            padding: 1rem;
+            border-radius: 6px;
+            border-left: 3px solid var(--secondary-color);
+        }
+        
+        .reaction-title {
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        .audio-controls {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-top: 0.5rem;
+        }
+        .audio-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            background-color: transparent;
+            color: var(--secondary-color);
+            border: none;
+            box-shadow: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+        }
+        .audio-btn:hover { opacity: 0.92; }
+        body[data-theme="dark"] .audio-btn { background-color: transparent; color: var(--secondary-color); }
+        /* Inline header controls layout */
+        .test-box-header {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 0.5rem;
+            flex-wrap: nowrap;
+        }
+        .test-box-header h3 { margin: 0; }
+        .test-box-header .audio-controls {
+            margin-top: 0;
+            justify-content: flex-start;
+            gap: 0.5rem;
+        }
+        .audio-control-group {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+        .audio-label {
+            color: var(--secondary-color);
+            font-size: 0.95rem;
+        }
+        /* Divider line across the test card */
+        .card-divider {
+            border: none;
+            border-top: 1px solid #ddd;
+            margin: 0.75rem 0 0.75rem;
+        }
+        body[data-theme="dark"] .card-divider {
+            border-top-color: #444;
+        }
+        /* Remove numbering for verses list in Quranic Recitation Test */
+        .verses-list {
+            list-style: none;
+            padding-left: 0;
+            margin-left: 0;
+        }
+        /* Guidance content block inside test-box */
+        .guidance-block {
+            background-color: #ffffff;
+            border-left: 3px solid var(--accent-color);
+            border-radius: 6px;
+            padding: 1rem;
+            margin: 0.75rem 0 1rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+        }
+        .guidance-block h4, .guidance-block h5 {
+            color: inherit;
+            margin: 0.5rem 0 0.25rem;
+        }
+        .guidance-block ul {
+            margin: 0.25rem 0 0.75rem;
+            padding-left: 15px;
+            margin-left: 15px;
+        }
+        /* Specific indentation for Mu'awwidhat points */
+        .guidance-block ul.muawwidhat-points {
+            padding-left: 20px;
+            margin-left: 20px;
+        }
+        .guidance-block ul.muawwidhat-points li p {
+            margin-left: 15px;
+        }
+        .guidance-block p { margin: 0.4rem 0; }
+        /* Reduce space above the first guidance paragraph when following header */
+        .test-box-header + .guidance-block { margin-top: 0.25rem; }
+        .guidance-block p:first-of-type { margin-top: 0; }
+        body[data-theme="dark"] .guidance-block {
+            background-color: #2a2a2a;
+            color: #e0e0e0;
+            box-shadow: none;
+        }
+        /* CTA buttons and containers */
+        .action-buttons { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.5rem; }
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background-color: var(--primary-color);
+            color: #fff;
+            padding: 0.5rem 0.9rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 0.95rem;
+        }
+        .cta-btn:hover { opacity: 0.92; }
+        .testimony-box { margin-top: 0.75rem; }
+        .arabic-text {
+            font-family: 'Scheherazade New', 'Traditional Arabic', serif;
+            direction: rtl;
+            font-size: 1.1rem;
+            line-height: 2;
+            margin: 0.5rem 0 1rem;
+            text-align: right;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 2rem;
+            padding: 1rem;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Extra spacing after specific lines */
+        .spaced {
+            margin-bottom: 1.25rem;
+        }
+
+        /* Header icon-only controls */
+        .header-controls {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .header-btn {
+            background-color: rgba(255,255,255,0.2);
+            color: #fff;
+            border: none;
+            padding: 0.6rem;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+        }
+
+        .header-btn:hover {
+            background-color: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+        }
+
+        /* Dark mode overrides */
+        body[data-theme="dark"] {
+            background-color: #1a1a1a;
+            color: #eaeaea;
+        }
+
+        body[data-theme="dark"] .section {
+            background-color: #2a2a2a;
+            box-shadow: none;
+        }
+
+        body[data-theme="dark"] .disclaimer {
+            background-color: #3a3a2a;
+            border-left-color: var(--accent-color);
+            color: #f0e4c5;
+        }
+
+        body[data-theme="dark"] .audio-placeholder {
+            background-color: #2f2f2f;
+            border-color: #444;
+            color: #ddd;
+            box-shadow: none;
+        }
+
+        body[data-theme="dark"] .reaction-item {
+            background-color: #2e2e2e;
+            border-left-color: var(--secondary-color);
+        }
+
+        body[data-theme="dark"] .symptom-table tr:nth-child(even) {
+            background-color: #2a2a2a;
+        }
+
+        /* Darken the test panels in night mode */
+        body[data-theme="dark"] .test-box {
+            background-color: #2a2a2a;
+            color: #e0e0e0;
+            box-shadow: none;
+        }
+
+        body[data-theme="dark"] footer {
+            color: #bdbdbd;
+        }
+        
+        @media (max-width: 768px) {
+            .reaction-list {
+                grid-template-columns: 1fr;
+            }
+            
+            .symptom-table {
+                display: block;
+                overflow-x: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-controls">
+                <a href="index.html" class="header-btn" title="Home"><i class="fas fa-home"></i></a>
+                <button class="header-btn" onclick="toggleTheme()" title="Toggle Theme"><i class="fas fa-moon" id="theme-icon"></i></button>
+            </div>
+            <h1>Islamic Spiritual Affliction Diagnostic Guide</h1>
+            <p class="subtitle">Based on Quran, Sunnah, and Practical Experience</p>
+        </header>
+        
+        <div class="disclaimer">
+            <h3>Important Disclaimer</h3>
+            <p>This guide is for educational purposes only. It is not a substitute for professional medical or psychological care. Always rule out natural causes first before considering spiritual affliction. Consult with qualified Islamic scholars and Raqis for proper diagnosis and treatment.</p>
+        </div>
+        
+        <div class="section">
+            <h2>Fundamental Principle: Start with the Natural</h2>
+            <p class="spaced">The first and most critical rule in Islamic diagnostics is to always rule out the natural and medical causes first. The Messenger of Allah ﷺ said: "O slaves of Allah, seek treatment." (Sunan al-Tirmidhi).</p>
+            
+            <div class="step">Exhaust All Medical and Psychological Avenues</div>
+            <ul>
+                <li><strong>Medical Check-up:</strong> Many symptoms attributed to spiritual affliction (chronic fatigue, pain, seizures, digestive issues) have clear medical causes.</li>
+                <li><strong>Psychological Evaluation:</strong> Consult a qualified psychologist or psychiatrist for symptoms like depression, anxiety, dissociative disorders, or hallucinations.</li>
+            </ul>
+            
+            <p><em>Only if thorough medical and psychological investigations yield no conclusive results, or symptoms have distinctly unnatural patterns, should you proceed with spiritual assessment.</em></p>
+        </div>
+        
+        <div class="section">
+            <h2>Spiritual Assessment Framework</h2>
+            
+            <h3>Category 1: Signs of Sihr (Magic/Sorcery)</h3>
+            <p class="spaced">Sihr is specific, targeted, and often has a "point of impact."</p>
+            <ul>
+                <li><strong>Sudden, Unexplained Aversion:</strong> Intense, irrational dislike for spouse, family, or home (Sihr al-Tafreeq)</li>
+                <li><strong>Life Blockage (Sihr al-Ma'toon):</strong> Consistent failure in every endeavor despite efforts and du'as</li>
+                <li><strong>Strange Physical Symptoms:</strong> Severe localized pain, sudden health changes after visiting specific places or receiving gifts</li>
+                <li><strong>Disturbing Dreams:</strong> Being chased by animals, falling, or in dirty places</li>
+                <li><strong>Environmental Findings:</strong> Discovering knots, threads, powders, or buried objects</li>
+            </ul>
+            
+            <h3>Category 2: Signs of Al-Ayn (The Evil Eye)</h3>
+            <p class="spaced">Caused by jealousy and admiration, often unintentional.</p>
+            <ul>
+                <li><strong>Sudden Deterioration After Praise:</strong> Affliction strikes shortly after being praised without "Masha'Allah"</li>
+                <li><strong>Targeting Blessings:</strong> Affliction targets specific prized blessings (beauty, wealth, relationships)</li>
+                <li><strong>Rapid Onset:</strong> Dramatic effect shortly after praise or admiration</li>
+                <li><strong>Symptoms:</strong> Feeling "drained," unexplained sadness, anxiety, isolation</li>
+            </ul>
+            
+            <h3>Category 3: Signs of Jinn Possession or Influence (Mass)</h3>
+            <p class="spaced">Ranges from whisperings to full possession.</p>
+            <ul>
+                <li><strong>Whisperings (Waswas):</strong> Intrusive negative thoughts during prayer, unfounded doubts in faith</li>
+                <li><strong>Oppression (Qahr):</strong> Nightmares, sleep paralysis, feeling watched, hearing voices</li>
+                <li><strong>Possession (Taskhallus):</strong> Complete personality change, superhuman strength, knowledge of unseen, violent reactions to Quran</li>
+            </ul>
+        </div>
+        
+        <div class="section">
+            <h2>Diagnostic Checklist</h2>
+            <table class="symptom-table">
+                <thead>
+                    <tr>
+                        <th>Symptom / Sign</th>
+                        <th>Sihr (Magic)</th>
+                        <th>Ayn (Evil Eye)</th>
+                        <th>Jinn Influence</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Onset</td>
+                        <td>Slow or sudden</td>
+                        <td><strong>Very sudden, after praise</strong></td>
+                        <td>Gradual or sudden</td>
+                    </tr>
+                    <tr>
+                        <td>Primary Target</td>
+                        <td>Specific life area (marriage, health)</td>
+                        <td><strong>Specific blessing</strong> (beauty, wealth)</td>
+                        <td>Person's mind & body</td>
+                    </tr>
+                    <tr>
+                        <td>Reaction to Quran</td>
+                        <td>Strong reaction to specific verses</td>
+                        <td>General discomfort, crying</td>
+                        <td><strong>Extreme aversion, seizures, speaking</strong></td>
+                    </tr>
+                    <tr>
+                        <td>Psychological State</td>
+                        <td>Irrational hatred, confusion</td>
+                        <td>Sadness, lethargy, feeling drained</td>
+                        <td><strong>Waswas, depression, personality change</strong></td>
+                    </tr>
+                    <tr>
+                        <td>Physical Symptoms</td>
+                        <td>Localized, moving pain, gynecological</td>
+                        <td>General weakness, rapid decline</td>
+                        <td>Seizures, strange voices/pains</td>
+                    </tr>
+                    <tr>
+                        <td>Environmental Clues</td>
+                        <td><strong>Knots, buried objects found</strong></td>
+                        <td>None</td>
+                        <td>None</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="section">
+            <h2>The Ruqyah and Audio Response Test</h2>
+            <p>The ultimate diagnostic tool from the Sunnah is the Ruqyah itself. Reactions to Islamic recitations provide critical diagnostic information.</p>
+            
+            <div class="test-box">
+                <div class="test-box-header">
+                    <h3>Adhan (Call to Prayer) Response Test</h3>
+                    <div class="audio-controls" aria-label="Audio controls for Adhan">
+                        <div class="audio-control-group">
+                            <span class="audio-label">Adhan</span>
+                            <button id="btn-adhan-1" class="audio-btn" title="Play Adhan 1" aria-label="Play Adhan version 1"><i class="fas fa-play"></i></button>
+                        </div>
+                        <div class="audio-control-group">
+                            <span class="audio-label">Adhan</span>
+                            <button id="btn-adhan-2" class="audio-btn" title="Play Adhan 2" aria-label="Play Adhan version 2"><i class="fas fa-play"></i></button>
+                        </div>
+                        <div class="audio-control-group">
+                            <span class="audio-label">Adhan</span>
+                            <button id="btn-adhan-3" class="audio-btn" title="Play Adhan 3" aria-label="Play Adhan version 3"><i class="fas fa-play"></i></button>
+                        </div>
+                        <audio id="audio-adhan"></audio>
+                    </div>
+                </div>
+                
+                <div class="guidance-block">
+                    <p>Play the Adhan and carefully observe your inner reactions and thoughts. This isn't just about listening — it's about witnessing your spiritual state.</p>
+
+                    <h4>Watch for These Resistance Patterns:</h4>
+                    <h5>Mental Resistance:</h5>
+                    <ul>
+                        <li>Feeling irritated, bored, or impatient</li>
+                        <li>Thinking "this is a waste of time" or "it's taking too long"</li>
+                        <li>Judging that "it's silly to play Adhan outside prayer time"</li>
+                        <li>Suddenly remembering urgent tasks that feel overwhelmingly important</li>
+                    </ul>
+
+                    <h5>Behavioral Avoidance:</h5>
+                    <ul>
+                        <li>Criticizing the reciter's voice or audio quality</li>
+                        <li>Jumping between different Adhan recordings without completing any</li>
+                        <li>Finding excuses to stop before the Adhan finishes</li>
+                    </ul>
+
+                    <h4>The Challenge:</h4>
+                    <p>If you experience these negative thoughts, try to push through them and listen to one complete Adhan (approximately 2.5 minutes). Then, immediately listen to another complete Adhan and observe if the resistance intensifies or diminishes.</p>
+
+                    <h4>Why This Matters:</h4>
+                    <p>The ability to simply listen to the Call to Allah without internal resistance is a powerful indicator of your spiritual openness. Shaytan often uses seemingly "reasonable" distractions to pull you away from remembrance of Allah.</p>
+
+                    <h4>Note:</h4>
+                    <p>If you can complete this exercise with focus and peace, that's an excellent sign of spiritual health. If you struggle intensely, it may indicate spiritual blockage that requires attention.</p>
+                </div>
+
+                <h4>Observed Reactions:</h4>
+                <div class="reaction-list">
+                    <div class="reaction-item">
+                        <div class="reaction-title">Normal/Healthy</div>
+                        <p>Feeling of tranquility, peace, longing for prayer, repeating words</p>
+                    </div>
+                    <div class="reaction-item">
+                        <div class="reaction-title">Mild Affliction</div>
+                        <p>Irritation, restlessness, anxiety, desire to leave room</p>
+                    </div>
+                    <div class="reaction-item">
+                        <div class="reaction-title">Moderate Affliction</div>
+                        <p>Headache, chest tightness, drowsiness specifically during Adhan</p>
+                    </div>
+                    <div class="reaction-item">
+                        <div class="reaction-title">Strong Jinn Indication</div>
+                        <p>Covering ears violently, screaming, cursing the Adhan, seizures</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="test-box">
+                <h3>Quranic Recitation Response Test</h3>
+                <p>Perform Ruqyah Ash-Shar'iyyah in this sequence:</p>
+                <div class="guidance-block">
+                    <p>Now, you will listen to specific Quranic verses used in Ruqyah (Quranic healing). The reactions here can be more pronounced than with the Adhan, as these verses are a direct challenge to any negative spiritual influence.</p>
+                    <h4>Instructions for this Test:</h4>
+                    <p>Play the first set of verses (Surah Al-Fatihah, Ayat al-Kursi, Last two verses of Surah Al-Baqarah).</p>
+                    <p>Observe yourself closely. In addition to all the signs of resistance and aversion you noted during the Adhan test, be especially alert for the following, which are stronger indicators:</p>
+                    <ul>
+                        <li><strong>Physical Discomfort:</strong> A sudden headache, feeling nauseous, specific stabbing or burning pains in any part of the body, excessive yawning, or feeling heavily drowsy.</li>
+                        <li><strong>Intense Emotional Shifts:</strong> Unexplained anger, intense sadness, fear, or the urge to cry without feeling connected to Allah.</li>
+                        <li><strong>Mental Blockages:</strong> An inability to focus on the words, your mind going completely blank, or being flooded with violent or blasphemous thoughts.</li>
+                        <li><strong>Aversion to Continuing:</strong> A powerful, compelling feeling that you must stop the audio immediately.</li>
+                    </ul>
+                    <p>If you experience strong negative reactions, note them down but try to push through and complete the recitation if you can. The struggle itself is diagnostic.</p>
+                    <p>If you experience no negative reactions, or even feel a sense of peace, calm, or lightness, this is a very positive sign. Continue listening to the remaining verses and observe if this feeling strengthens.</p>
+                    <p><strong>Important:</strong> The purpose of this test is observation and diagnosis. If you experience severe physical reactions (like convulsions) or intense psychological distress, stop immediately and seek guidance from a qualified and trusted Raqi or Islamic scholar. Do not attempt to treat severe reactions on your own.</p>
+                </div>
+                
+                <ol class="verses-list">
+                    <li>
+                        <strong>Surah Al-Fatihah</strong>
+                        <div class="audio-controls" aria-label="Audio controls for Surah Al-Fatihah">
+                            <button id="btn-play-fatiha" class="audio-btn" title="Play" aria-label="Play"><i class="fas fa-play"></i></button>
+                            <button id="btn-pause-fatiha" class="audio-btn" title="Pause" aria-label="Pause"><i class="fas fa-pause"></i></button>
+                            <button id="btn-stop-fatiha" class="audio-btn" title="Stop" aria-label="Stop"><i class="fas fa-stop"></i></button>
+                            <audio id="audio-fatiha" src="audio/Al-Falaq.mp3"></audio>
+                        </div>
+                        <div class="arabic-text">
+                            بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ ﴿١﴾ الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ ﴿٢﴾ الرَّحْمَنِ الرَّحِيمِ ﴿٣﴾ مَالِكِ يَوْمِ الدِّينِ ﴿٤﴾ إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ ﴿٥﴾ اهْدِنَا الصِّرَاطَ الْمُسْتَقِيمَ ﴿٦﴾ صِرَاطَ الَّذِينَ أَنْعَمْتَ عَلَيْهِمْ غَيْرِ الْمَغْضُوبِ عَلَيْهِمْ وَلَا الضَّالِّينَ ﴿٧﴾
+                        </div>
+                    </li>
+                    <li>
+                        <strong>Ayat-ul-Kursi (Al-Baqarah 255)</strong>
+                        <div class="audio-controls" aria-label="Audio controls for Ayat-ul-Kursi">
+                            <button id="btn-play-kursi" class="audio-btn" title="Play" aria-label="Play"><i class="fas fa-play"></i></button>
+                            <button id="btn-pause-kursi" class="audio-btn" title="Pause" aria-label="Pause"><i class="fas fa-pause"></i></button>
+                            <button id="btn-stop-kursi" class="audio-btn" title="Stop" aria-label="Stop"><i class="fas fa-stop"></i></button>
+                            <audio id="audio-kursi" src="audio/Al-Baqarah-255.mp3"></audio>
+                        </div>
+                        <div class="arabic-text">
+                            اللَّهُ لَا إِلَهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ لَا تَأْخُذُهُ سِنَةٌ وَلَا نَوْمٌ لَهُ مَا فِي السَّمَاوَاتِ وَمَا فِي الْأَرْضِ مَنْ ذَا الَّذِي يَشْفَعُ عِنْدَهُ إِلَّا بِإِذْنِهِ يَعْلَمُ مَا بَيْنَ أَيْدِيهِمْ وَمَا خَلْفَهُمْ وَلَا يُحِيطُونَ بِشَيْءٍ مِنْ عِلْمِهِ إِلَّا بِمَا شَاءَ وَسِعَ كُرْسِيُّهُ السَّمَاوَاتِ وَالْأَرْضَ وَلَا يَئُودُهُ حِفْظُهُمَا وَهُوَ الْعَلِيُّ الْعَظِيمُ
+                        </div>
+                    </li>
+                    <li>
+                        <strong>Last two verses of Surah Al-Baqarah (285-286)</strong>
+                        <div class="audio-controls" aria-label="Audio controls for Last two verses of Al-Baqarah">
+                            <button id="btn-play-baqarah-end" class="audio-btn" title="Play" aria-label="Play"><i class="fas fa-play"></i></button>
+                            <button id="btn-pause-baqarah-end" class="audio-btn" title="Pause" aria-label="Pause"><i class="fas fa-pause"></i></button>
+                            <button id="btn-stop-baqarah-end" class="audio-btn" title="Stop" aria-label="Stop"><i class="fas fa-stop"></i></button>
+                            <audio id="audio-baqarah-end"></audio>
+                        </div>
+                        <div class="arabic-text">
+                            آمَنَ الرَّسُولُ بِمَا أُنْزِلَ إِلَيْهِ مِنْ رَبِّهِ وَالْمُؤْمِنُونَ كُلٌّ آمَنَ بِاللَّهِ وَمَلَائِكَتِهِ وَكُتُبِهِ وَرُسُلِهِ لَا نُفَرِّقُ بَيْنَ أَحَدٍ مِنْ رُسُلِهِ وَقَالُوا سَمِعْنَا وَأَطَعْنَا غُفْرَانَكَ رَبَّنَا وَإِلَيْكَ الْمَصِيرُ ﴿٢٨٥﴾ لَا يُكَلِّفُ اللَّهُ نَفْسًا إِلَّا وُسْعَهَا لَهَا مَا كَسَبَتْ وَعَلَيْهَا مَا اكْتَسَبَتْ رَبَّنَا لَا تُؤَاخِذْنَا إِنْ نَسِينَا أَوْ أَخْطَأْنَا رَبَّنَا وَلَا تَحْمِلْ عَلَيْنَا إِصْرًا كَمَا حَمَلْتَهُ عَلَى الَّذِينَ مِنْ قَبْلِنَا رَبَّنَا وَلَا تُحَمِّلْنَا مَا لَا طَاقَةَ لَنَا بِهِ وَاعْفُ عَنَّا وَاغْفِرْ لَنَا وَارْحَمْنَا أَنْتَ مَوْلَانَا فَانْصُرْنَا عَلَى الْقَوْمِ الْكَافِرِينَ ﴿٢٨٦﴾
+                        </div>
+                    </li>
+                    <hr class="card-divider">
+                    <div class="guidance-block">
+                        <h4>The Al-Mu'awwidhat (The Final Test)</h4>
+                        <p>You will now listen to Surah Al-Falaq and Surah An-Nas. These two Surahs, revealed together, are a specific divine remedy from Allah against spiritual evils. The Prophet Muhammad ﷺ said: "No one seeks refuge in anything like these two." (Sunan an-Nasa'i)</p>
+                        <p>Pay extremely close attention here. The reaction to these specific Surahs is often the most telling sign of all.</p>
+            <h4>What to Look For:</h4>
+            <p>While you should still watch for all previous signs (aversion, physical discomfort, etc.), the Al-Mu'awwidhat can trigger very specific reactions:</p>
+            <ul class="muawwidhat-points">
+                <li><strong>During Surah Al-Falaq (The Daybreak):</strong>
+                    <p>This Surah specifically seeks protection from the evil of black magic (sihr). A strong, specific reaction here—like a sudden sharp pain, intense heat, or overwhelming agitation. This is a powerful indicator of sihr being present.</p>
+                </li>
+                <li><strong>During Surah An-Nas (Mankind):</strong>
+                    <p>This Surah specifically seeks protection from the whisperings of Jinn and mankind. A strong reaction here—like feeling choked, hearing internal voices arguing, or a surge of fear  points strongly to Jinn influence (waswas or oppression).</p>
+                </li>
+            </ul>
+                        <h4>Instructions:</h4>
+                        <p>Listen to Surah Al-Falaq first. Observe your reactions with full focus. Note any physical sensations, emotional shifts, or intrusive thoughts during and immediately after the recitation.</p>
+                        <p>Then, listen to Surah An-Nas. See if the reaction is different. Does it get stronger? Weaker? Does the type of discomfort change?</p>
+                        <p>Compare and Contrast. The difference in your reaction between these two Surahs can help differentiate between an affliction of magic (Sihr) and one of Jinn whisperings or possession.</p>
+                        <p>Consider this the most important part of your self-assessment. A violent aversion or physical reaction to the Al-Mu'awwidhat is one of the clearest signs from the Sunnah that a genuine spiritual affliction is present and that you should seek the help of a qualified Raqi.</p>
+                    </div>
+                    <li>
+                        <strong>Al-Mu'awwidhat (Surah Al-Falaq, An-Nas)</strong>
+                        <div class="audio-controls" aria-label="Audio controls for Al-Mu'awwidhat">
+                            <button id="btn-play-muawwidhat" class="audio-btn" title="Play" aria-label="Play"><i class="fas fa-play"></i></button>
+                            <button id="btn-pause-muawwidhat" class="audio-btn" title="Pause" aria-label="Pause"><i class="fas fa-pause"></i></button>
+                            <button id="btn-stop-muawwidhat" class="audio-btn" title="Stop" aria-label="Stop"><i class="fas fa-stop"></i></button>
+                            <audio id="audio-muawwidhat"></audio>
+                        </div>
+                        <div class="arabic-text">
+                            بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ
+                            قُلْ أَعُوذُ بِرَبِّ الْفَلَقِ ﴿١﴾ مِنْ شَرِّ مَا خَلَقَ ﴿٢﴾ وَمِنْ شَرِّ غَاسِقٍ إِذَا وَقَبَ ﴿٣﴾ وَمِنْ شَرِّ النَّفَّاثَاتِ فِي الْعُقَدِ ﴿٤﴾ وَمِنْ شَرِّ حَاسِدٍ إِذَا حَسَدَ ﴿٥﴾
+                        </div>
+                        <div class="arabic-text">
+                            بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ
+                            قُلْ أَعُوذُ بِرَبِّ النَّاسِ ﴿١﴾ مَلِكِ النَّاسِ ﴿٢﴾ إِلَهِ النَّاسِ ﴿٣﴾ مِنْ شَرِّ الْوَسْوَاسِ الْخَنَّاسِ ﴿٤﴾ الَّذِي يُوَسْوِسُ فِي صُدُورِ النَّاسِ ﴿٥﴾ مِنَ الْجِنَّةِ وَالنَّاسِ ﴿٦﴾
+                        </div>
+                    </li>
+                </ol>
+                
+                <h4>Observed Reactions:</h4>
+                <div class="reaction-list">
+                    <div class="reaction-item">
+                        <div class="reaction-title">No Reaction / Feeling of Peace</div>
+                        <p>Good sign. Issue likely psychological or natural.</p>
+                    </div>
+                    <div class="reaction-item">
+                        <div class="reaction-title">Physical Reactions</div>
+                        <p>Yawning, burping, heat/cold sensations, tingling. Indicates affliction being combated.</p>
+                    </div>
+                    <div class="reaction-item">
+                        <div class="reaction-title">Strong, Violent Reactions</div>
+                        <p>Screaming, convulsions, coughing, voice changes. Confirmation of spiritual affliction.</p>
+                    </div>
+                </div>
+                
+                <p><strong>Key Insight:</strong> A strong reaction to Surah Al-Falaq is often very indicative of sihr, as it specifically seeks refuge from the evil of black magic.</p>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>A Note on Repeating These Tests</h2>
+            <div class="guidance-block">
+                <p>You may repeat these diagnostic sessions as needed, but please adhere to the following guidelines to ensure you do not fall into doubt or spiritual anxiety:</p>
+
+                <h4>For Confirmation</h4>
+                <p>If your initial results were unclear, you may repeat the tests after 24 hours. This allows time for your spiritual and emotional state to settle.</p>
+
+                <h4>To Track Progress</h4>
+                <p>If you are undergoing treatment (like Ruqyah or spiritual therapy), repeating these tests once a week can help you observe your progress. Look for a reduction in the intensity of your negative reactions over time.</p>
+
+                <h4>Crucial Warning - Do Not Obsess</h4>
+                <p>Do not repeat the tests multiple times in a single day. If you find yourself constantly wanting to re-check, feeling that a single "clean" test is never enough, or becoming anxious if you skip a day, this is likely a sign of waswasah (devilish whisperings). In this case, the act of testing itself is becoming a problem. Stop the tests immediately and focus instead on consistent daily dhikr (remembrance of Allah) and worship.</p>
+
+                <h4>Focus on the Cure, Not Just the Diagnosis</h4>
+                <p>Remember, the goal is to seek healing through the Quran and Sunnah. If the tests indicate a problem, shift your focus from endless diagnosis to the consistent practice of remedies—such as daily recitation of the Adhkar, listening to the Quran for healing, and performing Ruqyah upon yourself as prescribed.</p>
+
+                <h4>A Balanced Approach</h4>
+                <ul>
+                    <li><strong>Initial Diagnosis:</strong> Perform the tests once.</li>
+                    <li><strong>Confirmatory Test:</strong> If needed, repeat after a day.</li>
+                    <li><strong>Shift to Treatment:</strong> Begin your prescribed spiritual regimen.</li>
+                    <li><strong>Progress Check:</strong> Repeat the tests no more than once a week to gauge improvement.</li>
+                </ul>
+                <p>This balanced approach protects you from the harm of obsession while allowing you to benefit from the diagnostic process.</p>
+
+                <h4>Why this framing is essential</h4>
+                <ul>
+                    <li><strong>Prevents Harm:</strong> It directly addresses the primary risk of self-diagnosis in spiritual matters: obsessive-compulsive behavior, which Shaytan exploits.</li>
+                    <li><strong>Provides a Clear Protocol:</strong> It gives users a safe, structured "permission" to repeat the tests without leaving it open to interpretation.</li>
+                    <li><strong>Promotes Action:</strong> It guides the user from a state of passive diagnosis ("What's wrong with me?") to active treatment ("This is how I will get better").</li>
+                    <li><strong>Aligns with Islamic Principles:</strong> It encourages trust in Allah (Tawakkul) after taking appropriate measures, rather than constant doubt and re-checking.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Final Counsel and Warnings</h2>
+            <ul>
+                <li><strong>Do Not Obsess:</strong> The greatest trick of Shaytan is to make a healthy person believe they are afflicted.</li>
+                <li><strong>Strengthen Your Foundation:</strong> Ensure your prayers are on time, recite morning and evening adhkar, and earn Halal income.</li>
+                <li><strong>Seek a Qualified Raqi:</strong> If self-assessment points to affliction, stop self-diagnosing and seek a knowledgeable, trustworthy Raqi.</li>
+                <li><strong>Tawakkul is the Key:</strong> Place complete trust in Allah. "And if Allah should touch you with adversity, there is no remover of it except Him." (Quran, 6:17).</li>
+            </ul>
+            
+            <div class="test-box">
+                <p><strong>Important:</strong> This guide is a diagnostic framework, not a replacement for a live assessment by a qualified scholar or Raqi.</p>
+            </div>
+        </div>
+        
+        <!-- Where to next? section -->
+        <div class="section">
+            <h2>Where to next?</h2>
+            <div class="guidance-block">
+                <p>If you experienced any reaction during the diagnostic tests—minor or otherwise—here are your next steps. You can continue with Self-Ruqyah or seek help from a professional Raaqi. Please read the Raaqi advisory; it highlights un-Islamic practices and charlatans so you can avoid harm.</p>
+                <div class="action-buttons">
+                    <a href="#" id="btn-self-ruqyah" class="cta-btn" aria-label="Read Self-Ruqyah next steps">Self-Ruqyah</a>
+                    <a href="#" class="cta-btn advisory-toggle-btn" aria-label="Open Raaqi Advisory" aria-controls="advisory-panel-1" aria-expanded="false" data-source="Raqi-advisory.html" data-selector="#raaqi-advisory-box" data-target="#advisory-panel-1">Raaqi Advisory</a>
+                </div>
+                <div id="user-testimony-box" class="testimony-box" role="region" aria-label="User Experience" style="display:none">
+                    <p><strong>Summary</strong></p>
+                    <p>By the will and mercy of Allah (swt), I was completely healed from a spiritual affliction (sihr/jinn) through the consistent recitation of the Manzil verses. I continue to use them for ongoing protection, seeking refuge in Allah (swt) alone.</p>
+                    <div class="summary-points" style="margin-left:20px;">
+                      <p><strong>Affliction Symptoms:</strong> Experienced intense, irrational anger, hatred (especially towards my wife), and a severe aversion to acts of worship like salah and Quran recitation, accompanied by blasphemous whispers.</p>
+                      <p><strong>Confirmed Cause:</strong> A physical spiritual disturbance confirmed these were not my own emotions, but an external affliction, specifically sihr aimed at destroying my marriage.</p>
+                      <p><strong>Immediate Solution:</strong> Began reciting the Manzil verses as it was the only available resource.</p>
+                      <p><strong>Healing Process:</strong> After a few days of consistent recitation, a powerful physical reaction occurred—intense tingling moving through the body and exiting—followed by immediate relief, profound peace, and the return of joy in worship.</p>
+                      <p><strong>Key Takeaway:</strong> Healing can be done through the manzil verses only however, healing requires consistency; one or two sessions are not enough. Self-Ruqyah, coupled with daily adhkar, is vital for ongoing protection. Read the Self Ruqyah guide in this app to increase your knowledge and increase the effectiviness of your self ruqyah.</p>
+                    </div>
+                    <p><strong>Detail</strong></p>
+                    <p>I began practicing Ruqyah out of necessity when I realized I had a serious problem. My symptoms were primarily intense, uncontrollable anger and a growing hatred for everything around me, finding no pleasure in salah or reading the Quran which is something I enjoyed normally but during that phase I could not bring myself to open the Quran - my mind would "whisper" the most blashphamous things . Reading salah became so difficult, my body ached and "astaghfurullah!" if I did manage to do anything religious it was begrudgingly and with misgivings.</p>
+                    <p>The sihr was to split up me and my wife and it did make me hate my wife - every little thing she did was an annoyance. Alhamdullilah Allah (swt) protected our marriage and our family from me doing something irreversible.</p>
+                    <p>The situation became clear when an actual physical disturbance in my room while I was asleep, waking me up with a pounding heart. This event confirmed that these negative emotions were not my own; they were an affliction.</p>
+                    <p>The only thing that I had available was an old booklet of the Manzil verses and I had heard this was something which helped with "this kind of thing". I began reciting the Manzil Verses (which I have included here with audio).</p>
+                    <p>After a few days of consistent recitation, I felt a clear physical reaction: a tingling sensation that started in my legs and moved up to my head. The tingling grew more intense as it travelled up through me. When it got to my head I thought I was going to pass out - however as I knew that part of the Quran by heart I kept on reading even though I think I blacked out for a short time and then Whooosh! the tingling seemed to rush out of me through the top of my head. And as soon as it left I found that right in the centre of my chest I had the most profound sense of happiness and peace. I actually smiled. I felt lighter and all negative thoughts and whispers   disappeared, and I actually found peace in my salah and reading of the Quran. Alhamdulillah! However, I continue to do daily ruqyah with Manzil verses and morning and evening adhkar for ongoing protection.</p>
+                    <p><strong>A Journey of Consistency</strong></p>
+                    <p>Healing is a process. Do not expect one or two sessions to be enough. Spiritual recovery requires consistent practice.</p>
+                    <p>For a detailed guide on how to perform self-Ruqyah, see the "Self Ruqyah Guide" in this app.</p>
+                </div>
+                <div id="advisory-panel-1" class="testimony-box" role="region" aria-label="Raaqi Advisory" hidden></div>
+            </div>
+        </div>
+
+        <footer>
+            <p>May Allah protect you and all believers from all forms of harm, both seen and unseen. May He grant shifa and make this a means of guidance and relief. Ameen.</p>
+            <p>For Educational Purposes Only</p>
+        </footer>
+    </div>
+    <script>
+        function toggleTheme() {
+            const body = document.body;
+            const themeIcon = document.getElementById('theme-icon');
+            if (body.getAttribute('data-theme') === 'dark') {
+                body.removeAttribute('data-theme');
+                themeIcon.className = 'fas fa-moon';
+                localStorage.setItem('theme', 'light');
+            } else {
+                body.setAttribute('data-theme', 'dark');
+                themeIcon.className = 'fas fa-sun';
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedTheme = localStorage.getItem('theme');
+            const themeIcon = document.getElementById('theme-icon');
+            if (savedTheme === 'dark') {
+                document.body.setAttribute('data-theme', 'dark');
+                themeIcon.className = 'fas fa-sun';
+            }
+        });
+
+        // Bind audio controls for Surah Al-Fatihah (plays Al-Falaq.mp3)
+        document.addEventListener('DOMContentLoaded', function() {
+            const audio = document.getElementById('audio-fatiha');
+            const btnPlay = document.getElementById('btn-play-fatiha');
+            const btnPause = document.getElementById('btn-pause-fatiha');
+            const btnStop = document.getElementById('btn-stop-fatiha');
+
+            if (audio && btnPlay && btnPause && btnStop) {
+                btnPlay.addEventListener('click', () => {
+                    audio.play();
+                });
+                btnPause.addEventListener('click', () => {
+                    audio.pause();
+                });
+                btnStop.addEventListener('click', () => {
+                    audio.pause();
+                    audio.currentTime = 0;
+                });
+            }
+        });
+
+        // Bind Adhan buttons: toggle Play <-> Stop per button
+        document.addEventListener('DOMContentLoaded', function() {
+            const audio = document.getElementById('audio-adhan');
+            const b1 = document.getElementById('btn-adhan-1');
+            const b2 = document.getElementById('btn-adhan-2');
+            const b3 = document.getElementById('btn-adhan-3');
+            if (!audio) return;
+
+            const buttons = [b1, b2, b3].filter(Boolean);
+            const sources = {
+                'btn-adhan-1': 'audio/Adhan-1.mp3',
+                'btn-adhan-2': 'audio/Adhan-2.mp3',
+                'btn-adhan-3': 'audio/Adhan-3.mp3'
+            };
+            let activeBtn = null;
+
+            function setIcon(btn, isPlay) {
+                const icon = btn && btn.querySelector('i');
+                if (!icon) return;
+                icon.className = isPlay ? 'fas fa-play' : 'fas fa-stop';
+            }
+            function stopPlayback() {
+                try {
+                    audio.pause();
+                    audio.currentTime = 0;
+                } catch (e) {}
+                if (activeBtn) {
+                    setIcon(activeBtn, true);
+                    activeBtn = null;
+                }
+            }
+
+            buttons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const id = btn.id;
+                    const src = sources[id];
+                    // If this button is active and currently playing, stop
+                    if (activeBtn === btn && !audio.paused && !audio.ended) {
+                        stopPlayback();
+                        return;
+                    }
+                    // Switch to this button/source
+                    if (activeBtn && activeBtn !== btn) setIcon(activeBtn, true);
+                    stopPlayback();
+                    audio.src = src;
+                    const p = audio.play();
+                    if (p && typeof p.catch === 'function') p.catch(() => {});
+                    setIcon(btn, false); // show stop icon
+                    activeBtn = btn;
+                });
+            });
+
+            audio.addEventListener('ended', () => stopPlayback());
+        });
+
+        // Helper to wire audio controls with optional playlist sequencing
+        function setupAudioControls(audioId, btnPlayId, btnPauseId, btnStopId, sources) {
+            const audioEl = document.getElementById(audioId);
+            const playBtn = document.getElementById(btnPlayId);
+            const pauseBtn = document.getElementById(btnPauseId);
+            const stopBtn = document.getElementById(btnStopId);
+            if (!audioEl || !playBtn || !pauseBtn || !stopBtn) return;
+
+            let idx = 0;
+            if (Array.isArray(sources) && sources.length > 0) {
+                audioEl.src = sources[0];
+            }
+
+            playBtn.addEventListener('click', () => {
+                if (Array.isArray(sources) && sources.length > 0) {
+                    audioEl.src = sources[idx];
+                }
+                audioEl.play();
+            });
+            pauseBtn.addEventListener('click', () => audioEl.pause());
+            stopBtn.addEventListener('click', () => {
+                audioEl.pause();
+                audioEl.currentTime = 0;
+                idx = 0;
+                if (Array.isArray(sources) && sources.length > 0) {
+                    audioEl.src = sources[0];
+                }
+            });
+
+            audioEl.addEventListener('ended', () => {
+                if (Array.isArray(sources) && sources.length > 1) {
+                    idx++;
+                    if (idx < sources.length) {
+                        audioEl.src = sources[idx];
+                        audioEl.play();
+                    } else {
+                        // Reset after playlist finishes
+                        idx = 0;
+                        audioEl.currentTime = 0;
+                        audioEl.src = sources[0];
+                    }
+                }
+            });
+        }
+
+        // Bind Ayat-ul-Kursi (single track)
+        document.addEventListener('DOMContentLoaded', function() {
+            setupAudioControls(
+                'audio-kursi',
+                'btn-play-kursi',
+                'btn-pause-kursi',
+                'btn-stop-kursi',
+                ['audio/Al-Baqarah-255.mp3']
+            );
+        });
+
+        // Bind Last two verses of Al-Baqarah (sequence 285 then 286)
+        document.addEventListener('DOMContentLoaded', function() {
+            setupAudioControls(
+                'audio-baqarah-end',
+                'btn-play-baqarah-end',
+                'btn-pause-baqarah-end',
+                'btn-stop-baqarah-end',
+                ['audio/Al-Baqarah-285.mp3', 'audio/Al-Baqarah-286.mp3']
+            );
+        });
+
+        // Bind Al-Mu'awwidhat (Falaq -> Nas)
+        document.addEventListener('DOMContentLoaded', function() {
+            setupAudioControls(
+                'audio-muawwidhat',
+                'btn-play-muawwidhat',
+                'btn-pause-muawwidhat',
+                'btn-stop-muawwidhat',
+                ['audio/Al-Falaq.mp3', 'audio/An-Nas.mp3']
+            );
+        });
+
+        // Where to next? section interactions
+        document.addEventListener('DOMContentLoaded', function() {
+            const btnSelf = document.getElementById('btn-self-ruqyah');
+            const testimonyBox = document.getElementById('user-testimony-box');
+
+            if (btnSelf) {
+                btnSelf.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    if (testimonyBox) {
+                        testimonyBox.style.display = (testimonyBox.style.display === 'block') ? 'none' : 'block';
+                    }
+                });
+            }
+        });
+
+        // Generic advisory toggle button: lazy-loads advisory details
+        document.addEventListener('DOMContentLoaded', function() {
+            const buttons = document.querySelectorAll('.advisory-toggle-btn');
+            buttons.forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetSel = btn.getAttribute('data-target');
+                    const sourceUrl = btn.getAttribute('data-source');
+                    const selector = btn.getAttribute('data-selector');
+                    const panel = document.querySelector(targetSel);
+                    if (!panel) return;
+
+                    const isHidden = panel.hasAttribute('hidden');
+                    if (isHidden) {
+                        panel.removeAttribute('hidden');
+                        btn.setAttribute('aria-expanded', 'true');
+                        if (!panel.dataset.loaded && sourceUrl) {
+                            fetch(sourceUrl)
+                                .then(r => r.text())
+                                .then(html => {
+                                    const parser = new DOMParser();
+                                    const doc = parser.parseFromString(html, 'text/html');
+                                    let content = selector ? doc.querySelector(selector) : doc.body;
+                                    if (content) {
+                                        panel.innerHTML = content.innerHTML;
+                                        panel.dataset.loaded = 'true';
+                                    } else {
+                                        panel.innerHTML = '<p>Advisory content not found.</p>';
+                                    }
+                                })
+                                .catch(() => {
+                                    panel.innerHTML = '<p>Failed to load advisory.</p>';
+                                });
+                        }
+                    } else {
+                        panel.setAttribute('hidden', '');
+                        btn.setAttribute('aria-expanded', 'false');
+                        // Auto-close any open advisory subsections when panel is hidden
+                        const openDetails = panel.querySelectorAll('details[open]');
+                        openDetails.forEach(d => d.removeAttribute('open'));
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
