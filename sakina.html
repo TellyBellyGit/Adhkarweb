@@ -442,9 +442,9 @@
             <!-- Step 3: Du'as for Anxiety & Grief -->
             <div class="practice-section">
                 <h2>Step 3: Du'as for Anxiety & Grief</h2>
-                <div class="translation">"O Ever-Living, O Sustainer of all existence, by Your mercy I seek Your help. Rectify for me all of my affairs. Do not leave me to myself for even the blink of an eye. My soul feels heavy, and my thoughts are clouded. I have no one to turn to but You. Wrap me in Your care, guide me through this confusion, and grant my heart the serenity that can only come from You. You are my Master, and I am in dire need of Your Grace."</div>
+                <div class="translation always-visible">"O Ever-Living, O Sustainer of all existence, by Your mercy I seek Your help. Rectify for me all of my affairs. Do not leave me to myself for even the blink of an eye. My soul feels heavy, and my thoughts are clouded. I have no one to turn to but You. Wrap me in Your care, guide me through this confusion, and grant my heart the serenity that can only come from You. You are my Master, and I am in dire need of Your Grace."</div>
                 
-                <div class="translation">"O Allah, the Turner of Hearts, I ask  You as Your humble servant.  You know the pain I cannot express and the fears that haunt my mind. I seek refuge in You from this turmoil. O Healer of Hearts, pour upon my heart Your divine tranquility (Sakina), ease my burdens, and replace my sorrow with peace and my fear with complete trust in You. You are my only refuge and my  hope. Grant me healing and peace, by Your Mercy I ask You, O Most Merciful of the merciful."</div>
+                <div class="translation always-visible">"O Allah, the Turner of Hearts, I ask  You as Your humble servant.  You know the pain I cannot express and the fears that haunt my mind. I seek refuge in You from this turmoil. O Healer of Hearts, pour upon my heart Your divine tranquility (Sakina), ease my burdens, and replace my sorrow with peace and my fear with complete trust in You. You are my only refuge and my  hope. Grant me healing and peace, by Your Mercy I ask You, O Most Merciful of the merciful."</div>
 
                 <!-- Du'a (flattened) -->
                     <div class="arabic" style="text-align: center;">اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْهَمِّ وَالْحَزَنِ</div>
@@ -491,7 +491,7 @@
 
         // Toggle translation
         const toggleTranslation = document.getElementById('toggleTranslation');
-        const translations = document.querySelectorAll('.translation');
+        const translations = document.querySelectorAll('.translation:not(.always-visible)');
 
         toggleTranslation.addEventListener('click', function() {
             this.classList.toggle('active');
