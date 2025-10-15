@@ -45,13 +45,13 @@
         header {
             background: linear-gradient(135deg, var(--primary-color), #5da360);
             color: white;
-            padding: 1.5rem 1rem;
+            padding: 1rem 0.75rem;
             text-align: center;
             position: relative;
             overflow: hidden;
             border-radius: 0 0 20px 20px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-            margin-bottom: 2rem;
+            margin-bottom: 1rem;
         }
 
         .header-pattern {
@@ -85,16 +85,16 @@
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 1rem;
+            padding: 0 0.5rem;
         }
 
         .main-controls {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 2rem;
+            margin-bottom: 1rem;
             flex-wrap: wrap;
-            gap: 1rem;
+            gap: 0.5rem;
         }
 
         .toggle-controls {
@@ -149,8 +149,8 @@
         .dhikr-card {
             background-color: var(--card-bg);
             border-radius: var(--border-radius);
-            padding: 2rem;
-            margin-bottom: 2rem;
+            padding: 1rem;
+            margin-bottom: 1rem;
             box-shadow: var(--shadow);
             transition: var(--transition);
             position: relative;
@@ -176,29 +176,29 @@
             font-family: 'Scheherazade New', serif;
             font-size: 2rem;
             text-align: right;
-            margin-bottom: 1rem;
-            line-height: 1.8;
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
             color: var(--text-color);
             direction: rtl;
         }
 
         .transliteration {
             font-style: italic;
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
             color: #888;
             font-size: 1.1rem;
         }
 
         .translation {
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
             font-size: 1.1rem;
-            line-height: 1.6;
+            line-height: 1.5;
         }
 
         .source {
             font-size: 0.9rem;
             color: #888;
-            margin-bottom: 1.5rem;
+            margin-bottom: 0.75rem;
         }
 
         .counter-container {
@@ -257,8 +257,8 @@
         .instructions {
             background-color: var(--card-bg);
             border-radius: var(--border-radius);
-            padding: 1.5rem;
-            margin-bottom: 2rem;
+            padding: 1rem;
+            margin-bottom: 1rem;
             box-shadow: var(--shadow);
         }
 
@@ -279,8 +279,8 @@
         .practice-section {
             background-color: var(--card-bg);
             border-radius: var(--border-radius);
-            padding: 1.5rem;
-            margin-bottom: 2rem;
+            padding: 0.75rem;
+            margin-bottom: 1rem;
             box-shadow: var(--shadow);
         }
 
@@ -291,8 +291,8 @@
 
         footer {
             text-align: center;
-            padding: 2rem;
-            margin-top: 3rem;
+            padding: 1rem;
+            margin-top: 1.5rem;
             border-top: 1px solid #444;
             color: #888;
         }
@@ -307,7 +307,7 @@
             }
 
             .dhikr-card {
-                padding: 1.5rem;
+                padding: 0.75rem;
             }
 
             .main-controls {
@@ -361,7 +361,7 @@
             </div>
         </div>
 
-        <div class="dhikr-container">
+        <!-- dhikr-container wrapper removed to simplify DOM -->
             <!-- Step 1: Seeking Refuge -->
             <div class="practice-section">
                 <h2>Step 1: Seeking Refuge (Isti'adha)</h2>
@@ -447,7 +447,7 @@
                     <div class="translation">"Say, 'I seek refuge in the Lord of mankind, (1) The Sovereign of mankind, (2) The God of mankind, (3) From the evil of the retreating whisperer - (4) Who whispers [evil] into the breasts of mankind - (5) From among the jinn and mankind.' (6)"</div>
                     <div class="source"><strong>Source:</strong> Surah An-Nas (Mankind) 114:1-6</div>
                 </div>
-            </div>
+            <!-- dhikr-container closing removed -->
 
             <!-- Step 3: Du'as for Anxiety & Grief -->
             <div class="practice-section">
