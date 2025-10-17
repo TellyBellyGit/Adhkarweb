@@ -409,7 +409,7 @@
             <div class="content-card">
                 <h3 class="section-heading">1. The Verse of Light (Ayat an-Nur)</h3>
                 <audio id="nur-audio" src="audio/Nur-24-35.mp3" preload="none"></audio>
-                <p>Begin by reciting and reflecting upon this magnificent verse that establishes Allah as The Source of All Light. This serves as a spiritual preparation and reminder of the ultimate source of the illumination we seek. <button class="audio-play" aria-label="Play Nur 24:35" onclick="document.getElementById('nur-audio').play()" title="Play Ayat an-Nur" style="background: none; border: none; cursor: pointer; font-size: 1.25rem; margin-left: 0.5rem;">▶</button></p>
+                <p>Begin by reciting and reflecting upon this magnificent verse that establishes Allah as The Source of All Light. This serves as a spiritual preparation and reminder of the ultimate source of the illumination we seek. <button class="audio-play" id="nurPlayBtn" aria-label="Play Nur 24:35" title="Play Ayat an-Nur" style="background: none; border: none; cursor: pointer; font-size: 1.25rem; margin-left: 0.5rem;"><i class="fas fa-play"></i></button></p>
                 
                 <div class="arabic-text">
                     اللهُ نُورُ السَّمَاوَاتِ وَالْأَرْضِ ۚ مَثَلُ نُورِهِ كَمِشْكَاةٍ فِيهَا مِصْبَاحٌ ۖ الْمِصْبَاحُ فِي زُجَاجَةٍ ۖ الزُّجَاجَةُ كَأَنَّهَا كَوْكَبٌ دُرِّيٌّ يُوقَدُ مِن شَجَرَةٍ مُّبَارَكَةٍ زَيْتُونَةٍ لَّا شَرْقِيَّةٍ وَلَا غَرْبِيَّةٍ يَكَادُ زَيْتُهَا يُضِيءُ وَلَوْ لَمْ تَمْسَسْهُ نَارٌ ۚ نُّورٌ عَلَىٰ نُورٍ ۗ يَهْدِي اللهُ لِنُورِهِ مَن يَشَاءُ ۚ وَيَضْرِبُ اللهُ الْأَمْثَالَ لِلنَّاسِ ۗ وَاللهُ بِكُلِّ شَيْءٍ عَلِيمٌ
@@ -536,6 +536,49 @@
             
             const isDark = document.body.getAttribute('data-theme') === 'dark';
             if (themeIconHero) themeIconHero.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+
+            // Nur audio play/stop toggle
+            const nurAudio = document.getElementById('nur-audio');
+            const nurBtn = document.getElementById('nurPlayBtn');
+
+            function setNurIcon(isPlay) {
+                if (!nurBtn) return;
+                nurBtn.innerHTML = isPlay ? '<i class="fas fa-play"></i>' : '<i class="fas fa-stop"></i>';
+            }
+
+            if (nurAudio && nurBtn) {
+                // Ensure initial icon is play
+                setNurIcon(true);
+
+                nurBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    if (!nurAudio.paused && !nurAudio.ended) {
+                        // Stop playback
+                        try {
+                            nurAudio.pause();
+                            nurAudio.currentTime = 0;
+                        } catch (err) {}
+                        setNurIcon(true);
+                    } else {
+                        const p = nurAudio.play();
+                        if (p && typeof p.catch === 'function') p.catch(() => {});
+                        setNurIcon(false);
+                    }
+                });
+
+                nurAudio.addEventListener('play', function() {
+                    setNurIcon(false);
+                });
+                nurAudio.addEventListener('pause', function() {
+                    // If paused mid-way, show play icon
+                    setNurIcon(true);
+                });
+                nurAudio.addEventListener('ended', function() {
+                    // Reset to play icon on end
+                    setNurIcon(true);
+                });
+            }
         });
     </script>
 </body>
