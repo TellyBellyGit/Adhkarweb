@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Verses Editor</title>
+  <!-- Use the same Arabic font stack used in the app -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Scheherazade+New:wght@400;700&family=Noto+Naskh+Arabic:wght@400;600;700&display=swap" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    :root {
+      --primary: #2c5e2e;
+      --primary-light: #4a8c4c;
+      --dark: #1a1a1a;
+      --light: #ffffff;
+      --card: #f9f9f9;
+      --text: #333;
+      --border: rgba(0,0,0,0.1);
+      --shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+      --radius: 12px;
+      --transition: all 0.25s ease;
+    }
+
+    * { box-sizing: border-box; }
+    body { font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; background: #f5f6f8; color: var(--text); margin: 0; }
+
+    /* Top bar */
+    .topbar { background: var(--primary); color: white; position: sticky; top: 0; z-index: 10; box-shadow: 0 6px 18px rgba(0,0,0,0.15); }
+    .topbar .container { max-width: 1200px; margin: 0 auto; padding: 0.8rem 1rem; display: flex; align-items: center; justify-content: space-between; }
+    .brand { font-weight: 700; letter-spacing: 0.4px; }
+    .actions { display: flex; align-items: center; gap: 0.6rem; }
+    .btn { background: white; color: var(--primary); border: none; border-radius: 999px; padding: 0.5rem 0.9rem; font-weight: 700; cursor: pointer; box-shadow: var(--shadow); }
+    .btn:hover { filter: brightness(0.95); }
+    .icon-btn { background: transparent; border: none; color: white; font-size: 1.1rem; cursor: pointer; padding: 0.4rem; }
+    .icon-btn:hover { color: #fffa; }
+
+    /* Layout */
+    .container { max-width: 1200px; margin: 0 auto; padding: 1rem; }
+    .panel { background: var(--light); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); padding: 1rem; }
+
+    /* Section tabs */
+    .tabs { display: flex; gap: 0.6rem; margin: 1rem 0; flex-wrap: wrap; }
+    .tab-btn { background: var(--card); border: 1px solid var(--border); border-radius: 999px; padding: 0.4rem 0.8rem; cursor: pointer; font-weight: 600; }
+    .tab-btn.active { background: var(--primary-light); color: white; border-color: var(--primary-light); }
+
+    /* Category pills for targeted */
+    .pill { background: #eef5ef; color: #0c0f0f; border: 1px solid var(--border); padding: 0.4rem 0.8rem; border-radius: 999px; font-weight: 600; cursor: pointer; }
+    .pill.active { background: var(--primary-light); color: white; }
+
+    /* Card */
+    .edit-card { background: var(--light); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; margin: 1rem 0; box-shadow: var(--shadow); }
+    .meta { font-size: 0.92rem; color: #666; margin-bottom: 0.6rem; display: flex; gap: 0.8rem; flex-wrap: wrap; }
+
+    /* Arabic editor preview */
+    .arabic-editor { font-family: 'Scheherazade New', 'Noto Naskh Arabic', 'Traditional Arabic', serif; font-size: 2rem; line-height: 2.2; direction: rtl; text-align: right; color: #111; padding: 0.75rem; border: 1px dashed var(--border); border-radius: var(--radius); background: #fff; min-height: 3.5rem; }
+    .arabic-editor:focus { outline: none; border-color: var(--primary-light); box-shadow: 0 0 0 3px rgba(74, 140, 76, 0.15); }
+    .help { font-size: 0.85rem; color: #777; margin-top: 0.4rem; }
+
+    /* Grid */
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    @media (max-width: 900px) { .grid { grid-template-columns: 1fr; } }
+
+    /* Form inputs */
+    label { display: block; font-weight: 600; margin-bottom: 0.25rem; }
+    .input { width: 100%; padding: 0.5rem; border: 1px solid var(--border); border-radius: 8px; }
+    .input:focus { outline: none; border-color: var(--primary-light); box-shadow: 0 0 0 3px rgba(74,140,76,0.15); }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="container">
+      <div class="brand">Verses Editor</div>
+      <div class="actions">
+        <a href="index.html" class="icon-btn" title="Home"><i class="fas fa-home"></i></a>
+        <button id="saveBtn" class="btn" title="Save JSON">Save</button>
+        <button id="exportBtn" class="btn" title="Backup">Backup</button>
+        <button id="restoreBtn" class="btn" title="Restore backup">Restore</button>
+        <input id="restoreInput" type="file" accept=".json,application/json" style="display:none" />
+        <label for="jumpInput" style="color:#fff;font-weight:600;">Jump to:</label>
+        <input id="jumpInput" type="number" min="1" placeholder="ID" style="width:90px;padding:0.35rem 0.5rem;border-radius:6px;border:none;" />
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="panel">
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="core">Core Verses</button>
+        <button class="tab-btn" data-tab="targeted">Targeted Verses</button>
+        <button class="tab-btn" data-tab="supplications">Supplications</button>
+      </div>
+      <div id="tabContent"></div>
+    </div>
+  </div>
+
+  <script>
+    let data = null;
+    let activeTab = 'core';
+    let activeCategory = null; // for targeted
+
+    async function loadData() {
+      const url = 'data/verses.json?ts=' + Date.now();
+      const res = await fetch(url, { cache: 'no-cache' });
+      if (!res.ok) throw new Error('Failed to load verses.json: ' + res.status);
+      const txt = await res.text();
+      const clean = txt.replace(/^\uFEFF/, '').trim();
+      try {
+        data = JSON.parse(clean);
+      } catch (e) {
+        console.error('JSON parse failed during init. First 200 chars:', clean.slice(0, 200));
+        // Attempt to recover by trimming to the outermost JSON braces if present
+        const firstBrace = clean.indexOf('{');
+        const lastBrace = clean.lastIndexOf('}');
+        if (firstBrace !== -1 && lastBrace !== -1 && lastBrace > firstBrace) {
+          const candidate = clean.slice(firstBrace, lastBrace + 1);
+          try {
+            data = JSON.parse(candidate);
+            console.warn('Recovered by trimming extraneous characters around JSON payload.');
+            return;
+          } catch (_) {
+            // fall through
+          }
+        }
+        throw e;
+      }
+    }
+
+    // Edit displayArabic and keep arabic identical to displayArabic
+    function setDisplayArabic(card, newText) {
+      card.displayArabic = newText;
+      card.arabic = newText;
+    }
+
+    function makeArabicEditor(card, onChange) {
+      const div = document.createElement('div');
+      div.className = 'arabic-editor';
+      div.contentEditable = 'true';
+      div.setAttribute('dir', 'rtl');
+      div.textContent = card.displayArabic || card.arabic || '';
+      div.addEventListener('input', () => {
+        const txt = div.textContent.trim();
+        onChange(txt);
+      });
+      return div;
+    }
+
+    function renderCore() {
+      const container = document.createElement('div');
+
+      const list = data.coreVerses || [];
+      const heading = document.createElement('h3');
+      heading.textContent = `Core Verses (${list.length})`;
+      container.appendChild(heading);
+
+      // Render existing core verses
+      list.forEach((card) => {
+        const el = document.createElement('div');
+        el.className = 'edit-card';
+        el.setAttribute('data-id', String(card.id || ''));
+        const meta = document.createElement('div');
+        meta.className = 'meta';
+        meta.textContent = `ID ${card.id ?? ''} | ${card.surah ?? ''} ${card.verse ?? ''}`;
+        el.appendChild(meta);
+        const editor = makeArabicEditor(card, (txt) => setDisplayArabic(card, txt));
+        el.appendChild(editor);
+        const help = document.createElement('div');
+        help.className = 'help';
+        help.textContent = 'Edit DisplayArabic above. Arabic will mirror DisplayArabic automatically.';
+        el.appendChild(help);
+        container.appendChild(el);
+      });
+
+      // Inline Add Core Verse form (moved below the list)
+      const addPanel = document.createElement('div');
+      addPanel.className = 'edit-card';
+      addPanel.innerHTML = `
+        <div class="meta">Add Core Verse after a specific ID</div>
+        <div class="grid">
+          <div>
+            <label>After ID</label>
+            <input id="addAfterId" type="number" class="input" placeholder="e.g., 10" />
+          </div>
+          <div>
+            <label>Surah</label>
+            <input id="addSurah" type="text" class="input" placeholder="Al-A'raf" />
+          </div>
+          <div>
+            <label>Verse</label>
+            <input id="addVerse" type="text" class="input" placeholder="54-56" />
+          </div>
+          <div>
+            <label>Translation</label>
+            <input id="addTranslation" type="text" class="input" placeholder="English translation" />
+          </div>
+        </div>
+        <div>
+          <label>DisplayArabic</label>
+          <div id="addDisplayArabic" class="arabic-editor" contenteditable="true" dir="rtl"></div>
+          <div class="help">Type/paste Arabic; arabic will mirror displayArabic on insert.</div>
+        </div>
+        <button class="btn" id="addCoreBtn">Insert Core Verse</button>
+      `;
+      container.appendChild(addPanel);
+
+      addPanel.querySelector('#addCoreBtn').addEventListener('click', () => {
+        const afterIdVal = addPanel.querySelector('#addAfterId').value;
+        const afterId = afterIdVal ? parseInt(afterIdVal, 10) : NaN;
+        const surah = addPanel.querySelector('#addSurah').value.trim();
+        const verse = addPanel.querySelector('#addVerse').value.trim();
+        const translation = addPanel.querySelector('#addTranslation').value.trim();
+        const displayArabic = addPanel.querySelector('#addDisplayArabic').textContent.trim();
+        if (!displayArabic) { alert('DisplayArabic is required.'); return; }
+        const listRef = data.coreVerses || (data.coreVerses = []);
+        const newId = listRef.reduce((m, c) => Math.max(m, Number(c.id) || 0), 0) + 1;
+        const newCard = { id: newId, surah, verse, arabic: displayArabic, translation, displayArabic };
+        let insertIndex = Number.isNaN(afterId) ? -1 : listRef.findIndex(c => Number(c.id) === afterId);
+        if (insertIndex < 0) insertIndex = listRef.length - 1; // append at end if not found or no afterId
+        listRef.splice(insertIndex + 1, 0, newCard);
+        renderActiveTab();
+        alert(`Inserted core verse ID ${newId} after ${Number.isNaN(afterId) ? 'end' : afterId}.`);
+      });
+
+      return container;
+    }
+
+    function renderTargeted() {
+      const container = document.createElement('div');
+      const targeted = data.targetedVerses || {};
+      const categories = Object.keys(targeted);
+      if (categories.length === 0) {
+        container.textContent = 'No targeted verses found.';
+        return container;
+      }
+
+      const pills = document.createElement('div');
+      pills.className = 'tabs';
+      categories.forEach((cat) => {
+        const btn = document.createElement('button');
+        btn.className = 'tab-btn' + (cat === activeCategory ? ' active' : '');
+        btn.textContent = cat.replace(/[-_]+/g, ' ');
+        btn.addEventListener('click', () => {
+          activeCategory = cat;
+          renderActiveTab();
+        });
+        pills.appendChild(btn);
+      });
+      container.appendChild(pills);
+
+      const list = activeCategory ? targeted[activeCategory] || [] : [];
+      list.forEach((card) => {
+        const el = document.createElement('div');
+        el.className = 'edit-card';
+        el.setAttribute('data-id', String(card.id || ''));
+        const meta = document.createElement('div');
+        meta.className = 'meta';
+        meta.textContent = `${card.surah ?? ''} ${card.verse ?? card.type ?? ''}`;
+        el.appendChild(meta);
+        const editor = makeArabicEditor(card, (txt) => setDisplayArabic(card, txt));
+        el.appendChild(editor);
+        const help = document.createElement('div');
+        help.className = 'help';
+        help.textContent = 'Edit DisplayArabic above. Arabic will mirror DisplayArabic automatically.';
+        el.appendChild(help);
+        container.appendChild(el);
+      });
+      return container;
+    }
+
+    function renderSupplications() {
+      const container = document.createElement('div');
+      const supp = data.supplications || {};
+      const sections = ['opening', 'closing'];
+      sections.forEach((sec) => {
+        const group = document.createElement('div');
+        const title = document.createElement('h3');
+        title.textContent = sec[0].toUpperCase() + sec.slice(1);
+        group.appendChild(title);
+        const list = supp[sec] || [];
+        list.forEach((card) => {
+          const el = document.createElement('div');
+          el.className = 'edit-card';
+          el.setAttribute('data-id', String(card.id || ''));
+          const meta = document.createElement('div');
+          meta.className = 'meta';
+          meta.textContent = `${card.surah ?? ''} ${card.verse ?? card.type ?? ''}`;
+          el.appendChild(meta);
+          const editor = makeArabicEditor(card, (txt) => setDisplayArabic(card, txt));
+          el.appendChild(editor);
+          const help = document.createElement('div');
+          help.className = 'help';
+          help.textContent = 'Edit DisplayArabic above. Arabic will mirror DisplayArabic automatically.';
+          el.appendChild(help);
+          group.appendChild(el);
+        });
+        container.appendChild(group);
+      });
+      return container;
+    }
+
+    function renderActiveTab() {
+      const root = document.getElementById('tabContent');
+      root.innerHTML = '';
+      let content;
+      if (activeTab === 'core') content = renderCore();
+      else if (activeTab === 'targeted') content = renderTargeted();
+      else content = renderSupplications();
+      root.appendChild(content);
+      // Re-apply tab button active state
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        const tab = btn.getAttribute('data-tab');
+        if (tab) btn.classList.toggle('active', tab === activeTab);
+      });
+    }
+
+    function setupTabs() {
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          activeTab = btn.getAttribute('data-tab');
+          if (activeTab !== 'targeted') activeCategory = null; // reset category
+          renderActiveTab();
+        });
+      });
+    }
+
+    function jumpToId(id) {
+      scrollToIdInCurrentTab(id);
+    }
+
+    function scrollToIdInCurrentTab(id) {
+      const root = document.getElementById('tabContent');
+      const target = root.querySelector(`.edit-card[data-id="${id}"]`);
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        const orig = target.style.boxShadow;
+        target.style.boxShadow = '0 0 0 3px rgba(74,140,76,0.35)';
+        setTimeout(() => { target.style.boxShadow = orig; }, 1500);
+      } else {
+        alert(`No card with ID ${id} in current tab.`);
+      }
+    }
+
+    function exportJSON() {
+      if (!data) return;
+      const ts = new Date().toISOString().replace(/[:.]/g, '-');
+      const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `verses.updated.${ts}.json`;
+      document.body.appendChild(a);
+      a.click();
+      URL.revokeObjectURL(url);
+      a.remove();
+    }
+
+    function saveJSON() {
+      const btn = document.getElementById('saveBtn');
+      if (!data) return;
+      const original = btn.textContent;
+      btn.disabled = true;
+      btn.textContent = 'Saving...';
+      fetch('/save', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      })
+      .then(res => res.json())
+      .then(json => {
+        console.log('Saved:', json);
+        btn.textContent = 'Saved ✓';
+        setTimeout(() => { btn.textContent = original; btn.disabled = false; }, 1500);
+      })
+      .catch(err => {
+        console.error(err);
+        btn.textContent = 'Error';
+        setTimeout(() => { btn.textContent = original; btn.disabled = false; }, 2000);
+      });
+    }
+
+    document.getElementById('exportBtn').addEventListener('click', exportJSON);
+    document.getElementById('saveBtn').addEventListener('click', saveJSON);
+    const jumpInput = document.getElementById('jumpInput');
+    if (jumpInput) {
+      jumpInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          const id = parseInt(jumpInput.value, 10);
+          if (!Number.isNaN(id)) jumpToId(id);
+        }
+      });
+    }
+
+    const restoreBtn = document.getElementById('restoreBtn');
+    const restoreInput = document.getElementById('restoreInput');
+    if (restoreBtn && restoreInput) {
+      restoreBtn.addEventListener('click', () => restoreInput.click());
+      restoreInput.addEventListener('change', (e) => {
+        const file = restoreInput.files && restoreInput.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = () => {
+          const text = String(reader.result || '');
+          const clean = text.replace(/^\uFEFF/, '').trim();
+          let incoming;
+          try {
+            incoming = JSON.parse(clean);
+          } catch (err) {
+            alert('Selected file is not valid JSON.');
+            return;
+          }
+          if (!incoming || typeof incoming !== 'object' || Array.isArray(incoming)) {
+            alert('Backup JSON must have an object root.');
+            return;
+          }
+          const proceed = confirm('Restore this backup and overwrite current data?');
+          if (!proceed) return;
+          fetch('/save', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(incoming)
+          })
+          .then(res => res.json())
+          .then(json => {
+            if (json && json.status === 'ok') {
+              data = incoming;
+              renderActiveTab();
+              alert('Restore complete. Server updated and UI refreshed.');
+            } else {
+              alert('Restore failed: ' + (json && json.message || 'Unknown error'));
+            }
+          })
+          .catch(err => {
+            alert('Restore failed: ' + err.message);
+          })
+          .finally(() => {
+            restoreInput.value = '';
+          });
+        };
+        reader.readAsText(file, 'utf-8');
+      });
+    }
+
+    // Initialize
+    (async function init() {
+      try {
+        await loadData();
+        setupTabs();
+        renderActiveTab();
+      } catch (err) {
+        console.error('Init error:', err);
+        document.getElementById('tabContent').textContent = 'Failed to load verses.json — ' + (err && err.message || '');
+      }
+    })();
+  </script>
+</body>
+</html>
