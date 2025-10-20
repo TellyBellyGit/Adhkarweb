@@ -65,8 +65,12 @@
 
         .arabic { font-family: 'Scheherazade New', serif; font-size: 2.4rem; text-align: center; margin-bottom: 1rem; line-height: 2.0; color: #f0f4f8; direction: rtl; }
         .translation { margin-bottom: 0.75rem; font-size: 0.98rem; line-height: 1.7; color: #c3cad3; border-top: 1px solid rgba(255, 255, 255, 0.15); padding-top: 1rem; }
-        .source { font-size: 0.9rem; color: #888; margin-bottom: 0.5rem; }
+        .source { font-size: 0.9rem; color: #888; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; }
         .hidden { display: none; }
+        .audio-controls { display: flex; align-items: center; gap: 0.5rem; margin-top: 0.25rem; }
+        .source .audio-controls { margin-top: 0; }
+        .audio-btn { background: none; border: 1px solid rgba(255,255,255,0.15); color: #dbe4e8; border-radius: 999px; padding: 0.25rem 0.5rem; cursor: pointer; }
+        .audio-btn:hover { filter: brightness(1.1); }
 
         /* Controls card for pills */
         .controls-card { background-color:#0f1215; border:1px solid rgba(255,255,255,0.08); border-radius:16px; padding:1rem; margin-bottom:1.5rem; display:flex; gap:0.6rem; justify-content:center; flex-wrap:wrap; }
@@ -188,14 +192,94 @@
             }
 
             const srcText = computeSource(verse);
+            let srcEl = null;
             if (srcText) {
-                const srcEl = document.createElement('div');
+                srcEl = document.createElement('div');
                 srcEl.className = 'source';
                 const strong = document.createElement('strong');
                 strong.textContent = 'Source:';
+                const srcSpan = document.createElement('span');
+                srcSpan.className = 'source-text';
+                srcSpan.textContent = srcText;
                 srcEl.appendChild(strong);
-                srcEl.append(' ' + srcText);
+                srcEl.appendChild(srcSpan);
                 card.appendChild(srcEl);
+            }
+
+            // Optional per-verse audio (supports both `audio` and `Audio` keys)
+            const audioFile = verse.audio || verse.Audio;
+            if (audioFile) {
+                const controls = document.createElement('div');
+                controls.className = 'audio-controls';
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                btn.className = 'audio-btn';
+                btn.innerHTML = '<i class="fas fa-play"></i>';
+                controls.appendChild(btn);
+
+                const audioEl = document.createElement('audio');
+                audioEl.preload = 'none';
+                audioEl.src = 'audio/' + audioFile;
+                // Keep audio element in DOM but visually hidden
+                audioEl.style.display = 'none';
+                card.appendChild(audioEl);
+
+                function setIcon(isPlay) {
+                    const icon = btn.querySelector('i');
+                    if (icon) icon.className = isPlay ? 'fas fa-play' : 'fas fa-stop';
+                }
+                function stopActive() {
+                    if (window.__activeAudio) {
+                        try {
+                            window.__activeAudio.pause();
+                            window.__activeAudio.currentTime = 0;
+                        } catch (_) {}
+                        if (window.__activeBtn) {
+                            const i = window.__activeBtn.querySelector('i');
+                            if (i) i.className = 'fas fa-play';
+                        }
+                    }
+                    window.__activeAudio = null;
+                    window.__activeBtn = null;
+                }
+
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    // If this track is playing, stop it
+                    if (!audioEl.paused && !audioEl.ended) {
+                        try { audioEl.pause(); audioEl.currentTime = 0; } catch (_) {}
+                        setIcon(true);
+                        if (window.__activeAudio === audioEl) {
+                            window.__activeAudio = null;
+                            window.__activeBtn = null;
+                        }
+                        return;
+                    }
+
+                    // Stop any other active audio
+                    if (window.__activeAudio && window.__activeAudio !== audioEl) {
+                        stopActive();
+                    }
+
+                    const p = audioEl.play();
+                    if (p && typeof p.catch === 'function') p.catch(() => {});
+                    setIcon(false);
+                    window.__activeAudio = audioEl;
+                    window.__activeBtn = btn;
+                });
+
+                audioEl.addEventListener('ended', () => {
+                    setIcon(true);
+                    if (window.__activeAudio === audioEl) {
+                        window.__activeAudio = null;
+                        window.__activeBtn = null;
+                    }
+                });
+                audioEl.addEventListener('error', () => {
+                    setIcon(true);
+                });
+
+                (srcEl || card).appendChild(controls);
             }
 
             return card;

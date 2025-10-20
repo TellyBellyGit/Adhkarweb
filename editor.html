@@ -64,6 +64,25 @@
     label { display: block; font-weight: 600; margin-bottom: 0.25rem; }
     .input { width: 100%; padding: 0.5rem; border: 1px solid var(--border); border-radius: 8px; }
     .input:focus { outline: none; border-color: var(--primary-light); box-shadow: 0 0 0 3px rgba(74,140,76,0.15); }
+
+    /* Dark mode theme variables */
+    body.dark-mode {
+      --text: #e6e6e6;
+      --light: #1b1f24;
+      --card: #252a33;
+      --border: rgba(255,255,255,0.12);
+      background: #0f1317;
+    }
+
+    /* Dark mode element tweaks */
+    body.dark-mode .panel,
+    body.dark-mode .edit-card { background: var(--light); border-color: var(--border); }
+    body.dark-mode .tab-btn { background: var(--card); color: var(--text); border-color: var(--border); }
+    body.dark-mode .pill { background: #2a2f38; color: var(--text); border-color: var(--border); }
+    body.dark-mode .meta { color: #b5b5b5; }
+    body.dark-mode .help { color: #a3a3a3; }
+    body.dark-mode .arabic-editor { background: var(--card); color: #eee; border-color: var(--border); }
+    body.dark-mode .input { background: #12171d; color: var(--text); border-color: var(--border); }
   </style>
 </head>
 <body>
@@ -71,6 +90,7 @@
     <div class="container">
       <div class="brand">Verses Editor</div>
       <div class="actions">
+        <button id="themeToggle" class="icon-btn" title="Toggle theme"><i class="fas fa-moon"></i></button>
         <a href="index.html" class="icon-btn" title="Home"><i class="fas fa-home"></i></a>
         <button id="saveBtn" class="btn" title="Save JSON">Save</button>
         <button id="exportBtn" class="btn" title="Backup">Backup</button>
@@ -167,6 +187,22 @@
         help.className = 'help';
         help.textContent = 'Edit DisplayArabic above. Arabic will mirror DisplayArabic automatically.';
         el.appendChild(help);
+
+        // Audio filename field (optional)
+        const audioWrap = document.createElement('div');
+        audioWrap.innerHTML = `
+          <label>Audio file</label>
+          <input type="text" class="input" placeholder="e.g., Al-Fatiha.mp3" />
+        `;
+        const audioInput = audioWrap.querySelector('input');
+        audioInput.value = String(card.audio || card.Audio || '');
+        audioInput.addEventListener('input', () => {
+          const v = audioInput.value.trim();
+          if ('Audio' in card) delete card.Audio;
+          card.audio = v;
+        });
+        el.appendChild(audioWrap);
+
         container.appendChild(el);
       });
 
@@ -212,7 +248,7 @@
         if (!displayArabic) { alert('DisplayArabic is required.'); return; }
         const listRef = data.coreVerses || (data.coreVerses = []);
         const newId = listRef.reduce((m, c) => Math.max(m, Number(c.id) || 0), 0) + 1;
-        const newCard = { id: newId, surah, verse, arabic: displayArabic, translation, displayArabic };
+        const newCard = { id: newId, surah, verse, arabic: displayArabic, translation, displayArabic, audio: "" };
         let insertIndex = Number.isNaN(afterId) ? -1 : listRef.findIndex(c => Number(c.id) === afterId);
         if (insertIndex < 0) insertIndex = listRef.length - 1; // append at end if not found or no afterId
         listRef.splice(insertIndex + 1, 0, newCard);
@@ -261,6 +297,22 @@
         help.className = 'help';
         help.textContent = 'Edit DisplayArabic above. Arabic will mirror DisplayArabic automatically.';
         el.appendChild(help);
+
+        // Audio filename field (optional)
+        const audioWrap = document.createElement('div');
+        audioWrap.innerHTML = `
+          <label>Audio file</label>
+          <input type="text" class="input" placeholder="e.g., Al-Fatiha.mp3" />
+        `;
+        const audioInput = audioWrap.querySelector('input');
+        audioInput.value = String(card.audio || card.Audio || '');
+        audioInput.addEventListener('input', () => {
+          const v = audioInput.value.trim();
+          if ('Audio' in card) delete card.Audio;
+          card.audio = v;
+        });
+        el.appendChild(audioWrap);
+
         container.appendChild(el);
       });
       return container;
@@ -438,6 +490,36 @@
         reader.readAsText(file, 'utf-8');
       });
     }
+
+    // Theme toggle
+    const themeToggle = document.getElementById('themeToggle');
+    function applyTheme(mode) {
+      const dark = mode === 'dark';
+      document.body.classList.toggle('dark-mode', dark);
+      if (themeToggle) {
+        const icon = themeToggle.querySelector('i');
+        if (icon) {
+          icon.classList.toggle('fa-moon', !dark);
+          icon.classList.toggle('fa-sun', dark);
+        }
+      }
+    }
+    (function initTheme(){
+      try {
+        const saved = localStorage.getItem('editor-theme');
+        const preferred = saved || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        applyTheme(preferred);
+      } catch (_) {
+        applyTheme('light');
+      }
+      if (themeToggle) {
+        themeToggle.addEventListener('click', () => {
+          const next = document.body.classList.contains('dark-mode') ? 'light' : 'dark';
+          applyTheme(next);
+          try { localStorage.setItem('editor-theme', next); } catch (_) {}
+        });
+      }
+    })();
 
     // Initialize
     (async function init() {
