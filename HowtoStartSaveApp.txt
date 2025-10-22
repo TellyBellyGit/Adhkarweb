@@ -1,0 +1,50 @@
+How to Start the Save-Enabled App (AdhkarWeb)
+
+Purpose
+- Start the server that serves static files and handles POST /save so the Editor can write to data/verses.json without JSON errors.
+
+Quick Start (PowerShell)
+1) Navigate to the project root:
+   `cd c:\Users\mabha\Documents\OneDriveMain\OneDrive\Ruqyah\AdhkarWeb`
+2) Start the save-enabled server (default port 8000):
+   `python scripts\save_server.py`
+   - You should see: `[server] Serving at http://localhost:8000/ (static + /save endpoint)`
+3) Open the editor and the app (same origin):
+   - Editor: `http://localhost:8000/editor.html`
+   - App:    `http://localhost:8000/index.html`
+4) Save from the Editor:
+   - Click the `Save` button (top bar). On success, console shows `{ status: "ok", saved: "data/verses.json", backup: "verses.backup.X.json" }` and the button reads `Saved ✓`.
+5) Stop the server: press `Ctrl+C` in the terminal running `save_server.py`.
+
+Why the JSON error happens
+- If you open the editor on `http://localhost:8004` (static http.server), `fetch('/save')` hits a non-existent endpoint and returns an HTML 404. `res.json()` then fails with: `SyntaxError: Unexpected token '<'`.
+- Fix: Use `http://localhost:8000` for both editor and app so `/save` resolves on the same origin.
+
+Optional: Run Save Server on Port 8004
+- One-off in current PowerShell:
+  `$env:PORT=8004; python scripts\save_server.py`
+- Persist the PORT setting:
+  `setx PORT 8004`
+  (Open a new PowerShell after `setx` for it to take effect.)
+- Then open: `http://localhost:8004/editor.html` and `http://localhost:8004/index.html`.
+
+Restoring editor.html to last commit (if needed)
+- Reset only `editor.html` back to HEAD:
+  `git restore --source=HEAD -- editor.html`
+- Verify:
+  `git status` and `git diff -- editor.html` (should report no changes vs HEAD).
+
+Backups and where data is saved
+- Saves write to: `data\verses.json`
+- Rolling backups: `data\verses.backup.1.json` .. `data\verses.backup.5.json`
+- The server writes a backup BEFORE updating `verses.json`.
+
+Troubleshooting
+- JSON parse error "Unexpected token '<'": you’re likely on the wrong port (static server). Use `http://localhost:8000` or run save_server on the port you’re using.
+- CORS/preflight issues: save_server sets permissive CORS headers; use same-origin (8000) to avoid them entirely.
+- Cache issues: hard refresh (`Ctrl+F5`) if UI doesn’t reflect changes after a save.
+- Permissions: ensure you have write access to `data\verses.json`.
+
+Notes
+- Requires Python 3 to run the server scripts.
+- Keep one server for editing to avoid port confusion; open multiple tabs on the SAME port (editor + index).
