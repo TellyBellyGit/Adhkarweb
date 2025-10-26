@@ -71,6 +71,9 @@
         .source .audio-controls { margin-top: 0; }
         .audio-btn { background: none; border: 1px solid rgba(255,255,255,0.15); color: #dbe4e8; border-radius: 999px; padding: 0.25rem 0.5rem; cursor: pointer; }
         .audio-btn:hover { filter: brightness(1.1); }
+        .audio-btn.active { border-color: #d4af37; background: rgba(212,175,55,0.12); color: #fff; }
+        .audio-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+        .dhikr-card.active-card { outline: 2px solid #d4af37; box-shadow: 0 0 0 3px rgba(212,175,55,0.25), 0 12px 28px rgba(0, 0, 0, 0.45); }
 
         /* Controls card for pills */
         .controls-card { background-color:#0f1215; border:1px solid rgba(255,255,255,0.08); border-radius:16px; padding:1rem; margin-bottom:1.5rem; display:flex; gap:0.6rem; justify-content:center; flex-wrap:wrap; }
@@ -214,8 +217,50 @@
                 const btn = document.createElement('button');
                 btn.type = 'button';
                 btn.className = 'audio-btn';
+                btn.dataset.role = 'play';
                 btn.innerHTML = '<i class="fas fa-play"></i>';
                 controls.appendChild(btn);
+
+                const pauseBtn = document.createElement('button');
+                pauseBtn.type = 'button';
+                pauseBtn.className = 'audio-btn';
+                pauseBtn.dataset.role = 'pause';
+                pauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                pauseBtn.disabled = true;
+                controls.appendChild(pauseBtn);
+
+                const repeatBtn = document.createElement('button');
+                repeatBtn.type = 'button';
+                repeatBtn.className = 'audio-btn';
+                repeatBtn.dataset.role = 'repeat';
+                repeatBtn.setAttribute('aria-pressed','false');
+                repeatBtn.innerHTML = '<i class="fas fa-redo-alt"></i>';
+                controls.appendChild(repeatBtn);
+
+                const stopEndBtn = document.createElement('button');
+                stopEndBtn.type = 'button';
+                stopEndBtn.className = 'audio-btn';
+                stopEndBtn.dataset.role = 'stopend';
+                stopEndBtn.setAttribute('aria-pressed','false');
+                stopEndBtn.title = 'Stop at end';
+                stopEndBtn.innerHTML = '<i class="fas fa-stop-circle"></i>';
+                controls.appendChild(stopEndBtn);
+
+                const prevBtn = document.createElement('button');
+                prevBtn.type = 'button';
+                prevBtn.className = 'audio-btn';
+                prevBtn.dataset.role = 'prev';
+                prevBtn.title = 'Previous card';
+                prevBtn.innerHTML = '<i class="fas fa-arrow-left"></i>';
+                controls.appendChild(prevBtn);
+
+                const nextBtn = document.createElement('button');
+                nextBtn.type = 'button';
+                nextBtn.className = 'audio-btn';
+                nextBtn.dataset.role = 'next';
+                nextBtn.title = 'Next card';
+                nextBtn.innerHTML = '<i class="fas fa-arrow-right"></i>';
+                controls.appendChild(nextBtn);
 
                 const audioEl = document.createElement('audio');
                 audioEl.preload = 'none';
@@ -228,31 +273,64 @@
                     const icon = btn.querySelector('i');
                     if (icon) icon.className = isPlay ? 'fas fa-play' : 'fas fa-stop';
                 }
+                function setPauseIcon(isPlaying) {
+                    const icon = pauseBtn.querySelector('i');
+                    if (icon) icon.className = isPlaying ? 'fas fa-pause' : 'fas fa-play';
+                }
                 function stopActive() {
                     if (window.__activeAudio) {
                         try {
                             window.__activeAudio.pause();
+                        } catch (_) {}
+                        try {
                             window.__activeAudio.currentTime = 0;
                         } catch (_) {}
                         if (window.__activeBtn) {
                             const i = window.__activeBtn.querySelector('i');
                             if (i) i.className = 'fas fa-play';
                         }
+                        const prevCard = window.__activeAudio.closest('.dhikr-card');
+                        if (prevCard) prevCard.classList.remove('active-card');
+                        const prevPause = prevCard && prevCard.querySelector('.audio-btn[data-role="pause"]');
+                        if (prevPause) prevPause.disabled = true;
+                        const prevPauseIcon = prevPause && prevPause.querySelector('i');
+                        if (prevPauseIcon) prevPauseIcon.className = 'fas fa-pause';
+                        const prevStopEnd = prevCard && prevCard.querySelector('.audio-btn[data-role="stopend"]');
+                        if (prevStopEnd) {
+                            prevStopEnd.setAttribute('aria-pressed','false');
+                            prevStopEnd.classList.remove('active');
+                        }
                     }
                     window.__activeAudio = null;
                     window.__activeBtn = null;
                 }
-
+                function highlightAndScroll(elCard) {
+                    document.querySelectorAll('#core-verses .dhikr-card').forEach(c => c.classList.remove('active-card'));
+                    if (elCard) {
+                        elCard.classList.add('active-card');
+                        elCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }
+                }
+                // Play/Stop button
                 btn.addEventListener('click', (e) => {
                     e.stopPropagation();
                     // If this track is playing, stop it
                     if (!audioEl.paused && !audioEl.ended) {
                         try { audioEl.pause(); audioEl.currentTime = 0; } catch (_) {}
                         setIcon(true);
+                        pauseBtn.disabled = true;
+                        const pIcon = pauseBtn.querySelector('i');
+                        if (pIcon) pIcon.className = 'fas fa-pause';
                         if (window.__activeAudio === audioEl) {
                             window.__activeAudio = null;
                             window.__activeBtn = null;
                         }
+                        card.classList.remove('active-card');
+                        // reset stop-at-end toggle when audio is manually stopped
+                        stopEndBtn.setAttribute('aria-pressed','false');
+                        stopEndBtn.classList.remove('active');
+                        const repeatActive = repeatBtn.getAttribute('aria-pressed') === 'true';
+                        audioEl.loop = repeatActive;
                         return;
                     }
 
@@ -264,23 +342,134 @@
                     const p = audioEl.play();
                     if (p && typeof p.catch === 'function') p.catch(() => {});
                     setIcon(false);
+                    setPauseIcon(true);
+                    pauseBtn.disabled = false;
                     window.__activeAudio = audioEl;
                     window.__activeBtn = btn;
+                    // track current core index if applicable and highlight
+                    const isCore = !!audioEl.closest('#core-verses');
+                    if (isCore) {
+                        const cardIndexAttr = card.getAttribute('data-index');
+                        if (cardIndexAttr) window.__currentCoreIndex = Number(cardIndexAttr);
+                        highlightAndScroll(card);
+                    }
+                    const stopActive = stopEndBtn.getAttribute('aria-pressed') === 'true';
+                    const repeatActive = repeatBtn.getAttribute('aria-pressed') === 'true';
+                    audioEl.loop = stopActive ? false : repeatActive;
+                });
+
+                // Pause/Resume toggle
+                pauseBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    if (pauseBtn.disabled) return;
+                    if (window.__activeAudio !== audioEl) return; // only control active track
+                    if (audioEl.paused) {
+                        const p = audioEl.play();
+                        if (p && typeof p.catch === 'function') p.catch(() => {});
+                        setPauseIcon(true);
+                    } else {
+                        audioEl.pause();
+                        setPauseIcon(false);
+                    }
+                });
+
+                // Repeat toggle (off by default)
+                repeatBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const active = repeatBtn.getAttribute('aria-pressed') === 'true';
+                    const nextState = !active;
+                    repeatBtn.setAttribute('aria-pressed', String(nextState));
+                    repeatBtn.classList.toggle('active', nextState);
+                    const stopActive = stopEndBtn.getAttribute('aria-pressed') === 'true';
+                    audioEl.loop = stopActive ? false : nextState;
+                });
+
+                // Stop-at-end toggle (overrides repeat and auto-advance)
+                stopEndBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const active = stopEndBtn.getAttribute('aria-pressed') === 'true';
+                    const nextState = !active;
+                    stopEndBtn.setAttribute('aria-pressed', String(nextState));
+                    stopEndBtn.classList.toggle('active', nextState);
+                    const repeatActive = repeatBtn.getAttribute('aria-pressed') === 'true';
+                    audioEl.loop = nextState ? false : repeatActive;
+                });
+
+                // Per-card prev/next (core only, navigation without auto-play)
+                prevBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const isCore = !!audioEl.closest('#core-verses');
+                    if (!isCore) return;
+                    const idxAttr = card.getAttribute('data-index');
+                    const idx = idxAttr ? Number(idxAttr) : 0;
+                    navigateCoreTo(idx - 1);
+                });
+                nextBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const isCore = !!audioEl.closest('#core-verses');
+                    if (!isCore) return;
+                    const idxAttr = card.getAttribute('data-index');
+                    const idx = idxAttr ? Number(idxAttr) : -1;
+                    navigateCoreTo(idx + 1);
                 });
 
                 audioEl.addEventListener('ended', () => {
+                    // If repeating, keep UI as playing and do not advance
+                    if (audioEl.loop) return;
+                    // If stop-at-end is active, stop playback and reset toggle; no auto-advance
+                    const stopActive = stopEndBtn.getAttribute('aria-pressed') === 'true';
+                    if (stopActive) {
+                        setIcon(true);
+                        pauseBtn.disabled = true;
+                        const pIcon = pauseBtn.querySelector('i');
+                        if (pIcon) pIcon.className = 'fas fa-pause';
+                        if (window.__activeAudio === audioEl) {
+                            window.__activeAudio = null;
+                            window.__activeBtn = null;
+                        }
+                        card.classList.remove('active-card');
+                        stopEndBtn.setAttribute('aria-pressed','false');
+                        stopEndBtn.classList.remove('active');
+                        const repeatActive = repeatBtn.getAttribute('aria-pressed') === 'true';
+                        audioEl.loop = repeatActive;
+                        return;
+                    }
+                    // Otherwise, normal end: stop UI and auto-advance for core verses
                     setIcon(true);
+                    pauseBtn.disabled = true;
+                    const pIcon = pauseBtn.querySelector('i');
+                    if (pIcon) pIcon.className = 'fas fa-pause';
                     if (window.__activeAudio === audioEl) {
                         window.__activeAudio = null;
                         window.__activeBtn = null;
                     }
+                    card.classList.remove('active-card');
+                    const isCore = !!audioEl.closest('#core-verses');
+                    if (isCore) {
+                        advanceFromAudio(audioEl);
+                    }
                 });
                 audioEl.addEventListener('error', () => {
                     setIcon(true);
+                    pauseBtn.disabled = true;
+                    const pIcon = pauseBtn.querySelector('i');
+                    if (pIcon) pIcon.className = 'fas fa-pause';
+                    if (window.__activeAudio === audioEl) {
+                        window.__activeAudio = null;
+                        window.__activeBtn = null;
+                    }
+                    card.classList.remove('active-card');
+                    stopEndBtn.setAttribute('aria-pressed','false');
+                    stopEndBtn.classList.remove('active');
+                    const repeatActive = repeatBtn.getAttribute('aria-pressed') === 'true';
+                    audioEl.loop = repeatActive;
                 });
 
                 (srcEl || card).appendChild(controls);
             }
+
+            // store index for core navigation
+            card.setAttribute('data-index', String(index));
 
             return card;
         }
@@ -389,6 +578,59 @@
 
         // Initialize
         initVersesUI();
+
+        function getCoreAudioList() {
+            return Array.from(document.querySelectorAll('#core-verses audio'));
+        }
+        function navigateCoreTo(index) {
+            const list = getCoreAudioList();
+            if (list.length === 0) return;
+            const idx = (index % list.length + list.length) % list.length;
+            const target = list[idx];
+            const card = target.closest('.dhikr-card');
+            if (card) {
+                document.querySelectorAll('#core-verses .dhikr-card').forEach(c => c.classList.remove('active-card'));
+                card.classList.add('active-card');
+                card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                window.__currentCoreIndex = idx;
+            }
+        }
+        function playCoreAt(index) {
+            const list = getCoreAudioList();
+            if (list.length === 0) return;
+            const idx = (index % list.length + list.length) % list.length;
+            const target = list[idx];
+            const card = target.closest('.dhikr-card');
+            const playBtn = card && card.querySelector('.audio-btn[data-role="play"]');
+            if (playBtn) {
+                playBtn.click();
+                window.__currentCoreIndex = idx;
+            }
+        }
+        function advanceFromAudio(audioEl) {
+            const list = getCoreAudioList();
+            if (list.length === 0) return;
+            const idx = list.indexOf(audioEl);
+            const next = (idx + 1) % list.length;
+            playCoreAt(next);
+        }
+        function setupCoreNavControls() {
+            const prevBtn = document.getElementById('core-prev-btn');
+            const nextBtn = document.getElementById('core-next-btn');
+            if (!prevBtn || !nextBtn) return;
+            prevBtn.addEventListener('click', () => {
+                const list = getCoreAudioList();
+                if (list.length === 0) return;
+                const idx = typeof window.__currentCoreIndex === 'number' ? window.__currentCoreIndex : 0;
+                playCoreAt(idx - 1);
+            });
+            nextBtn.addEventListener('click', () => {
+                const list = getCoreAudioList();
+                if (list.length === 0) return;
+                const idx = typeof window.__currentCoreIndex === 'number' ? window.__currentCoreIndex : -1;
+                playCoreAt(idx + 1);
+            });
+        }
     </script>
 </body>
 </html>
