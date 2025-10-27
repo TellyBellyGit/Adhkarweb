@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Healing Duas - Ruqyah for Physical Ailments</title>
+    
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Scheherazade+New:wght@400;700&display=swap">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-color: #2d5016;
+            --secondary-color: #4a7c59;
+            --accent-color: #7fb069;
+            --background-color: #f8f9fa;
+            --card-background: #ffffff;
+            --text-primary: #2c3e50;
+            --text-secondary: #6c757d;
+            --border-color: #e9ecef;
+            --shadow: 0 2px 10px rgba(0,0,0,0.1);
+            --border-radius: 12px;
+            --transition: all 0.3s ease;
+        }
+
+        [data-theme="dark"] {
+            --primary-color: #7fb069;
+            --secondary-color: #4a7c59;
+            --accent-color: #2d5016;
+            --background-color: #1a1a1a;
+            --card-background: #2d2d2d;
+            --text-primary: #ffffff;
+            --text-secondary: #b0b0b0;
+            --border-color: #404040;
+            --shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Scheherazade New', serif;
+            background-color: var(--background-color);
+            color: var(--text-primary);
+            line-height: 1.45;
+            transition: var(--transition);
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 1rem 0;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .theme-toggle {
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            padding: 0.5rem;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .theme-toggle:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .home-link {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            padding: 0.5rem;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .home-link:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+        .main-content {
+            padding: 1.2rem 0;
+        }
+
+        /* Hero header (matches RabbanaDuas style) */
+        .hero-header {
+            background: linear-gradient(135deg, var(--primary-color), #5da360);
+            color: white;
+            padding: 1.2rem 0.8rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            margin-bottom: 1.2rem;
+        }
+
+        .header-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            opacity: 0.1;
+            background-image: 
+                radial-gradient(circle at 20% 30%, #d4af37 2px, transparent 2px),
+                radial-gradient(circle at 80% 70%, #d4af37 2px, transparent 2px);
+            background-size: 30px 30px;
+            pointer-events: none;
+        }
+
+        .hero-header h1 {
+            font-size: 1.8rem;
+            margin-bottom: 0.4rem;
+            position: relative;
+            color: white;
+        }
+
+        .hero-header p {
+            opacity: 0.9;
+            font-size: 0.95rem;
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .btn {
+            padding: 0.7rem 1rem;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn:hover {
+            background-color: #3a6e3c;
+            transform: translateY(-2px);
+        }
+
+        .content-card {
+            background: var(--card-background);
+            border-radius: var(--border-radius);
+            padding: 0.35rem 1rem 1rem;
+            margin-bottom: 1rem;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+
+        .content-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+
+        h1 {
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        h2 {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 0.5rem;
+        }
+
+        h3 {
+            color: var(--secondary-color);
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        /* Underlined section heading indicator */
+        .section-heading {
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 0.35rem;
+            margin-bottom: 0.8rem;
+        }
+
+        /* Reduce top margin when section heading is first in the card */
+        .content-card > h3.section-heading {
+            margin-top: 0.1rem;
+        }
+
+        .arabic-text {
+            font-family: 'Scheherazade New', serif;
+            font-size: 1.8rem;
+            line-height: 1.9;
+            text-align: right;
+            direction: rtl;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            border-right: 4px solid var(--border-color);
+            margin: 0.8rem 0;
+            color: var(--text-primary);
+        }
+
+        [data-theme="dark"] .arabic-text {
+            background: linear-gradient(135deg, #2d2d2d, #404040);
+        }
+
+        .translation {
+            font-style: italic;
+            color: var(--text-secondary);
+            margin: 0.4rem 0;
+            padding: 0.75rem;
+            background: rgba(0, 0, 0, 0.05);
+            border-radius: var(--border-radius);
+            border-left: 4px solid var(--border-color);
+        }
+
+        /* Subtle labels for variant lines */
+        .line-hints {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.4rem;
+            text-align: left;
+        }
+
+        /* Labels above each Arabic line */
+        .line-label {
+            font-size: 0.95rem;
+            color: var(--text-primary);
+            margin-top: 0.4rem;
+            margin-bottom: 0.2rem;
+            text-align: right;
+            font-weight: 600;
+            letter-spacing: 0.2px;
+        }
+
+        .line-label .pronoun {
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        .arabic-text .arabic-pronoun {
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+        .arabic-text .arabic-pronoun-suffix {
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        .section {
+            margin-bottom: 1.2rem;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+            margin-bottom: 1.2rem;
+        }
+
+        .back-button:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        .footer {
+            background: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 1.2rem 0;
+            margin-top: 2rem;
+        }
+
+        .reference {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            font-style: italic;
+            margin-top: 0.6rem;
+            padding: 0.75rem;
+            background: rgba(0, 0, 0, 0.03);
+            border-radius: var(--border-radius);
+            text-align: center;
+        }
+
+        .important-note {
+            background: rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+
+        .important-note h4 {
+            color: var(--primary-color);
+            margin-bottom: 0.8rem;
+            font-size: 1.2rem;
+        }
+
+        .important-note ul {
+            margin: 0;
+            padding-left: 1.5rem;
+        }
+
+        .important-note li {
+            margin-bottom: 0.6rem;
+            line-height: 1.45;
+        }
+
+        .audio-controls {
+            display: flex;
+            gap: 0.5rem;
+            margin: 0.5rem 0;
+        }
+
+        .audio-btn {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .audio-btn:hover {
+            background: var(--secondary-color);
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 0.5rem;
+            }
+            
+            .content-card {
+                padding: 1.5rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .arabic-text {
+                font-size: 1.5rem;
+            }
+        }
+        .small-arabic {
+            font-size: 1.2rem;
+            line-height: 2;
+        }
+    </style>
+</head>
+<body data-theme="dark">
+    
+
+    <!-- New hero header modeled after RabbanaDuas.html -->
+    <header class="hero-header">
+        <div class="header-pattern"></div>
+        <div class="container">
+            <h1>Healing Duas - Ruqyah for Physical Ailments</h1>
+            <p>Seeking Shifa (Cure) from Allah, The Ultimate Healer</p>
+            <div style="margin-top: 1rem; display: inline-flex; gap: 0.5rem;">
+                <a href="index.html" class="btn" style="background-color: rgba(255,255,255,0.2); padding: 0.5rem 1rem; border-radius: 5px; text-decoration: none; color: white; display: inline-flex; align-items: center; justify-content: center;"><i class="fas fa-home"></i></a>
+                <button id="modeToggleHero" class="btn" title="Toggle Dark/Light Mode" onclick="toggleTheme()" style="background-color: rgba(255,255,255,0.2); padding: 0.5rem 1rem; border-radius: 5px; color: white; display: inline-flex; align-items: center; justify-content: center;">
+                    <i class="fas fa-sun"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            
+            <!-- Introduction Section -->
+            <div class="content-card">
+                <h3 class="section-heading">The Spiritual Path for Healing</h3>
+                <p>This page presents a comprehensive collection of Du'as and Ruqyah (Qur'anic healing) for seeking cure from physical ailments and pain. All healing comes from Allah alone, and these supplications are powerful means to seek His mercy and cure. The practice follows the Prophetic method of reciting specific Du'as and then gently blowing on the affected area or the person who is ill.</p>
+            </div>
+
+            <!-- Opening Section -->
+            <div class="content-card">
+                <h3 class="section-heading">1. Beginning with Praise of Allah</h3>
+                <p>Start by praising Allah and affirming His greatness, as this is the foundation of all supplication.</p>
+                
+                <div class="translation"><strong>Instruction:</strong> Recite each surah starting with Bismillāhi ar-Raḥmāni ar-Raḥīm:</div>
+                <div class="translation" style="font-style: normal;"><strong>Sūrah Al-Fātiḥah</strong></div>
+                <div class="arabic-text small-arabic" style="direction: rtl;">
+                  <span class="ayah-chunk" style="display:inline-block;margin:0 .4rem;">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ <span class="ayah-sep">۝١</span></span>
+                  <span class="ayah-chunk" style="display:inline-block;margin:0 .4rem;">الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ <span class="ayah-sep">۝٢</span></span>
+                  <span class="ayah-chunk" style="display:inline-block;margin:0 .4rem;">الرَّحْمَٰنِ الرَّحِيمِ <span class="ayah-sep">۝٣</span></span>
+                  <span class="ayah-chunk" style="display:inline-block;margin:0 .4rem;">مَالِكِ يَوْمِ الدِّينِ <span class="ayah-sep">۝٤</span></span>
+                  <span class="ayah-chunk" style="display:inline-block;margin:0 .4rem;">إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ <span class="ayah-sep">۝٥</span></span>
+                  <span class="ayah-chunk" style="display:inline-block;margin:0 .4rem;">اهْدِنَا الصِّرَاطَ الْمُسْتَقِيمَ <span class="ayah-sep">۝٦</span></span>
+                  <span class="ayah-chunk" style="display:inline-block;margin:0 .4rem;">صِرَاطَ الَّذِينَ أَنْعَمْتَ عَلَيْهِمْ غَيْرِ الْمَغْضُوبِ عَلَيْهِمْ وَلَا الضَّالِّينَ <span class="ayah-sep">۝٧</span></span>
+                </div>
+                <div class="translation" style="font-style: normal;"><strong>Sūrah Al-Ikhlāṣ</strong></div>
+                <div class="arabic-text small-arabic" style="direction: rtl;">
+                  <span class="ayah-chunk basmala" style="display:inline-block;margin:0 .4rem;">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</span>
+                  <span class="ayah-chunk" style="display:inline-block;margin:0 .4rem;">قُلْ هُوَ اللَّهُ أَحَدٌ <span class="ayah-sep">۝١</span></span>
+                  <span class="ayah-chunk" style="display:inline-block;margin:0 .4rem;">اللَّهُ الصَّمَدُ <span class="ayah-sep">۝٢</span></span>
+                  <span class="ayah-chunk" style="display:inline-block;margin:0 .4rem;">لَمْ يَلِدْ وَلَمْ يُولَدْ <span class="ayah-sep">۝٣</span></span>
+                  <span class="ayah-chunk" style="display:inline-block;margin:0 .4rem;">وَلَمْ يَكُن لَّهُ كُفُوًا أَحَدٌ <span class="ayah-sep">۝٤</span></span>
+                </div>
+                <div class="translation" style="font-style: normal;"><strong>Sūrah Al-Falaq</strong></div>
+                <div class="arabic-text small-arabic" style="direction: rtl;">
+                  <span class="ayah-chunk basmala" style="display:inline-block;margin:0 .4rem;">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</span>
+                  <span class="ayah-chunk" style="display:inline-block;margin:0 .4rem;">قُلْ أَعُوذُ بِرَبِّ الْفَلَقِ <span class="ayah-sep">۝١</span></span>
+                  <span class="ayah-chunk" style="display:inline-block;margin:0 .4rem;">مِن شَرِّ مَا خَلَقَ <span class="ayah-sep">۝٢</span></span>
+                  <span class="ayah-chunk" style="display:inline-block;margin:0 .4rem;">وَمِن شَرِّ غَاسِقٍ إِذَا وَقَبَ <span class="ayah-sep">۝٣</span></span>
+                  <span class="ayah-chunk" style="display:inline-block;margin:0 .4rem;">وَمِن شَرِّ النَّفَّاثَاتِ فِي الْعُقَدِ <span class="ayah-sep">۝٤</span></span>
+                  <span class="ayah-chunk" style="display:inline-block;margin:0 .4rem;">وَمِن شَرِّ حَاسِدٍ إِذَا حَسَدَ <span class="ayah-sep">۝٥</span></span>
+                </div>
+                <div class="translation" style="font-style: normal;"><strong>Sūrah An-Nās</strong></div>
+                <div class="arabic-text small-arabic" style="direction: rtl;">
+                  <span class="ayah-chunk basmala" style="display:inline-block;margin:0 .4rem;">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</span>
+                  <span class="ayah-chunk" style="display:inline-block;margin:0 .4rem;">قُلْ أَعُوذُ بِرَبِّ النَّاسِ <span class="ayah-sep">۝١</span></span>
+                  <span class="ayah-chunk" style="display:inline-block;margin:0 .4rem;">مَلِكِ النَّاسِ <span class="ayah-sep">۝٢</span></span>
+                  <span class="ayah-chunk" style="display:inline-block;margin:0 .4rem;">إِلَٰهِ النَّاسِ <span class="ayah-sep">۝٣</span></span>
+                  <span class="ayah-chunk" style="display:inline-block;margin:0 .4rem;">مِن شَرِّ الْوَسْوَاسِ الْخَنَّاسِ <span class="ayah-sep">۝٤</span></span>
+                  <span class="ayah-chunk" style="display:inline-block;margin:0 .4rem;">الَّذِي يُوَسْوِسُ فِي صُدُورِ النَّاسِ <span class="ayah-sep">۝٥</span></span>
+                  <span class="ayah-chunk" style="display:inline-block;margin:0 .4rem;">مِنَ الْجِنَّةِ وَالنَّاسِ <span class="ayah-sep">۝٦</span></span>
+                </div>
+                <div class="translation">(Reciting each once is sufficient; repeat 3x if you wish to follow the full Sunnah practice.)</div>
+                
+                <div class="arabic-text"> 
+                    لَا إِلَهَ إِلَّا اللَّهُ الْعَظِيمُ الْحَلِيمُ لَا إِلَهَ إِلَّا اللَّهُ رَبُّ الْعَرْشِ الْعَظِيمِ لَا إِلَهَ إِلَّا اللَّهُ رَبُّ السَّمَاوَاتِ وَرَبُّ الْأَرْضِ وَرَبُّ الْعَرْشِ الْكَرِيمِ 
+                </div> 
+                <div class="translation"> 
+                    <strong>Translation:</strong> "There is no deity worthy of worship except Allah, the Magnificent, the Forbearing. There is no deity worthy of worship except Allah, Lord of the Great Throne. There is no deity worthy of worship except Allah, Lord of the heavens, Lord of the earth, and Lord of the Noble Throne." 
+                </div>
+            </div>
+
+            <!-- Protection Duas -->
+            <div class="content-card">
+                <h3 class="section-heading">2. Seeking Protection with Allah's Perfect Words</h3>
+                <p>These powerful Du'as seek refuge in Allah's complete and perfect words from all harm.</p>
+                
+                <div class="arabic-text">
+                    أَعُوذُ بِكَلِمَاتِ اللَّهِ التَّامَّاتِ مِنْ شَرِّ مَا خَلَقَ
+                </div>
+                <div class="translation">
+                    <strong>Translation:</strong> "I seek refuge in the perfect words of Allah from the evil of what He has created."<br><br>
+                    <strong>Reference:</strong> Sahih Muslim
+                </div>
+                
+                <div class="arabic-text">
+                    بِسْمِ اللَّهِ الَّذِي لَا يَضُرُّ مَعَ اسْمِهِ شَيْءٌ فِي الْأَرْضِ وَلَا فِي السَّمَاءِ وَهُوَ السَّمِيعُ الْعَلِيمُ
+                </div>
+                <div class="translation">
+                    <strong>Translation:</strong> "In the name of Allah, with whose name nothing on earth or in the sky can cause harm, and He is the All-Hearing, the All-Knowing."<br><br>
+                    <strong>Reference:</strong> Sunan Abu Dawud
+                </div>
+            </div>
+
+            <!-- General Healing Duas -->
+            <div class="content-card">
+                <h3 class="section-heading">3. General Duas for Healing and Well-being</h3>
+                <p>These comprehensive supplications ask Allah for overall well-being and protection from harm.</p>
+                
+                <div class="arabic-text">
+                    اللَّهُمَّ إِنِّي أَسْأَلُكَ العَافِيَةَ فِي الدُّنْيَا وَالآخِرَةِ
+                </div>
+                <div class="translation">
+                    <strong>Translation:</strong> "O Allah, I ask You for well-being (al-'afiyah) in this world and the Hereafter."<br><br>
+                    <strong>Reference:</strong> Sunan Ibn Majah
+                </div>
+                
+                <div class="arabic-text">
+                    أَعُوذُ بِكَلِمَاتِ اللهِ التَّامَّةِ مِنْ غَضَبِهِ، وَعِقَابِهِ، وَشَرِّ عِبَادِهِ، وَمِنْ هَمَزَاتِ الشَّيَاطِينِ، وَأَنْ يَحْضُرُونِ
+                </div>
+                <div class="translation">
+                    <strong>Translation:</strong> "I seek refuge in the perfect words of Allah from His anger, His punishment, the evil of His servants, from the promptings of the devils, and that they should be present with me."<br><br>
+                    <strong>Reference:</strong> Sunan Abu Dawud
+                </div>
+            </div>
+
+            <!-- Specific Healing Ruqyah -->
+            <div class="content-card">
+                <h3 class="section-heading">4. Specific Ruqyah for Pain and Illness</h3>
+                <p>These are direct supplications taught by the Prophet Muhammad (ﷺ) for healing physical ailments.</p>
+                
+                <div class="arabic-text">
+                    بِاسْمِ اللهِ يُبْرِيكَ وَمِنْ كُلِّ دَاءٍ يَشْفِيكَ وَمِنْ شَرِّ حَاسِدٍ إِذَا حَسَدَ وَمِنْ شَرِّ كُلِّ ذِي عَيْنٍ
+                </div>
+                <div class="translation">
+                    <strong>Translation:</strong> "In the name of Allah, may He make you healthy, and from every illness may He heal you, and from the evil of an envier when he envies, and from the evil of every possessor of the evil eye."<br><br>
+                    <strong>Reference:</strong> Sahih Muslim
+                </div>
+                
+                <div class="arabic-text">
+                    أَسْـأَلُ اللهَ العَـظيـم، رَبَّ العَـرْشِ العَـظيـم أَنْ يَشْفِيَكَ
+                </div>
+                <div class="translation">
+                    <strong>Translation:</strong> "I ask Allah the Magnificent, Lord of the Magnificent Throne, to heal you."<br><br>
+                    <strong>Reference:</strong> Sunan Abu Dawud
+                </div>
+                
+                <div class="arabic-text">
+                    بِسْمِ اللهِ (ثلاث مرات) أَعُوذُ بِاللهِ وَقُدْرَتِهِ مِنْ شَرِّ مَا أَجِدُ وَأُحَاذِرُ (سبع مرات)
+                </div>
+                <div class="translation">
+                    <strong>Translation:</strong> "In the name of Allah (3 times). I seek refuge in Allah and His power from the evil of what I feel and what I guard against." (7 times)<br><br>
+                    <strong>Reference:</strong> Sahih Muslim
+                </div>
+            </div>
+
+            <!-- Powerful Conclusion Duas -->
+            <div class="content-card">
+                <h3 class="section-heading">5. Powerful Conclusion Duas</h3>
+                <p>End your Ruqyah with these comprehensive and powerful supplications for complete healing.</p>
+                
+                <div class="arabic-text">
+                    اللَّهُمَّ رَبَّ النَّاسِ أَذْهِبِ الْبَاسَ، اشْفِهِ وَأَنْتَ الشَّافِي، لاَ شِفَاءَ إِلاَّ شِفَاؤُكَ، شِفَاءً لاَ يُغَادِرُ سَقَمًا
+                </div>
+                <div class="translation">
+                    <strong>Translation:</strong> "O Allah, Lord of mankind, remove the harm and heal him, for You are the Healer. There is no healing except Your healing, a healing that leaves no illness behind."<br><br>
+                    <strong>Reference:</strong> Sahih al-Bukhari
+                </div>
+                
+                <div class="arabic-text">
+                    اللَّهُمَّ اشْفِهِ شِفَاءً لَا يُغَادِرُ سَقَمًا
+                </div>
+                <div class="translation">
+                    <strong>Translation:</strong> "O Allah, heal him with a cure that leaves no illness."<br><br>
+                    <strong>Reference:</strong> Based on the Prophetic supplication
+                </div>
+            </div>
+
+            <!-- Practice Guidance -->
+            <div class="content-card">
+                <h3 class="section-heading">Recommended Practice for Ruqyah</h3>
+                
+                <div class="important-note">
+                    <h4>How to Perform Ruqyah Correctly:</h4>
+                    <ul>
+                        <li><strong>Begin with Sincerity</strong> - Have firm belief that cure comes from Allah alone.</li>
+                        <li><strong>Recite with Presence of Mind</strong> - Focus on the meaning of the words you're reciting.</li>
+                        <li><strong>Blow Gently</strong> - After reciting, blow gently (with a tiny bit of saliva) on your hands and wipe over the affected area or the person who is ill.</li>
+                        <li><strong>Use the Right Hand</strong> - The Prophet (ﷺ) used his right hand for wiping during Ruqyah.</li>
+                        <li><strong>Repeat as Needed</strong> - You can repeat the Ruqyah multiple times, especially the shorter Du'as.</li>
+                        <li><strong>Combine with Medical Treatment</strong> - Ruqyah complements medical treatment; it does not replace it. The Prophet (ﷺ) said: "Seek treatment, O servants of Allah."</li>
+                        <li><strong>Have Certainty</strong> - Recite with yaqeen (certainty) that Allah can and will respond to your supplication.</li>
+                    </ul>
+                </div>
+                
+                <div class="reference">
+                    <p><strong>Note:</strong> The effectiveness of Ruqyah depends on sincerity, correct belief, and adherence to the Sunnah. Avoid any practices that involve shirk (associating partners with Allah) or innovations.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>Seeking Healing from The Ultimate Healer - For Personal Spiritual Practice</p>
+            <p>May Allah grant complete shifa to all those in need</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleTheme() {
+            const body = document.body;
+            const themeIconHero = document.querySelector('#modeToggleHero i');
+            
+            if (body.getAttribute('data-theme') === 'dark') {
+                body.removeAttribute('data-theme');
+                if (themeIconHero) themeIconHero.className = 'fas fa-moon';
+                localStorage.setItem('theme', 'light');
+            } else {
+                body.setAttribute('data-theme', 'dark');
+                if (themeIconHero) themeIconHero.className = 'fas fa-sun';
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        // Load saved theme and ensure icon reflects current theme
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedTheme = localStorage.getItem('theme');
+            const themeIconHero = document.querySelector('#modeToggleHero i');
+            
+            if (savedTheme) {
+                if (savedTheme === 'dark') {
+                    document.body.setAttribute('data-theme', 'dark');
+                } else {
+                    document.body.removeAttribute('data-theme');
+                }
+            } else {
+                // Default to dark theme and persist choice
+                localStorage.setItem('theme', 'dark');
+            }
+            
+            const isDark = document.body.getAttribute('data-theme') === 'dark';
+            if (themeIconHero) themeIconHero.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+        });
+    </script>
+</body>
+</html>

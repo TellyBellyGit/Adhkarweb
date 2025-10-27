@@ -570,6 +570,8 @@
                     d.targetedVerses.sihr.push(addition);
                 })(data);
 
+                // Evil eye dua is now stored in data/verses.json; no runtime injection needed
+
                 // Opening
                 const openingContainer = document.getElementById('opening-supplications');
                 renderSection(openingContainer, (data.supplications && data.supplications.opening) || []);

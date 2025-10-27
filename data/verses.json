@@ -349,11 +349,19 @@
         "displayArabic": "وَإِن يَكَادُ الَّذِينَ كَفَرُوا لَيُزْلِقُونَكَ بِأَبْصَارِهِمْ لَمَّا سَمِعُوا الذِّكْرَ وَيَقُولُونَ إِنَّهُ لَمَجْنُونٌ ۝٥١ وَمَا هُوَ إِلَّا ذِكْرٌ لِلْعَالَمِينَ ۝٥٢",
         "audio": ""
       },
+      
       {
         "id": 5,
         "type": "dua",
-        "arabic": "اللَّهُمَّ بَارِكْ فِيهِ",
-        "translation": "O Allah, bless it.",
+        "arabic": "بِاسْمِ اللهِ يُبْرِيكَ وَمِنْ كُلِّ دَاءٍ يَشْفِيكَ وَمِنْ شَرِّ حَاسِدٍ إِذَا حَسَدَ وَمِنْ شَرِّ كُلِّ ذِي عَيْنٍ",
+        "translation": "In the Name of Allah — may He heal you, and cure you from every illness; may He protect you from the evil of the envious one when he envies, and from the harm of every possessor of the evil eye.",
+        "audio": ""
+      },
+      {
+        "id": 6,
+        "type": "dua",
+        "arabic": "اللَّهُمَّ أَذْهِبْ حَرَّ العَيْنِ وَبَرْدَهَا وَوَصَبَهَا. اللَّهُمَّ اكْفِنِي شَرَّ الحَاسِدِينَ وَالعَائِنِينَ.",
+        "translation": "O Allah, remove the heat, cold, and harm of the evil eye. O Allah, protect me from the envy and the eyes of the jealous.",
         "audio": ""
       }
     ],
