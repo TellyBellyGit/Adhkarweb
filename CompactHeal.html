@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Compact Healing Duas (Arabic Only)</title>
+    
+    <!-- Fonts & Icons -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Scheherazade+New:wght@400;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-color: #2d5016;
+            --secondary-color: #4a7c59;
+            --background-color: #f8f9fa;
+            --card-background: #ffffff;
+            --text-primary: #2c3e50;
+            --border-color: #e9ecef;
+            --shadow: 0 2px 10px rgba(0,0,0,0.1);
+            --radius: 12px;
+        }
+
+        [data-theme="dark"] {
+            --primary-color: #7fb069;
+            --secondary-color: #4a7c59;
+            --background-color: #1a1a1a;
+            --card-background: #2d2d2d;
+            --text-primary: #ffffff;
+            --border-color: #404040;
+            --shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        * { box-sizing: border-box; }
+        body {
+            font-family: 'Scheherazade New', serif;
+            background: var(--background-color);
+            color: var(--text-primary);
+            margin: 0;
+        }
+
+        /* Compact header */
+        .hero-header {
+            background: linear-gradient(135deg, var(--primary-color), #5da360);
+            color: white;
+            padding: 0.6rem 0.8rem;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow);
+        }
+        .hero-header h1 {
+            font-size: 1.2rem;
+            margin: 0;
+        }
+        .header-actions {
+            position: absolute;
+            right: 0.6rem;
+            top: 0.5rem;
+            display: inline-flex;
+            gap: 0.4rem;
+        }
+        .icon-btn {
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            padding: 0.35rem;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        .icon-btn:hover { background: rgba(255,255,255,0.3); }
+
+        .container { max-width: 900px; margin: 0 auto; padding: 0.4rem 0.6rem; }
+        .card { background: var(--card-background); border: 1px solid var(--border-color); border-radius: var(--radius); box-shadow: var(--shadow); padding: 0.35rem 0.6rem; margin-bottom: 0.5rem; }
+
+        /* Compact Arabic blocks */
+        .arabic-text {
+            direction: rtl;
+            text-align: right;
+            font-size: 1.05rem; /* smaller font */
+            line-height: 1.35;   /* tighter line-height */
+            margin: 0.25rem 0;   /* reduced margins */
+            padding: 0.5rem;     /* reduced padding */
+            border-right: 3px solid var(--border-color);
+            border-radius: var(--radius);
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+        }
+        [data-theme="dark"] .arabic-text { background: linear-gradient(135deg, #2d2d2d, #404040); }
+        .ayah-chunk { display: inline-block; margin: 0 .25rem; }
+        .ayah-sep { color: var(--secondary-color); font-size: 0.95rem; }
+        .basmala { opacity: 0.9; }
+
+        .section-title { font-size: 0.95rem; color: var(--secondary-color); margin: 0.35rem 0 0.2rem; text-align: right; }
+    </style>
+</head>
+<body data-theme="dark">
+    <header class="hero-header">
+        <h1>Compact Healing Duas (Arabic Only)</h1>
+        <div class="header-actions">
+            <button id="modeToggleCompact" class="icon-btn" title="Toggle Dark/Light Mode" onclick="toggleTheme()"><i class="fas fa-sun"></i></button>
+            <button id="closeCompact" class="icon-btn" title="Back to HealingDua" onclick="goBackToHealing()"><i class="fas fa-arrow-left"></i></button>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Section 1: Surahs (instruction only) -->
+        <div class="card">
+            <div class="section-title" style="text-align:center;">Recite Surah Fatiha, Surah Ikhlas, Surah Falak and Surah An-Nas</div>
+        </div>
+
+        <!-- Section 1 extra dhikr line -->
+        <div class="card">
+            <div class="arabic-text">لَا إِلَهَ إِلَّا اللَّـهُ الْعَظِيمُ الْحَلِيمُ لَا إِلَهَ إِلَّا اللَّـهُ رَبُّ الْعَرْشِ الْعَظِيمِ لَا إِلَهَ إِلَّا اللَّـهُ رَبُّ السَّمَاوَاتِ وَرَبُّ الْأَرْضِ وَرَبُّ الْعَرْشِ الْكَرِيمِ</div>
+        </div>
+
+        <!-- Section 2: Protection Duas -->
+        <div class="card">
+            <div class="arabic-text">أَعُوذُ بِكَلِمَاتِ اللَّهِ التَّامَّاتِ مِنْ شَرِّ مَا خَلَقَ</div>
+            <div class="arabic-text">بِسْمِ اللَّهِ الَّذِي لَا يَضُرُّ مَعَ اسْمِهِ شَيْءٌ فِي الْأَرْضِ وَلَا فِي السَّمَاءِ وَهُوَ السَّمِيعُ الْعَلِيمُ</div>
+        </div>
+
+        <!-- Section 3: General Healing Duas (including extended refuge line) -->
+        <div class="card">
+            <div class="arabic-text">اللَّهُمَّ إِنِّي أَسْأَلُكَ العَافِيَةَ فِي الدُّنْيَا وَالآخِرَةِ</div>
+            <div class="arabic-text">أَعُوذُ بِكَلِمَاتِ اللهِ التَّامَّةِ مِنْ غَضَبِهِ، وَعِقَابِهِ، وَشَرِّ عِبَادِهِ، وَمِنْ هَمَزَاتِ الشَّيَاطِينِ، وَأَنْ يَحْضُرُونِ</div>
+        </div>
+
+        <!-- Section 4: Specific Ruqyah for Pain and Illness -->
+        <div class="card">
+            <div class="arabic-text">بِاسْمِ اللهِ يُبْرِيكَ وَمِنْ كُلِّ دَاءٍ يَشْفِيكَ وَمِنْ شَرِّ حَاسِدٍ إِذَا حَسَدَ وَمِنْ شَرِّ كُلِّ ذِي عَيْنٍ</div>
+            <div class="arabic-text">أَسْأَلُ اللهَ الْعَظِيمَ رَبَّ الْعَرْشِ الْعَظِيمِ أَنْ يَشْفِيكْ</div>
+            <div class="arabic-text">أَسْأَلُ اللهَ الْعَظِيمَ رَبَّ الْعَرْشِ الْعَظِيمِ أَنْ يَشْفِيَنِي</div>
+            <div class="arabic-text">بِسْمِ اللهِ (ثلاث مرات) أَعُوذُ بِاللهِ وَقُدْرَتِهِ مِنْ شَرِّ مَا أَجِدُ وَأُحَاذِرُ (سبع مرات)</div>
+        </div>
+
+        <!-- Section 5: Conclusion Duas -->
+        <div class="card">
+            <div class="arabic-text">اللَّهُمَّ رَبَّ النَّاسِ أَذْهِبِ الْبَاسَ، اشْفِهِ وَأَنْتَ الشَّافِي، لاَ شِفَاءَ إِلاَّ شِفَاؤُكَ، شِفَاءً لاَ يُغَادِرُ سَقَمًا</div>
+            <div class="arabic-text">اللَّهُمَّ اشْفِهِ شِفَاءً لَا يُغَادِرُ سَقَمًا</div>
+        </div>
+    </main>
+
+    <script>
+        function toggleTheme() {
+            const body = document.body;
+            const icon = document.querySelector('#modeToggleCompact i');
+            const isDark = body.getAttribute('data-theme') === 'dark';
+            if (isDark) {
+                body.removeAttribute('data-theme');
+                if (icon) icon.className = 'fas fa-moon';
+                localStorage.setItem('theme', 'light');
+            } else {
+                body.setAttribute('data-theme', 'dark');
+                if (icon) icon.className = 'fas fa-sun';
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        function goBackToHealing() {
+            if (document.referrer && document.referrer.includes('HealingDua.html')) {
+                window.history.back();
+            } else {
+                window.location.href = 'HealingDua.html';
+            }
+        }
+
+        // Initialize theme icon state based on saved preference
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedTheme = localStorage.getItem('theme');
+            const icon = document.querySelector('#modeToggleCompact i');
+            if (savedTheme === 'dark') {
+                document.body.setAttribute('data-theme', 'dark');
+                if (icon) icon.className = 'fas fa-sun';
+            } else {
+                document.body.removeAttribute('data-theme');
+                if (icon) icon.className = 'fas fa-moon';
+            }
+        });
+    </script>
+</body>
+</html>
