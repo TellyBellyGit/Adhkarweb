@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ruqyah Supplication Guide - Protection Against Sihr</title>
+    <style>
+        :root {
+            --primary-color: #1a472a;
+            --secondary-color: #2e8b57;
+            --accent-color: #d4af37;
+            --light-color: #f8f9fa;
+            --dark-color: #121212;
+            --text-color: #e6e6e6;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--dark-color);
+            padding: 0;
+            margin: 0;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            border-bottom: 5px solid var(--accent-color);
+            margin-bottom: 30px;
+        }
+        
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .section {
+            background-color: #1e1e1e;
+            border-radius: var(--border-radius);
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: var(--box-shadow);
+            border-left: 5px solid var(--secondary-color);
+        }
+        
+        .section-title {
+            color: var(--accent-color);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #333;
+            display: flex;
+            align-items: center;
+        }
+        
+        .section-title i {
+            margin-right: 10px;
+            color: var(--accent-color);
+        }
+        
+        .arabic-text {
+            font-family: 'Traditional Arabic', 'Scheherazade New', serif;
+            font-size: 1.8rem;
+            line-height: 2.5;
+            text-align: right;
+            direction: rtl;
+            margin-bottom: 15px;
+            padding: 15px;
+            background-color: #232323;
+            border-radius: var(--border-radius);
+        }
+        
+        .transliteration {
+            font-style: italic;
+            color: #c0c0c0;
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #1a1a1a;
+            border-radius: var(--border-radius);
+        }
+        
+        .translation {
+            margin-bottom: 15px;
+            padding: 10px;
+            background-color: #1a1a1a;
+            border-radius: var(--border-radius);
+            border-left: 3px solid var(--accent-color);
+        }
+        
+        .note {
+            background-color: #2a2620;
+            border-left: 4px solid var(--accent-color);
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: var(--border-radius);
+        }
+        
+        .instructions {
+            background-color: #163142;
+            border-left: 4px solid #3498db;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: var(--border-radius);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+            color: #aaa;
+            font-size: 0.9rem;
+            border-top: 1px solid #333;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 10px 20px;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            margin: 5px;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: var(--primary-color);
+        }
+        .btn.active {
+            background-color: var(--primary-color);
+            box-shadow: inset 0 2px 6px rgba(0,0,0,0.4);
+        }
+
+        .btn-container {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+
+        /* Translations-only mode: hide Arabic and transliteration */
+        .section.translations-only .arabic-text,
+        .section.translations-only .transliteration {
+            display: none;
+        }
+        
+        @media (max-width: 600px) {
+            .arabic-text {
+                font-size: 1.5rem;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .container {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Ruqyah Supplication Guide</h1>
+            <p class="subtitle">Protection Against Sihr and Harm</p>
+            <div class="btn-container">
+                <a href="index.html" class="btn">Home</a>
+            </div>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="instructions">
+            <h3>Important Instructions:</h3>
+            <p>Perform this supplication with sincerity, focus, and a heart full of trust in Allah. Ensure you are in a state of Wudu (ablution), face the Qibla if possible, and raise your hands.</p>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">Part 1: Preliminary Praises and Seeking Refuge</h2>
+            
+            <div class="arabic-text">
+                سُبْحَانَكَ اللَّهُمَّ وَبِحَمْدِكَ، أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا أَنْتَ، أَسْتَغْفِرُكَ وَأَتُوبُ إِلَيْكَ
+            </div>
+            <div class="transliteration">
+                Subhanakallahumma wa bihamdika, ash-hadu an la ilaha illa Anta, astaghfiruka wa atubu ilayk.
+            </div>
+            <div class="translation">
+                Glory be to You, O Allah, and praise be to You. I bear witness that there is no deity worthy of worship but You. I seek Your forgiveness and repent to You.
+            </div>
+            
+            <div class="arabic-text">
+                اللَّهُمَّ صَلِّ عَلَى مُحَمَّدٍ وَعَلَى آلِ مُحَمَّدٍ، كَمَا صَلَّيْتَ عَلَى إِبْرَاهِيمَ وَعَلَى آلِ إِبْرَاهِيمَ، إِنَّكَ حَمِيدٌ مَجِيدٌ
+            </div>
+            <div class="transliteration">
+                Allahumma salli 'ala Muhammadin wa 'ala ali Muhammadin, kama sallayta 'ala Ibrahima wa 'ala ali Ibrahima, innaka Hamidum Majid.
+            </div>
+            <div class="translation">
+                O Allah, send Your grace, honor and mercy upon Muhammad and upon the family of Muhammad, as You sent Your grace, honour and mercy upon Ibrahim and upon the family of Ibrahim. You are indeed Praiseworthy, Glorious.
+            </div>
+            
+            <div class="arabic-text">
+                أَعُوذُ بِاللَّهِ مِنَ الشَّيْطَانِ الرَّجِيمِ
+            </div>
+            <div class="transliteration">
+                A'udhu billahi min ash-shaytan ir-rajim.
+            </div>
+            <div class="translation">
+                I seek refuge in Allah from the accursed Satan.
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">Part 2: Quranic Verses for Protection</h2>
+            
+            <div class="arabic-text">
+                بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ (1) الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ (2) الرَّحْمَٰنِ الرَّحِيمِ (3) مَالِكِ يَوْمِ الدِّينِ (4) إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ (5) اهْدِنَا الصِّرَاطَ الْمُسْتَقِيمَ (6) صِرَاطَ الَّذِينَ أَنْعَمْتَ عَلَيْهِمْ غَيْرِ الْمَغْضُوبِ عَلَيْهِمْ وَلَا الضَّالِّينَ (7)
+            </div>
+            <div class="translation">
+                In the name of Allah, the Entirely Merciful, the Especially Merciful. (1) [All] praise is [due] to Allah, Lord of the worlds - (2) The Entirely Merciful, the Especially Merciful, (3) Sovereign of the Day of Recompense. (4) It is You we worship and You we ask for help. (5) Guide us to the straight path - (6) The path of those upon whom You have bestowed favor, not of those who have evoked [Your] anger or of those who are astray. (7)
+            </div>
+            
+            <div class="arabic-text">
+                اللَّهُ لَا إِلَٰهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ ۚ لَا تَأْخُذُهُ سِنَةٌ وَلَا نَوْمٌ ۚ لَّهُ مَا فِي السَّمَاوَاتِ وَمَا فِي الْأَرْضِ ۗ مَن ذَا الَّذِي يَشْفَعُ عِندَهُ إِلَّا بِإِذْنِهِ ۚ يَعْلَمُ مَا بَيْنَ أَيْدِيهِمْ وَمَا خَلْفَهُمْ ۖ وَلَا يُحِيطُونَ بِشَيْءٍ مِّنْ عِلْمِهِ إِلَّا بِمَا شَاءَ ۚ وَسِعَ كُرْسِيُّهُ السَّمَاوَاتِ وَالْأَرْضَ ۖ وَلَا يَئُودُهُ حِفْظُهُمَا ۚ وَهُوَ الْعَلِيُّ الْعَظِيمُ
+            </div>
+            <div class="translation">
+                Allah - there is no deity except Him, the Ever-Living, the Sustainer of [all] existence. Neither drowsiness overtakes Him nor sleep. To Him belongs whatever is in the heavens and whatever is on the earth. Who is it that can intercede with Him except by His permission? He knows what is [presently] before them and what will be after them, and they encompass not a thing of His knowledge except for what He wills. His Kursi extends over the heavens and the earth, and their preservation tires Him not. And He is the Most High, the Most Great.
+            </div>
+
+
+            <div class="arabic-text">
+                تَبَّتْ يَدَا أَبِي لَهَبٍ وَتَبَّ — مَا أَغْنَىٰ عَنْهُ مَالُهُ وَمَا كَسَبَ — سَيَصْلَىٰ نَارًا ذَاتَ لَهَبٍ — وَامْرَأَتُهُ حَمَّالَةَ الْحَطَبِ — فِي جِيدِهَا حَبْلٌ مِّن مَّسَدٍ
+            </div>
+            <div class="note">
+                Recite Surah Al-Masad (Chapter 111) with the intention that its meaning applies to those who embody the enmity of Abu Lahab and his wife.
+            </div>
+
+            <div class="arabic-text">
+                رَبَّنَا اطْمِسْ عَلَىٰ أَمْوَالِهِمْ وَاشْدُدْ عَلَىٰ قُلُوبِهِمْ فَلَا يُؤْمِنُوا حَتَّىٰ يَرَوُا الْعَذَابَ الْأَلِيمَ
+            </div>
+            <div class="transliteration">
+                Rabbana atmis 'ala amwalihim washudd 'ala qulubihim fala yu'minu hatta yaraw al-'adhab al-alim.
+            </div>
+            <div class="translation">
+                "Our Lord, obliterate their wealth and harden their hearts so that they will not believe until they see the painful punishment." (Surah Yunus 10:88)
+            </div>
+        </div>
+        
+        <div class="section translations-only" id="part3">
+            <h2 class="section-title">Part 3: Core Supplication for Justice</h2>
+            <div class="btn-container">
+                <button id="part3Toggle" class="btn active" aria-pressed="true">Translations Only</button>
+            </div>
+            
+            
+            
+            <div class="arabic-text">
+                اللَّهُمَّ إِنَّ [Ism Y] وَ [Ism X] قَدْ ظَلَمُونِي، وَعَادُونِي وَعَادُوكَ بِمُمارَسَةِ السِّحْرِ وَإِصْرَارِهِمْ عَلَى أَذَى عِبَادِكَ.
+            </div>
+            <div class="transliteration">
+                Allahumma inna [Ism X] wa [Ism Y] qad zalamuni, wa 'aduni wa 'aduka bi-mumarasati s-sihri wa israrihim 'ala ada 'ibadik.
+            </div>
+            <div class="translation">
+                O Allah, indeed [Ism X] and [Ism Y] have wronged me, and have become my enemy and Your enemy by practicing magic and their persistence in harming Your servants.
+            </div>
+            
+            <div class="arabic-text">
+                فَاكْفِنِيَهُمْ بِمَا شِئْتَ، وَاجْعَلْ تَدْبِيرَهُمْ فِي تَدْبِيرِهِمْ، وَأَلْبِسْهُمُ الْخِزْيَ وَالنَّصَبَ، وَانْصُرْنِي عَلَيْهِمْ نَصْرًا عَزِيزًا.
+            </div>
+            <div class="transliteration">
+                Fakfiniyahum bima shi't, waj'al tadbeerahum fi tadbeerihim, wa albishum al-khizya wan-nasab, wansurni 'alayhim nasran 'aziz.
+            </div>
+            <div class="translation">
+                So suffice me against them in whatever way You will. Make their plotting be the cause of their own downfall. Clothe them in shame and misery, and grant me a mighty victory over them.
+            </div>
+        </div>
+        
+        <div class="section translations-only" id="part4">
+            <h2 class="section-title">Part 4: Specific Duas Against Sihr Practitioners</h2>
+            <div class="btn-container">
+                <button id="part4Toggle" class="btn active" aria-pressed="true">Translations Only</button>
+            </div>
+            
+            <div class="arabic-text">
+                رَبِّ ٱطْمِسْ عَلَىٰ أَمْوَٰلِهِمْ وَٱشْدُدْ عَلَىٰ قُلُوبِهِمْ فَلَا يُؤْمِنُوا۟ حَتَّىٰ يَرَوُا۟ ٱلْعَذَابَ ٱلْأَلِيمَ
+            </div>
+            <div class="translation">
+                "My Lord, destroy their wealth and harden their hearts so they will not believe until they see the painful punishment." (Surah Yunus 10:88)
+            </div>
+            
+            <div class="arabic-text">
+                رَبِّ، أَذْهِبْ عَنْهُمْ قُوَّتَهُمْ، وَأَسْقِطْ عَنْهُمْ مَكْرَهُمْ، وَتَمِّمْ عَلَيْهِمْ تَدْمِيرَكَ، إِنَّهُمْ لَا يُؤْمِنُونَ وَلَا يَرْجِعُونَ
+            </div>
+            <div class="translation">
+                "My Lord, remove their power, collapse their plotting, and complete upon them Your destruction — for they do not believe nor return from their evil."
+            </div>
+            
+            <div class="arabic-text">
+                اللَّهُمَّ دَمِّرِ السِّحْرَ وَالسَّحَرَةَ الَّذِينَ لَا يَتُوبُونَ<br>
+                اللَّهُمَّ اقْطَعْ أَيْدِيَهُمُ الَّتِي تَعْمَلُ السِّحْرَ<br>
+                اللَّهُمَّ خُذْهُمْ أَخْذَ عَزِيزٍ مُقْتَدِرٍ<br>
+                اللَّهُمَّ لَا تَجْعَلْ لَهُمْ سَبِيلًا عَلَيْنَا أَبَدًا
+            </div>
+            <div class="translation">
+                "O Allah, destroy the sihr and the magicians who refuse to repent. O Allah, cut off the hands that make sihr. O Allah, seize them with the seizing of the All-Mighty, the All-Capable. O Allah, give them no path to harm us ever again."
+            </div>
+            
+            <div class="arabic-text">
+                اللَّهُمَّ اجْعَلْ بَيْنَنَا وَبَيْنَهُمْ حِجَابًا مَسْتُورًا<br>
+                اللَّهُمَّ أَعْمِ أَعْيُنَ جِنِّهِمْ، وَاقْطَعْ عُلُوقَهُمْ، وَاقْمَعْ شَيَاطِينَهُمْ<br>
+                اللَّهُمَّ ارُدَّ كُلَّ سِحْرٍ وَمَكْرٍ وَبَغْيٍ عَلَيْهِمْ مُضَاعَفًا
+            </div>
+            <div class="translation">
+                "O Allah, place between us and them a concealed barrier. O Allah, blind their jinn, cut off their connections, and suppress their devils. O Allah, return every sihr, plot, and evil back upon them multiplied."
+            </div>
+            <div class="arabic-text">
+                اللَّهُمَّ يَا عَدُوَّ أَعْدَائِكَ، يَا مُنْتَقِمَ مِنَ الظَّالِمِينَ، خُذْ هَؤُلَاءِ السَّحَرَةَ أَخْذَ عَزِيزٍ مُقْتَدِرٍ، وَارْدُدْ كَيْدَهُمْ فِي نُحُورِهِمْ، وَاجْعَلْ تَدْبِيرَهُمْ تَدْمِيرًا لَهُمْ، وَلَا تَجْعَلْ لَهُمْ عَلَى الْمُؤْمِنِينَ سَبِيلًا
+            </div>
+            <div class="transliteration">
+                Allāhumma yā 'Adūwa a'dā'ika, yā Muntaqima min az-zālimīn, khudh hā'ulā'i s-saḥarata akhdha 'azīzin muqtadir, waruddu kaydahum fī nuḥūrihim, waj'al tadbīrahum tadmīran lahum, wa lā taj'al lahum 'alā al-mu'minīna sabīlā.
+            </div>
+            <div class="translation">
+                "O Allah, O Enemy of Your enemies, O Avenger from the wrongdoers, seize these magicians with the seizing of the All-Mighty, the All-Capable. Return their plotting back upon their own necks. Make their planning a destruction for them. And give them no authority over the believers."
+            </div>
+            <div class="arabic-text">
+                اللَّهُمَّ أَبْطِلْ سِحْرَهُمْ كُلَّهُ، وَاقْطَعْ أَسْبَابَهُمْ جَمِيعًا، وَفَرِّقْ جَمْعَهُمْ، وَشَتِّتْ شَمْلَهُمْ، وَاقْهَرْ شَيَاطِينَهُمْ، وَارْدُدْ كُلَّ بَأْسٍ وَمَكْرٍ وَسِحْرٍ يَصْنَعُونَهُ إِلَيْهِمْ مُضَاعَفًا، يَا قَوِيُّ يَا مَتِينُ.
+            </div>
+            <div class="transliteration">
+                Allahumma abtil sihrahum kullahu, waqta‘ asbabahum jamee‘an, wa farrik jam‘ahum, wa shattit shamlahum, wa aqhir shayateenahum, wardud kulla ba’sin wa makrin wa sihrin yasna‘oonahu ilayhim muda‘afan, ya Qawiyyu ya Matīn.
+            </div>
+            <div class="translation">
+                "O Allah, nullify all of their sihr, cut all their connections, break their unity, scatter them, overpower their devils, and return every harm, plot and sihr they make back upon them multiplied — O Mighty, O Firm in Strength."
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">Part 5: Conclusion with Praises</h2>
+            
+            <div class="arabic-text">
+                حَسْبِيَ اللَّهُ وَنِعْمَ الْوَكِيلُ، وَلَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ الْعَلِيِّ الْعَظِيمِ
+            </div>
+            <div class="transliteration">
+                Hasbunallahu wa ni'mal wakeel, wa la hawla wa la quwwata illa billahil 'aliyyil 'adheem.
+            </div>
+            <div class="translation">
+                "Allah is sufficient for us, and He is the best Disposer of affairs. And there is no power nor might except with Allah, the Most High, the Most Great."
+            </div>
+            
+            <div class="arabic-text">
+                اللَّهُمَّ صَلِّ وَسَلِّمْ عَلَى نَبِيِّنَا مُحَمَّدٍ وَعَلَى آلِهِ وَأَصْحَابِهِ أَجْمَعِينَ.
+            </div>
+            <div class="transliteration">
+                Allahumma salli wa sallim 'ala Nabiyyina Muhammadin wa 'ala alihi wa ashabihi ajma'een.
+            </div>
+            <div class="translation">
+                "O Allah, send Your grace, honour and mercy upon our Prophet Muhammad and upon his family and all his Companions."
+            </div>
+            
+            <div class="arabic-text">
+                سُبْحَانَ رَبِّكَ رَبِّ الْعِزَّةِ عَمَّا يَصِفُونَ، وَسَلَامٌ عَلَى الْمُرْسَلِينَ، وَالْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ
+            </div>
+            <div class="transliteration">
+                Subhana Rabbika Rabbil 'izzati 'amma yasifun, wa salamun 'alal mursaleen, walhamdulillahi Rabbil 'alameen.
+            </div>
+            <div class="translation">
+                "Exalted is your Lord, the Lord of might, above what they describe. And peace upon the messengers. And all praise is due to Allah, Lord of the worlds." (Surah As-Saffat 37:180-182)
+            </div>
+        </div>
+        
+        <div class="note">
+            <h3>Important Note:</h3>
+            <p>While you are fully justified in seeking protection and justice through these supplications, remember that the ultimate goal is the cessation of harm and establishment of justice, not mere vengeance. Trust in Allah's perfect wisdom and timing. Continue your defensive spiritual practices (Ruqyah, Dhikr, Salah) alongside these supplications.</p>
+        </div>
+        
+        
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>May Allah accept our supplications, protect us from all evil, and grant us victory over oppression. Ameen.</p>
+            <p>This guide is based on Quranic verses and authentic Islamic teachings for protection against sihr.</p>
+        </div>
+    </footer>
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        function setupTranslationsToggle(sectionId, buttonId) {
+            var section = document.getElementById(sectionId);
+            var button = document.getElementById(buttonId);
+            if (!section || !button) return;
+
+            function syncButton() {
+                var active = section.classList.contains('translations-only');
+                button.classList.toggle('active', active);
+                button.setAttribute('aria-pressed', active ? 'true' : 'false');
+                button.textContent = active ? 'Translations Only' : 'Show Arabic + Translation';
+            }
+
+            // Ensure default pressed-on state
+            section.classList.add('translations-only');
+            syncButton();
+
+            button.addEventListener('click', function () {
+                section.classList.toggle('translations-only');
+                syncButton();
+            });
+        }
+
+        setupTranslationsToggle('part4', 'part4Toggle');
+        setupTranslationsToggle('part3', 'part3Toggle');
+    });
+    </script>
+</body>
+</html>
