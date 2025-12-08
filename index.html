@@ -508,7 +508,7 @@
                     <div class="menu-title">Quran Verses</div>
                 </div>
                 
-                <div class="menu-item" onclick="alert('Under construction')">
+                <div class="menu-item" onclick="openDevAccess()">
                     <div class="menu-icon">
                         <i class="fas fa-info-circle"></i>
                     </div>
@@ -597,4 +597,63 @@
         });
     </script>
 </body>
+<div id="devAccessModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.6); z-index:1000;">
+  <div style="position:absolute; left:50%; top:50%; transform:translate(-50%, -50%); background:#fff; color:#222; width:min(90vw, 400px); border-radius:12px; box-shadow:0 10px 30px rgba(0,0,0,0.25);">
+    <div style="padding:16px 20px; border-bottom:1px solid #eee; font-weight:600; font-size:18px;">Under Construction: Dev Access Only</div>
+    <div style="padding:18px 20px;">
+      <label for="devAccessInput" style="display:block; margin-bottom:8px; font-size:14px;">Enter access code</label>
+      <input id="devAccessInput" type="password" inputmode="numeric" pattern="[0-9]*" style="width:100%; padding:10px 12px; font-size:16px; border:1px solid #ccc; border-radius:8px; outline:none;" />
+      <div style="display:flex; gap:10px; justify-content:flex-end; margin-top:16px;">
+        <button id="devAccessCancel" style="padding:8px 14px; border:1px solid #bbb; background:#f7f7f7; color:#333; border-radius:8px; cursor:pointer;">Cancel</button>
+        <button id="devAccessConfirm" style="padding:8px 14px; border:1px solid #1e7e34; background:#28a745; color:#fff; border-radius:8px; cursor:pointer;">Continue</button>
+      </div>
+      <div id="devAccessError" style="display:none; margin-top:10px; color:#b00020; font-size:13px;">Access denied</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function openDevAccess() {
+    const modal = document.getElementById('devAccessModal');
+    const input = document.getElementById('devAccessInput');
+    const error = document.getElementById('devAccessError');
+    const cancel = document.getElementById('devAccessCancel');
+    const confirm = document.getElementById('devAccessConfirm');
+
+    error.style.display = 'none';
+    input.value = '';
+    modal.style.display = 'block';
+    setTimeout(() => input.focus(), 50);
+
+    function close() {
+      modal.style.display = 'none';
+      error.style.display = 'none';
+      input.value = '';
+      cancel.removeEventListener('click', onCancel);
+      confirm.removeEventListener('click', onConfirm);
+      document.removeEventListener('keydown', onKey);
+    }
+
+    function onCancel() { close(); }
+
+    function onConfirm() {
+      const v = (input.value || '').trim();
+      if (v === '2207') {
+        window.location.href = 'DuaAgainst.html';
+      } else {
+        error.style.display = 'block';
+        input.focus();
+      }
+    }
+
+    function onKey(e) {
+      if (e.key === 'Escape') { e.preventDefault(); close(); }
+      if (e.key === 'Enter') { e.preventDefault(); onConfirm(); }
+    }
+
+    cancel.addEventListener('click', onCancel);
+    confirm.addEventListener('click', onConfirm);
+    document.addEventListener('keydown', onKey);
+  }
+</script>
 </html>
