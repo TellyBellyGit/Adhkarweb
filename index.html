@@ -437,7 +437,7 @@
             </div>
 
             <!-- Green Bar Section -->
-            <div class="green-bar">
+            <div class="green-bar" id="dailyPracticeBlock">
                 <div class="green-bar-content">
                     <h2>Daily Spiritual Practice</h2>
                     <p>Consistent remembrance of Allah is a protection for your heart and soul. Make adhkar part of your daily routine.</p>
@@ -593,6 +593,31 @@
 
                 infoFooter.addEventListener('click', handleFooterTap);
                 infoFooter.addEventListener('touchend', handleFooterTap);
+            }
+
+            // Triple-tap on Daily Spiritual Practice block to open GreatestNameDua.html
+            const dailyPracticeBlock = document.getElementById('dailyPracticeBlock');
+            if (dailyPracticeBlock) {
+                let practiceTapCount = 0;
+                let practiceTapTimer = null;
+                const PRACTICE_TAP_WINDOW_MS = 800; 
+
+                const handlePracticeTap = (e) => {
+                    practiceTapCount += 1;
+                    if (practiceTapCount === 1) {
+                        practiceTapTimer = setTimeout(() => {
+                            practiceTapCount = 0;
+                            practiceTapTimer = null;
+                        }, PRACTICE_TAP_WINDOW_MS);
+                    } else if (practiceTapCount >= 3) {
+                        clearTimeout(practiceTapTimer);
+                        practiceTapCount = 0;
+                        window.location.href = 'GreatestNameDua.html';
+                    }
+                };
+
+                dailyPracticeBlock.addEventListener('click', handlePracticeTap);
+                dailyPracticeBlock.addEventListener('touchend', handlePracticeTap);
             }
         });
     </script>
