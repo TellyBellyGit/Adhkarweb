@@ -515,6 +515,13 @@
                     <div class="menu-title">Repel Saahir</div>
                 </div>
                 
+                <div class="menu-item" onclick="confirmIsmUlHusna()">
+                    <div class="menu-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="menu-title">Ism-Ul-Husna</div>
+                </div>
+                
                 <!-- Editor launcher -->
                 <div class="menu-item" onclick="window.location.href='editor.html'">
                     <div class="menu-icon">
@@ -637,7 +644,27 @@
   </div>
 </div>
 
+<div id="ismModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.6); z-index:1000;">
+  <div style="position:absolute; left:50%; top:50%; transform:translate(-50%, -50%); background:#fff; color:#222; width:min(90vw, 400px); border-radius:12px; box-shadow:0 10px 30px rgba(0,0,0,0.25);">
+    <div style="padding:24px 20px;">
+      <p style="margin-bottom:24px; font-size:16px; line-height:1.5; color:#333;">This will take you another dedicated Allah's (swt) Names</p>
+      <div style="display:flex; gap:10px; justify-content:flex-end;">
+        <button onclick="closeIsmModal()" style="padding:10px 16px; border:1px solid #bbb; background:#f7f7f7; color:#333; border-radius:8px; cursor:pointer; font-weight:500;">Cancel</button>
+        <button onclick="window.location.href='https://namesapp.netlify.app'" style="padding:10px 16px; border:1px solid #1e7e34; background:#28a745; color:#fff; border-radius:8px; cursor:pointer; font-weight:500;">OK</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script>
+  function confirmIsmUlHusna() {
+    document.getElementById('ismModal').style.display = 'block';
+  }
+
+  function closeIsmModal() {
+    document.getElementById('ismModal').style.display = 'none';
+  }
+
   function openDevAccess() {
     const modal = document.getElementById('devAccessModal');
     const input = document.getElementById('devAccessInput');
